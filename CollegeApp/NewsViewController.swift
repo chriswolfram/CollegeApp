@@ -61,7 +61,7 @@ class NewsViewController: UITableViewController, NSXMLParserDelegate
     }
     
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
-    {
+    {        
         if currentTag == elementName
         {
             switch currentTag
@@ -89,7 +89,7 @@ class NewsViewController: UITableViewController, NSXMLParserDelegate
         //Dispatch threads to get the thumbnails and send them to the table data (fullData)
         for (i, news) in fullData.enumerate()
         {
-            dispatch_async(dispatch_get_global_queue(/*DISPATCH_QUEUE_PRIORITY_DEFAULT*/DISPATCH_QUEUE_PRIORITY_HIGH, 0))
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
             {
                 if news.imageURL != nil
                 {
