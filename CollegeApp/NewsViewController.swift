@@ -10,7 +10,7 @@ import UIKit
 
 class NewsViewController: UITableViewController, NSXMLParserDelegate
 {
-    static let xmlURL = "https://news.stanford.edu/rss/index.xml"
+    static let xmlURLString = "https://news.stanford.edu/rss/index.xml"
     
     var xmlParser: NSXMLParser!
     
@@ -31,8 +31,12 @@ class NewsViewController: UITableViewController, NSXMLParserDelegate
         self.tableView.estimatedRowHeight = 143.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
+        //Add UIRefreshContoller (pull down to refresh)
+        //self.refreshControl = UIRefreshControl()
+        //self.refreshControl?.addTarget(self, action: "refreshNews:", forControlEvents: UIControlEvents.ValueChanged)
+        
         //Configure parser
-        let url = NSURL(string: NewsViewController.xmlURL)!
+        let url = NSURL(string: NewsViewController.xmlURLString)!
         xmlParser = NSXMLParser(contentsOfURL: url)
         xmlParser.delegate = self
         xmlParser.parse()
@@ -61,7 +65,7 @@ class NewsViewController: UITableViewController, NSXMLParserDelegate
     }
     
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
-    {        
+    {
         if currentTag == elementName
         {
             switch currentTag
@@ -97,8 +101,11 @@ class NewsViewController: UITableViewController, NSXMLParserDelegate
                     {
                         if let image = UIImage(data: imageData)
                         {
-                            self.fullData[i].image = image
-                            self.tableView.reloadData()
+                            dispatch_async(dispatch_get_main_queue())
+                            {
+                                self.fullData[i].image = image
+                                self.tableView.reloadData()
+                            }
                         }
                     }
                 }
@@ -122,6 +129,7 @@ class NewsViewController: UITableViewController, NSXMLParserDelegate
         cell.descriptionLabel.text = news.description
         
         //If there is an image for this cell, show it
+        
         if news.image != nil
         {
             cell.thumbnailView.image = news.image
@@ -135,5 +143,20 @@ class NewsViewController: UITableViewController, NSXMLParserDelegate
         let news = fullData[indexPath.row]
         
         UIApplication.sharedApplication().openURL(news.link)
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
+    //Run if the refresh controller is triggered (slide down to refresh)
+    @IBAction func refresh(sender: AnyObject)
+    {
+        let url = NSURL(string: NewsViewController.xmlURLString)!
+        xmlParser = NSXMLParser(contentsOfURL: url)
+        xmlParser.delegate = self
+        
+        fullData = []
+        xmlParser.parse()
+        
+        self.refreshControl?.endRefreshing()
     }
 }
