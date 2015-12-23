@@ -31,10 +31,6 @@ class NewsViewController: UITableViewController, NSXMLParserDelegate
         self.tableView.estimatedRowHeight = 143.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        //Add UIRefreshContoller (pull down to refresh)
-        //self.refreshControl = UIRefreshControl()
-        //self.refreshControl?.addTarget(self, action: "refreshNews:", forControlEvents: UIControlEvents.ValueChanged)
-        
         //Configure parser
         let url = NSURL(string: NewsViewController.xmlURLString)!
         xmlParser = NSXMLParser(contentsOfURL: url)
@@ -129,7 +125,6 @@ class NewsViewController: UITableViewController, NSXMLParserDelegate
         cell.descriptionLabel.text = news.description
         
         //If there is an image for this cell, show it
-        
         if news.image != nil
         {
             cell.thumbnailView.image = news.image
