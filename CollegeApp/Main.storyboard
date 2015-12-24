@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -25,7 +26,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jyj-QJ-0cD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1306.5" y="847"/>
+            <point key="canvasLocation" x="-1402.5" y="1211"/>
         </scene>
         <!--QRCode-->
         <scene sceneID="Ulm-5j-kqx">
@@ -235,26 +236,73 @@
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="8" y="8" width="256" height="80"/>
-                                            </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRU-W0-Q0c">
                                             <rect key="frame" x="205" y="70" width="387" height="64.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="8" y="96" width="384" height="38.5"/>
-                                            </variation>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAw-tu-u6J">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="133.5"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="272" y="8" width="120" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="6fX-Ym-Pm9"/>
+                                                <constraint firstAttribute="height" constant="80" id="rdC-12-8j7"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="6fX-Ym-Pm9"/>
+                                                    <exclude reference="rdC-12-8j7"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="6fX-Ym-Pm9"/>
+                                                    <include reference="rdC-12-8j7"/>
+                                                </mask>
                                             </variation>
                                         </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="iRU-W0-Q0c" firstAttribute="trailing" secondItem="Lrs-Vm-hUk" secondAttribute="trailingMargin" id="5iB-Ko-JIz"/>
+                                        <constraint firstItem="xAw-tu-u6J" firstAttribute="top" secondItem="Lrs-Vm-hUk" secondAttribute="topMargin" id="Gec-nu-ThO"/>
+                                        <constraint firstItem="xAw-tu-u6J" firstAttribute="trailing" secondItem="Lrs-Vm-hUk" secondAttribute="trailingMargin" id="I0P-Ua-DXU"/>
+                                        <constraint firstItem="gbd-ap-5zM" firstAttribute="leading" secondItem="Lrs-Vm-hUk" secondAttribute="leadingMargin" id="PWf-Ja-abH"/>
+                                        <constraint firstItem="iRU-W0-Q0c" firstAttribute="top" secondItem="gbd-ap-5zM" secondAttribute="bottom" constant="8" id="fgf-hO-Ch3"/>
+                                        <constraint firstItem="gbd-ap-5zM" firstAttribute="top" secondItem="Lrs-Vm-hUk" secondAttribute="topMargin" id="mdS-bH-JS5"/>
+                                        <constraint firstItem="iRU-W0-Q0c" firstAttribute="top" secondItem="xAw-tu-u6J" secondAttribute="bottom" constant="8" id="yuE-tK-1t9"/>
+                                        <constraint firstItem="xAw-tu-u6J" firstAttribute="leading" secondItem="gbd-ap-5zM" secondAttribute="trailing" constant="8" id="zsB-IX-Eq5"/>
+                                        <constraint firstItem="iRU-W0-Q0c" firstAttribute="leading" secondItem="Lrs-Vm-hUk" secondAttribute="leadingMargin" id="zso-yG-JG6"/>
+                                        <constraint firstItem="iRU-W0-Q0c" firstAttribute="bottom" secondItem="Lrs-Vm-hUk" secondAttribute="bottomMargin" id="zsw-PM-ySW"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="PWf-Ja-abH"/>
+                                            <exclude reference="mdS-bH-JS5"/>
+                                            <exclude reference="5iB-Ko-JIz"/>
+                                            <exclude reference="fgf-hO-Ch3"/>
+                                            <exclude reference="yuE-tK-1t9"/>
+                                            <exclude reference="zso-yG-JG6"/>
+                                            <exclude reference="zsw-PM-ySW"/>
+                                            <exclude reference="Gec-nu-ThO"/>
+                                            <exclude reference="I0P-Ua-DXU"/>
+                                            <exclude reference="zsB-IX-Eq5"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="constraints">
+                                            <include reference="PWf-Ja-abH"/>
+                                            <include reference="mdS-bH-JS5"/>
+                                            <include reference="5iB-Ko-JIz"/>
+                                            <include reference="fgf-hO-Ch3"/>
+                                            <include reference="yuE-tK-1t9"/>
+                                            <include reference="zso-yG-JG6"/>
+                                            <include reference="zsw-PM-ySW"/>
+                                            <include reference="Gec-nu-ThO"/>
+                                            <include reference="I0P-Ua-DXU"/>
+                                            <include reference="zsB-IX-Eq5"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="iRU-W0-Q0c" id="81H-BX-fd5"/>
