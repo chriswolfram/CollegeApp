@@ -22,7 +22,7 @@ class MapSearchResultsView: UITableView, UITableViewDataSource, UITableViewDeleg
     {
         self.delegate = self
         self.dataSource = self
-        self.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MapSearchResultsViewCell")
     }
     
     func search(query: String)
@@ -39,7 +39,7 @@ class MapSearchResultsView: UITableView, UITableViewDataSource, UITableViewDeleg
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("MapSearchResultsViewCell", forIndexPath: indexPath)
         cell.textLabel?.text = results[indexPath.row].title
         return cell
     }

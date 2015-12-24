@@ -37,7 +37,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         navigationItem.titleView = searchBar
         searchBar.setShowsCancelButton(false, animated: false)
         
-        searchBar.placeholder = "Search location"
+        searchBar.searchBarStyle = UISearchBarStyle.Minimal
+        searchBar.tintColor = UIColor.whiteColor()
+        searchBar.placeholder = "Search Stanford"
         
         //Configure gesture recognizer to pick up taps to escape the search bar
         mapView.addGestureRecognizer(gestureRecognizer)

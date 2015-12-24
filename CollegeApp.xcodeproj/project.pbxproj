@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E8BD81C27335F00960097 /* NewsViewCell.swift */; };
+		9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D711C2B625100874227 /* EmergencyViewController.swift */; };
+		9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D741C2B680100874227 /* EmergencyViewCell.swift */; };
+		9DB25D781C2BB64700874227 /* homescreenBackground.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */; };
 		9DCB663C1C251B2A0083586E /* CollegeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB663B1C251B2A0083586E /* CollegeAppTests.swift */; };
 		9DCB66471C251B2A0083586E /* CollegeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66461C251B2A0083586E /* CollegeAppUITests.swift */; };
 		9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66541C251B510083586E /* AppDelegate.swift */; };
@@ -41,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		9D4E8BD81C27335F00960097 /* NewsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
+		9DB25D711C2B625100874227 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
+		9DB25D741C2B680100874227 /* EmergencyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewCell.swift; sourceTree = "<group>"; };
+		9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = homescreenBackground.jpeg; sourceTree = "<group>"; };
 		9DCB66231C251B2A0083586E /* CollegeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB66371C251B2A0083586E /* CollegeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollegeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB663B1C251B2A0083586E /* CollegeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeAppTests.swift; sourceTree = "<group>"; };
@@ -85,6 +91,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DB25D731C2B625E00874227 /* EmergencyView */ = {
+			isa = PBXGroup;
+			children = (
+				9DB25D711C2B625100874227 /* EmergencyViewController.swift */,
+				9DB25D741C2B680100874227 /* EmergencyViewCell.swift */,
+			);
+			name = EmergencyView;
+			sourceTree = "<group>";
+		};
+		9DB25D761C2BB60400874227 /* SchoolAssets */ = {
+			isa = PBXGroup;
+			children = (
+				9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */,
+			);
+			name = SchoolAssets;
+			sourceTree = "<group>";
+		};
 		9DCB661A1C251B2A0083586E = {
 			isa = PBXGroup;
 			children = (
@@ -112,8 +135,10 @@
 				9DCB66681C2548170083586E /* MapView */,
 				9DCB66691C25481F0083586E /* QRCodeView */,
 				9DCB666A1C2548280083586E /* NewsView */,
+				9DB25D731C2B625E00874227 /* EmergencyView */,
 				9DCB66601C251B600083586E /* Main.storyboard */,
 				9DCB66621C251B600083586E /* LaunchScreen.storyboard */,
+				9DB25D761C2BB60400874227 /* SchoolAssets */,
 				9DCB66611C251B600083586E /* Assets.xcassets */,
 				9DCB66551C251B510083586E /* Info.plist */,
 			);
@@ -272,6 +297,7 @@
 				9DCB665B1C251B510083586E /* Info.plist in Resources */,
 				9DCB66651C251B600083586E /* LaunchScreen.storyboard in Resources */,
 				9DCB66641C251B600083586E /* Assets.xcassets in Resources */,
+				9DB25D781C2BB64700874227 /* homescreenBackground.jpeg in Resources */,
 				9DCB66631C251B600083586E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,10 +325,12 @@
 			files = (
 				9DCB665C1C251B510083586E /* MapController.swift in Sources */,
 				9DCB665F1C251B510083586E /* QRViewController.swift in Sources */,
+				9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */,
 				9DCB665E1C251B510083586E /* QRDetailController.swift in Sources */,
 				9DCB66671C2547AC0083586E /* NewsViewController.swift in Sources */,
 				9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */,
 				9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */,
+				9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */,
 				9DCB665D1C251B510083586E /* MapSearchResultsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +458,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = zaltotech.CollegeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -442,6 +471,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zaltotech.CollegeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
