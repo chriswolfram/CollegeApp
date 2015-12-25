@@ -197,7 +197,7 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="numberLabel" destination="JTq-JI-jtU" id="5oM-ja-Vzf"/>
                                     <outlet property="titleLabel" destination="GJc-vc-I3t" id="QL9-TH-87S"/>

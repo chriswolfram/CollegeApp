@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28AE74111C2CEB85000EDB1F /* schoolInformation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28AE74101C2CEB85000EDB1F /* schoolInformation.plist */; };
 		9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E8BD81C27335F00960097 /* NewsViewCell.swift */; };
 		9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D711C2B625100874227 /* EmergencyViewController.swift */; };
 		9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D741C2B680100874227 /* EmergencyViewCell.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28AE74101C2CEB85000EDB1F /* schoolInformation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = schoolInformation.plist; sourceTree = "<group>"; };
 		9D4E8BD81C27335F00960097 /* NewsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		9DB25D711C2B625100874227 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
 		9DB25D741C2B680100874227 /* EmergencyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewCell.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		9DB25D761C2BB60400874227 /* SchoolAssets */ = {
 			isa = PBXGroup;
 			children = (
+				28AE74101C2CEB85000EDB1F /* schoolInformation.plist */,
 				9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */,
 			);
 			name = SchoolAssets;
@@ -298,6 +301,7 @@
 				9DCB665B1C251B510083586E /* Info.plist in Resources */,
 				9DCB66651C251B600083586E /* LaunchScreen.storyboard in Resources */,
 				9DCB66641C251B600083586E /* Assets.xcassets in Resources */,
+				28AE74111C2CEB85000EDB1F /* schoolInformation.plist in Resources */,
 				9DB25D781C2BB64700874227 /* homescreenBackground.jpeg in Resources */,
 				9DCB66631C251B600083586E /* Main.storyboard in Resources */,
 			);
