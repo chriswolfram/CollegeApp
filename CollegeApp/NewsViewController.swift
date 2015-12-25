@@ -91,6 +91,7 @@ class NewsViewController: UITableViewController, NSXMLParserDelegate
         {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
             {
+                //TODO: Use Swift 2.0 syntax
                 if news.imageURL != nil
                 {
                     if let imageData = NSData(contentsOfURL: news.imageURL!)
