@@ -1,33 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jng-37-Mw1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="i7J-1Z-qYn">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
-        <scene sceneID="6sK-dZ-W7a">
-            <objects>
-                <tabBarController id="jng-37-Mw1" sceneMemberID="viewController">
-                    <keyCommands/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="5O5-MQ-wJW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="qjg-W3-Iq5" kind="relationship" relationship="viewControllers" id="ZAq-Ka-IYm"/>
-                        <segue destination="xzG-NM-Nap" kind="relationship" relationship="viewControllers" id="Qki-wm-Gwh"/>
-                        <segue destination="iQn-MR-V0F" kind="relationship" relationship="viewControllers" id="cYm-5v-5q1"/>
-                        <segue destination="Cjp-0D-ysM" kind="relationship" relationship="viewControllers" id="HUD-sR-kwd"/>
-                        <segue destination="i7J-1Z-qYn" kind="relationship" relationship="viewControllers" id="G5m-Ne-was"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jyj-QJ-0cD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1402.5" y="1211"/>
-        </scene>
         <!--QRCode-->
         <scene sceneID="Ulm-5j-kqx">
             <objects>
@@ -65,42 +43,6 @@
             </objects>
             <point key="canvasLocation" x="406.5" y="453"/>
         </scene>
-        <!--News-->
-        <scene sceneID="0Ow-bi-zqm">
-            <objects>
-                <navigationController id="iQn-MR-V0F" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" id="6Ys-j3-nhz"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="zuq-RI-rNT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.93725490199999995" green="0.0" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="uar-Yy-w7t" kind="relationship" relationship="rootViewController" id="UCR-Fu-kAN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D77-7J-bgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-334.5" y="1211"/>
-        </scene>
-        <!--Emergency-->
-        <scene sceneID="ZeE-PZ-Vei">
-            <objects>
-                <navigationController title="Emergency" id="Cjp-0D-ysM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Emergency" id="6IH-ir-TjE"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="fex-vK-FxB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.93725490196078431" green="0.0" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="gSG-4e-L6m" kind="relationship" relationship="rootViewController" id="wVS-XX-dqd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PA7-Ts-R4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-334.5" y="1961"/>
-        </scene>
         <!--Homescreen-->
         <scene sceneID="TyZ-Sm-WGK">
             <objects>
@@ -109,7 +51,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="dKK-1f-P9q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.9137254901960784" green="0.0" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="ZER-ry-FrU" kind="relationship" relationship="rootViewController" id="ZUz-jJ-AKq"/>
@@ -117,7 +63,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yns-5X-fR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-334.5" y="2669"/>
+            <point key="canvasLocation" x="-2017.5" y="816"/>
         </scene>
         <!--Homescreen-->
         <scene sceneID="Ngs-5w-rOi">
@@ -134,6 +80,74 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homescreenBackground.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="wLn-46-pCl">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFz-vb-B0u">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.30980312824249268" green="0.49389010667800903" blue="0.99856066703796387" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Maps"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="225" y="250" width="100" height="100"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="MKi-uU-wAq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txd-tT-DFq">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.98795485496520996" green="0.31318625807762146" blue="0.30755195021629333" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Emergency"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="225" y="375" width="100" height="100"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="gSG-4e-L6m" kind="show" id="ScX-dL-vWd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHv-8f-O20">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.14901960784313725" green="0.15686274509803921" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="News"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="74" y="375" width="100" height="100"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="uar-Yy-w7t" kind="show" id="83s-vJ-Cf9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsU-NV-GdH">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.97599530220031738" green="0.53665733337402344" blue="0.24399212002754211" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Events"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="74" y="250" width="100" height="100"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="pbs-NQ-FIb" kind="show" id="IiB-li-mZG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -142,12 +156,28 @@
                             <constraint firstAttribute="bottom" secondItem="wLn-46-pCl" secondAttribute="bottom" id="vYm-zZ-hcv"/>
                             <constraint firstItem="wLn-46-pCl" firstAttribute="top" secondItem="ETp-NJ-F15" secondAttribute="top" id="zrJ-UX-RJ3"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="sFz-vb-B0u"/>
+                                <exclude reference="txd-tT-DFq"/>
+                                <exclude reference="UHv-8f-O20"/>
+                                <exclude reference="qsU-NV-GdH"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="sFz-vb-B0u"/>
+                                <include reference="txd-tT-DFq"/>
+                                <include reference="UHv-8f-O20"/>
+                                <include reference="qsU-NV-GdH"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Stanford" id="Uhq-Qb-FiU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Py6-mV-hXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="2669"/>
+            <point key="canvasLocation" x="-1278" y="816"/>
         </scene>
         <!--Emergency-->
         <scene sceneID="z0d-hd-aMo">
@@ -213,7 +243,33 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wuk-tn-MDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="406.5" y="1961"/>
+            <point key="canvasLocation" x="-334.5" y="2603"/>
+        </scene>
+        <!--Events-->
+        <scene sceneID="Xwx-8m-LnF">
+            <objects>
+                <tableViewController title="Events" id="pbs-NQ-FIb" customClass="EventsViewController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pb4-uL-JUU">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lFE-yE-pEY">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lFE-yE-pEY" id="TZp-Xf-lSE">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pbs-NQ-FIb" id="GTa-qT-OVq"/>
+                            <outlet property="delegate" destination="pbs-NQ-FIb" id="hSB-lx-zQf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Events" id="FXe-Mm-50d"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uKi-8Y-fPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-334.5" y="1911"/>
         </scene>
         <!--News-->
         <scene sceneID="Gbc-1O-dZ3">
@@ -238,13 +294,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRU-W0-Q0c">
-                                            <rect key="frame" x="205" y="70" width="387" height="64.5"/>
+                                            <rect key="frame" x="205" y="70" width="387" height="65"/>
                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAw-tu-u6J">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="133.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="134"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="6fX-Ym-Pm9"/>
                                                 <constraint firstAttribute="height" constant="80" id="rdC-12-8j7"/>
@@ -326,7 +382,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgG-Rv-Vgu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="1211"/>
+            <point key="canvasLocation" x="-334.5" y="1195"/>
         </scene>
         <!--Detail Controller-->
         <scene sceneID="urY-lE-q2q">
@@ -371,24 +427,6 @@
             <point key="canvasLocation" x="1111.5" y="453"/>
         </scene>
         <!--Map-->
-        <scene sceneID="guk-e9-hm1">
-            <objects>
-                <navigationController id="qjg-W3-Iq5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="TiL-re-awa"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Cxc-Gs-ngd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.93725490199999995" green="0.0" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="RmQ-PH-ngj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EFE-gR-NAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-334.5" y="-262"/>
-        </scene>
-        <!--Map-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController title="Map" id="BYZ-38-t0r" customClass="MapController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -416,7 +454,9 @@
                             <constraint firstItem="0TD-li-EfL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FLx-TA-OnF"/>
                             <constraint firstAttribute="bottom" secondItem="cFj-dk-4qg" secondAttribute="bottom" id="GC2-f2-0y9"/>
                             <constraint firstAttribute="bottom" secondItem="0TD-li-EfL" secondAttribute="bottom" id="Ge6-hh-smG"/>
-                            <constraint firstItem="0TD-li-EfL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="M3A-H0-Pc8"/>
+                            <constraint firstItem="0TD-li-EfL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="M3A-H0-Pc8">
+                                <variation key="widthClass=compact" constant="64"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="0TD-li-EfL" secondAttribute="trailing" id="Q5R-NJ-BLO"/>
                             <constraint firstItem="cFj-dk-4qg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jFD-NE-zGC"/>
                             <constraint firstAttribute="trailing" secondItem="cFj-dk-4qg" secondAttribute="trailing" id="kgo-37-QYK"/>
@@ -433,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="-262"/>
+            <point key="canvasLocation" x="-334.5" y="-248"/>
         </scene>
     </scenes>
     <resources>
