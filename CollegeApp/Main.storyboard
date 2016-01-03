@@ -249,15 +249,85 @@
         <scene sceneID="Xwx-8m-LnF">
             <objects>
                 <tableViewController title="Events" id="pbs-NQ-FIb" customClass="EventsViewController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pb4-uL-JUU">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="pb4-uL-JUU">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lFE-yE-pEY">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventViewCell" rowHeight="80" id="lFE-yE-pEY" customClass="EventViewCell" customModule="CollegeApp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lFE-yE-pEY" id="TZp-Xf-lSE">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MET-64-2Lu">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="cW8-Re-zfF"/>
+                                                <constraint firstAttribute="height" constant="80" id="ixo-Ie-r2z"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="cW8-Re-zfF"/>
+                                                    <exclude reference="ixo-Ie-r2z"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="cW8-Re-zfF"/>
+                                                    <include reference="ixo-Ie-r2z"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itO-y9-g21">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="itO-y9-g21" firstAttribute="top" secondItem="TZp-Xf-lSE" secondAttribute="topMargin" id="AyA-ne-nFD"/>
+                                        <constraint firstItem="itO-y9-g21" firstAttribute="leading" secondItem="MET-64-2Lu" secondAttribute="trailing" constant="8" id="Cn9-V7-irl"/>
+                                        <constraint firstItem="MET-64-2Lu" firstAttribute="leading" secondItem="TZp-Xf-lSE" secondAttribute="leading" id="EPK-xD-yhf"/>
+                                        <constraint firstItem="MET-64-2Lu" firstAttribute="top" secondItem="TZp-Xf-lSE" secondAttribute="top" id="MMM-Nv-c6G"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="itO-y9-g21" secondAttribute="trailing" constant="80" id="ZVm-22-cVX"/>
+                                        <constraint firstItem="itO-y9-g21" firstAttribute="bottom" secondItem="TZp-Xf-lSE" secondAttribute="bottomMargin" id="f6C-m7-QIG"/>
+                                        <constraint firstAttribute="bottom" secondItem="MET-64-2Lu" secondAttribute="bottom" id="woj-Sc-aCu"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="MET-64-2Lu"/>
+                                            <exclude reference="itO-y9-g21"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="EPK-xD-yhf"/>
+                                            <exclude reference="MMM-Nv-c6G"/>
+                                            <exclude reference="woj-Sc-aCu"/>
+                                            <exclude reference="AyA-ne-nFD"/>
+                                            <exclude reference="Cn9-V7-irl"/>
+                                            <exclude reference="ZVm-22-cVX"/>
+                                            <exclude reference="f6C-m7-QIG"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="MET-64-2Lu"/>
+                                            <include reference="itO-y9-g21"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="EPK-xD-yhf"/>
+                                            <include reference="MMM-Nv-c6G"/>
+                                            <include reference="woj-Sc-aCu"/>
+                                            <include reference="AyA-ne-nFD"/>
+                                            <include reference="Cn9-V7-irl"/>
+                                            <include reference="ZVm-22-cVX"/>
+                                            <include reference="f6C-m7-QIG"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="thumbnailView" destination="MET-64-2Lu" id="7zC-LV-r4h"/>
+                                    <outlet property="titleLabel" destination="itO-y9-g21" id="7qH-QM-BFi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
