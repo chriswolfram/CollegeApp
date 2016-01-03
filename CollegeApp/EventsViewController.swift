@@ -55,4 +55,20 @@ class EventsViewController: UITableViewController, RSSReaderDelegate
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        let event = rssReader.fullData[indexPath.row]
+        
+        UIApplication.sharedApplication().openURL(event.link)
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
+    @IBAction func refresh(sender: AnyObject)
+    {
+        rssReader.refresh()
+        
+        self.refreshControl?.endRefreshing()
+    }
 }

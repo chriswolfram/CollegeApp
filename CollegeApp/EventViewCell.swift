@@ -12,5 +12,4 @@ class EventViewCell: UITableViewCell
 {
     @IBOutlet weak var thumbnailView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    //@IBOutlet var descriptionLabel: UILabel!
 }

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -250,12 +251,15 @@
             <objects>
                 <tableViewController title="Events" id="pbs-NQ-FIb" customClass="EventsViewController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="pb4-uL-JUU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventViewCell" rowHeight="80" id="lFE-yE-pEY" customClass="EventViewCell" customModule="CollegeApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lFE-yE-pEY" id="TZp-Xf-lSE">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MET-64-2Lu">
@@ -277,7 +281,7 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itO-y9-g21">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itO-y9-g21">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -299,13 +303,13 @@
                                             <exclude reference="itO-y9-g21"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="EPK-xD-yhf"/>
-                                            <exclude reference="MMM-Nv-c6G"/>
-                                            <exclude reference="woj-Sc-aCu"/>
                                             <exclude reference="AyA-ne-nFD"/>
                                             <exclude reference="Cn9-V7-irl"/>
                                             <exclude reference="ZVm-22-cVX"/>
                                             <exclude reference="f6C-m7-QIG"/>
+                                            <exclude reference="EPK-xD-yhf"/>
+                                            <exclude reference="MMM-Nv-c6G"/>
+                                            <exclude reference="woj-Sc-aCu"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -314,13 +318,13 @@
                                             <include reference="itO-y9-g21"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="EPK-xD-yhf"/>
-                                            <include reference="MMM-Nv-c6G"/>
-                                            <include reference="woj-Sc-aCu"/>
                                             <include reference="AyA-ne-nFD"/>
                                             <include reference="Cn9-V7-irl"/>
                                             <include reference="ZVm-22-cVX"/>
                                             <include reference="f6C-m7-QIG"/>
+                                            <include reference="EPK-xD-yhf"/>
+                                            <include reference="MMM-Nv-c6G"/>
+                                            <include reference="woj-Sc-aCu"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -336,6 +340,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Events" id="FXe-Mm-50d"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="YlI-w9-Lps">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="pbs-NQ-FIb" eventType="valueChanged" id="wdg-F7-1ov"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKi-8Y-fPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
