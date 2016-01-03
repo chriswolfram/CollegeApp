@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventViewCell: UITableViewCell
+class EventsViewCell: UITableViewCell
 {
     @IBOutlet weak var thumbnailView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

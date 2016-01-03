@@ -41,7 +41,7 @@ class EventsViewController: UITableViewController, RSSReaderDelegate
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("EventViewCell", forIndexPath: indexPath) as! EventViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("EventsViewCell", forIndexPath: indexPath) as! EventsViewCell
         let event = rssReader.fullData[indexPath.row]
         
         cell.titleLabel.text = event.title
