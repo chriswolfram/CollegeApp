@@ -28,10 +28,11 @@ class EventsViewController: UITableViewController, RSSReaderDelegate
         rssReader.delegate = self
         rssReader.refresh()
         
-        let xmlElement = XMLElement(url: NSURL(string: "http://events.stanford.edu/xml/rss.xml")!)
-        xmlElement.run()
+        let parser = NSXMLParser(contentsOfURL: NSURL(string: "http://events.stanford.edu/xml/rss.xml")!)
+        let xmlElement = XMLElement(parser: parser!)
+        xmlElement.parse()
         
-        print(xmlElement.children.count)
+        xmlElement["rss"]?["channel"]?["item", .All]?.map({print($0["title"]?.contents)})
     }
     
     func reloadData()

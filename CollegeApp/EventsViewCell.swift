@@ -1,5 +1,5 @@
 //
-//  EventViewCell.swift
+//  EventsViewCell.swift
 //  CollegeApp
 //
 //  Created by Christopher Wolfram on 1/3/16.
