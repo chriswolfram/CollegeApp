@@ -29,7 +29,8 @@ class RSSReader: NSObject, NSXMLParserDelegate
     
     func parser(parser: NSXMLParser, foundCharacters string: String)
     {
-        currentValue = string
+        //May be destructive
+        currentValue += string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
     
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String])
@@ -66,11 +67,14 @@ class RSSReader: NSObject, NSXMLParserDelegate
             }
         }
         
+        //print(entry.link)
         if elementName == "item" && entry.title != nil && entry.description != nil && entry.link != nil
         {
             let dataEntry = (title: entry.title!, description: entry.description!, link: entry.link!, imageURL: entry.imageURL, image: nil as UIImage?)
             fullData.append(dataEntry)
         }
+
+        currentValue = ""
     }
     
     func parserDidEndDocument(parser: NSXMLParser)
