@@ -8,11 +8,13 @@
 
 import UIKit
 
-class EventsViewController: UITableViewController, RSSReaderDelegate
+class EventsViewController: UITableViewController
 {
-    static let rssURLString = "http://events.stanford.edu/xml/rss.xml"
+    let rssURLString = "http://events.stanford.edu/xml/rss.xml"
     
-    let rssReader = RSSReader(url: NSURL(string: rssURLString)!)
+    var xmlRoot: XMLElement!
+    var rssRoot: XMLElement!
+    var events = [Event]()
     
     override func viewDidAppear(animated: Bool)
     {
@@ -24,15 +26,44 @@ class EventsViewController: UITableViewController, RSSReaderDelegate
         self.tableView.estimatedRowHeight = 143.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        //Configure RSS Reader
-        rssReader.delegate = self
-        rssReader.refresh()
+        //Configure RSS feed reader
+        let parser = NSXMLParser(contentsOfURL: NSURL(string: rssURLString)!)
+        xmlRoot = XMLElement(parser: parser!)
+        xmlRoot.parse()
         
-        let parser = NSXMLParser(contentsOfURL: NSURL(string: "http://events.stanford.edu/xml/rss.xml")!)
-        let xmlElement = XMLElement(parser: parser!)
-        xmlElement.parse()
+        //TODO: add error checking
+        rssRoot = xmlRoot["rss"]!["channel"]!
         
-        xmlElement["rss"]?["channel"]?["item", .All]?.map({print($0["title"]?.contents)})
+        //Turn parsed RSS data into dictionaries
+        events = rssRoot["item", .All]!.map
+        {
+            item in
+            let event = Event()
+            event.title = item["title"]?.contents
+            
+            if let urlString = item["link"]?.contents
+            {
+                event.link = NSURL(string: urlString)
+            }
+            
+            if let urlString = item["enclosure"]?.attributes["url"]
+            {
+                event.imageURL = NSURL(string: urlString)
+            }
+            
+            return event
+        }
+        
+        events.forEach
+        {
+            event in
+            event.loadImage
+            {
+                self.tableView.reloadData()
+            }
+        }
+        
+        tableView.reloadData()
     }
     
     func reloadData()
@@ -42,39 +73,66 @@ class EventsViewController: UITableViewController, RSSReaderDelegate
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return rssReader.fullData.count
+        return events.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventsViewCell", forIndexPath: indexPath) as! EventsViewCell
-        let event = rssReader.fullData[indexPath.row]
+        let event = events[indexPath.row]
         
         cell.titleLabel.text = event.title
-        //cell.descriptionLabel.text = news.description
-        
-        //If there is an image for this cell, show it
-        if event.image != nil
-        {
-            cell.thumbnailView.image = event.image
-        }
+        cell.imageView?.image = event.image
         
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let event = rssReader.fullData[indexPath.row]
+        let event = events[indexPath.row]
         
-        UIApplication.sharedApplication().openURL(event.link)
+        //TODO: Maybe add popup if the link is broken
+        if event.link != nil
+        {
+            UIApplication.sharedApplication().openURL(event.link!)
+        }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     @IBAction func refresh(sender: AnyObject)
     {
-        rssReader.refresh()
+        self.viewDidAppear(false)
         
         self.refreshControl?.endRefreshing()
+    }
+}
+
+class Event
+{
+    //var imageView: UIImageView?
+    var image: UIImage?
+    var imageURL: NSURL?
+    var title: String?
+    var link: NSURL?
+    
+    func loadImage(callback: ()->Void)
+    {
+        //imageView?.image = image
+        
+        if image == nil && imageURL != nil
+        {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+            {
+                if let imageData = NSData(contentsOfURL: self.imageURL!), let image = UIImage(data: imageData)
+                {
+                    dispatch_async(dispatch_get_main_queue())
+                    {
+                        self.image = image
+                        callback()
+                    }
+                }
+            }
+        }
     }
 }

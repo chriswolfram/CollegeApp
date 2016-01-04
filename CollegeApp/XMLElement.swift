@@ -59,7 +59,6 @@ class XMLElement: NSObject, NSXMLParserDelegate
     
     func parser(parser: NSXMLParser, foundCharacters string: String)
     {
-        //let newContent = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         if contents == nil
         {
             contents = ""
