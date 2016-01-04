@@ -27,6 +27,11 @@ class EventsViewController: UITableViewController, RSSReaderDelegate
         //Configure RSS Reader
         rssReader.delegate = self
         rssReader.refresh()
+        
+        let xmlElement = XMLElement(url: NSURL(string: "http://events.stanford.edu/xml/rss.xml")!)
+        xmlElement.run()
+        
+        print(xmlElement.children.count)
     }
     
     func reloadData()
