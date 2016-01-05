@@ -23,7 +23,7 @@ class EventsViewController: UITableViewController
         //Configure table view
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.estimatedRowHeight = 143.0
+        self.tableView.estimatedRowHeight = 120.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         //Configure RSS feed reader
@@ -70,6 +70,18 @@ class EventsViewController: UITableViewController
                     event.date = divs?.filter({checkClass($0, targetClass: "stanford-events-date")}).first?.contents
                     event.location = divs?.filter({checkClass($0, targetClass: "stanford-events-location")}).first?.contents
                     event.description = divs?.filter({checkClass($0, targetClass: "stanford-events-description")}).first?.contents
+                    
+                    let datePrefix = "Date: "
+                    if event.date != nil && event.date!.hasPrefix(datePrefix)
+                    {
+                        event.date?.removeRange(event.date!.startIndex...event.date!.startIndex.advancedBy(datePrefix.characters.count-1))
+                    }
+                    
+                    let locationPrefix = "Location: "
+                    if event.location != nil && event.location!.hasPrefix(locationPrefix)
+                    {
+                        event.location?.removeRange(event.location!.startIndex...event.location!.startIndex.advancedBy(locationPrefix.characters.count-1))
+                    }
                 }
             }
             
@@ -89,11 +101,6 @@ class EventsViewController: UITableViewController
         tableView.reloadData()
     }
     
-    func reloadData()
-    {
-        tableView.reloadData()
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return events.count
@@ -105,15 +112,9 @@ class EventsViewController: UITableViewController
         let event = events[indexPath.row]
         
         cell.titleLabel.text = event.title
-        //cell.descriptionLabel.text = news.description
-        
-        print(event.description)
-        
-        //If there is an image for this cell, show it
-        if event.image != nil
-        {
-            cell.thumbnailView.image = event.image
-        }
+        cell.locationLabel.text = event.location
+        cell.dateLabel.text = event.date
+        cell.thumbnailView.image = event.image
         
         return cell
     }
@@ -139,61 +140,31 @@ class EventsViewController: UITableViewController
     }
 }
 
-class EventsViewDescription: NSObject, NSXMLParserDelegate
+class Event
 {
-    private var xmlParser: NSXMLParser!
+    var image: UIImage?
+    var imageURL: NSURL?
+    var title: String?
+    var link: NSURL?
+    var date: String?
+    var location: String?
+    var description: String?
     
-    //State information
-    private var currentTag = ""
-    private var currentClass: String? = ""
-    private var currentValue = ""
-    
-    init(xmlString: String)
+    func loadImage(callback: ()->Void)
     {
-        xmlParser = NSXMLParser(data: xmlString.dataUsingEncoding(NSUTF8StringEncoding)!)
-    }
-    
-    func run()
-    {
-        xmlParser.delegate = self
-    }
-    
-    func parser(parser: NSXMLParser, foundCharacters string: String)
-    {
-        //May be destructive
-        currentValue += string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-    }
-    
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String])
-    {
-        currentTag = elementName
-        currentClass = attributeDict["class"]
-    }
-    
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
-    {
-        if currentTag == elementName
+        if image == nil && imageURL != nil
         {
-            switch currentTag
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
             {
-            case "title":
-                entry.title = currentValue
-            case "description":
-                entry.description = currentValue
-            case "link":
-                entry.link = NSURL(string: currentValue)
-            default:
-                break
+                if let imageData = NSData(contentsOfURL: self.imageURL!), let image = UIImage(data: imageData)
+                {
+                    dispatch_async(dispatch_get_main_queue())
+                    {
+                        self.image = image
+                        callback()
+                    }
+                }
             }
         }
-        
-        //print(entry.link)
-        if elementName == "item" && entry.title != nil && entry.description != nil && entry.link != nil
-        {
-            let dataEntry = (title: entry.title!, description: entry.description!, link: entry.link!, imageURL: entry.imageURL, image: nil as UIImage?)
-            fullData.append(dataEntry)
-        }
-        
-        currentValue = ""
     }
 }
