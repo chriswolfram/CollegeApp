@@ -32,7 +32,7 @@ class EventsViewController: UITableViewController
         xmlRoot.parse()
         
         //TODO: add error checking
-        rssRoot = xmlRoot["rss"]!["channel"]!
+        rssRoot = xmlRoot["channel"]!
         
         //Turn parsed RSS data into dictionaries
         events = rssRoot["item", .All]!.map
@@ -51,9 +51,32 @@ class EventsViewController: UITableViewController
                 event.imageURL = NSURL(string: urlString)
             }
             
+            if var descString = item["description"]?.contents
+            {
+                descString = "<list>"+descString+"</list>"
+                if let data = descString.dataUsingEncoding(NSUTF8StringEncoding)
+                {
+                    let descParser = NSXMLParser(data: data)
+                    let descRoot = XMLElement(parser: descParser)
+                    descRoot.parse()
+                    
+                    let divs = descRoot["div", .All]
+                    
+                    func checkClass(div: XMLElement, targetClass: String) -> Bool
+                    {
+                        return div.attributes["class"] != nil && div.attributes["class"]! == targetClass
+                    }
+                    
+                    event.date = divs?.filter({checkClass($0, targetClass: "stanford-events-date")}).first?.contents
+                    event.location = divs?.filter({checkClass($0, targetClass: "stanford-events-location")}).first?.contents
+                    event.description = divs?.filter({checkClass($0, targetClass: "stanford-events-description")}).first?.contents
+                }
+            }
+            
             return event
         }
         
+        //Asynchronously get thumbnails
         events.forEach
         {
             event in
@@ -115,6 +138,9 @@ class Event
     var imageURL: NSURL?
     var title: String?
     var link: NSURL?
+    var date: String?
+    var location: String?
+    var description: String?
     
     func loadImage(callback: ()->Void)
     {

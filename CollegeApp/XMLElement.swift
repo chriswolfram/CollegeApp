@@ -70,22 +70,31 @@ class XMLElement: NSObject, NSXMLParserDelegate
     
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String])
     {
-        let child = XMLElement(parser: xmlParser)
-        xmlParser.delegate = child
-        child.parent = self
-        child.tag = elementName
-        child.attributes = attributeDict
-        
-        self.childList.append(child)
-        
-        if self.children[child.tag!] != nil
+        if self.tag != nil
         {
-            self.children[child.tag!]?.append(child)
+            let child = XMLElement(parser: xmlParser)
+            xmlParser.delegate = child
+            child.parent = self
+            child.tag = elementName
+            child.attributes = attributeDict
+            
+            self.childList.append(child)
+            
+            if self.children[child.tag!] != nil
+            {
+                self.children[child.tag!]?.append(child)
+            }
+                
+            else
+            {
+                self.children[child.tag!] = [child]
+            }
         }
         
         else
         {
-            self.children[child.tag!] = [child]
+            self.tag = elementName
+            self.attributes = attributeDict
         }
     }
     
