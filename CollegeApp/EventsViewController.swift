@@ -8,11 +8,13 @@
 
 import UIKit
 
-class EventsViewController: UITableViewController, RSSReaderDelegate
+class EventsViewController: UITableViewController
 {
-    static let rssURLString = "http://events.stanford.edu/xml/rss.xml"
+    let rssURLString = "http://events.stanford.edu/xml/rss.xml"
     
-    let rssReader = RSSReader(url: NSURL(string: rssURLString)!)
+    var xmlRoot: XMLElement!
+    var rssRoot: XMLElement!
+    var events = [Event]()
     
     override func viewDidAppear(animated: Bool)
     {
@@ -24,9 +26,67 @@ class EventsViewController: UITableViewController, RSSReaderDelegate
         self.tableView.estimatedRowHeight = 143.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        //Configure RSS Reader
-        rssReader.delegate = self
-        rssReader.refresh()
+        //Configure RSS feed reader
+        let parser = NSXMLParser(contentsOfURL: NSURL(string: rssURLString)!)
+        xmlRoot = XMLElement(parser: parser!)
+        xmlRoot.parse()
+        
+        //TODO: add error checking
+        rssRoot = xmlRoot["channel"]!
+        
+        //Turn parsed RSS data into dictionaries
+        events = rssRoot["item", .All]!.map
+        {
+            item in
+            let event = Event()
+            event.title = item["title"]?.contents
+            
+            if let urlString = item["link"]?.contents
+            {
+                event.link = NSURL(string: urlString)
+            }
+            
+            if let urlString = item["enclosure"]?.attributes["url"]
+            {
+                event.imageURL = NSURL(string: urlString)
+            }
+            
+            if var descString = item["description"]?.contents
+            {
+                descString = "<list>"+descString+"</list>"
+                if let data = descString.dataUsingEncoding(NSUTF8StringEncoding)
+                {
+                    let descParser = NSXMLParser(data: data)
+                    let descRoot = XMLElement(parser: descParser)
+                    descRoot.parse()
+                    
+                    let divs = descRoot["div", .All]
+                    
+                    func checkClass(div: XMLElement, targetClass: String) -> Bool
+                    {
+                        return div.attributes["class"] != nil && div.attributes["class"]! == targetClass
+                    }
+                    
+                    event.date = divs?.filter({checkClass($0, targetClass: "stanford-events-date")}).first?.contents
+                    event.location = divs?.filter({checkClass($0, targetClass: "stanford-events-location")}).first?.contents
+                    event.description = divs?.filter({checkClass($0, targetClass: "stanford-events-description")}).first?.contents
+                }
+            }
+            
+            return event
+        }
+        
+        //Asynchronously get thumbnails
+        events.forEach
+        {
+            event in
+            event.loadImage
+            {
+                self.tableView.reloadData()
+            }
+        }
+        
+        tableView.reloadData()
     }
     
     func reloadData()
@@ -36,13 +96,13 @@ class EventsViewController: UITableViewController, RSSReaderDelegate
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return rssReader.fullData.count
+        return events.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventsViewCell", forIndexPath: indexPath) as! EventsViewCell
-        let event = rssReader.fullData[indexPath.row]
+        let event = events[indexPath.row]
         
         cell.titleLabel.text = event.title
         //cell.descriptionLabel.text = news.description
@@ -60,16 +120,20 @@ class EventsViewController: UITableViewController, RSSReaderDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let event = rssReader.fullData[indexPath.row]
+        let event = events[indexPath.row]
         
-        UIApplication.sharedApplication().openURL(event.link)
+        //TODO: Maybe add popup if the link is broken
+        if event.link != nil
+        {
+            UIApplication.sharedApplication().openURL(event.link!)
+        }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     @IBAction func refresh(sender: AnyObject)
     {
-        rssReader.refresh()
+        self.viewDidAppear(false)
         
         self.refreshControl?.endRefreshing()
     }
