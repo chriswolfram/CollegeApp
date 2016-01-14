@@ -10,7 +10,7 @@ import UIKit
 
 class EventsViewController: UITableViewController
 {
-    let rssURLString = "http://events.stanford.edu/xml/rss.xml"
+    let rssURL = SchoolInfo.eventsURL
     
     var xmlRoot: XMLElement!
     var rssRoot: XMLElement!
@@ -27,7 +27,7 @@ class EventsViewController: UITableViewController
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         //Configure RSS feed reader
-        let parser = NSXMLParser(contentsOfURL: NSURL(string: rssURLString)!)
+        let parser = NSXMLParser(contentsOfURL: rssURL)
         xmlRoot = XMLElement(parser: parser!)
         xmlRoot.parse()
         
@@ -123,10 +123,18 @@ class EventsViewController: UITableViewController
     {
         let event = events[indexPath.row]
         
-        //TODO: Maybe add popup if the link is broken
         if event.link != nil
         {
             UIApplication.sharedApplication().openURL(event.link!)
+        }
+        
+        else
+        {
+            let alertController = UIAlertController(title: "Unable to Load Page", message: "The selected page could not be loaded.", preferredStyle: .Alert)
+            
+            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: false)

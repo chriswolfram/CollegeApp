@@ -10,6 +10,8 @@
 		284551B21C33CD9C003AF5E3 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B11C33CD9C003AF5E3 /* EventsViewController.swift */; };
 		284551B71C38F00F003AF5E3 /* EventsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B61C38F00F003AF5E3 /* EventsViewCell.swift */; };
 		284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B81C39F3EC003AF5E3 /* XMLElement.swift */; };
+		9D00A5A51C44F42100C0DF6D /* SchoolInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D00A5A41C44F42000C0DF6D /* SchoolInfo.swift */; };
+		9D00A5A91C45881800C0DF6D /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D00A5A81C45881800C0DF6D /* BeaconManager.swift */; };
 		9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E8BD81C27335F00960097 /* NewsViewCell.swift */; };
 		9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D711C2B625100874227 /* EmergencyViewController.swift */; };
 		9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D741C2B680100874227 /* EmergencyViewCell.swift */; };
@@ -49,6 +51,8 @@
 		284551B11C33CD9C003AF5E3 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		284551B61C38F00F003AF5E3 /* EventsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewCell.swift; sourceTree = "<group>"; };
 		284551B81C39F3EC003AF5E3 /* XMLElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLElement.swift; sourceTree = "<group>"; usesTabs = 0; };
+		9D00A5A41C44F42000C0DF6D /* SchoolInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolInfo.swift; sourceTree = "<group>"; };
+		9D00A5A81C45881800C0DF6D /* BeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BeaconManager.swift; path = ../BeaconManager.swift; sourceTree = "<group>"; };
 		9D4E8BD81C27335F00960097 /* NewsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		9DB25D711C2B625100874227 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
 		9DB25D741C2B680100874227 /* EmergencyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewCell.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		9DB25D761C2BB60400874227 /* SchoolAssets */ = {
 			isa = PBXGroup;
 			children = (
+				9D00A5A41C44F42000C0DF6D /* SchoolInfo.swift */,
 				9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */,
 			);
 			name = SchoolAssets;
@@ -147,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				9DCB66541C251B510083586E /* AppDelegate.swift */,
+				9D00A5A81C45881800C0DF6D /* BeaconManager.swift */,
 				284551B81C39F3EC003AF5E3 /* XMLElement.swift */,
 				9DCB66681C2548170083586E /* MapView */,
 				9DCB66691C25481F0083586E /* QRCodeView */,
@@ -349,10 +355,12 @@
 				9DCB66671C2547AC0083586E /* NewsViewController.swift in Sources */,
 				284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */,
 				9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */,
+				9D00A5A51C44F42100C0DF6D /* SchoolInfo.swift in Sources */,
 				9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */,
 				9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */,
 				9DCB665D1C251B510083586E /* MapSearchResultsView.swift in Sources */,
 				284551B71C38F00F003AF5E3 /* EventsViewCell.swift in Sources */,
+				9D00A5A91C45881800C0DF6D /* BeaconManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,16 +10,7 @@ import UIKit
 
 class EmergencyViewController: UITableViewController
 {
-    let emergencyContacts =
-        [
-            (title: "Emergency", number: "911", formattedNumber: "911"),
-            (title: "Stanford Emergency Information Line", number: "1-650-725-5555", formattedNumber: "+1 650-725-5555"),
-            (title: "Non-Emergency", number: "1-650-329-2413", formattedNumber: "+1 650-329-2413"),
-            (title: "CAPS Hotline", number: "1-650-723-3785", formattedNumber: "+1 650-723-3785"),
-            (title: "Bridge Peer Counseling", number: "1-650-723-3392", formattedNumber: "+1 650-723-3392"),
-            (title: "SARA Office", number: "1-650-725-9129", formattedNumber: "+1 650-725-9129"),
-            (title: "SARA 24-Hour Hotline", number: "1-650-725-9955", formattedNumber: "+1 650-725-9955")
-        ]
+    let emergencyContacts = SchoolInfo.emergencyContacts
     
     override func viewDidLoad()
     {

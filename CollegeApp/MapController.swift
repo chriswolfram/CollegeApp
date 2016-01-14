@@ -14,10 +14,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
 {
     @IBOutlet var mapView: MKMapView!
     
+    var locManager: CLLocationManager!
+    
     var searchBar = UISearchBar()
-    
-    var locManager = CLLocationManager()
-    
     var gestureRecognizer = UITapGestureRecognizer()
     
     @IBOutlet var resultsView: MapSearchResultsView!
@@ -26,11 +25,12 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
     {
         super.viewDidLoad()
         
-        //Update to reflect authorization changes while the app was closed
-        locationManager(locManager, didChangeAuthorizationStatus: CLLocationManager.authorizationStatus())
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.mapController = self
+        locManager = appDelegate.locManager
         
-        //Request access to the user's location
-        locManager.requestAlwaysAuthorization()
+        //Update to reflect authorization settings
+        self.locationManager(locManager, didChangeAuthorizationStatus: CLLocationManager.authorizationStatus())
         
         //Add and configure search bar
         searchBar.delegate = self
@@ -49,6 +49,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         resultsView.configure()
         resultsView.searchResultsDelegate = self
         resultsView.hidden = true
+        
+        //Configure map
+        mapView.region = SchoolInfo.schoolRegion
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
@@ -58,7 +61,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
             manager.startUpdatingLocation()
             mapView.showsUserLocation = true
         }
-        
+            
         else
         {
             manager.stopUpdatingLocation()
@@ -69,7 +72,8 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
     func showPins(locations: [NamedLocation])
     {
         mapView.removeAnnotations(mapView.annotations)
-        mapView.addAnnotations(locations)
+        //mapView.addAnnotations(locations)
+        mapView.showAnnotations(locations, animated: true)
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String)

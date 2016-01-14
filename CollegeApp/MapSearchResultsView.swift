@@ -11,8 +11,7 @@ import MapKit
 
 class MapSearchResultsView: UITableView, UITableViewDataSource, UITableViewDelegate
 {
-    //let locations = [NamedLocation]()
-    let locations = [NamedLocation(coordinate: CLLocationCoordinate2D(latitude: 32.3, longitude: 43.8), title: "random"), NamedLocation(coordinate: CLLocationCoordinate2D(latitude: 38, longitude: 43.8), title: "random you")]
+    let locations = SchoolInfo.locations
     
     var results = [NamedLocation]()
     
@@ -59,17 +58,4 @@ class MapSearchResultsView: UITableView, UITableViewDataSource, UITableViewDeleg
 protocol MapSearchResultsViewDelegate
 {
     func mapSearchResultSelected(_: NamedLocation)
-}
-
-
-class NamedLocation: NSObject, MKAnnotation
-{
-    let title: String?
-    let coordinate: CLLocationCoordinate2D
-    
-    init(coordinate: CLLocationCoordinate2D, title: String)
-    {
-        self.coordinate = coordinate
-        self.title = title
-    }
 }

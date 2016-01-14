@@ -28,9 +28,9 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This is just another test</string>
+	<string>Needed for showing your location on the map and for iBeacon tours.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This is just a test</string>
+	<string>Needed for showing your location on the map.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -10,7 +10,7 @@ import UIKit
 
 class NewsViewController: UITableViewController
 {
-    let rssURLString = "https://news.stanford.edu/rss/index.xml"
+    let rssURL = SchoolInfo.newsURL
     
     var xmlRoot: XMLElement!
     var rssRoot: XMLElement!
@@ -23,11 +23,11 @@ class NewsViewController: UITableViewController
         //Configure table view
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.estimatedRowHeight = 143.0
+        self.tableView.estimatedRowHeight = 134.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         //Configure RSS feed reader
-        let parser = NSXMLParser(contentsOfURL: NSURL(string: rssURLString)!)
+        let parser = NSXMLParser(contentsOfURL: rssURL)
         xmlRoot = XMLElement(parser: parser!)
         xmlRoot.parse()
         
@@ -93,10 +93,18 @@ class NewsViewController: UITableViewController
     {
         let news = newsStories[indexPath.row]
         
-        //TODO: Maybe add popup if the link is broken
         if news.link != nil
         {
             UIApplication.sharedApplication().openURL(news.link!)
+        }
+        
+        else
+        {
+            let alertController = UIAlertController(title: "Unable to Load Page", message: "The selected page could not be loaded.", preferredStyle: .Alert)
+            
+            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
