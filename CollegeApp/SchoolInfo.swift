@@ -11,6 +11,8 @@ import MapKit
 
 class SchoolInfo
 {
+    static let schoolName = "Stanford"
+    
     static let newsURL = NSURL(string: "https://news.stanford.edu/rss/index.xml")!
     static let eventsURL = NSURL(string: "http://events.stanford.edu/xml/rss.xml")!
     

@@ -39,7 +39,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         
         searchBar.searchBarStyle = UISearchBarStyle.Minimal
         searchBar.tintColor = UIColor.whiteColor()
-        searchBar.placeholder = "Search Stanford"
+        searchBar.placeholder = "Search \(SchoolInfo.schoolName)"
         
         //Configure gesture recognizer to pick up taps to escape the search bar
         mapView.addGestureRecognizer(gestureRecognizer)
@@ -50,8 +50,32 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         resultsView.searchResultsDelegate = self
         resultsView.hidden = true
         
+        //Setup notifications for keyboard
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillBeShown:"), name: UIKeyboardWillShowNotification, object: nil)
+        
         //Configure map
         mapView.region = SchoolInfo.schoolRegion
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        //Show toolbar and add tracking toggle button
+        super.viewWillAppear(animated);
+        
+        let trackingButton = MKUserTrackingBarButtonItem(mapView: mapView)
+        trackingButton.customView?.tintColor = UIColor.whiteColor()
+        
+        self.navigationController?.toolbar.barTintColor = self.navigationController?.navigationBar.barTintColor
+        
+        self.navigationController?.visibleViewController?.setToolbarItems([trackingButton], animated: animated)
+        self.navigationController?.setToolbarHidden(false, animated: animated)
+    }
+    
+    override func viewWillDisappear(animated: Bool)
+    {
+        //Hide toolbar
+        super.viewWillDisappear(animated);
+        self.navigationController?.setToolbarHidden(true, animated: animated)
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
@@ -125,5 +149,13 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
     func mapTapped()
     {
         searchBar.resignFirstResponder()
+    }
+    
+    func keyboardWillBeShown(notification: NSNotification)
+    {
+        //Adjust the results view insets when the keyboard is up
+        let keyboardHeight = notification.userInfo![UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size.height
+        resultsView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardHeight, right: 0.0)
+        resultsView.scrollIndicatorInsets = resultsView.contentInset
     }
 }

@@ -16,8 +16,8 @@ class EmergencyViewController: UITableViewController
     {
         super.viewDidLoad()
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("EmergencyViewCell") as! EmergencyViewCell
-        self.view.backgroundColor = cell.backgroundColor
+        //let cell = tableView.dequeueReusableCellWithIdentifier("EmergencyViewCell") as! EmergencyViewCell
+        //self.view.backgroundColor = cell.backgroundColor
     }
     
     func callNumber(number: String)

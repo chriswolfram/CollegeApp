@@ -33,7 +33,7 @@ class XMLElement: NSObject, NSXMLParserDelegate
     var parent: XMLElement?
     
     var childTags: [String]
-        {
+    {
         get
         {
             return self.childList.map({$0.tag})
@@ -55,17 +55,17 @@ class XMLElement: NSObject, NSXMLParserDelegate
     }
     
     subscript(index: Int) -> XMLElement?
-        {
+    {
             return self.childList[index]
     }
     
     subscript(key: String) -> XMLElement?
-        {
+    {
             return self.children[key]?[0]
     }
     
     subscript(key: String, p: XMLElementParts) -> [XMLElement]?
-        {
+    {
             switch p
             {
             case .All: return self.children[key]

@@ -28,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         //Configure iBeacons
         beaconRegion = CLBeaconRegion(proximityUUID: SchoolInfo.beaconUUID, identifier: SchoolInfo.beaconUUID.UUIDString)
         beaconRegion.notifyEntryStateOnDisplay = true
-        beaconManager = BeaconManager(region: beaconRegion, locationManager: locManager)
+        //Uncomment to enable beacons
+        //beaconManager = BeaconManager(region: beaconRegion, locationManager: locManager)
         
         return true
     }

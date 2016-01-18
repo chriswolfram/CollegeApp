@@ -65,7 +65,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yns-5X-fR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2017.5" y="816"/>
+            <point key="canvasLocation" x="-2041.5" y="1911"/>
         </scene>
         <!--Homescreen-->
         <scene sceneID="Ngs-5w-rOi">
@@ -150,6 +150,23 @@
                                     <segue destination="pbs-NQ-FIb" kind="show" id="IiB-li-mZG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftp-gh-bz2">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.65475267171859741" green="0.073715753853321075" blue="0.96852511167526245" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Tours"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="150" y="116" width="100" height="100"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="70N-rS-Ghe" kind="show" id="my5-hz-O1q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -164,6 +181,7 @@
                                 <exclude reference="txd-tT-DFq"/>
                                 <exclude reference="UHv-8f-O20"/>
                                 <exclude reference="qsU-NV-GdH"/>
+                                <exclude reference="ftp-gh-bz2"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -172,6 +190,7 @@
                                 <include reference="txd-tT-DFq"/>
                                 <include reference="UHv-8f-O20"/>
                                 <include reference="qsU-NV-GdH"/>
+                                <include reference="ftp-gh-bz2"/>
                             </mask>
                         </variation>
                     </view>
@@ -179,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Py6-mV-hXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1278" y="816"/>
+            <point key="canvasLocation" x="-1302" y="1911"/>
         </scene>
         <!--Emergency-->
         <scene sceneID="z0d-hd-aMo">
@@ -200,7 +219,6 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJc-vc-I3t">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
                                                 <rect key="frame" x="8" y="8" width="392" height="29"/>
@@ -209,7 +227,6 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTq-JI-jtU">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
                                                 <rect key="frame" x="8" y="33" width="392" height="29"/>
@@ -229,7 +246,6 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="numberLabel" destination="JTq-JI-jtU" id="5oM-ja-Vzf"/>
                                     <outlet property="titleLabel" destination="GJc-vc-I3t" id="QL9-TH-87S"/>
@@ -247,10 +263,28 @@
             </objects>
             <point key="canvasLocation" x="-334.5" y="2603"/>
         </scene>
+        <!--Tour Title-->
+        <scene sceneID="RjP-b7-XRf">
+            <objects>
+                <viewController id="70N-rS-Ghe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6cY-12-V5H"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ux8-Qo-fg0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="npU-fB-WRH">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tour Title" id="gsN-j5-YCa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4dd-Q7-l03" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-334.5" y="3303"/>
+        </scene>
         <!--Events-->
         <scene sceneID="Xwx-8m-LnF">
             <objects>
-                <tableViewController title="Events" id="pbs-NQ-FIb" customClass="EventsViewController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="pbs-NQ-FIb" customClass="EventsViewController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="121" sectionHeaderHeight="28" sectionFooterHeight="28" id="pb4-uL-JUU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
