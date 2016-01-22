@@ -28,6 +28,7 @@
 		9DCB66641C251B600083586E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB66611C251B600083586E /* Assets.xcassets */; };
 		9DCB66651C251B600083586E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB66621C251B600083586E /* LaunchScreen.storyboard */; };
 		9DCB66671C2547AC0083586E /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66661C2547AC0083586E /* NewsViewController.swift */; };
+		9DD6A1E81C4D7FCB0025FE44 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		9DCB66611C251B600083586E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DCB66621C251B600083586E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DCB66661C2547AC0083586E /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				9DCB666A1C2548280083586E /* NewsView */,
 				284551B31C33CDA8003AF5E3 /* EventsView */,
 				9DB25D731C2B625E00874227 /* EmergencyView */,
+				9DD6A1E91C4D7FD40025FE44 /* TourView */,
 				9DCB66601C251B600083586E /* Main.storyboard */,
 				9DCB66621C251B600083586E /* LaunchScreen.storyboard */,
 				9DB25D761C2BB60400874227 /* SchoolAssets */,
@@ -211,6 +214,14 @@
 				9D4E8BD81C27335F00960097 /* NewsViewCell.swift */,
 			);
 			name = NewsView;
+			sourceTree = "<group>";
+		};
+		9DD6A1E91C4D7FD40025FE44 /* TourView */ = {
+			isa = PBXGroup;
+			children = (
+				9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */,
+			);
+			name = TourView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +368,7 @@
 				9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */,
 				9D00A5A51C44F42100C0DF6D /* SchoolInfo.swift in Sources */,
 				9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */,
+				9DD6A1E81C4D7FCB0025FE44 /* TourViewController.swift in Sources */,
 				9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */,
 				9DCB665D1C251B510083586E /* MapSearchResultsView.swift in Sources */,
 				284551B71C38F00F003AF5E3 /* EventsViewCell.swift in Sources */,

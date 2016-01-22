@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var locManager = CLLocationManager()
     var mapController: MapController?
+    var tourController: TourViewController?
     var beaconManager: BeaconManager!
     
     var beaconRegion: CLBeaconRegion!

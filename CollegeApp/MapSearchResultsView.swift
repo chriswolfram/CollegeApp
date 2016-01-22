@@ -11,9 +11,9 @@ import MapKit
 
 class MapSearchResultsView: UITableView, UITableViewDataSource, UITableViewDelegate
 {
-    let locations = SchoolInfo.locations
+    let locations = SchoolInfo.landmarks
     
-    var results = [NamedLocation]()
+    var results = [Landmark]()
     
     var searchResultsDelegate: MapSearchResultsViewDelegate?
     
@@ -26,7 +26,7 @@ class MapSearchResultsView: UITableView, UITableViewDataSource, UITableViewDeleg
     
     func search(query: String)
     {
-        func matchCheck(location: NamedLocation) -> Bool
+        func matchCheck(location: Landmark) -> Bool
         {
             return location.title!.lowercaseString.containsString(query.lowercaseString)
         }
@@ -57,5 +57,5 @@ class MapSearchResultsView: UITableView, UITableViewDataSource, UITableViewDeleg
 
 protocol MapSearchResultsViewDelegate
 {
-    func mapSearchResultSelected(_: NamedLocation)
+    func mapSearchResultSelected(_: Landmark)
 }

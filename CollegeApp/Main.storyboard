@@ -266,16 +266,78 @@
         <!--Tour Title-->
         <scene sceneID="RjP-b7-XRf">
             <objects>
-                <viewController id="70N-rS-Ghe" sceneMemberID="viewController">
+                <viewController id="70N-rS-Ghe" customClass="TourViewController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6cY-12-V5H"/>
                         <viewControllerLayoutGuide type="bottom" id="Ux8-Qo-fg0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="npU-fB-WRH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IUz-L5-FeB">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="345"/>
+                                </variation>
+                            </mapView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dwu-M0-8jC">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vAp-e8-Ipp">
+                                        <rect key="frame" x="-19" y="-18" width="39" height="37"/>
+                                        <color key="pageIndicatorTintColor" red="0.65475267169999996" green="0.073715753849999996" blue="0.9685251117" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="181" y="138" width="39" height="37"/>
+                                        </variation>
+                                    </pageControl>
+                                </subviews>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="vAp-e8-Ipp"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="417" width="400" height="183"/>
+                                    <mask key="subviews">
+                                        <include reference="vAp-e8-Ipp"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx7-Xg-RRQ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="290" y="492" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="nextButton:" destination="70N-rS-Ghe" eventType="touchUpInside" id="dmG-2g-sve"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="IUz-L5-FeB"/>
+                                <exclude reference="dwu-M0-8jC"/>
+                                <exclude reference="Lx7-Xg-RRQ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="IUz-L5-FeB"/>
+                                <include reference="dwu-M0-8jC"/>
+                                <include reference="Lx7-Xg-RRQ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Tour Title" id="gsN-j5-YCa"/>
+                    <connections>
+                        <outlet property="mapView" destination="IUz-L5-FeB" id="xPt-dO-dkg"/>
+                        <outlet property="pageControl" destination="vAp-e8-Ipp" id="WtE-56-K7I"/>
+                        <outlet property="scrollView" destination="dwu-M0-8jC" id="cTL-9d-kQe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4dd-Q7-l03" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

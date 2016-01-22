@@ -54,7 +54,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillBeShown:"), name: UIKeyboardWillShowNotification, object: nil)
         
         //Configure map
-        mapView.region = SchoolInfo.schoolRegion
+        mapView.setRegion(SchoolInfo.schoolRegion, animated: false)
     }
     
     override func viewWillAppear(animated: Bool)
@@ -93,7 +93,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         }
     }
     
-    func showPins(locations: [NamedLocation])
+    func showPins(locations: [Landmark])
     {
         mapView.removeAnnotations(mapView.annotations)
         //mapView.addAnnotations(locations)
@@ -138,7 +138,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         showPins([])
     }
     
-    func mapSearchResultSelected(location: NamedLocation)
+    func mapSearchResultSelected(location: Landmark)
     {
         resultsView.hidden = true
         searchBar.resignFirstResponder()
