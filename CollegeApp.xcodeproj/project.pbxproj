@@ -29,6 +29,7 @@
 		9DCB66651C251B600083586E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB66621C251B600083586E /* LaunchScreen.storyboard */; };
 		9DCB66671C2547AC0083586E /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66661C2547AC0083586E /* NewsViewController.swift */; };
 		9DD6A1E81C4D7FCB0025FE44 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */; };
+		9DF316701C5286E900D51CB3 /* TourViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		9DCB66621C251B600083586E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DCB66661C2547AC0083586E /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
+		9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */,
+				9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */,
 			);
 			name = TourView;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				9DCB665F1C251B510083586E /* QRViewController.swift in Sources */,
 				9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */,
 				9DCB665E1C251B510083586E /* QRDetailController.swift in Sources */,
+				9DF316701C5286E900D51CB3 /* TourViewDetailController.swift in Sources */,
 				9DCB66671C2547AC0083586E /* NewsViewController.swift in Sources */,
 				284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */,
 				9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */,

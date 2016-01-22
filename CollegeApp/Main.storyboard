@@ -343,6 +343,25 @@
             </objects>
             <point key="canvasLocation" x="-334.5" y="3303"/>
         </scene>
+        <!--Tour View Detail Controller-->
+        <scene sceneID="nee-de-tmC">
+            <objects>
+                <viewController storyboardIdentifier="TourViewDetailController" id="zte-gr-ovF" customClass="TourViewDetailController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c3x-Ws-jHf"/>
+                        <viewControllerLayoutGuide type="bottom" id="ILU-dr-0dc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vjr-pk-xo9">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="183"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TIt-fQ-ce8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-334.5" y="3796.5"/>
+        </scene>
         <!--Events-->
         <scene sceneID="Xwx-8m-LnF">
             <objects>
