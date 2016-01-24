@@ -16,7 +16,7 @@ class TourViewController: UIViewController, MKMapViewDelegate
     
     var tour: Tour
     {
-        return TourSingleton.tour
+        return Tour.sharedInstance!
     }
     
     static var sharedInstance: TourViewController?
@@ -65,48 +65,4 @@ class TourViewController: UIViewController, MKMapViewDelegate
         mapView.addOverlay(MKPolyline(coordinates: &coords, count: tour.landmarks.count))
         mapView.addOverlay(MKCircle(centerCoordinate: tour.currentLandmark.coordinate, radius: 10))
     }
-}
-
-class Tour
-{
-    let landmarks: [Landmark]
-    var currentIndex = 0
-    
-    var currentLandmark: Landmark
-    {
-        get
-        {
-            return landmarks[currentIndex]
-        }
-    }
-    
-    init(landmarks: [Landmark])
-    {
-        self.landmarks = landmarks
-    }
-    
-    func nextLandmark() -> Landmark?
-    {
-        if (currentIndex + 1) < landmarks.count
-        {
-            return landmarks[currentIndex + 1]
-        }
-        
-        return nil
-    }
-    
-    func previousLandmark() -> Landmark?
-    {
-        if (currentIndex - 1) >= 0
-        {
-            return landmarks[currentIndex - 1]
-        }
-        
-        return nil
-    }
-}
-
-class TourSingleton
-{
-    static var tour = Tour(landmarks: [School.landmarks[0], School.landmarks[10], School.landmarks[12], School.landmarks[1]])
 }

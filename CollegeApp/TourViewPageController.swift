@@ -14,7 +14,7 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
     
     var tour: Tour
     {
-        return TourSingleton.tour
+        return Tour.sharedInstance!
     }
     
     override func viewDidLoad()
@@ -27,7 +27,7 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
         self.setViewControllers([detailViewController(tour.currentLandmark)], direction: .Forward, animated: true, completion: nil)
     }
     
-    func detailViewController(landmark: Landmark) -> TourViewDetailController
+    func detailViewController(landmark: TourLandmark) -> TourViewDetailController
     {
         let controller = storyboard!.instantiateViewControllerWithIdentifier(TourViewPageController.detailViewIdentifier) as! TourViewDetailController
         
@@ -36,6 +36,7 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
         
         controller.landmark = landmark
         controller.nameLabel.text = landmark.title
+        controller.descriptionLabel.text = landmark.descriptionString
         
         return controller
     }

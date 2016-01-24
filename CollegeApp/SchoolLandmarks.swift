@@ -87,7 +87,7 @@ class Landmark: NSObject, MKAnnotation
     let title: String?
     let coordinate: CLLocationCoordinate2D
     
-    init(coordinate: CLLocationCoordinate2D, title: String)
+    init(coordinate: CLLocationCoordinate2D, title: String?)
     {
         self.coordinate = coordinate
         self.title = title
