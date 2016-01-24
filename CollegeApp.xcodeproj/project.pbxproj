@@ -12,6 +12,9 @@
 		284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B81C39F3EC003AF5E3 /* XMLElement.swift */; };
 		9D00A5A51C44F42100C0DF6D /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D00A5A41C44F42000C0DF6D /* School.swift */; };
 		9D00A5A91C45881800C0DF6D /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D00A5A81C45881800C0DF6D /* BeaconManager.swift */; };
+		9D4794D11C55450A00F2261B /* SchoolLandmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */; };
+		9D4794D31C55462400F2261B /* SchoolEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D21C55462400F2261B /* SchoolEvents.swift */; };
+		9D4794D51C55743400F2261B /* SchoolNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D41C55743400F2261B /* SchoolNews.swift */; };
 		9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E8BD81C27335F00960097 /* NewsViewCell.swift */; };
 		9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D711C2B625100874227 /* EmergencyViewController.swift */; };
 		9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D741C2B680100874227 /* EmergencyViewCell.swift */; };
@@ -56,6 +59,9 @@
 		284551B81C39F3EC003AF5E3 /* XMLElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLElement.swift; sourceTree = "<group>"; usesTabs = 0; };
 		9D00A5A41C44F42000C0DF6D /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		9D00A5A81C45881800C0DF6D /* BeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BeaconManager.swift; path = ../BeaconManager.swift; sourceTree = "<group>"; };
+		9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolLandmarks.swift; sourceTree = "<group>"; };
+		9D4794D21C55462400F2261B /* SchoolEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolEvents.swift; sourceTree = "<group>"; };
+		9D4794D41C55743400F2261B /* SchoolNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolNews.swift; sourceTree = "<group>"; };
 		9D4E8BD81C27335F00960097 /* NewsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		9DB25D711C2B625100874227 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
 		9DB25D741C2B680100874227 /* EmergencyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +135,9 @@
 			isa = PBXGroup;
 			children = (
 				9D00A5A41C44F42000C0DF6D /* School.swift */,
+				9D4794D21C55462400F2261B /* SchoolEvents.swift */,
+				9D4794D41C55743400F2261B /* SchoolNews.swift */,
+				9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */,
 				9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */,
 			);
 			name = SchoolAssets;
@@ -364,7 +373,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D4794D51C55743400F2261B /* SchoolNews.swift in Sources */,
 				9DCB665C1C251B510083586E /* MapController.swift in Sources */,
+				9D4794D11C55450A00F2261B /* SchoolLandmarks.swift in Sources */,
 				284551B21C33CD9C003AF5E3 /* EventsViewController.swift in Sources */,
 				9DCB665F1C251B510083586E /* QRViewController.swift in Sources */,
 				9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */,
@@ -380,6 +391,7 @@
 				9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */,
 				9DCB665D1C251B510083586E /* MapSearchResultsView.swift in Sources */,
 				284551B71C38F00F003AF5E3 /* EventsViewCell.swift in Sources */,
+				9D4794D31C55462400F2261B /* SchoolEvents.swift in Sources */,
 				9D00A5A91C45881800C0DF6D /* BeaconManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
