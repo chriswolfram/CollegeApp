@@ -10,7 +10,7 @@ import UIKit
 
 class EmergencyViewController: UITableViewController
 {
-    let emergencyContacts = SchoolInfo.emergencyContacts
+    let emergencyContacts = School.emergencyContacts
     
     override func viewDidLoad()
     {

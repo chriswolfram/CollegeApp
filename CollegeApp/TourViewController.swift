@@ -8,35 +8,30 @@
 
 import MapKit
 
-class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDelegate
+class TourViewController: UIViewController, MKMapViewDelegate
 {
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
     
-    var tour = Tour(landmarks: [SchoolInfo.landmarks[0], SchoolInfo.landmarks[10], SchoolInfo.landmarks[12], SchoolInfo.landmarks[1]])
+    var pageViewController: TourViewPageController!
+    
+    var tour: Tour
+    {
+        return TourSingleton.tour
+    }
+    
+    static var sharedInstance: TourViewController?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        //Setup page control
-        pageControl.numberOfPages = tour.landmarks.count
-        pageControl.currentPage = tour.currentIndex
-        
-        //Setup scroll view
-        scrollView.delegate = self
+        TourViewController.sharedInstance = self
         
         //Setup map view
         mapView.delegate = self
-        mapView.setRegion(SchoolInfo.schoolRegion, animated: false)
+        mapView.setRegion(School.schoolRegion, animated: false)
         
-        showTour(tour)
-    }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView)
-    {
-        pageControl.currentPage = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
+        updateMap(tour)
     }
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer
@@ -62,24 +57,13 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         }
     }
     
-    func showTour(tour: Tour)
+    func updateMap(tour: Tour)
     {
         mapView.removeOverlays(mapView.overlays)
         
         var coords = tour.landmarks.map({$0.coordinate})
         mapView.addOverlay(MKPolyline(coordinates: &coords, count: tour.landmarks.count))
         mapView.addOverlay(MKCircle(centerCoordinate: tour.currentLandmark.coordinate, radius: 10))
-    }
-    
-    func nextLandmark()
-    {
-        tour.currentIndex = (tour.currentIndex + 1) % tour.landmarks.count
-        showTour(tour)
-    }
-    
-    @IBAction func nextButton(sender: AnyObject)
-    {
-        nextLandmark()
     }
 }
 
@@ -100,4 +84,29 @@ class Tour
     {
         self.landmarks = landmarks
     }
+    
+    func nextLandmark() -> Landmark?
+    {
+        if (currentIndex + 1) < landmarks.count
+        {
+            return landmarks[currentIndex + 1]
+        }
+        
+        return nil
+    }
+    
+    func previousLandmark() -> Landmark?
+    {
+        if (currentIndex - 1) >= 0
+        {
+            return landmarks[currentIndex - 1]
+        }
+        
+        return nil
+    }
+}
+
+class TourSingleton
+{
+    static var tour = Tour(landmarks: [School.landmarks[0], School.landmarks[10], School.landmarks[12], School.landmarks[1]])
 }

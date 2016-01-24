@@ -39,7 +39,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         
         searchBar.searchBarStyle = UISearchBarStyle.Minimal
         searchBar.tintColor = UIColor.whiteColor()
-        searchBar.placeholder = "Search \(SchoolInfo.schoolName)"
+        searchBar.placeholder = "Search \(School.name)"
         
         //Configure gesture recognizer to pick up taps to escape the search bar
         mapView.addGestureRecognizer(gestureRecognizer)
@@ -54,7 +54,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillBeShown:"), name: UIKeyboardWillShowNotification, object: nil)
         
         //Configure map
-        mapView.setRegion(SchoolInfo.schoolRegion, animated: false)
+        mapView.setRegion(School.schoolRegion, animated: false)
     }
     
     override func viewWillAppear(animated: Bool)

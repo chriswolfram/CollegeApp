@@ -11,7 +11,7 @@ import MapKit
 
 class MapSearchResultsView: UITableView, UITableViewDataSource, UITableViewDelegate
 {
-    let locations = SchoolInfo.landmarks
+    let locations = School.landmarks
     
     var results = [Landmark]()
     

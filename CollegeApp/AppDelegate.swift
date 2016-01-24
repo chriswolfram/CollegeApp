@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locManager.requestAlwaysAuthorization()
         
         //Configure iBeacons
-        beaconRegion = CLBeaconRegion(proximityUUID: SchoolInfo.beaconUUID, identifier: SchoolInfo.beaconUUID.UUIDString)
+        beaconRegion = CLBeaconRegion(proximityUUID: School.beaconUUID, identifier: School.beaconUUID.UUIDString)
         beaconRegion.notifyEntryStateOnDisplay = true
         //Uncomment to enable beacons
         //beaconManager = BeaconManager(region: beaconRegion, locationManager: locManager)

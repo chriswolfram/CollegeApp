@@ -1,5 +1,5 @@
 //
-//  SchoolInfo.swift
+//  School.swift
 //  CollegeApp
 //
 //  Created by Christopher Wolfram on 1/12/16.
@@ -9,9 +9,9 @@
 import Foundation
 import MapKit
 
-class SchoolInfo
+class School
 {
-    static let schoolName = "Stanford"
+    static let name = "Stanford"
     
     static let newsURL = NSURL(string: "https://news.stanford.edu/rss/index.xml")!
     static let eventsURL = NSURL(string: "http://events.stanford.edu/xml/rss.xml")!

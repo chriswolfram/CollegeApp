@@ -10,7 +10,7 @@ import UIKit
 
 class NewsViewController: UITableViewController
 {
-    let rssURL = SchoolInfo.newsURL
+    let rssURL = School.newsURL
     
     var xmlRoot: XMLElement!
     var rssRoot: XMLElement!

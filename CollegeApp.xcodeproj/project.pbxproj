@@ -10,7 +10,7 @@
 		284551B21C33CD9C003AF5E3 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B11C33CD9C003AF5E3 /* EventsViewController.swift */; };
 		284551B71C38F00F003AF5E3 /* EventsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B61C38F00F003AF5E3 /* EventsViewCell.swift */; };
 		284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B81C39F3EC003AF5E3 /* XMLElement.swift */; };
-		9D00A5A51C44F42100C0DF6D /* SchoolInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D00A5A41C44F42000C0DF6D /* SchoolInfo.swift */; };
+		9D00A5A51C44F42100C0DF6D /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D00A5A41C44F42000C0DF6D /* School.swift */; };
 		9D00A5A91C45881800C0DF6D /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D00A5A81C45881800C0DF6D /* BeaconManager.swift */; };
 		9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E8BD81C27335F00960097 /* NewsViewCell.swift */; };
 		9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D711C2B625100874227 /* EmergencyViewController.swift */; };
@@ -30,6 +30,7 @@
 		9DCB66671C2547AC0083586E /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66661C2547AC0083586E /* NewsViewController.swift */; };
 		9DD6A1E81C4D7FCB0025FE44 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */; };
 		9DF316701C5286E900D51CB3 /* TourViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */; };
+		9DF316721C52E2FE00D51CB3 /* TourViewPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF316711C52E2FE00D51CB3 /* TourViewPageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +54,7 @@
 		284551B11C33CD9C003AF5E3 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		284551B61C38F00F003AF5E3 /* EventsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewCell.swift; sourceTree = "<group>"; };
 		284551B81C39F3EC003AF5E3 /* XMLElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLElement.swift; sourceTree = "<group>"; usesTabs = 0; };
-		9D00A5A41C44F42000C0DF6D /* SchoolInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolInfo.swift; sourceTree = "<group>"; };
+		9D00A5A41C44F42000C0DF6D /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		9D00A5A81C45881800C0DF6D /* BeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BeaconManager.swift; path = ../BeaconManager.swift; sourceTree = "<group>"; };
 		9D4E8BD81C27335F00960097 /* NewsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		9DB25D711C2B625100874227 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 		9DCB66661C2547AC0083586E /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
 		9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewDetailController.swift; sourceTree = "<group>"; };
+		9DF316711C52E2FE00D51CB3 /* TourViewPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewPageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +128,7 @@
 		9DB25D761C2BB60400874227 /* SchoolAssets */ = {
 			isa = PBXGroup;
 			children = (
-				9D00A5A41C44F42000C0DF6D /* SchoolInfo.swift */,
+				9D00A5A41C44F42000C0DF6D /* School.swift */,
 				9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */,
 			);
 			name = SchoolAssets;
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */,
+				9DF316711C52E2FE00D51CB3 /* TourViewPageController.swift */,
 				9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */,
 			);
 			name = TourView;
@@ -367,10 +370,11 @@
 				9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */,
 				9DCB665E1C251B510083586E /* QRDetailController.swift in Sources */,
 				9DF316701C5286E900D51CB3 /* TourViewDetailController.swift in Sources */,
+				9DF316721C52E2FE00D51CB3 /* TourViewPageController.swift in Sources */,
 				9DCB66671C2547AC0083586E /* NewsViewController.swift in Sources */,
 				284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */,
 				9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */,
-				9D00A5A51C44F42100C0DF6D /* SchoolInfo.swift in Sources */,
+				9D00A5A51C44F42100C0DF6D /* School.swift in Sources */,
 				9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */,
 				9DD6A1E81C4D7FCB0025FE44 /* TourViewController.swift in Sources */,
 				9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */,

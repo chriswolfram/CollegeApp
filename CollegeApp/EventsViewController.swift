@@ -10,7 +10,7 @@ import UIKit
 
 class EventsViewController: UITableViewController
 {
-    let rssURL = SchoolInfo.eventsURL
+    let rssURL = School.eventsURL
     
     var xmlRoot: XMLElement!
     var rssRoot: XMLElement!

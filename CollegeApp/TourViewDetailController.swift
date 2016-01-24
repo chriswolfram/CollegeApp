@@ -10,5 +10,6 @@ import UIKit
 
 class TourViewDetailController: UIViewController
 {
-    
+    var landmark: Landmark!
+    @IBOutlet weak var nameLabel: UILabel!
 }

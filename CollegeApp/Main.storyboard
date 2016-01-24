@@ -281,67 +281,46 @@
                                     <rect key="frame" x="0.0" y="64" width="400" height="345"/>
                                 </variation>
                             </mapView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dwu-M0-8jC">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JiR-7K-3Dn">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vAp-e8-Ipp">
-                                        <rect key="frame" x="-19" y="-18" width="39" height="37"/>
-                                        <color key="pageIndicatorTintColor" red="0.65475267169999996" green="0.073715753849999996" blue="0.9685251117" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="181" y="138" width="39" height="37"/>
-                                        </variation>
-                                    </pageControl>
-                                </subviews>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="vAp-e8-Ipp"/>
-                                    </mask>
-                                </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="417" width="400" height="183"/>
-                                    <mask key="subviews">
-                                        <include reference="vAp-e8-Ipp"/>
-                                    </mask>
-                                </variation>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx7-Xg-RRQ">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Next"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="290" y="492" width="46" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="nextButton:" destination="70N-rS-Ghe" eventType="touchUpInside" id="dmG-2g-sve"/>
+                                    <segue destination="bHg-9P-tqJ" kind="embed" id="NJq-J4-qK2"/>
                                 </connections>
-                            </button>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="IUz-L5-FeB"/>
-                                <exclude reference="dwu-M0-8jC"/>
-                                <exclude reference="Lx7-Xg-RRQ"/>
+                                <exclude reference="JiR-7K-3Dn"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="IUz-L5-FeB"/>
-                                <include reference="dwu-M0-8jC"/>
-                                <include reference="Lx7-Xg-RRQ"/>
+                                <include reference="JiR-7K-3Dn"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Tour Title" id="gsN-j5-YCa"/>
                     <connections>
                         <outlet property="mapView" destination="IUz-L5-FeB" id="xPt-dO-dkg"/>
-                        <outlet property="pageControl" destination="vAp-e8-Ipp" id="WtE-56-K7I"/>
-                        <outlet property="scrollView" destination="dwu-M0-8jC" id="cTL-9d-kQe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4dd-Q7-l03" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-334.5" y="3303"/>
+        </scene>
+        <!--Tour View Page Controller-->
+        <scene sceneID="1aD-Yq-KSR">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewControllerTours" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="bHg-9P-tqJ" customClass="TourViewPageController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AeH-Zx-bdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-334.5" y="3815.5"/>
         </scene>
         <!--Tour View Detail Controller-->
         <scene sceneID="nee-de-tmC">
@@ -352,15 +331,39 @@
                         <viewControllerLayoutGuide type="bottom" id="ILU-dr-0dc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Vjr-pk-xo9">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="183"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcH-kq-sPj">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="28" width="360" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="DcH-kq-sPj"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="DcH-kq-sPj"/>
+                            </mask>
+                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="183"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="DcH-kq-sPj" id="lzE-0t-EYQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIt-fQ-ce8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-334.5" y="3796.5"/>
+            <point key="canvasLocation" x="-334.5" y="4093.5"/>
         </scene>
         <!--Events-->
         <scene sceneID="Xwx-8m-LnF">
