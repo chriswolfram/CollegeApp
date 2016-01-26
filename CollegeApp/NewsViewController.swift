@@ -39,22 +39,20 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("NewsViewCell", forIndexPath: indexPath) as! NewsViewCell
-        let news = School.newsStories[indexPath.row]
+        let story = School.newsStories[indexPath.row]
         
-        cell.titleLabel.text = news.title
-        cell.descriptionLabel.text = news.description
-        cell.thumbnailView.image = news.image
+        cell.showNewsStory(story)
         
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let news = School.newsStories[indexPath.row]
+        let story = School.newsStories[indexPath.row]
         
-        if news.link != nil
+        if story.link != nil
         {
-            UIApplication.sharedApplication().openURL(news.link!)
+            UIApplication.sharedApplication().openURL(story.link!)
         }
         
         else
@@ -72,8 +70,8 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
     //Run if the refresh controller is triggered (slide down to refresh)
     @IBAction func refresh(sender: AnyObject)
     {
-        self.viewDidAppear(false)
-        
+        School.updateNewsStories()
+
         self.refreshControl?.endRefreshing()
     }
 }

@@ -8,7 +8,7 @@
 
 import MapKit
 
-class SchoolLandmarks
+extension School
 {
     static let landmarks =
     [

@@ -8,10 +8,10 @@
 
 import UIKit
 
-class SchoolEvents
+extension School
 {
     static var events = [Event]()
-    static var delegate: SchoolEventsDelegate?
+    static var eventsDelegate: SchoolEventsDelegate?
     
     private static var xmlRoot: XMLElement!
     private static var rssRoot: XMLElement!
@@ -86,7 +86,7 @@ class SchoolEvents
             event in
             event.loadImage
             {
-                self.delegate?.schoolEventsDidLoadImage()
+                eventsDelegate?.schoolEventsDidLoadImage()
             }
         }
     }

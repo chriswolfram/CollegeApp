@@ -8,10 +8,10 @@
 
 import UIKit
 
-class SchoolNews
+extension School
 {
     static var newsStories = [NewsStory]()
-    static var delegate: SchoolNewsDelegate?
+    static var newsDelegate: SchoolNewsDelegate?
     
     private static var xmlRoot: XMLElement!
     private static var rssRoot: XMLElement!
@@ -30,34 +30,34 @@ class SchoolNews
         newsStories = rssRoot["item", .All]!.map
         {
             item in
-            let news = NewsStory()
-            news.title = item["title"]?.contents
+            let story = NewsStory()
+            story.title = item["title"]?.contents
         
             if let urlString = item["link"]?.contents
             {
-                news.link = NSURL(string: urlString)
+                story.link = NSURL(string: urlString)
             }
         
             if let urlString = item["enclosure"]?.attributes["url"]
             {
-                news.imageURL = NSURL(string: urlString)
+                story.imageURL = NSURL(string: urlString)
             }
         
             if let descString = item["description"]?.contents
             {
-                news.description = descString
+                story.description = descString
             }
         
-            return news
+            return story
         }
     
         //Asynchronously get thumbnails
         newsStories.forEach
         {
-            news in
-            news.loadImage
+            story in
+            story.loadImage
             {
-                delegate?.schoolNewsDidLoadImage()
+                newsDelegate?.schoolNewsDidLoadImage()
             }
         }
     }

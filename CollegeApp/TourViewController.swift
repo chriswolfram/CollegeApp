@@ -12,20 +12,20 @@ class TourViewController: UIViewController, MKMapViewDelegate
 {
     @IBOutlet weak var mapView: MKMapView!
     
-    var pageViewController: TourViewPageController!
-    
+    static var sharedInstance: TourViewController?
+        
     var tour: Tour
     {
         return Tour.sharedInstance!
     }
-    
-    static var sharedInstance: TourViewController?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         TourViewController.sharedInstance = self
+        
+        navigationItem.title = tour.title
         
         //Setup map view
         mapView.delegate = self
@@ -64,5 +64,13 @@ class TourViewController: UIViewController, MKMapViewDelegate
         var coords = tour.landmarks.map({$0.coordinate})
         mapView.addOverlay(MKPolyline(coordinates: &coords, count: tour.landmarks.count))
         mapView.addOverlay(MKCircle(centerCoordinate: tour.currentLandmark.coordinate, radius: 10))
+    }
+    
+    @IBAction func skipButton(sender: UIBarButtonItem)
+    {
+        tour.currentIndex = (tour.currentIndex + 1) % tour.landmarks.count
+        
+        updateMap(tour)
+        TourViewPageController.sharedInstance?.updateDetailView(tour)
     }
 }

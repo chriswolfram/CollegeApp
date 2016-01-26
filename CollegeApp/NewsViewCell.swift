@@ -13,4 +13,11 @@ class NewsViewCell: UITableViewCell
     @IBOutlet var thumbnailView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
+    
+    func showNewsStory(story: NewsStory)
+    {
+        titleLabel.text = story.title
+        descriptionLabel.text = story.description
+        thumbnailView.image = story.image
+    }
 }

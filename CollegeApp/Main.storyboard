@@ -305,9 +305,16 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Tour Title" id="gsN-j5-YCa"/>
+                    <navigationItem key="navigationItem" title="Tour Title" id="gsN-j5-YCa">
+                        <barButtonItem key="rightBarButtonItem" title="Skip" id="s1H-1l-SSq">
+                            <connections>
+                                <action selector="skipButton:" destination="70N-rS-Ghe" id="fQc-xn-Qi8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="IUz-L5-FeB" id="xPt-dO-dkg"/>
+                        <outlet property="navigationItem" destination="gsN-j5-YCa" id="e1G-2e-U9k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4dd-Q7-l03" userLabel="First Responder" sceneMemberID="firstResponder"/>

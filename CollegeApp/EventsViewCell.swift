@@ -14,4 +14,12 @@ class EventsViewCell: UITableViewCell
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    
+    func showEvent(event: Event)
+    {
+        titleLabel.text = event.title
+        locationLabel.text = event.location
+        dateLabel.text = event.date
+        thumbnailView.image = event.image
+    }
 }

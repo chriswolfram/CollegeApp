@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        //Set the initial tour which will be reset if there is a tour selector.  If there is no tour selector, this will be the only avalible tour
-        Tour.sharedInstance = SchoolTours.tours[0]
+        //Set the initial tour which will be reset if there is a tour selector.  If there is no tour selector, this will be the only avalible tour.
+        Tour.sharedInstance = School.tours[0]
         
         //Setup the location manager
         locManager.delegate = self

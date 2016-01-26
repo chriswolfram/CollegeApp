@@ -8,16 +8,19 @@
 
 import MapKit
 
-class SchoolTours
+extension School
 {
     static let tours =
     [
-        Tour(landmarks: [
+        Tour(
+            landmarks: [
             TourLandmark(School.landmarks[0], descriptionString: "This is the first stop on this tour.  This place has historical significance, with many foos and bars living here over the years."),
             TourLandmark(School.landmarks[10], descriptionString: "This is a test of many descriptive things."),
             TourLandmark(School.landmarks[12], descriptionString: "The next one purposfully has no description."),
             TourLandmark(School.landmarks[1]),
-            ])
+            ],
+            title: "First Tour"
+        )
     ]
 }
 
@@ -41,6 +44,7 @@ class Tour
 {
     static var sharedInstance: Tour?
     
+    let title: String?
     let landmarks: [TourLandmark]
     var currentIndex = 0
     
@@ -52,9 +56,10 @@ class Tour
         }
     }
     
-    init(landmarks: [TourLandmark])
+    init(landmarks: [TourLandmark], title: String? = nil)
     {
         self.landmarks = landmarks
+        self.title = title
     }
     
     func nextLandmark() -> TourLandmark?

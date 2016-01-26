@@ -41,10 +41,7 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
         let cell = tableView.dequeueReusableCellWithIdentifier("EventsViewCell", forIndexPath: indexPath) as! EventsViewCell
         let event = School.events[indexPath.row]
         
-        cell.titleLabel.text = event.title
-        cell.locationLabel.text = event.location
-        cell.dateLabel.text = event.date
-        cell.thumbnailView.image = event.image
+        cell.showEvent(event)
         
         return cell
     }
@@ -72,7 +69,7 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
     
     @IBAction func refresh(sender: AnyObject)
     {
-        self.viewDidAppear(false)
+        School.updateEvents()
         
         self.refreshControl?.endRefreshing()
     }

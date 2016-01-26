@@ -12,6 +12,8 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
 {
     static let detailViewIdentifier = "TourViewDetailController"
     
+    static var sharedInstance: TourViewPageController?
+    
     var tour: Tour
     {
         return Tour.sharedInstance!
@@ -21,6 +23,8 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
     {
         super.viewDidLoad()
         
+        TourViewPageController.sharedInstance = self
+        
         self.delegate = self
         self.dataSource = self
         
@@ -29,16 +33,14 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
     
     func detailViewController(landmark: TourLandmark) -> TourViewDetailController
     {
-        let controller = storyboard!.instantiateViewControllerWithIdentifier(TourViewPageController.detailViewIdentifier) as! TourViewDetailController
+        let detailView = storyboard!.instantiateViewControllerWithIdentifier(TourViewPageController.detailViewIdentifier) as! TourViewDetailController
         
-        //Request the view (a computer property) to force the controller to instantiate its labels
-        let _ = controller.view
+        //Request the view (a computed property) to force the controller to instantiate its labels
+        let _ = detailView.view
         
-        controller.landmark = landmark
-        controller.nameLabel.text = landmark.title
-        controller.descriptionLabel.text = landmark.descriptionString
+        detailView.showLandmark(landmark)
         
-        return controller
+        return detailView
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
@@ -73,5 +75,10 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
     {
         return tour.currentIndex
+    }
+    
+    func updateDetailView(tour: Tour)
+    {
+        self.setViewControllers([detailViewController(tour.currentLandmark)], direction: .Forward, animated: true, completion: nil)
     }
 }
