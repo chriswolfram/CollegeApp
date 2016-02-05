@@ -10,6 +10,19 @@ import UIKit
 
 class EventsViewController: UITableViewController, SchoolEventsDelegate
 {
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        //Show the add events button if it should
+        if School.addEventsButton
+        {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("addEventsButtonPressed"))
+        }
+        
+        School.eventsDelegate = self
+    }
+    
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
@@ -20,10 +33,18 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
         self.tableView.estimatedRowHeight = 120.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        School.eventsDelegate = self
-        School.updateEvents()
+        //If events haven't been loaded before, load them
+        if School.events.count == 0
+        {
+            School.updateEvents()
+        }
         
-        tableView.reloadData()
+        self.tableView.reloadData()
+    }
+    
+    func addEventsButtonPressed()
+    {
+        School.addEventsButtonPressed()
     }
     
     func schoolEventsDidLoadImage()

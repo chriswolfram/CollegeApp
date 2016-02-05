@@ -32,6 +32,15 @@ class TourViewController: UIViewController, MKMapViewDelegate
         mapView.setRegion(School.schoolRegion, animated: false)
         
         updateMap(tour)
+        
+        //Setup Beacons
+        if School.useBeaconsTours
+        {
+            let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate!)
+            
+            appDelegate.tourController = self
+            appDelegate.beginBeaconSearching()
+        }
     }
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer
@@ -66,11 +75,34 @@ class TourViewController: UIViewController, MKMapViewDelegate
         mapView.addOverlay(MKCircle(centerCoordinate: tour.currentLandmark.coordinate, radius: 10))
     }
     
-    @IBAction func skipButton(sender: UIBarButtonItem)
+    func goToLandmarkAtIndex(index: Int)
     {
-        tour.currentIndex = (tour.currentIndex + 1) % tour.landmarks.count
+        tour.currentIndex = index
         
         updateMap(tour)
         TourViewPageController.sharedInstance?.updateDetailView(tour)
+    }
+    
+    func continueToNextLandmark()
+    {
+        goToLandmarkAtIndex((tour.currentIndex + 1) % tour.landmarks.count)
+    }
+    
+    func didEnterRegion(beaconRegion: CLBeaconRegion)
+    {
+        for (i, landmark) in tour.landmarks.enumerate()
+        {
+            if landmark.major == beaconRegion.major && landmark.minor == beaconRegion.minor
+            {
+                //If any beacon is detected, set that to the current index (probably not permanent)
+                goToLandmarkAtIndex(i)
+                break
+            }
+        }
+    }
+    
+    @IBAction func skipButton(sender: UIBarButtonItem)
+    {
+        continueToNextLandmark()
     }
 }

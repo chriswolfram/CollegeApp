@@ -10,6 +10,14 @@ import UIKit
 
 extension School
 {
+    static let eventsURL = NSURL(string: "http://events.stanford.edu/xml/rss.xml")!
+    
+    static let addEventsButton = true
+    static func addEventsButtonPressed()
+    {
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://events.stanford.edu/eventadmin/")!)
+    }
+    
     static var events = [Event]()
     static var eventsDelegate: SchoolEventsDelegate?
     

@@ -10,6 +10,8 @@ import UIKit
 
 extension School
 {
+    static let newsURL = NSURL(string: "https://news.stanford.edu/rss/index.xml")!
+    
     static var newsStories = [NewsStory]()
     static var newsDelegate: SchoolNewsDelegate?
     

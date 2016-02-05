@@ -36,11 +36,9 @@ class EmergencyViewController: UITableViewController
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("EmergencyViewCell", forIndexPath: indexPath) as! EmergencyViewCell
-        
         let contact = emergencyContacts[indexPath.row]
         
-        cell.titleLabel.text = contact.title
-        cell.numberLabel.text = contact.formattedNumber
+        cell.showEmergencyContact(contact)
         
         return cell
     }

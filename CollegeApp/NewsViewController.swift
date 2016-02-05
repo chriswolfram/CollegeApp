@@ -10,6 +10,13 @@ import UIKit
 
 class NewsViewController: UITableViewController, SchoolNewsDelegate
 {
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        School.newsDelegate = self
+    }
+    
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
@@ -20,8 +27,11 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
         self.tableView.estimatedRowHeight = 134.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        School.newsDelegate = self
-        School.updateNewsStories()
+        //If news stories haven't been loaded before, load them
+        if School.newsStories.count == 0
+        {
+            School.updateNewsStories()
+        }
         
         tableView.reloadData()
     }

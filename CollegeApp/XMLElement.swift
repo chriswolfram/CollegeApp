@@ -56,22 +56,22 @@ class XMLElement: NSObject, NSXMLParserDelegate
     
     subscript(index: Int) -> XMLElement?
     {
-            return self.childList[index]
+        return self.childList[index]
     }
     
     subscript(key: String) -> XMLElement?
     {
-            return self.children[key]?[0]
+        return self.children[key]?[0]
     }
     
     subscript(key: String, p: XMLElementParts) -> [XMLElement]?
     {
-            switch p
-            {
-            case .All: return self.children[key]
-            case .First: return [self.children[key]![0]]
-            case .Last: return [self.children[key]!.last!]
-            }
+        switch p
+        {
+        case .All: return self.children[key]
+        case .First: return [self.children[key]![0]]
+        case .Last: return [self.children[key]!.last!]
+        }
     }
     
     func parse()

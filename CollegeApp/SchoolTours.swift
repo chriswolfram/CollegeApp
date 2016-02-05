@@ -10,6 +10,8 @@ import MapKit
 
 extension School
 {
+    static let useBeaconsTours = true
+    
     static let tours =
     [
         Tour(
@@ -27,11 +29,15 @@ extension School
 class TourLandmark: Landmark
 {
     var descriptionString: String? = nil
+    var major: NSNumber?
+    var minor: NSNumber?
     
-    init(coordinate: CLLocationCoordinate2D, title: String?, descriptionString: String?)
+    init(coordinate: CLLocationCoordinate2D, title: String?, descriptionString: String?, beaconMajor: NSNumber? = nil, beaconMinor: NSNumber? = nil)
     {
         super.init(coordinate: coordinate, title: title)
         self.descriptionString = descriptionString
+        self.major = beaconMajor
+        self.minor = beaconMinor
     }
     
     convenience init(_ landmark: Landmark, descriptionString: String? = nil)
