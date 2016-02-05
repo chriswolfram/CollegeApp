@@ -7,24 +7,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--QRCode-->
-        <scene sceneID="Ulm-5j-kqx">
-            <objects>
-                <navigationController id="xzG-NM-Nap" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="QRCode" id="EzY-FK-Nzs"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="hZQ-jS-q2p">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.93725490199999995" green="0.0" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="tPV-CL-6VA" kind="relationship" relationship="rootViewController" id="Oib-1a-5ye"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z9y-WS-7qe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-334.5" y="453"/>
-        </scene>
         <!--QRCodeReader-->
         <scene sceneID="ZgJ-n4-ReK">
             <objects>
@@ -42,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbg-UX-qLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="406.5" y="453"/>
+            <point key="canvasLocation" x="364.5" y="453"/>
         </scene>
         <!--Homescreen-->
         <scene sceneID="TyZ-Sm-WGK">
@@ -54,7 +36,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.9137254901960784" green="0.0" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.87567359209060669" green="0.10180612653493881" blue="0.16028940677642822" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
