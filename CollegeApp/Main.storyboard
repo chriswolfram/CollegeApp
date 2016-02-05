@@ -36,7 +36,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.87567359209060669" green="0.10180612653493881" blue="0.16028940677642822" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.94850778579711914" green="0.10734343528747559" blue="0.17153826355934143" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -73,9 +73,10 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
                                         <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="exclusiveTouch" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="225" y="250" width="100" height="100"/>
+                                    <rect key="frame" x="220" y="122" width="100" height="100"/>
                                 </variation>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="MKi-uU-wAq"/>
@@ -90,9 +91,10 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
                                         <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="exclusiveTouch" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="225" y="375" width="100" height="100"/>
+                                    <rect key="frame" x="150" y="250" width="100" height="100"/>
                                 </variation>
                                 <connections>
                                     <segue destination="gSG-4e-L6m" kind="show" id="ScX-dL-vWd"/>
@@ -107,9 +109,10 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
                                         <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="exclusiveTouch" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="74" y="375" width="100" height="100"/>
+                                    <rect key="frame" x="75" y="378" width="100" height="100"/>
                                 </variation>
                                 <connections>
                                     <segue destination="uar-Yy-w7t" kind="show" id="83s-vJ-Cf9"/>
@@ -124,9 +127,10 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
                                         <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="exclusiveTouch" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="74" y="250" width="100" height="100"/>
+                                    <rect key="frame" x="220" y="378" width="100" height="100"/>
                                 </variation>
                                 <connections>
                                     <segue destination="pbs-NQ-FIb" kind="show" id="IiB-li-mZG"/>
@@ -141,9 +145,10 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
                                         <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="exclusiveTouch" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="150" y="116" width="100" height="100"/>
+                                    <rect key="frame" x="75" y="122" width="100" height="100"/>
                                 </variation>
                                 <connections>
                                     <segue destination="70N-rS-Ghe" kind="show" id="my5-hz-O1q"/>
