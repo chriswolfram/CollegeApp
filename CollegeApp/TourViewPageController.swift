@@ -10,8 +10,6 @@ import UIKit
 
 class TourViewPageController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate
 {
-    static let detailViewIdentifier = "TourViewDetailController"
-    
     static var sharedInstance: TourViewPageController?
     
     var tour: Tour
@@ -28,19 +26,17 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
         self.delegate = self
         self.dataSource = self
         
+        //Add blur background
+        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        effectView.frame = self.view.frame
+        self.view.insertSubview(effectView, atIndex: 0)
+        
         self.setViewControllers([detailViewController(tour.currentLandmark)], direction: .Forward, animated: true, completion: nil)
     }
     
     func detailViewController(landmark: TourLandmark) -> TourViewDetailController
     {
-        let detailView = storyboard!.instantiateViewControllerWithIdentifier(TourViewPageController.detailViewIdentifier) as! TourViewDetailController
-        
-        //Request the view (a computed property) to force the controller to instantiate its labels
-        let _ = detailView.view
-        
-        detailView.showLandmark(landmark)
-        
-        return detailView
+        return TourViewDetailController.controllerForLandmark(landmark, storyboard: storyboard)
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?

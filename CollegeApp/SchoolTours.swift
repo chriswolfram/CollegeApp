@@ -17,7 +17,7 @@ extension School
         Tour(
             landmarks: [
             TourLandmark(School.landmarks[0], descriptionString: "This is the first stop on this tour.  This place has historical significance, with many foos and bars living here over the years."),
-            TourLandmark(School.landmarks[10], descriptionString: "This is a test of many descriptive things."),
+                TourLandmark(School.landmarks[10], descriptionString: "This is a test of many descriptive things.", thumbnailPath: "HooverTower"),
             TourLandmark(School.landmarks[12], descriptionString: "The next one purposfully has no description."),
             TourLandmark(School.landmarks[1]),
             ],
@@ -29,20 +29,22 @@ extension School
 class TourLandmark: Landmark
 {
     var descriptionString: String? = nil
+    var thumbnailPath: String? = nil
     var major: NSNumber?
     var minor: NSNumber?
     
-    init(coordinate: CLLocationCoordinate2D, title: String?, descriptionString: String?, beaconMajor: NSNumber? = nil, beaconMinor: NSNumber? = nil)
+    init(coordinate: CLLocationCoordinate2D, title: String?, descriptionString: String?, thumbnailPath: String? = nil, beaconMajor: NSNumber? = nil, beaconMinor: NSNumber? = nil)
     {
         super.init(coordinate: coordinate, title: title)
         self.descriptionString = descriptionString
+        self.thumbnailPath = thumbnailPath
         self.major = beaconMajor
         self.minor = beaconMinor
     }
     
-    convenience init(_ landmark: Landmark, descriptionString: String? = nil)
+    convenience init(_ landmark: Landmark, descriptionString: String? = nil, thumbnailPath: String? = nil)
     {
-        self.init(coordinate: landmark.coordinate, title: landmark.title, descriptionString: descriptionString)
+        self.init(coordinate: landmark.coordinate, title: landmark.title, descriptionString: descriptionString, thumbnailPath: thumbnailPath)
     }
 }
 

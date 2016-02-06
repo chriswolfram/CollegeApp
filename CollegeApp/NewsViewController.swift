@@ -48,8 +48,26 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NewsViewCell", forIndexPath: indexPath) as! NewsViewCell
         let story = School.newsStories[indexPath.row]
+        
+        var cellIdentifier: String!
+        
+        if story.image == nil
+        {
+            cellIdentifier = "NewsViewTextCell"
+        }
+        
+        else if indexPath.row % 4 == 0
+        {
+            cellIdentifier = "NewsViewFeaturedCell"
+        }
+        
+        else
+        {
+            cellIdentifier = "NewsViewRegularCell"
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! NewsViewCell
         
         cell.showNewsStory(story)
         

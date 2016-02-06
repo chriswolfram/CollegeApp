@@ -36,6 +36,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         searchBar.delegate = self
         navigationItem.titleView = searchBar
         searchBar.setShowsCancelButton(false, animated: false)
+        searchBar.showsBookmarkButton = true
         
         searchBar.searchBarStyle = UISearchBarStyle.Minimal
         searchBar.tintColor = UIColor.whiteColor()

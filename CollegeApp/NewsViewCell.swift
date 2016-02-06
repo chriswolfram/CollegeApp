@@ -10,7 +10,7 @@ import UIKit
 
 class NewsViewCell: UITableViewCell
 {
-    @IBOutlet var thumbnailView: UIImageView!
+    @IBOutlet var thumbnailView: UIImageView?
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     
@@ -18,6 +18,6 @@ class NewsViewCell: UITableViewCell
     {
         titleLabel.text = story.title
         descriptionLabel.text = story.description
-        thumbnailView.image = story.image
+        thumbnailView?.image = story.image
     }
 }
