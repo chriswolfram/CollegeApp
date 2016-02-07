@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 class HomescreenViewController: UIViewController
 {
@@ -29,5 +31,14 @@ class HomescreenViewController: UIViewController
         group.motionEffects = [verticalMotionEffect, horizontalMotionEffect]
         
         backgroundImageView.addMotionEffect(group)
+        
+        /*let url = NSBundle.mainBundle().URLForResource("hooverTower", withExtension: "m4v")
+        let avplayer = AVPlayer(URL: url!)
+        let avplayerLayer = AVPlayerLayer(player: avplayer)
+        avplayerLayer.frame = view.frame
+        avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        avplayer.play()
+        
+        view.layer.addSublayer(avplayerLayer)*/
     }
 }

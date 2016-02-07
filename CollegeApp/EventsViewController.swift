@@ -13,7 +13,7 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+                
         //Show the add events button if it should
         if School.addEventsButton
         {
@@ -33,23 +33,28 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
         self.tableView.estimatedRowHeight = 120.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        //If events haven't been loaded before, load them
-        if School.events.count == 0
+        //Load events
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
         {
             School.updateEvents()
+            dispatch_async(dispatch_get_main_queue())
+            {
+                self.tableView.reloadData()
+            }
         }
-        
-        self.tableView.reloadData()
+    }
+    
+    func schoolEventsDidLoadImage()
+    {
+        dispatch_async(dispatch_get_main_queue())
+        {
+            self.tableView.reloadData()
+        }
     }
     
     func addEventsButtonPressed()
     {
         School.addEventsButtonPressed()
-    }
-    
-    func schoolEventsDidLoadImage()
-    {
-        tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int

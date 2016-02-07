@@ -42,7 +42,7 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
     {
         tour.currentIndex = tour.landmarks.indexOf((viewController as! TourViewDetailController).landmark)!
-        TourViewController.sharedInstance?.updateMap(tour)
+        TourViewController.sharedInstance?.updateTourView(tour)
         if let nextLandmark = tour.previousLandmark()
         {
             return detailViewController(nextLandmark)
@@ -54,7 +54,7 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
     {
         tour.currentIndex = tour.landmarks.indexOf((viewController as! TourViewDetailController).landmark)!
-        TourViewController.sharedInstance?.updateMap(tour)
+        TourViewController.sharedInstance?.updateTourView(tour)
         if let nextLandmark = tour.nextLandmark()
         {
             return detailViewController(nextLandmark)

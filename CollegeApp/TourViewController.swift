@@ -11,6 +11,7 @@ import MapKit
 class TourViewController: UIViewController, MKMapViewDelegate
 {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var progressIndicator: UIProgressView!
     
     static var sharedInstance: TourViewController?
         
@@ -31,7 +32,7 @@ class TourViewController: UIViewController, MKMapViewDelegate
         mapView.delegate = self
         mapView.setRegion(School.schoolRegion, animated: false)
         
-        updateMap(tour)
+        updateTourView(tour)
         
         //Setup Beacons
         if School.useBeaconsTours
@@ -66,8 +67,12 @@ class TourViewController: UIViewController, MKMapViewDelegate
         }
     }
     
-    func updateMap(tour: Tour)
+    func updateTourView(tour: Tour)
     {
+        //Update progress indicator
+        progressIndicator.setProgress(Float(tour.currentIndex) / Float(tour.landmarks.count-1), animated: true)
+        
+        //Update map
         mapView.removeOverlays(mapView.overlays)
         
         var coords = tour.landmarks.map({$0.coordinate})
@@ -79,7 +84,7 @@ class TourViewController: UIViewController, MKMapViewDelegate
     {
         tour.currentIndex = index
         
-        updateMap(tour)
+        updateTourView(tour)
         TourViewPageController.sharedInstance?.updateDetailView(tour)
     }
     

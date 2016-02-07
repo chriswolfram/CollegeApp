@@ -83,15 +83,15 @@ class NewsStory
         if image == nil && imageURL != nil
         {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+            {
+                if let imageData = NSData(contentsOfURL: self.imageURL!), let image = UIImage(data: imageData)
                 {
-                    if let imageData = NSData(contentsOfURL: self.imageURL!), let image = UIImage(data: imageData)
+                    dispatch_async(dispatch_get_main_queue())
                     {
-                        dispatch_async(dispatch_get_main_queue())
-                            {
-                                self.image = image
-                                callback()
-                        }
+                        self.image = image
+                        callback()
                     }
+                }
             }
         }
     }

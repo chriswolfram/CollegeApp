@@ -19,6 +19,7 @@
 		9D4794D51C55743400F2261B /* SchoolNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D41C55743400F2261B /* SchoolNews.swift */; };
 		9D4794D71C558B1700F2261B /* SchoolTours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D61C558B1700F2261B /* SchoolTours.swift */; };
 		9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E8BD81C27335F00960097 /* NewsViewCell.swift */; };
+		9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */; };
 		9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D711C2B625100874227 /* EmergencyViewController.swift */; };
 		9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D741C2B680100874227 /* EmergencyViewCell.swift */; };
 		9DB25D781C2BB64700874227 /* homescreenBackground.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */; };
@@ -68,6 +69,7 @@
 		9D4794D41C55743400F2261B /* SchoolNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolNews.swift; sourceTree = "<group>"; };
 		9D4794D61C558B1700F2261B /* SchoolTours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolTours.swift; sourceTree = "<group>"; };
 		9D4E8BD81C27335F00960097 /* NewsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
+		9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenButton.swift; sourceTree = "<group>"; };
 		9DB25D711C2B625100874227 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
 		9DB25D741C2B680100874227 /* EmergencyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewCell.swift; sourceTree = "<group>"; };
 		9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = homescreenBackground.jpeg; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				9DCB66541C251B510083586E /* AppDelegate.swift */,
 				284551B81C39F3EC003AF5E3 /* XMLElement.swift */,
 				9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */,
+				9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */,
 				9DCB66681C2548170083586E /* MapView */,
 				9DCB66691C25481F0083586E /* QRCodeView */,
 				9DCB666A1C2548280083586E /* NewsView */,
@@ -393,6 +396,7 @@
 				9D4794D51C55743400F2261B /* SchoolNews.swift in Sources */,
 				9DCB665C1C251B510083586E /* MapController.swift in Sources */,
 				9D4794D11C55450A00F2261B /* SchoolLandmarks.swift in Sources */,
+				9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */,
 				284551B21C33CD9C003AF5E3 /* EventsViewController.swift in Sources */,
 				9D4794D71C558B1700F2261B /* SchoolTours.swift in Sources */,
 				9DCB665F1C251B510083586E /* QRViewController.swift in Sources */,
@@ -540,7 +544,7 @@
 				);
 				INFOPLIST_FILE = CollegeApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = zaltotech.CollegeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kincola.collegeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -561,7 +565,7 @@
 				);
 				INFOPLIST_FILE = CollegeApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = zaltotech.CollegeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kincola.collegeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

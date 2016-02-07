@@ -27,18 +27,30 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
         self.tableView.estimatedRowHeight = 134.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        //If news stories haven't been loaded before, load them
-        if School.newsStories.count == 0
+        //Load news stories
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
         {
             School.updateNewsStories()
+            dispatch_async(dispatch_get_main_queue())
+            {
+                self.tableView.reloadData()
+            }
         }
+    }
+    
+    override func viewDidDisappear(animated: Bool)
+    {
+        super.viewDidDisappear(animated)
         
-        tableView.reloadData()
+        School.newsStories = []
     }
     
     func schoolNewsDidLoadImage()
     {
-        tableView.reloadData()
+        dispatch_async(dispatch_get_main_queue())
+        {
+            self.tableView.reloadData()
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
