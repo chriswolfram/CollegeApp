@@ -13,24 +13,13 @@ class HomescreenButton: UIButton
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
-    }
-    
-    override func drawRect(rect: CGRect)
-    {
-        super.drawRect(rect)
         
         self.clipsToBounds = true
         self.layer.cornerRadius = 50
         self.exclusiveTouch = true
         
-        self.layer.borderWidth = 3.0
+        self.layer.borderWidth = 1.5
         self.layer.borderColor = self.backgroundColor?.CGColor
-        //self.setTitleColor(self.backgroundColor, forState: .Normal)
-        self.backgroundColor = UIColor.clearColor()
-        
-        //Add blur background
-        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
-        effectView.frame = self.frame
-        self.addSubview(effectView)
+        self.backgroundColor = self.backgroundColor?.colorWithAlphaComponent(0.8)
     }
 }

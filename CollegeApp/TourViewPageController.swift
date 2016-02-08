@@ -31,7 +31,8 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
         effectView.frame = self.view.frame
         self.view.insertSubview(effectView, atIndex: 0)
         
-        self.setViewControllers([detailViewController(tour.currentLandmark)], direction: .Forward, animated: true, completion: nil)
+        //Animated set to false because of a bug in UIPageViewController
+        self.setViewControllers([detailViewController(tour.currentLandmark)], direction: .Forward, animated: false, completion: nil)
     }
     
     func detailViewController(landmark: TourLandmark) -> TourViewDetailController
@@ -43,9 +44,9 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
     {
         tour.currentIndex = tour.landmarks.indexOf((viewController as! TourViewDetailController).landmark)!
         TourViewController.sharedInstance?.updateTourView(tour)
-        if let nextLandmark = tour.previousLandmark()
+        if let previousLandmark = tour.previousLandmark()
         {
-            return detailViewController(nextLandmark)
+            return detailViewController(previousLandmark)
         }
         
         return nil

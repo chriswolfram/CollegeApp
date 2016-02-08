@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class NewsViewController: UITableViewController, SchoolNewsDelegate
 {
@@ -92,7 +93,7 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
         
         if story.link != nil
         {
-            UIApplication.sharedApplication().openURL(story.link!)
+            navigationController?.pushViewController(WebView(url: story.link!), animated: true)
         }
         
         else

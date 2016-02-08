@@ -13,10 +13,12 @@ extension School
     static let emergencyContacts =
     [
         EmergencyContact(title: "Emergency", number: "911", formattedNumber: "911"),
-        EmergencyContact(title: "Anonymous Tip Line", number: "1-617-333-2159", formattedNumber: "+1 617-333-2159"),
-        EmergencyContact(title: "Closing Hotline", number: "1-617-333-2075", formattedNumber: "+1 617-333-2075"),
-        EmergencyContact(title: "Emergency Line", number: "1-617-333-2222", formattedNumber: "+1 617-333-2222"),
-        EmergencyContact(title: "Health Center", number: "1-617-333-2182", formattedNumber: "+1 617-333-2182"),
+        EmergencyContact(title: "Stanford Emergency Information Line", number: "1-650-725-5555", formattedNumber: "+1 650-725-5555"),
+        EmergencyContact(title: "Non-Emergencies", number: "1-650-329-2413", formattedNumber: "+1 650-329-2413"),
+        EmergencyContact(title: "CAPS Hotline", number: "1-650-723-3785", formattedNumber: "+1 650-723-3785", description: "For immediate mental health crisis assistance contact a CAPS on-call clinician any time, including evenings and weekends.  After hours calls are forwarded to our answering service provider who will page the CAPS on-call clinician.  A clinician will speak with you within 20 minutes of your call.  The on-call clinician will assess your situation and offer recommendations for follow-up."),
+        EmergencyContact(title: "Bridge Peer Counseling", number: "1-650-723-3392", formattedNumber: "+1 650-723-3392"),
+        EmergencyContact(title: "SARA Office", number: "1-650-725-9129", formattedNumber: "+1 650-725-9129"),
+        EmergencyContact(title: "SARA 24hr Hotline", number: "1-650-725-9955", formattedNumber: "+1 650-725-9955")
     ]
 }
 

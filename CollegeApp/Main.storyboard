@@ -62,24 +62,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="homescreenBackground.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="wLn-46-pCl">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="homescreenBackground.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="wLn-46-pCl">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFz-vb-B0u">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFz-vb-B0u" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.24540030956268311" green="0.3900330662727356" blue="0.99662750959396362" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.33249253034591675" green="0.38002842664718628" blue="0.99133133888244629" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="VlP-iA-Ila"/>
                                     <constraint firstAttribute="width" constant="100" id="ko3-tp-dsZ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Maps"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.clipsToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
-                                        <integer key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="exclusiveTouch" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="VlP-iA-Ila"/>
@@ -96,21 +90,15 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="MKi-uU-wAq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHv-8f-O20">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHv-8f-O20" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.14901960784313725" green="0.15686274509803921" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.19887769222259521" green="1" blue="0.28276386857032776" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="YJz-aU-SWL"/>
                                     <constraint firstAttribute="width" constant="100" id="wnU-en-ceo"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="News"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.clipsToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
-                                        <integer key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="exclusiveTouch" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="YJz-aU-SWL"/>
@@ -127,21 +115,15 @@
                                     <segue destination="uar-Yy-w7t" kind="show" id="83s-vJ-Cf9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsU-NV-GdH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsU-NV-GdH" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.97599530220031738" green="0.53665733337402344" blue="0.24399212002754211" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.9899519681930542" green="0.47217312455177307" blue="0.23679378628730774" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="1Oh-x3-FrP"/>
                                     <constraint firstAttribute="height" constant="100" id="uJj-GG-RVa"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Events"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.clipsToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
-                                        <integer key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="exclusiveTouch" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="1Oh-x3-FrP"/>
@@ -160,11 +142,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftp-gh-bz2" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.65475267171859741" green="0.073715753853321075" blue="0.96852511167526245" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.70875418186187744" green="0.29914173483848572" blue="0.94770944118499756" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="3iy-6y-EIW"/>
                                     <constraint firstAttribute="height" constant="100" id="grt-WH-aXI"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Tours"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -182,21 +165,15 @@
                                     <segue destination="70N-rS-Ghe" kind="show" id="my5-hz-O1q"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txd-tT-DFq">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txd-tT-DFq" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.98795485496520996" green="0.31318625807762146" blue="0.30755195021629333" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="WpA-8F-SwX"/>
                                     <constraint firstAttribute="height" constant="100" id="aHn-JA-RHx"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Emergency"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.clipsToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
-                                        <integer key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="exclusiveTouch" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="WpA-8F-SwX"/>
@@ -301,49 +278,104 @@
         <scene sceneID="z0d-hd-aMo">
             <objects>
                 <tableViewController id="gSG-4e-L6m" customClass="EmergencyViewController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="M3T-BK-IHd">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="M3T-BK-IHd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmergencyViewCell" rowHeight="63" id="zoq-ZE-SY5" customClass="EmergencyViewCell" customModule="CollegeApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmergencyViewCell" rowHeight="97" id="zoq-ZE-SY5" customClass="EmergencyViewCell" customModule="CollegeApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zoq-ZE-SY5" id="RI7-R8-dB4">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="62.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJc-vc-I3t">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJc-vc-I3t">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.971710205078125" green="0.15112316608428955" blue="0.19098490476608276" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="8" y="8" width="392" height="29"/>
+                                            <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                <rect key="frame" x="8" y="8" width="384" height="20.5"/>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTq-JI-jtU">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUR-49-AKf">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="8" y="33" width="392" height="29"/>
+                                            <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                <rect key="frame" x="8" y="70" width="384" height="18.5"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Number" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTq-JI-jtU">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                <rect key="frame" x="8" y="36.5" width="384" height="25.5"/>
                                             </variation>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="kUR-49-AKf" firstAttribute="trailing" secondItem="RI7-R8-dB4" secondAttribute="trailingMargin" id="3j9-9Z-zci"/>
+                                        <constraint firstItem="kUR-49-AKf" firstAttribute="bottom" secondItem="RI7-R8-dB4" secondAttribute="bottomMargin" id="6XR-2I-8ch"/>
+                                        <constraint firstItem="JTq-JI-jtU" firstAttribute="top" secondItem="GJc-vc-I3t" secondAttribute="bottom" constant="8" id="JNE-wb-WrK"/>
+                                        <constraint firstItem="kUR-49-AKf" firstAttribute="leading" secondItem="RI7-R8-dB4" secondAttribute="leadingMargin" id="RBj-Ps-92j"/>
+                                        <constraint firstItem="JTq-JI-jtU" firstAttribute="leading" secondItem="RI7-R8-dB4" secondAttribute="leadingMargin" id="WqJ-by-qRH"/>
+                                        <constraint firstItem="GJc-vc-I3t" firstAttribute="leading" secondItem="RI7-R8-dB4" secondAttribute="leadingMargin" id="ZKS-If-GIF"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="kUR-49-AKf" secondAttribute="bottom" id="ckh-aD-wn7"/>
+                                        <constraint firstItem="JTq-JI-jtU" firstAttribute="trailing" secondItem="RI7-R8-dB4" secondAttribute="trailingMargin" id="dp5-yS-vXN"/>
+                                        <constraint firstItem="GJc-vc-I3t" firstAttribute="top" secondItem="RI7-R8-dB4" secondAttribute="topMargin" id="hLg-Rj-VZf"/>
+                                        <constraint firstItem="kUR-49-AKf" firstAttribute="top" secondItem="JTq-JI-jtU" secondAttribute="bottom" constant="8" id="jNP-1m-HyF"/>
+                                        <constraint firstItem="kUR-49-AKf" firstAttribute="bottom" secondItem="RI7-R8-dB4" secondAttribute="bottomMargin" id="sBg-2i-2Qi"/>
+                                        <constraint firstItem="GJc-vc-I3t" firstAttribute="trailing" secondItem="RI7-R8-dB4" secondAttribute="trailingMargin" id="zc8-Cg-q2Z"/>
+                                    </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="GJc-vc-I3t"/>
+                                            <exclude reference="kUR-49-AKf"/>
                                             <exclude reference="JTq-JI-jtU"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="ZKS-If-GIF"/>
+                                            <exclude reference="hLg-Rj-VZf"/>
+                                            <exclude reference="zc8-Cg-q2Z"/>
+                                            <exclude reference="JNE-wb-WrK"/>
+                                            <exclude reference="WqJ-by-qRH"/>
+                                            <exclude reference="dp5-yS-vXN"/>
+                                            <exclude reference="3j9-9Z-zci"/>
+                                            <exclude reference="6XR-2I-8ch"/>
+                                            <exclude reference="RBj-Ps-92j"/>
+                                            <exclude reference="ckh-aD-wn7"/>
+                                            <exclude reference="jNP-1m-HyF"/>
+                                            <exclude reference="sBg-2i-2Qi"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
                                         <mask key="subviews">
                                             <include reference="GJc-vc-I3t"/>
+                                            <include reference="kUR-49-AKf"/>
                                             <include reference="JTq-JI-jtU"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="ZKS-If-GIF"/>
+                                            <include reference="hLg-Rj-VZf"/>
+                                            <include reference="zc8-Cg-q2Z"/>
+                                            <include reference="JNE-wb-WrK"/>
+                                            <include reference="WqJ-by-qRH"/>
+                                            <include reference="dp5-yS-vXN"/>
+                                            <include reference="3j9-9Z-zci"/>
+                                            <exclude reference="6XR-2I-8ch"/>
+                                            <include reference="RBj-Ps-92j"/>
+                                            <include reference="ckh-aD-wn7"/>
+                                            <include reference="jNP-1m-HyF"/>
+                                            <exclude reference="sBg-2i-2Qi"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="descriptionLabel" destination="kUR-49-AKf" id="6Bf-iS-1Pv"/>
                                     <outlet property="numberLabel" destination="JTq-JI-jtU" id="5oM-ja-Vzf"/>
                                     <outlet property="titleLabel" destination="GJc-vc-I3t" id="QL9-TH-87S"/>
                                 </connections>

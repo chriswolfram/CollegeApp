@@ -16,8 +16,8 @@ class EmergencyViewController: UITableViewController
     {
         super.viewDidLoad()
         
-        //let cell = tableView.dequeueReusableCellWithIdentifier("EmergencyViewCell") as! EmergencyViewCell
-        //self.view.backgroundColor = cell.backgroundColor
+        self.tableView.estimatedRowHeight = 84
+        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func callNumber(number: String)

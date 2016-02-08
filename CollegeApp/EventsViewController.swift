@@ -78,7 +78,7 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
         
         if event.link != nil
         {
-            UIApplication.sharedApplication().openURL(event.link!)
+            navigationController?.pushViewController(WebView(url: event.link!), animated: true)
         }
         
         else

@@ -11,15 +11,17 @@ import AVFoundation
 import AVKit
 
 class HomescreenViewController: UIViewController
-{
+{    
     @IBOutlet weak var backgroundImageView: UIImageView!
-
+    
+    let avplayer = AVPlayer(URL:  NSBundle.mainBundle().URLForResource("homescreenBackground", withExtension: "mp4")!)
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         //Set the background view to move with parallax
-        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
+        /*let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
         horizontalMotionEffect.minimumRelativeValue = -20
         horizontalMotionEffect.maximumRelativeValue = 20
         
@@ -30,15 +32,42 @@ class HomescreenViewController: UIViewController
         let group = UIMotionEffectGroup()
         group.motionEffects = [verticalMotionEffect, horizontalMotionEffect]
         
-        backgroundImageView.addMotionEffect(group)
+        backgroundImageView.addMotionEffect(group)*/
         
-        /*let url = NSBundle.mainBundle().URLForResource("hooverTower", withExtension: "m4v")
-        let avplayer = AVPlayer(URL: url!)
         let avplayerLayer = AVPlayerLayer(player: avplayer)
         avplayerLayer.frame = view.frame
         avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        avplayer.play()
         
-        view.layer.addSublayer(avplayerLayer)*/
+        avplayer.actionAtItemEnd = .None
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "finishedVideo", name: AVPlayerItemDidPlayToEndTimeNotification, object: avplayer.currentItem)
+        
+        view.layer.addSublayer(avplayerLayer)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "viewDidBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
+        avplayer.play()
+    }
+    
+    func viewDidBecomeActive()
+    {
+        self.viewDidAppear(false)
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        avplayer.play()
+    }
+    
+    override func viewDidDisappear(animated: Bool)
+    {
+        super.viewDidDisappear(animated)
+        
+        avplayer.pause()
+    }
+    
+    func finishedVideo()
+    {
+        avplayer.seekToTime(CMTime(seconds: 0, preferredTimescale: 1))
+        avplayer.play()
     }
 }

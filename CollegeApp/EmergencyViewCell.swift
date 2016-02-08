@@ -12,10 +12,12 @@ class EmergencyViewCell: UITableViewCell
 {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var numberLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     func showEmergencyContact(contact: EmergencyContact)
     {
         self.titleLabel.text = contact.title
         self.numberLabel.text = contact.formattedNumber
+        self.descriptionLabel.text = contact.description
     }
 }
