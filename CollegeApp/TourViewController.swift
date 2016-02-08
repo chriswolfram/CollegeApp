@@ -60,7 +60,7 @@ class TourViewController: UIViewController, MKMapViewDelegate
             renderer.strokeColor = UIColor.redColor()
             return renderer
         }
-            
+        
         else
         {
             return MKOverlayRenderer(overlay: overlay)
@@ -88,11 +88,6 @@ class TourViewController: UIViewController, MKMapViewDelegate
         TourViewPageController.sharedInstance?.updateDetailView(tour)
     }
     
-    func continueToNextLandmark()
-    {
-        goToLandmarkAtIndex((tour.currentIndex + 1) % tour.landmarks.count)
-    }
-    
     func didEnterRegion(beaconRegion: CLBeaconRegion)
     {
         for (i, landmark) in tour.landmarks.enumerate()
@@ -106,8 +101,16 @@ class TourViewController: UIViewController, MKMapViewDelegate
         }
     }
     
-    @IBAction func skipButton(sender: UIBarButtonItem)
+    @IBAction func mapModeChanged(segmentedControl: UISegmentedControl)
     {
-        continueToNextLandmark()
+        switch(segmentedControl.selectedSegmentIndex)
+        {
+        case 0:
+            mapView.mapType = .Standard
+        case 1:
+            mapView.mapType = .SatelliteFlyover
+        default:
+            break
+        }
     }
 }

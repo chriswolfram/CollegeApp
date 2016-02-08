@@ -42,11 +42,10 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
     {
-        tour.currentIndex = tour.landmarks.indexOf((viewController as! TourViewDetailController).landmark)!
-        TourViewController.sharedInstance?.updateTourView(tour)
-        if let previousLandmark = tour.previousLandmark()
+        let index = tour.landmarks.indexOf((viewController as! TourViewDetailController).landmark)! - 1
+        if 0 <= index && index < tour.landmarks.count
         {
-            return detailViewController(previousLandmark)
+            return detailViewController(tour.landmarks[index])
         }
         
         return nil
@@ -54,14 +53,22 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
     {
-        tour.currentIndex = tour.landmarks.indexOf((viewController as! TourViewDetailController).landmark)!
-        TourViewController.sharedInstance?.updateTourView(tour)
-        if let nextLandmark = tour.nextLandmark()
+        let index = tour.landmarks.indexOf((viewController as! TourViewDetailController).landmark)! + 1
+        if 0 <= index && index < tour.landmarks.count
         {
-            return detailViewController(nextLandmark)
+            return detailViewController(tour.landmarks[index])
         }
         
         return nil
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)
+    {
+        if completed
+        {
+            tour.currentIndex = tour.landmarks.indexOf((pageViewController.viewControllers!.first! as! TourViewDetailController).landmark)!
+            TourViewController.sharedInstance?.updateTourView(tour)
+        }
     }
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int

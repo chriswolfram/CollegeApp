@@ -22,9 +22,9 @@
 		9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */; };
 		9DA434321C67F6980007256B /* homescreenBackground.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9DA434311C67F6630007256B /* homescreenBackground.mp4 */; };
 		9DA434341C6821250007256B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA434331C6821250007256B /* WebView.swift */; };
+		9DA4343B1C6859AB0007256B /* emblem.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DA4343A1C6859AB0007256B /* emblem.jpg */; };
 		9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D711C2B625100874227 /* EmergencyViewController.swift */; };
 		9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D741C2B680100874227 /* EmergencyViewCell.swift */; };
-		9DB25D781C2BB64700874227 /* homescreenBackground.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */; };
 		9DCB663C1C251B2A0083586E /* CollegeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB663B1C251B2A0083586E /* CollegeAppTests.swift */; };
 		9DCB66471C251B2A0083586E /* CollegeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66461C251B2A0083586E /* CollegeAppUITests.swift */; };
 		9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66541C251B510083586E /* AppDelegate.swift */; };
@@ -74,9 +74,9 @@
 		9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenButton.swift; sourceTree = "<group>"; };
 		9DA434311C67F6630007256B /* homescreenBackground.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = homescreenBackground.mp4; sourceTree = "<group>"; };
 		9DA434331C6821250007256B /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		9DA4343A1C6859AB0007256B /* emblem.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = emblem.jpg; sourceTree = "<group>"; };
 		9DB25D711C2B625100874227 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
 		9DB25D741C2B680100874227 /* EmergencyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewCell.swift; sourceTree = "<group>"; };
-		9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = homescreenBackground.jpeg; sourceTree = "<group>"; };
 		9DCB66231C251B2A0083586E /* CollegeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB66371C251B2A0083586E /* CollegeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollegeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB663B1C251B2A0083586E /* CollegeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeAppTests.swift; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 				9D4794D41C55743400F2261B /* SchoolNews.swift */,
 				9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */,
 				9D4794D61C558B1700F2261B /* SchoolTours.swift */,
-				9DB25D771C2BB64700874227 /* homescreenBackground.jpeg */,
+				9DA4343A1C6859AB0007256B /* emblem.jpg */,
 				9DA434311C67F6630007256B /* homescreenBackground.mp4 */,
 				9D209DAD1C668ADE00AA8C50 /* TourImages */,
 			);
@@ -373,8 +373,8 @@
 				9D209DAC1C668AD600AA8C50 /* HooverTower.jpg in Resources */,
 				9DA434321C67F6980007256B /* homescreenBackground.mp4 in Resources */,
 				9DCB66641C251B600083586E /* Assets.xcassets in Resources */,
-				9DB25D781C2BB64700874227 /* homescreenBackground.jpeg in Resources */,
 				9DCB66631C251B600083586E /* Main.storyboard in Resources */,
+				9DA4343B1C6859AB0007256B /* emblem.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

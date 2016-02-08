@@ -19,6 +19,8 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
     var searchBar = UISearchBar()
     var gestureRecognizer = UITapGestureRecognizer()
     
+    var segmentedControl: UISegmentedControl!
+    
     @IBOutlet var resultsView: MapSearchResultsView!
     
     override func viewDidLoad()
@@ -60,15 +62,25 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
     
     override func viewWillAppear(animated: Bool)
     {
-        //Show toolbar and add tracking toggle button
+        //Show toolbar and add tracking toggle button and map vs satellite segmented controller
         super.viewWillAppear(animated);
         
+        //Make tracking button
         let trackingButton = MKUserTrackingBarButtonItem(mapView: mapView)
         trackingButton.customView?.tintColor = UIColor.whiteColor()
         
-        self.navigationController?.toolbar.barTintColor = self.navigationController?.navigationBar.barTintColor
+        //Make segmented controller
+        segmentedControl = UISegmentedControl(items: ["Map", "Satellite"])
+        segmentedControl.tintColor = UIColor.whiteColor()
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: "mapModeChanged", forControlEvents: .ValueChanged)
+        let segmentedControlItem = UIBarButtonItem(customView: segmentedControl)
         
-        self.navigationController?.visibleViewController?.setToolbarItems([trackingButton], animated: animated)
+        //Add all to the toolbar
+        self.navigationController?.visibleViewController?.setToolbarItems([trackingButton, segmentedControlItem], animated: animated)
+        
+        //Show the toolbar
+        self.navigationController?.toolbar.barTintColor = self.navigationController?.navigationBar.barTintColor
         self.navigationController?.setToolbarHidden(false, animated: animated)
     }
     
@@ -77,6 +89,19 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         //Hide toolbar
         super.viewWillDisappear(animated);
         self.navigationController?.setToolbarHidden(true, animated: animated)
+    }
+    
+    func mapModeChanged()
+    {
+        switch(segmentedControl.selectedSegmentIndex)
+        {
+        case 0:
+            mapView.mapType = .Standard
+        case 1:
+            mapView.mapType = .SatelliteFlyover
+        default:
+            break
+        }
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)

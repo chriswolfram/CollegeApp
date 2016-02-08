@@ -48,13 +48,32 @@ class TourLandmark: Landmark
     }
 }
 
+protocol TourDelegate
+{
+    func tour(tour: Tour, newIndex: Int)
+}
+
 class Tour
 {
     static var sharedInstance: Tour?
     
     let title: String?
     let landmarks: [TourLandmark]
-    var currentIndex = 0
+    var delegates = [TourDelegate]()
+    private var internalCurrentIndex = 0
+    var currentIndex: Int
+    {
+        get
+        {
+            return internalCurrentIndex
+        }
+        
+        set(newIndex)
+        {
+            internalCurrentIndex = newIndex
+            delegates.forEach({$0.tour(self, newIndex: newIndex)})
+        }
+    }
     
     var currentLandmark: TourLandmark
     {
@@ -68,25 +87,5 @@ class Tour
     {
         self.landmarks = landmarks
         self.title = title
-    }
-    
-    func nextLandmark() -> TourLandmark?
-    {
-        if (currentIndex + 1) < landmarks.count
-        {
-            return landmarks[currentIndex + 1]
-        }
-        
-        return nil
-    }
-    
-    func previousLandmark() -> TourLandmark?
-    {
-        if (currentIndex - 1) >= 0
-        {
-            return landmarks[currentIndex - 1]
-        }
-        
-        return nil
     }
 }

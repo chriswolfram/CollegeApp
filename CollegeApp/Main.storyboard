@@ -62,9 +62,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="homescreenBackground.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="wLn-46-pCl">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFz-vb-B0u" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.33249253034591675" green="0.38002842664718628" blue="0.99133133888244629" alpha="1" colorSpace="calibratedRGB"/>
@@ -193,19 +190,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wLn-46-pCl" firstAttribute="top" secondItem="ETp-NJ-F15" secondAttribute="top" constant="-20" id="0VK-Y2-aOl"/>
                             <constraint firstItem="sFz-vb-B0u" firstAttribute="leading" secondItem="ftp-gh-bz2" secondAttribute="trailing" constant="45" id="8CT-RK-J0W"/>
                             <constraint firstItem="qsU-NV-GdH" firstAttribute="top" secondItem="txd-tT-DFq" secondAttribute="bottom" constant="28" id="9aU-mU-64C"/>
                             <constraint firstItem="qsU-NV-GdH" firstAttribute="leading" secondItem="UHv-8f-O20" secondAttribute="trailing" constant="45" id="APO-GI-c5n"/>
-                            <constraint firstItem="FOn-21-RnQ" firstAttribute="top" secondItem="wLn-46-pCl" secondAttribute="bottom" constant="-20" id="Dea-iO-MbL"/>
                             <constraint firstItem="UHv-8f-O20" firstAttribute="top" secondItem="txd-tT-DFq" secondAttribute="bottom" constant="28" id="Iln-JL-24O"/>
                             <constraint firstItem="txd-tT-DFq" firstAttribute="centerX" secondItem="ETp-NJ-F15" secondAttribute="centerX" id="KC7-hU-J9B"/>
                             <constraint firstItem="qsU-NV-GdH" firstAttribute="leading" secondItem="txd-tT-DFq" secondAttribute="trailing" constant="-30" id="LIC-x4-krD"/>
                             <constraint firstItem="sFz-vb-B0u" firstAttribute="leading" secondItem="txd-tT-DFq" secondAttribute="trailing" constant="-30" id="Rin-p1-u8R"/>
                             <constraint firstItem="txd-tT-DFq" firstAttribute="centerY" secondItem="ETp-NJ-F15" secondAttribute="centerY" id="Uu9-Rk-rQc"/>
-                            <constraint firstItem="wLn-46-pCl" firstAttribute="leading" secondItem="ETp-NJ-F15" secondAttribute="leading" constant="-20" id="XfO-US-65W"/>
                             <constraint firstItem="txd-tT-DFq" firstAttribute="top" secondItem="ftp-gh-bz2" secondAttribute="bottom" constant="28" id="iBo-gW-3qH"/>
-                            <constraint firstAttribute="trailing" secondItem="wLn-46-pCl" secondAttribute="trailing" constant="-20" id="kXn-JV-aE7"/>
                             <constraint firstItem="txd-tT-DFq" firstAttribute="top" secondItem="sFz-vb-B0u" secondAttribute="bottom" constant="28" id="l7X-gm-c51"/>
                             <constraint firstItem="txd-tT-DFq" firstAttribute="leading" secondItem="UHv-8f-O20" secondAttribute="trailing" constant="-25" id="vYG-hd-6Lb"/>
                             <constraint firstItem="txd-tT-DFq" firstAttribute="leading" secondItem="ftp-gh-bz2" secondAttribute="trailing" constant="-25" id="xiA-GU-oV5"/>
@@ -219,7 +212,6 @@
                                 <exclude reference="txd-tT-DFq"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Dea-iO-MbL"/>
                                 <exclude reference="Iln-JL-24O"/>
                                 <exclude reference="9aU-mU-64C"/>
                                 <exclude reference="APO-GI-c5n"/>
@@ -232,9 +224,6 @@
                                 <exclude reference="l7X-gm-c51"/>
                                 <exclude reference="vYG-hd-6Lb"/>
                                 <exclude reference="xiA-GU-oV5"/>
-                                <exclude reference="0VK-Y2-aOl"/>
-                                <exclude reference="XfO-US-65W"/>
-                                <exclude reference="kXn-JV-aE7"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -246,7 +235,6 @@
                                 <include reference="txd-tT-DFq"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Dea-iO-MbL"/>
                                 <include reference="Iln-JL-24O"/>
                                 <include reference="9aU-mU-64C"/>
                                 <exclude reference="APO-GI-c5n"/>
@@ -259,16 +247,10 @@
                                 <include reference="l7X-gm-c51"/>
                                 <include reference="vYG-hd-6Lb"/>
                                 <include reference="xiA-GU-oV5"/>
-                                <include reference="0VK-Y2-aOl"/>
-                                <include reference="XfO-US-65W"/>
-                                <include reference="kXn-JV-aE7"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Stanford" id="Uhq-Qb-FiU"/>
-                    <connections>
-                        <outlet property="backgroundImageView" destination="wLn-46-pCl" id="Vnu-IF-Hco"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Py6-mV-hXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,10 +266,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmergencyViewCell" rowHeight="97" id="zoq-ZE-SY5" customClass="EmergencyViewCell" customModule="CollegeApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="63"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zoq-ZE-SY5" id="RI7-R8-dB4">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="62.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="96.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJc-vc-I3t">
@@ -487,10 +469,19 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Tour Title" id="gsN-j5-YCa">
-                        <barButtonItem key="rightBarButtonItem" title="Skip" id="s1H-1l-SSq">
-                            <connections>
-                                <action selector="skipButton:" destination="70N-rS-Ghe" id="fQc-xn-Qi8"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="tUW-5H-EMu">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="V0O-CR-uXo">
+                                <rect key="frame" x="-60" y="-14" width="121" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Map"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mapModeChanged:" destination="70N-rS-Ghe" eventType="valueChanged" id="CRK-gR-3XO"/>
+                                </connections>
+                            </segmentedControl>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1216,7 +1207,4 @@
             <point key="canvasLocation" x="1035" y="3490.5"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="homescreenBackground.jpeg" width="3840" height="2160"/>
-    </resources>
 </document>
