@@ -50,7 +50,7 @@ class TourViewDetailController: UIViewController
     
     @IBAction func tapRecognizer(sender: UITapGestureRecognizer)
     {
-        /*let popover = storyboard?.instantiateViewControllerWithIdentifier("TourViewDetailControllerPopover") as! TourViewDetailControllerPopover
+        let popover = storyboard?.instantiateViewControllerWithIdentifier("TourViewDetailControllerPopover") as! TourViewDetailControllerPopover
         
         let _ = popover.view
         
@@ -62,6 +62,6 @@ class TourViewDetailController: UIViewController
             popover.imageView.image = image
         }
         
-        navigationController?.pushViewController(popover, animated: true)*/
+        navigationController?.pushViewController(popover, animated: true)
     }
 }
