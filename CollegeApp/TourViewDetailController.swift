@@ -47,4 +47,21 @@ class TourViewDetailController: UIViewController
         
         return detailView
     }
+    
+    @IBAction func tapRecognizer(sender: UITapGestureRecognizer)
+    {
+        /*let popover = storyboard?.instantiateViewControllerWithIdentifier("TourViewDetailControllerPopover") as! TourViewDetailControllerPopover
+        
+        let _ = popover.view
+        
+        popover.titleLabel.text = landmark.title
+        popover.descriptionLabel.text = landmark.descriptionString
+        
+        if landmark.thumbnailPath != nil, let bundlePath = NSBundle.mainBundle().pathForResource(landmark.thumbnailPath, ofType: "jpg"), let image = UIImage(contentsOfFile: bundlePath)
+        {
+            popover.imageView.image = image
+        }
+        
+        navigationController?.pushViewController(popover, animated: true)*/
+    }
 }

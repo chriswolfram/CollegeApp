@@ -12,13 +12,24 @@
 		284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B81C39F3EC003AF5E3 /* XMLElement.swift */; };
 		9D00A5A51C44F42100C0DF6D /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D00A5A41C44F42000C0DF6D /* School.swift */; };
 		9D209DAA1C653F5200AA8C50 /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */; };
-		9D209DAC1C668AD600AA8C50 /* HooverTower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D209DAB1C668AD600AA8C50 /* HooverTower.jpg */; };
 		9D45EA771C5FE31600FA54F2 /* SchoolEmergencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D45EA761C5FE31600FA54F2 /* SchoolEmergencies.swift */; };
 		9D4794D11C55450A00F2261B /* SchoolLandmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */; };
 		9D4794D31C55462400F2261B /* SchoolEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D21C55462400F2261B /* SchoolEvents.swift */; };
 		9D4794D51C55743400F2261B /* SchoolNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D41C55743400F2261B /* SchoolNews.swift */; };
 		9D4794D71C558B1700F2261B /* SchoolTours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D61C558B1700F2261B /* SchoolTours.swift */; };
 		9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E8BD81C27335F00960097 /* NewsViewCell.swift */; };
+		9D55B5831C68EB0A00B34017 /* Angel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5781C68EB0A00B34017 /* Angel.jpg */; };
+		9D55B5841C68EB0A00B34017 /* Barn.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5791C68EB0A00B34017 /* Barn.JPG */; };
+		9D55B5851C68EB0A00B34017 /* Burghers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57A1C68EB0A00B34017 /* Burghers.jpg */; };
+		9D55B5861C68EB0A00B34017 /* Cactus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57B1C68EB0A00B34017 /* Cactus.jpg */; };
+		9D55B5871C68EB0A00B34017 /* Cantor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57C1C68EB0A00B34017 /* Cantor.jpg */; };
+		9D55B5881C68EB0A00B34017 /* Hoover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57D1C68EB0A00B34017 /* Hoover.jpg */; };
+		9D55B5891C68EB0A00B34017 /* Mausoleum.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57E1C68EB0A00B34017 /* Mausoleum.jpg */; };
+		9D55B58A1C68EB0A00B34017 /* Memorial.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57F1C68EB0A00B34017 /* Memorial.jpg */; };
+		9D55B58B1C68EB0A00B34017 /* Quad.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5801C68EB0A00B34017 /* Quad.JPG */; };
+		9D55B58C1C68EB0A00B34017 /* Stadium.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5811C68EB0A00B34017 /* Stadium.jpg */; };
+		9D55B58D1C68EB0A00B34017 /* Tresidder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5821C68EB0A00B34017 /* Tresidder.jpg */; };
+		9D55B58F1C68F76A00B34017 /* TourViewDetailControllerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D55B58E1C68F76A00B34017 /* TourViewDetailControllerPopover.swift */; };
 		9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */; };
 		9DA434321C67F6980007256B /* homescreenBackground.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9DA434311C67F6630007256B /* homescreenBackground.mp4 */; };
 		9DA434341C6821250007256B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA434331C6821250007256B /* WebView.swift */; };
@@ -64,13 +75,24 @@
 		284551B81C39F3EC003AF5E3 /* XMLElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLElement.swift; sourceTree = "<group>"; usesTabs = 0; };
 		9D00A5A41C44F42000C0DF6D /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
-		9D209DAB1C668AD600AA8C50 /* HooverTower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HooverTower.jpg; sourceTree = "<group>"; };
 		9D45EA761C5FE31600FA54F2 /* SchoolEmergencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolEmergencies.swift; sourceTree = "<group>"; };
 		9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolLandmarks.swift; sourceTree = "<group>"; };
 		9D4794D21C55462400F2261B /* SchoolEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolEvents.swift; sourceTree = "<group>"; };
 		9D4794D41C55743400F2261B /* SchoolNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolNews.swift; sourceTree = "<group>"; };
 		9D4794D61C558B1700F2261B /* SchoolTours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolTours.swift; sourceTree = "<group>"; };
 		9D4E8BD81C27335F00960097 /* NewsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
+		9D55B5781C68EB0A00B34017 /* Angel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Angel.jpg; sourceTree = "<group>"; };
+		9D55B5791C68EB0A00B34017 /* Barn.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Barn.JPG; sourceTree = "<group>"; };
+		9D55B57A1C68EB0A00B34017 /* Burghers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Burghers.jpg; sourceTree = "<group>"; };
+		9D55B57B1C68EB0A00B34017 /* Cactus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cactus.jpg; sourceTree = "<group>"; };
+		9D55B57C1C68EB0A00B34017 /* Cantor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cantor.jpg; sourceTree = "<group>"; };
+		9D55B57D1C68EB0A00B34017 /* Hoover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Hoover.jpg; sourceTree = "<group>"; };
+		9D55B57E1C68EB0A00B34017 /* Mausoleum.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mausoleum.jpg; sourceTree = "<group>"; };
+		9D55B57F1C68EB0A00B34017 /* Memorial.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Memorial.jpg; sourceTree = "<group>"; };
+		9D55B5801C68EB0A00B34017 /* Quad.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Quad.JPG; sourceTree = "<group>"; };
+		9D55B5811C68EB0A00B34017 /* Stadium.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Stadium.jpg; sourceTree = "<group>"; };
+		9D55B5821C68EB0A00B34017 /* Tresidder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tresidder.jpg; sourceTree = "<group>"; };
+		9D55B58E1C68F76A00B34017 /* TourViewDetailControllerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewDetailControllerPopover.swift; sourceTree = "<group>"; };
 		9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenButton.swift; sourceTree = "<group>"; };
 		9DA434311C67F6630007256B /* homescreenBackground.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = homescreenBackground.mp4; sourceTree = "<group>"; };
 		9DA434331C6821250007256B /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -136,7 +158,17 @@
 		9D209DAD1C668ADE00AA8C50 /* TourImages */ = {
 			isa = PBXGroup;
 			children = (
-				9D209DAB1C668AD600AA8C50 /* HooverTower.jpg */,
+				9D55B5781C68EB0A00B34017 /* Angel.jpg */,
+				9D55B5791C68EB0A00B34017 /* Barn.JPG */,
+				9D55B57A1C68EB0A00B34017 /* Burghers.jpg */,
+				9D55B57B1C68EB0A00B34017 /* Cactus.jpg */,
+				9D55B57C1C68EB0A00B34017 /* Cantor.jpg */,
+				9D55B57D1C68EB0A00B34017 /* Hoover.jpg */,
+				9D55B57E1C68EB0A00B34017 /* Mausoleum.jpg */,
+				9D55B57F1C68EB0A00B34017 /* Memorial.jpg */,
+				9D55B5801C68EB0A00B34017 /* Quad.JPG */,
+				9D55B5811C68EB0A00B34017 /* Stadium.jpg */,
+				9D55B5821C68EB0A00B34017 /* Tresidder.jpg */,
 			);
 			name = TourImages;
 			sourceTree = "<group>";
@@ -260,6 +292,7 @@
 				9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */,
 				9DF316711C52E2FE00D51CB3 /* TourViewPageController.swift */,
 				9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */,
+				9D55B58E1C68F76A00B34017 /* TourViewDetailControllerPopover.swift */,
 			);
 			name = TourView;
 			sourceTree = "<group>";
@@ -369,12 +402,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D55B58C1C68EB0A00B34017 /* Stadium.jpg in Resources */,
+				9D55B58B1C68EB0A00B34017 /* Quad.JPG in Resources */,
+				9D55B58D1C68EB0A00B34017 /* Tresidder.jpg in Resources */,
+				9D55B5891C68EB0A00B34017 /* Mausoleum.jpg in Resources */,
 				9DCB66651C251B600083586E /* LaunchScreen.storyboard in Resources */,
-				9D209DAC1C668AD600AA8C50 /* HooverTower.jpg in Resources */,
+				9D55B5861C68EB0A00B34017 /* Cactus.jpg in Resources */,
+				9D55B5871C68EB0A00B34017 /* Cantor.jpg in Resources */,
+				9D55B5841C68EB0A00B34017 /* Barn.JPG in Resources */,
 				9DA434321C67F6980007256B /* homescreenBackground.mp4 in Resources */,
+				9D55B58A1C68EB0A00B34017 /* Memorial.jpg in Resources */,
 				9DCB66641C251B600083586E /* Assets.xcassets in Resources */,
+				9D55B5831C68EB0A00B34017 /* Angel.jpg in Resources */,
+				9D55B5851C68EB0A00B34017 /* Burghers.jpg in Resources */,
 				9DCB66631C251B600083586E /* Main.storyboard in Resources */,
 				9DA4343B1C6859AB0007256B /* emblem.jpg in Resources */,
+				9D55B5881C68EB0A00B34017 /* Hoover.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +465,7 @@
 				9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */,
 				9DCB665D1C251B510083586E /* MapSearchResultsView.swift in Sources */,
 				284551B71C38F00F003AF5E3 /* EventsViewCell.swift in Sources */,
+				9D55B58F1C68F76A00B34017 /* TourViewDetailControllerPopover.swift in Sources */,
 				9D4794D31C55462400F2261B /* SchoolEvents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

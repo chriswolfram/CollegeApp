@@ -15,5 +15,5 @@ class School
     
     static let beaconUUID = NSUUID(UUIDString: "DE810A8D-5519-44BD-8767-BC24521E386D")!
     
-    static let schoolRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.238, longitude: -71.1135), span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.01))
+    static let schoolRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.4300, longitude: -122.1700), span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.01))
 }
