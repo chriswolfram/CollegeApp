@@ -10,6 +10,7 @@
 		284551B21C33CD9C003AF5E3 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B11C33CD9C003AF5E3 /* EventsViewController.swift */; };
 		284551B71C38F00F003AF5E3 /* EventsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B61C38F00F003AF5E3 /* EventsViewCell.swift */; };
 		284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B81C39F3EC003AF5E3 /* XMLElement.swift */; };
+		5334FD12338A95A93A8AF62B /* Pods_CollegeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4ED7331B2D4AF29DFF9AD28 /* Pods_CollegeApp.framework */; };
 		9D00A5A51C44F42100C0DF6D /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D00A5A41C44F42000C0DF6D /* School.swift */; };
 		9D209DAA1C653F5200AA8C50 /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */; };
 		9D45EA771C5FE31600FA54F2 /* SchoolEmergencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D45EA761C5FE31600FA54F2 /* SchoolEmergencies.swift */; };
@@ -47,6 +48,7 @@
 		9DCB66641C251B600083586E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB66611C251B600083586E /* Assets.xcassets */; };
 		9DCB66651C251B600083586E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB66621C251B600083586E /* LaunchScreen.storyboard */; };
 		9DCB66671C2547AC0083586E /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66661C2547AC0083586E /* NewsViewController.swift */; };
+		9DD255881C6BA93E00CBBD60 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD255871C6BA93E00CBBD60 /* MessageViewController.swift */; };
 		9DD6A1E81C4D7FCB0025FE44 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */; };
 		9DF316701C5286E900D51CB3 /* TourViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */; };
 		9DF316721C52E2FE00D51CB3 /* TourViewPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF316711C52E2FE00D51CB3 /* TourViewPageController.swift */; };
@@ -73,6 +75,8 @@
 		284551B11C33CD9C003AF5E3 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		284551B61C38F00F003AF5E3 /* EventsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewCell.swift; sourceTree = "<group>"; };
 		284551B81C39F3EC003AF5E3 /* XMLElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLElement.swift; sourceTree = "<group>"; usesTabs = 0; };
+		34B7B6B511ED2056A6AFEE5E /* Pods-CollegeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollegeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollegeApp/Pods-CollegeApp.release.xcconfig"; sourceTree = "<group>"; };
+		77191427505691AADC7787A7 /* Pods-CollegeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollegeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollegeApp/Pods-CollegeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9D00A5A41C44F42000C0DF6D /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
 		9D45EA761C5FE31600FA54F2 /* SchoolEmergencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolEmergencies.swift; sourceTree = "<group>"; };
@@ -116,9 +120,11 @@
 		9DCB66611C251B600083586E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DCB66621C251B600083586E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DCB66661C2547AC0083586E /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		9DD255871C6BA93E00CBBD60 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
 		9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewDetailController.swift; sourceTree = "<group>"; };
 		9DF316711C52E2FE00D51CB3 /* TourViewPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewPageController.swift; sourceTree = "<group>"; };
+		C4ED7331B2D4AF29DFF9AD28 /* Pods_CollegeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollegeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5334FD12338A95A93A8AF62B /* Pods_CollegeApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +212,8 @@
 				9DCB663A1C251B2A0083586E /* CollegeAppTests */,
 				9DCB66451C251B2A0083586E /* CollegeAppUITests */,
 				9DCB66241C251B2A0083586E /* Products */,
+				ABB40F7131AD36444DA582DE /* Pods */,
+				C2D4C9A6F2716ED2FC1D3158 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -226,6 +235,7 @@
 				9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */,
 				9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */,
 				9DA434331C6821250007256B /* WebView.swift */,
+				9DD255871C6BA93E00CBBD60 /* MessageViewController.swift */,
 				9DCB66681C2548170083586E /* MapView */,
 				9DCB66691C25481F0083586E /* QRCodeView */,
 				9DCB666A1C2548280083586E /* NewsView */,
@@ -297,6 +307,23 @@
 			name = TourView;
 			sourceTree = "<group>";
 		};
+		ABB40F7131AD36444DA582DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				77191427505691AADC7787A7 /* Pods-CollegeApp.debug.xcconfig */,
+				34B7B6B511ED2056A6AFEE5E /* Pods-CollegeApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C2D4C9A6F2716ED2FC1D3158 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4ED7331B2D4AF29DFF9AD28 /* Pods_CollegeApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -304,9 +331,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DCB664B1C251B2A0083586E /* Build configuration list for PBXNativeTarget "CollegeApp" */;
 			buildPhases = (
+				A86559936CE70A89685F6E58 /* Check Pods Manifest.lock */,
 				9DCB661F1C251B2A0083586E /* Sources */,
 				9DCB66201C251B2A0083586E /* Frameworks */,
 				9DCB66211C251B2A0083586E /* Resources */,
+				C9E898E6E2CF90C2C61A0D2F /* Embed Pods Frameworks */,
+				31A36F03250BBC710A2AF871 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -437,6 +467,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		31A36F03250BBC710A2AF871 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CollegeApp/Pods-CollegeApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A86559936CE70A89685F6E58 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C9E898E6E2CF90C2C61A0D2F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CollegeApp/Pods-CollegeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9DCB661F1C251B2A0083586E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -456,6 +534,7 @@
 				9DF316701C5286E900D51CB3 /* TourViewDetailController.swift in Sources */,
 				9DF316721C52E2FE00D51CB3 /* TourViewPageController.swift in Sources */,
 				9DCB66671C2547AC0083586E /* NewsViewController.swift in Sources */,
+				9DD255881C6BA93E00CBBD60 /* MessageViewController.swift in Sources */,
 				284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */,
 				9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */,
 				9D00A5A51C44F42100C0DF6D /* School.swift in Sources */,
@@ -585,6 +664,7 @@
 		};
 		9DCB664C1C251B2A0083586E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77191427505691AADC7787A7 /* Pods-CollegeApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -606,6 +686,7 @@
 		};
 		9DCB664D1C251B2A0083586E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34B7B6B511ED2056A6AFEE5E /* Pods-CollegeApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
