@@ -34,12 +34,15 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         //Load events
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+        if School.events.count == 0
         {
-            School.updateEvents()
-            dispatch_async(dispatch_get_main_queue())
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
             {
-                self.tableView.reloadData()
+                School.updateEvents()
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    self.tableView.reloadData()
+                }
             }
         }
     }

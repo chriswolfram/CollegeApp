@@ -18,6 +18,16 @@ class NewsViewCell: UITableViewCell
     {
         titleLabel.text = story.title
         descriptionLabel.text = story.description
-        thumbnailView?.image = story.image
+        
+        if story.image == nil
+        {
+            thumbnailView?.backgroundColor = UIColor(white: 0.5, alpha: 1.0)
+        }
+        
+        else
+        {
+            thumbnailView?.image = story.image
+            thumbnailView?.backgroundColor = UIColor.clearColor()
+        }
     }
 }

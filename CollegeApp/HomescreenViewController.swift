@@ -56,6 +56,9 @@ class HomescreenViewController: UIViewController
     override func viewDidAppear(animated: Bool)
     {
         avplayer.play()
+        
+        School.newsStories = []
+        School.events = []
     }
     
     override func viewDidDisappear(animated: Bool)

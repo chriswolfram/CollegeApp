@@ -54,12 +54,11 @@ extension School
         }
     
         //Asynchronously get thumbnails
-        newsStories.forEach
+        for (i, story) in newsStories.enumerate()
         {
-            story in
             story.loadImage
             {
-                newsDelegate?.schoolNewsDidLoadImage()
+                newsDelegate?.schoolNewsDidLoadImage(i)
             }
         }
     }
@@ -67,7 +66,7 @@ extension School
 
 protocol SchoolNewsDelegate
 {
-    func schoolNewsDidLoadImage()
+    func schoolNewsDidLoadImage(index: Int)
 }
 
 class NewsStory
@@ -91,6 +90,12 @@ class NewsStory
                         self.image = image
                         callback()
                     }
+                }
+                
+                else
+                {
+                    self.imageURL = nil
+                    callback()
                 }
             }
         }

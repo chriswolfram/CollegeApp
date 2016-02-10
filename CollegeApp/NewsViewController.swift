@@ -29,24 +29,20 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         //Load news stories
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+        if School.newsStories.count == 0
         {
-            School.updateNewsStories()
-            dispatch_async(dispatch_get_main_queue())
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
             {
-                self.tableView.reloadData()
+                School.updateNewsStories()
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
     
-    override func viewDidDisappear(animated: Bool)
-    {
-        super.viewDidDisappear(animated)
-        
-        School.newsStories = []
-    }
-    
-    func schoolNewsDidLoadImage()
+    func schoolNewsDidLoadImage(index: Int)
     {
         dispatch_async(dispatch_get_main_queue())
         {
@@ -59,34 +55,43 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
         return School.newsStories.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func cellTypeAtIndex(indexPath: NSIndexPath) -> String
     {
         let story = School.newsStories[indexPath.row]
         
         var cellIdentifier: String!
         
-        if story.image == nil
+        if story.imageURL == nil
         {
             cellIdentifier = "NewsViewTextCell"
         }
-        
+            
         else if indexPath.row % 4 == 0
         {
             cellIdentifier = "NewsViewFeaturedCell"
         }
-        
+            
         else
         {
             cellIdentifier = "NewsViewRegularCell"
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! NewsViewCell
+        return cellIdentifier
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let story = School.newsStories[indexPath.row]
         
+        let cellIdentifier = cellTypeAtIndex(indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! NewsViewCell
         cell.showNewsStory(story)
+        
+        cell.updateConstraints()
         
         return cell
     }
-    
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let story = School.newsStories[indexPath.row]
@@ -112,7 +117,8 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
     @IBAction func refresh(sender: AnyObject)
     {
         School.updateNewsStories()
-
+        
         self.refreshControl?.endRefreshing()
+        tableView.reloadData()
     }
 }
