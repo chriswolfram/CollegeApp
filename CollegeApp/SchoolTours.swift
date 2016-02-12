@@ -10,7 +10,7 @@ import MapKit
 
 extension School
 {
-    static let useBeaconsTours = true
+    static let useBeaconsTours = false
     
     static let tours =
     [

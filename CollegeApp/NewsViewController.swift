@@ -110,15 +110,15 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     //Run if the refresh controller is triggered (slide down to refresh)
     @IBAction func refresh(sender: AnyObject)
     {
         School.updateNewsStories()
+        tableView.reloadData()
         
         self.refreshControl?.endRefreshing()
-        tableView.reloadData()
     }
 }

@@ -93,12 +93,13 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     @IBAction func refresh(sender: AnyObject)
     {
         School.updateEvents()
+        tableView.reloadData()
         
         self.refreshControl?.endRefreshing()
     }
