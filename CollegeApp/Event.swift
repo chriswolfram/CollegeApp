@@ -19,7 +19,9 @@ class Event
     var location: String?
     var description: String?
     
-    func loadImage(callback: ()->Void)
+    var delegate: EventDelegate?
+    
+    func loadImage()
     {
         if image == nil && imageURL != nil
         {
@@ -30,7 +32,7 @@ class Event
                     dispatch_async(dispatch_get_main_queue())
                     {
                         self.image = image
-                        callback()
+                        self.delegate?.didLoadImage()
                     }
                 }
                 
@@ -39,10 +41,15 @@ class Event
                     dispatch_async(dispatch_get_main_queue())
                     {
                         self.image = nil
-                        callback()
+                        self.delegate?.didLoadImage()
                     }
                 }
             }
         }
     }
+}
+
+protocol EventDelegate
+{
+    func didLoadImage()
 }

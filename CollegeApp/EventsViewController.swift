@@ -61,7 +61,7 @@ class EventsViewController: UITableViewController
         let event = School.events[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("EventsViewCell", forIndexPath: indexPath) as! EventsViewCell
         
-        cell.showEvent(event)
+        cell.event = event
         
         return cell
     }

@@ -115,6 +115,9 @@ extension School
                 }
             }
         }
+        
+        //Asynchronously get thumbnails
+        //events.forEach({$0.loadImage()})
     }
     
     private static func dateFromCalendar(string: String) -> NSDate?

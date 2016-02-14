@@ -8,25 +8,44 @@
 
 import UIKit
 
-class EventsViewCell: UITableViewCell
+class EventsViewCell: UITableViewCell, EventDelegate
 {
-    var event: Event?
     @IBOutlet weak var thumbnailView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    func showEvent(event: Event)
+    private var internalEvent: Event?
+    var event: Event?
     {
-        self.event = event
-        titleLabel.text = event.title
-        locationLabel.text = event.location
-        dateLabel.text = event.dateString
-        thumbnailView.image = event.image
+        get
+        {
+            return internalEvent
+        }
+        
+        set(newEvent)
+        {
+            internalEvent = newEvent
+            
+            if newEvent != nil
+            {
+                titleLabel.text = newEvent!.title
+                locationLabel.text = newEvent!.location
+                dateLabel.text = newEvent!.dateString
+                thumbnailView.image = newEvent!.image
+                
+                newEvent?.delegate = self
+            }
+        }
+    }
+    
+    func didLoadImage()
+    {
+        self.thumbnailView.image = self.event?.image
     }
     
     func loadThumbnail()
     {
-        event?.loadImage({self.thumbnailView.image = self.event?.image})
+        self.event?.loadImage()
     }
 }
