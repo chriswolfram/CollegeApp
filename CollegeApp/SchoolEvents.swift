@@ -20,7 +20,6 @@ extension School
     }
     
     static var events = [Event]()
-    static var eventsDelegate: SchoolEventsDelegate?
     
     private static var xmlRoot: XMLElement!
     private static var rssRoot: XMLElement!
@@ -116,16 +115,6 @@ extension School
                 }
             }
         }
-        
-        //Asynchronously get thumbnails
-        events.forEach
-        {
-            event in
-            event.loadImage
-            {
-                eventsDelegate?.schoolEventsDidLoadImage()
-            }
-        }
     }
     
     private static func dateFromCalendar(string: String) -> NSDate?
@@ -154,9 +143,4 @@ extension School
         
         return nil
     }
-}
-
-protocol SchoolEventsDelegate
-{
-    func schoolEventsDidLoadImage()
 }

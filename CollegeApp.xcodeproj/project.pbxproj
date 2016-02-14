@@ -21,7 +21,7 @@
 		9D4794D71C558B1700F2261B /* SchoolTours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D61C558B1700F2261B /* SchoolTours.swift */; };
 		9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E8BD81C27335F00960097 /* NewsViewCell.swift */; };
 		9D55B5831C68EB0A00B34017 /* Angel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5781C68EB0A00B34017 /* Angel.jpg */; };
-		9D55B5841C68EB0A00B34017 /* Barn.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5791C68EB0A00B34017 /* Barn.JPG */; };
+		9D55B5841C68EB0A00B34017 /* Barn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5791C68EB0A00B34017 /* Barn.jpg */; };
 		9D55B5851C68EB0A00B34017 /* Burghers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57A1C68EB0A00B34017 /* Burghers.jpg */; };
 		9D55B5861C68EB0A00B34017 /* Cactus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57B1C68EB0A00B34017 /* Cactus.jpg */; };
 		9D55B5871C68EB0A00B34017 /* Cantor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57C1C68EB0A00B34017 /* Cantor.jpg */; };
@@ -45,7 +45,7 @@
 		9DBD98251C6FD1E700E21627 /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98241C6FD1E700E21627 /* Tour.swift */; };
 		9DBD98271C6FD20200E21627 /* EmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98261C6FD20200E21627 /* EmergencyContact.swift */; };
 		9DBD98291C7016D300E21627 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98281C7016D300E21627 /* EventsViewController.swift */; };
-		9DBD982A1C7024EE00E21627 /* emblem.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DA4343A1C6859AB0007256B /* emblem.jpg */; };
+		9DBD982C1C702BAA00E21627 /* emblem.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DBD982B1C702BAA00E21627 /* emblem.jpg */; };
 		9DCB663C1C251B2A0083586E /* CollegeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB663B1C251B2A0083586E /* CollegeAppTests.swift */; };
 		9DCB66471C251B2A0083586E /* CollegeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66461C251B2A0083586E /* CollegeAppUITests.swift */; };
 		9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66541C251B510083586E /* AppDelegate.swift */; };
@@ -101,7 +101,7 @@
 		9D4794D61C558B1700F2261B /* SchoolTours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolTours.swift; sourceTree = "<group>"; };
 		9D4E8BD81C27335F00960097 /* NewsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		9D55B5781C68EB0A00B34017 /* Angel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Angel.jpg; sourceTree = "<group>"; };
-		9D55B5791C68EB0A00B34017 /* Barn.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Barn.JPG; sourceTree = "<group>"; };
+		9D55B5791C68EB0A00B34017 /* Barn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Barn.jpg; sourceTree = "<group>"; };
 		9D55B57A1C68EB0A00B34017 /* Burghers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Burghers.jpg; sourceTree = "<group>"; };
 		9D55B57B1C68EB0A00B34017 /* Cactus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cactus.jpg; sourceTree = "<group>"; };
 		9D55B57C1C68EB0A00B34017 /* Cantor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cantor.jpg; sourceTree = "<group>"; };
@@ -116,7 +116,6 @@
 		9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenButton.swift; sourceTree = "<group>"; };
 		9DA434311C67F6630007256B /* homescreenBackground.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = homescreenBackground.mp4; sourceTree = "<group>"; };
 		9DA434331C6821250007256B /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		9DA4343A1C6859AB0007256B /* emblem.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = emblem.jpg; sourceTree = "<group>"; };
 		9DB25D711C2B625100874227 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
 		9DB25D741C2B680100874227 /* EmergencyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewCell.swift; sourceTree = "<group>"; };
 		9DBD981B1C6FC58E00E21627 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -126,6 +125,7 @@
 		9DBD98241C6FD1E700E21627 /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		9DBD98261C6FD20200E21627 /* EmergencyContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyContact.swift; sourceTree = "<group>"; };
 		9DBD98281C7016D300E21627 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		9DBD982B1C702BAA00E21627 /* emblem.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = emblem.jpg; sourceTree = "<group>"; };
 		9DCB66231C251B2A0083586E /* CollegeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB66371C251B2A0083586E /* CollegeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollegeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB663B1C251B2A0083586E /* CollegeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeAppTests.swift; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				9D55B5781C68EB0A00B34017 /* Angel.jpg */,
-				9D55B5791C68EB0A00B34017 /* Barn.JPG */,
+				9D55B5791C68EB0A00B34017 /* Barn.jpg */,
 				9D55B57A1C68EB0A00B34017 /* Burghers.jpg */,
 				9D55B57B1C68EB0A00B34017 /* Cactus.jpg */,
 				9D55B57C1C68EB0A00B34017 /* Cantor.jpg */,
@@ -236,7 +236,7 @@
 				9D4794D41C55743400F2261B /* SchoolNews.swift */,
 				9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */,
 				9D4794D61C558B1700F2261B /* SchoolTours.swift */,
-				9DA4343A1C6859AB0007256B /* emblem.jpg */,
+				9DBD982B1C702BAA00E21627 /* emblem.jpg */,
 				9DA434311C67F6630007256B /* homescreenBackground.mp4 */,
 				9D209DAD1C668ADE00AA8C50 /* TourImages */,
 			);
@@ -496,6 +496,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DBD982C1C702BAA00E21627 /* emblem.jpg in Resources */,
 				9D55B58C1C68EB0A00B34017 /* Stadium.jpg in Resources */,
 				9D55B58B1C68EB0A00B34017 /* Quad.JPG in Resources */,
 				9D55B58D1C68EB0A00B34017 /* Tresidder.jpg in Resources */,
@@ -503,11 +504,10 @@
 				9DCB66651C251B600083586E /* LaunchScreen.storyboard in Resources */,
 				9D55B5861C68EB0A00B34017 /* Cactus.jpg in Resources */,
 				9D55B5871C68EB0A00B34017 /* Cantor.jpg in Resources */,
-				9D55B5841C68EB0A00B34017 /* Barn.JPG in Resources */,
+				9D55B5841C68EB0A00B34017 /* Barn.jpg in Resources */,
 				9DA434321C67F6980007256B /* homescreenBackground.mp4 in Resources */,
 				9D55B58A1C68EB0A00B34017 /* Memorial.jpg in Resources */,
 				9DCB66641C251B600083586E /* Assets.xcassets in Resources */,
-				9DBD982A1C7024EE00E21627 /* emblem.jpg in Resources */,
 				9D55B5831C68EB0A00B34017 /* Angel.jpg in Resources */,
 				9D55B5851C68EB0A00B34017 /* Burghers.jpg in Resources */,
 				9DCB66631C251B600083586E /* Main.storyboard in Resources */,

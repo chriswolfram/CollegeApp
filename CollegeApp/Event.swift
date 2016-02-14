@@ -33,11 +33,14 @@ class Event
                         callback()
                     }
                 }
-                        
+                
                 else
                 {
-                    self.imageURL = nil
-                    callback()
+                    dispatch_async(dispatch_get_main_queue())
+                    {
+                        self.image = nil
+                        callback()
+                    }
                 }
             }
         }

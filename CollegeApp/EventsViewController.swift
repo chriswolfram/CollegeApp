@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventsViewController: UITableViewController, SchoolEventsDelegate
+class EventsViewController: UITableViewController
 {
     override func viewDidLoad()
     {
@@ -24,8 +24,6 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 120.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        
-        School.eventsDelegate = self
     }
     
     override func viewDidAppear(animated: Bool)
@@ -53,11 +51,6 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
         School.addEventsButtonPressed()
     }
     
-    func schoolEventsDidLoadImage()
-    {
-        self.tableView.reloadData()
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return School.events.count
@@ -70,9 +63,12 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
         
         cell.showEvent(event)
         
-        cell.updateConstraints()
-        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell tableViewCell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        (tableViewCell as! EventsViewCell).loadThumbnail()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
