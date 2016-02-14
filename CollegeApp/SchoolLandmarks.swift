@@ -81,15 +81,3 @@ extension School
         Landmark(coordinate: CLLocationCoordinate2D(latitude: 42.235437, longitude: -71.114573), title: "White House")
     ]
 }
-
-class Landmark: NSObject, MKAnnotation
-{
-    let title: String?
-    let coordinate: CLLocationCoordinate2D
-    
-    init(coordinate: CLLocationCoordinate2D, title: String?)
-    {
-        self.coordinate = coordinate
-        self.title = title
-    }
-}

@@ -11,6 +11,7 @@ import UIKit
 extension School
 {
     static let eventsURL = NSURL(string: "http://events.stanford.edu/xml/rss.xml")!
+    static let eventsCalendarURL = NSURL(string: "http://events.stanford.edu/eventlist.ics")!
     
     static let addEventsButton = true
     static func addEventsButtonPressed()
@@ -67,14 +68,14 @@ extension School
                         return div.attributes["class"] != nil && div.attributes["class"]! == targetClass
                     }
                         
-                    event.date = divs?.filter({checkClass($0, targetClass: "stanford-events-date")}).first?.contents
+                    event.dateString = divs?.filter({checkClass($0, targetClass: "stanford-events-date")}).first?.contents
                     event.location = divs?.filter({checkClass($0, targetClass: "stanford-events-location")}).first?.contents
                     event.description = divs?.filter({checkClass($0, targetClass: "stanford-events-description")}).first?.contents
-                        
+                    
                     let datePrefix = "Date: "
-                    if event.date != nil && event.date!.hasPrefix(datePrefix)
+                    if event.dateString != nil && event.dateString!.hasPrefix(datePrefix)
                     {
-                        event.date?.removeRange(event.date!.startIndex...event.date!.startIndex.advancedBy(datePrefix.characters.count-1))
+                        event.dateString?.removeRange(event.dateString!.startIndex...event.dateString!.startIndex.advancedBy(datePrefix.characters.count-1))
                     }
                         
                     let locationPrefix = "Location: "
@@ -88,6 +89,34 @@ extension School
             return event
         }
         
+        //Get start dates
+        let calendarElement = CalendarElement(url: School.eventsCalendarURL)!
+        
+        //TODO: add error checking
+        calendarElement[0]!["VEVENT", .All]!.forEach
+        {
+            calendarEvent in
+            
+            if let
+                dateString = calendarEvent["DTSTART"]?.contents,
+                date = dateFromCalendar(dateString),
+                urlString = calendarEvent["URL"]?.contents
+            {
+                self.events.forEach
+                {
+                    event in
+                    
+                    if let
+                        eventURLString = event.link?.absoluteString
+                    where
+                        eventURLString == urlString
+                    {
+                        event.startDate = date
+                    }
+                }
+            }
+        }
+        
         //Asynchronously get thumbnails
         events.forEach
         {
@@ -98,38 +127,36 @@ extension School
             }
         }
     }
+    
+    private static func dateFromCalendar(string: String) -> NSDate?
+    {
+        let dateComponents = NSDateComponents()
+        
+        if let
+            year = Int(string.substringToIndex(string.startIndex.advancedBy(4))),
+            month = Int(string.substringWithRange(string.startIndex.advancedBy(4)...string.startIndex.advancedBy(5))),
+            day = Int(string.substringWithRange(string.startIndex.advancedBy(6)...string.startIndex.advancedBy(7))),
+            hour = Int(string.substringWithRange(string.startIndex.advancedBy(9)...string.startIndex.advancedBy(10))),
+            minute = Int(string.substringWithRange(string.startIndex.advancedBy(11)...string.startIndex.advancedBy(12))),
+            second = Int(string.substringWithRange(string.startIndex.advancedBy(13)...string.startIndex.advancedBy(14)))
+        {
+            dateComponents.year = year
+            dateComponents.month = month
+            dateComponents.day = day
+            dateComponents.hour = hour
+            dateComponents.minute = minute
+            dateComponents.second = second
+            
+            dateComponents.timeZone = NSTimeZone(abbreviation: "UTC")
+            
+            return NSCalendar.currentCalendar().dateFromComponents(dateComponents)
+        }
+        
+        return nil
+    }
 }
 
 protocol SchoolEventsDelegate
 {
     func schoolEventsDidLoadImage()
-}
-
-class Event
-{
-    var image: UIImage?
-    var imageURL: NSURL?
-    var title: String?
-    var link: NSURL?
-    var date: String?
-    var location: String?
-    var description: String?
-    
-    func loadImage(callback: ()->Void)
-    {
-        if image == nil && imageURL != nil
-        {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
-            {
-                if let imageData = NSData(contentsOfURL: self.imageURL!), let image = UIImage(data: imageData)
-                {
-                    dispatch_async(dispatch_get_main_queue())
-                    {
-                        self.image = image
-                        callback()
-                    }
-                }
-            }
-        }
-    }
 }

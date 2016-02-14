@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         beaconRegion.notifyEntryStateOnDisplay = true
         //Uncomment to enable beacons on launch
         //beginBeaconSearching()
-        
+                
         return true
     }
     

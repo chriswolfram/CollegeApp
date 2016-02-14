@@ -1,9 +1,9 @@
 //
-//  EventsView.swift
+//  EventsViewController.swift
 //  CollegeApp
 //
-//  Created by Christopher Wolfram on 12/30/15.
-//  Copyright © 2015 Zalto Technologies. All rights reserved.
+//  Created by Christopher Wolfram on 2/13/16.
+//  Copyright © 2016 Zalto Technologies. All rights reserved.
 //
 
 import UIKit
@@ -13,12 +13,17 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-                
+        
         //Show the add events button if it should
         if School.addEventsButton
         {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("addEventsButtonPressed"))
         }
+        
+        //Configure table view
+        self.tableView.delegate = self
+        self.tableView.estimatedRowHeight = 120.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         
         School.eventsDelegate = self
     }
@@ -27,37 +32,30 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
     {
         super.viewDidAppear(animated)
         
-        //Configure table view
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.estimatedRowHeight = 120.0
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
         //Load events
         if School.events.count == 0
         {
+            self.refreshControl?.beginRefreshing()
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
             {
                 School.updateEvents()
                 dispatch_async(dispatch_get_main_queue())
                 {
                     self.tableView.reloadData()
+                    self.refreshControl?.endRefreshing()
                 }
             }
-        }
-    }
-    
-    func schoolEventsDidLoadImage()
-    {
-        dispatch_async(dispatch_get_main_queue())
-        {
-            self.tableView.reloadData()
         }
     }
     
     func addEventsButtonPressed()
     {
         School.addEventsButtonPressed()
+    }
+    
+    func schoolEventsDidLoadImage()
+    {
+        self.tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -67,10 +65,12 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("EventsViewCell", forIndexPath: indexPath) as! EventsViewCell
         let event = School.events[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("EventsViewCell", forIndexPath: indexPath) as! EventsViewCell
         
         cell.showEvent(event)
+        
+        cell.updateConstraints()
         
         return cell
     }
@@ -83,7 +83,7 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
         {
             navigationController?.pushViewController(WebView(url: event.link!), animated: true)
         }
-        
+            
         else
         {
             let alertController = UIAlertController(title: "Unable to Load Page", message: "The selected page could not be loaded.", preferredStyle: .Alert)
@@ -96,10 +96,10 @@ class EventsViewController: UITableViewController, SchoolEventsDelegate
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    @IBAction func refresh(sender: AnyObject)
+    @IBAction func refresh(sender: UIRefreshControl)
     {
         School.updateEvents()
-        tableView.reloadData()
+        self.tableView.reloadData()
         
         self.refreshControl?.endRefreshing()
     }

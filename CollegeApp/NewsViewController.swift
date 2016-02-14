@@ -15,6 +15,11 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
     {
         super.viewDidLoad()
         
+        //Configure table view
+        self.tableView.delegate = self
+        self.tableView.estimatedRowHeight = 134.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
         School.newsDelegate = self
     }
     
@@ -22,21 +27,17 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
     {
         super.viewDidAppear(animated)
         
-        //Configure table view
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.estimatedRowHeight = 134.0
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
         //Load news stories
         if School.newsStories.count == 0
         {
+            self.refreshControl?.beginRefreshing()
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
             {
                 School.updateNewsStories()
                 dispatch_async(dispatch_get_main_queue())
                 {
                     self.tableView.reloadData()
+                    self.refreshControl?.endRefreshing()
                 }
             }
         }
@@ -44,10 +45,7 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
     
     func schoolNewsDidLoadImage(index: Int)
     {
-        dispatch_async(dispatch_get_main_queue())
-        {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int

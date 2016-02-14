@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		13073858765170688E4883F8 /* Pods_CollegeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 732DB20AD3A97146A745172E /* Pods_CollegeAppUITests.framework */; };
-		284551B21C33CD9C003AF5E3 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B11C33CD9C003AF5E3 /* EventsViewController.swift */; };
 		284551B71C38F00F003AF5E3 /* EventsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B61C38F00F003AF5E3 /* EventsViewCell.swift */; };
 		284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284551B81C39F3EC003AF5E3 /* XMLElement.swift */; };
 		582CBDDE78DE704D8A99CB16 /* Pods_CollegeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0096CCCE6F816B2205BAAC8E /* Pods_CollegeAppTests.framework */; };
@@ -33,12 +32,20 @@
 		9D55B58C1C68EB0A00B34017 /* Stadium.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5811C68EB0A00B34017 /* Stadium.jpg */; };
 		9D55B58D1C68EB0A00B34017 /* Tresidder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5821C68EB0A00B34017 /* Tresidder.jpg */; };
 		9D55B58F1C68F76A00B34017 /* TourViewDetailControllerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D55B58E1C68F76A00B34017 /* TourViewDetailControllerPopover.swift */; };
+		9D98EB381C6DA88D00E4673A /* CalendarElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D98EB371C6DA88D00E4673A /* CalendarElement.swift */; };
 		9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */; };
 		9DA434321C67F6980007256B /* homescreenBackground.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9DA434311C67F6630007256B /* homescreenBackground.mp4 */; };
 		9DA434341C6821250007256B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA434331C6821250007256B /* WebView.swift */; };
-		9DA4343B1C6859AB0007256B /* emblem.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DA4343A1C6859AB0007256B /* emblem.jpg */; };
 		9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D711C2B625100874227 /* EmergencyViewController.swift */; };
 		9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D741C2B680100874227 /* EmergencyViewCell.swift */; };
+		9DBD981C1C6FC58E00E21627 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD981B1C6FC58E00E21627 /* Event.swift */; };
+		9DBD981E1C6FC5D900E21627 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD981D1C6FC5D900E21627 /* NewsStory.swift */; };
+		9DBD98211C6FD1AE00E21627 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98201C6FD1AE00E21627 /* Landmark.swift */; };
+		9DBD98231C6FD1C700E21627 /* TourLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98221C6FD1C700E21627 /* TourLandmark.swift */; };
+		9DBD98251C6FD1E700E21627 /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98241C6FD1E700E21627 /* Tour.swift */; };
+		9DBD98271C6FD20200E21627 /* EmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98261C6FD20200E21627 /* EmergencyContact.swift */; };
+		9DBD98291C7016D300E21627 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98281C7016D300E21627 /* EventsViewController.swift */; };
+		9DBD982A1C7024EE00E21627 /* emblem.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DA4343A1C6859AB0007256B /* emblem.jpg */; };
 		9DCB663C1C251B2A0083586E /* CollegeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB663B1C251B2A0083586E /* CollegeAppTests.swift */; };
 		9DCB66471C251B2A0083586E /* CollegeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66461C251B2A0083586E /* CollegeAppUITests.swift */; };
 		9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66541C251B510083586E /* AppDelegate.swift */; };
@@ -78,7 +85,6 @@
 /* Begin PBXFileReference section */
 		0096CCCE6F816B2205BAAC8E /* Pods_CollegeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollegeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0413AFC4FC02CFD66654F14D /* Pods-CollegeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollegeAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollegeAppUITests/Pods-CollegeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		284551B11C33CD9C003AF5E3 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		284551B61C38F00F003AF5E3 /* EventsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewCell.swift; sourceTree = "<group>"; };
 		284551B81C39F3EC003AF5E3 /* XMLElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLElement.swift; sourceTree = "<group>"; usesTabs = 0; };
 		365BD329607B752BFB3171C2 /* Pods-CollegeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollegeAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollegeAppTests/Pods-CollegeAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,12 +112,20 @@
 		9D55B5811C68EB0A00B34017 /* Stadium.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Stadium.jpg; sourceTree = "<group>"; };
 		9D55B5821C68EB0A00B34017 /* Tresidder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tresidder.jpg; sourceTree = "<group>"; };
 		9D55B58E1C68F76A00B34017 /* TourViewDetailControllerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewDetailControllerPopover.swift; sourceTree = "<group>"; };
+		9D98EB371C6DA88D00E4673A /* CalendarElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarElement.swift; sourceTree = "<group>"; };
 		9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenButton.swift; sourceTree = "<group>"; };
 		9DA434311C67F6630007256B /* homescreenBackground.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = homescreenBackground.mp4; sourceTree = "<group>"; };
 		9DA434331C6821250007256B /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		9DA4343A1C6859AB0007256B /* emblem.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = emblem.jpg; sourceTree = "<group>"; };
 		9DB25D711C2B625100874227 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
 		9DB25D741C2B680100874227 /* EmergencyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewCell.swift; sourceTree = "<group>"; };
+		9DBD981B1C6FC58E00E21627 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		9DBD981D1C6FC5D900E21627 /* NewsStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
+		9DBD98201C6FD1AE00E21627 /* Landmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
+		9DBD98221C6FD1C700E21627 /* TourLandmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourLandmark.swift; sourceTree = "<group>"; };
+		9DBD98241C6FD1E700E21627 /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
+		9DBD98261C6FD20200E21627 /* EmergencyContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyContact.swift; sourceTree = "<group>"; };
+		9DBD98281C7016D300E21627 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		9DCB66231C251B2A0083586E /* CollegeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB66371C251B2A0083586E /* CollegeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollegeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB663B1C251B2A0083586E /* CollegeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeAppTests.swift; sourceTree = "<group>"; };
@@ -170,7 +184,7 @@
 		284551B31C33CDA8003AF5E3 /* EventsView */ = {
 			isa = PBXGroup;
 			children = (
-				284551B11C33CD9C003AF5E3 /* EventsViewController.swift */,
+				9DBD98281C7016D300E21627 /* EventsViewController.swift */,
 				284551B61C38F00F003AF5E3 /* EventsViewCell.swift */,
 			);
 			name = EventsView;
@@ -229,6 +243,19 @@
 			name = SchoolAssets;
 			sourceTree = "<group>";
 		};
+		9DBD981F1C6FD19300E21627 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				9DBD981B1C6FC58E00E21627 /* Event.swift */,
+				9DBD981D1C6FC5D900E21627 /* NewsStory.swift */,
+				9DBD98201C6FD1AE00E21627 /* Landmark.swift */,
+				9DBD98221C6FD1C700E21627 /* TourLandmark.swift */,
+				9DBD98241C6FD1E700E21627 /* Tour.swift */,
+				9DBD98261C6FD20200E21627 /* EmergencyContact.swift */,
+			);
+			name = Types;
+			sourceTree = "<group>";
+		};
 		9DCB661A1C251B2A0083586E = {
 			isa = PBXGroup;
 			children = (
@@ -256,9 +283,11 @@
 			children = (
 				9DCB66541C251B510083586E /* AppDelegate.swift */,
 				284551B81C39F3EC003AF5E3 /* XMLElement.swift */,
+				9D98EB371C6DA88D00E4673A /* CalendarElement.swift */,
 				9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */,
 				9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */,
 				9DA434331C6821250007256B /* WebView.swift */,
+				9DBD981F1C6FD19300E21627 /* Types */,
 				9DCB66681C2548170083586E /* MapView */,
 				9DCB66691C25481F0083586E /* QRCodeView */,
 				9DCB666A1C2548280083586E /* NewsView */,
@@ -266,9 +295,9 @@
 				9DB25D731C2B625E00874227 /* EmergencyView */,
 				9DD6A1E91C4D7FD40025FE44 /* TourView */,
 				9DE70D451C6CF6830056850D /* MessagesView */,
+				9DB25D761C2BB60400874227 /* SchoolAssets */,
 				9DCB66601C251B600083586E /* Main.storyboard */,
 				9DCB66621C251B600083586E /* LaunchScreen.storyboard */,
-				9DB25D761C2BB60400874227 /* SchoolAssets */,
 				9DCB66611C251B600083586E /* Assets.xcassets */,
 				9DCB66551C251B510083586E /* Info.plist */,
 			);
@@ -478,10 +507,10 @@
 				9DA434321C67F6980007256B /* homescreenBackground.mp4 in Resources */,
 				9D55B58A1C68EB0A00B34017 /* Memorial.jpg in Resources */,
 				9DCB66641C251B600083586E /* Assets.xcassets in Resources */,
+				9DBD982A1C7024EE00E21627 /* emblem.jpg in Resources */,
 				9D55B5831C68EB0A00B34017 /* Angel.jpg in Resources */,
 				9D55B5851C68EB0A00B34017 /* Burghers.jpg in Resources */,
 				9DCB66631C251B600083586E /* Main.storyboard in Resources */,
-				9DA4343B1C6859AB0007256B /* emblem.jpg in Resources */,
 				9D55B5881C68EB0A00B34017 /* Hoover.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,21 +661,26 @@
 			files = (
 				9D209DAA1C653F5200AA8C50 /* HomescreenViewController.swift in Sources */,
 				9DE70D441C6CF61A0056850D /* MessageGroupSelectorViewController.swift in Sources */,
+				9DBD981E1C6FC5D900E21627 /* NewsStory.swift in Sources */,
 				9D4794D51C55743400F2261B /* SchoolNews.swift in Sources */,
 				9DCB665C1C251B510083586E /* MapController.swift in Sources */,
+				9DBD981C1C6FC58E00E21627 /* Event.swift in Sources */,
 				9D4794D11C55450A00F2261B /* SchoolLandmarks.swift in Sources */,
 				9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */,
-				284551B21C33CD9C003AF5E3 /* EventsViewController.swift in Sources */,
 				9D4794D71C558B1700F2261B /* SchoolTours.swift in Sources */,
+				9DBD98291C7016D300E21627 /* EventsViewController.swift in Sources */,
 				9DCB665F1C251B510083586E /* QRViewController.swift in Sources */,
 				9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */,
 				9DA434341C6821250007256B /* WebView.swift in Sources */,
+				9DBD98251C6FD1E700E21627 /* Tour.swift in Sources */,
 				9DCB665E1C251B510083586E /* QRDetailController.swift in Sources */,
 				9DF316701C5286E900D51CB3 /* TourViewDetailController.swift in Sources */,
 				9DF316721C52E2FE00D51CB3 /* TourViewPageController.swift in Sources */,
 				9DCB66671C2547AC0083586E /* NewsViewController.swift in Sources */,
 				9DD255881C6BA93E00CBBD60 /* MessageViewController.swift in Sources */,
 				284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */,
+				9DBD98271C6FD20200E21627 /* EmergencyContact.swift in Sources */,
+				9DBD98211C6FD1AE00E21627 /* Landmark.swift in Sources */,
 				9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */,
 				9DE70D471C6CFE990056850D /* MessageSelectorCell.swift in Sources */,
 				9D00A5A51C44F42100C0DF6D /* School.swift in Sources */,
@@ -654,8 +688,10 @@
 				9DD6A1E81C4D7FCB0025FE44 /* TourViewController.swift in Sources */,
 				9D45EA771C5FE31600FA54F2 /* SchoolEmergencies.swift in Sources */,
 				9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */,
+				9DBD98231C6FD1C700E21627 /* TourLandmark.swift in Sources */,
 				9DCB665D1C251B510083586E /* MapSearchResultsView.swift in Sources */,
 				284551B71C38F00F003AF5E3 /* EventsViewCell.swift in Sources */,
+				9D98EB381C6DA88D00E4673A /* CalendarElement.swift in Sources */,
 				9D55B58F1C68F76A00B34017 /* TourViewDetailControllerPopover.swift in Sources */,
 				9D4794D31C55462400F2261B /* SchoolEvents.swift in Sources */,
 			);

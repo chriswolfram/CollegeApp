@@ -19,7 +19,7 @@ class EventsViewCell: UITableViewCell
     {
         titleLabel.text = event.title
         locationLabel.text = event.location
-        dateLabel.text = event.date
+        dateLabel.text = event.dateString
         thumbnailView.image = event.image
     }
 }

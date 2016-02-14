@@ -23,21 +23,3 @@ extension School
         EmergencyContact(title: "Christopher's phone", number: "1-617-459-1213", formattedNumber: "+1 617-459-1213", smsEnabled: true, description: "this is just a test")
     ]
 }
-
-class EmergencyContact
-{
-    let title: String
-    let number: String
-    let formattedNumber: String
-    let smsEnabled: Bool
-    let description: String?
-    
-    init(title: String, number: String, formattedNumber: String, smsEnabled: Bool = false, description: String? = nil)
-    {
-        self.title = title
-        self.number = number
-        self.formattedNumber = formattedNumber
-        self.description = description
-        self.smsEnabled = smsEnabled
-    }
-}

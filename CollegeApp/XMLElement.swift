@@ -49,7 +49,7 @@ class XMLElement: NSObject, NSXMLParserDelegate
     
     private let xmlParser: NSXMLParser!
     
-    required init(parser: NSXMLParser)
+    init(parser: NSXMLParser)
     {
         self.xmlParser = parser
     }
