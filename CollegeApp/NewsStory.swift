@@ -16,7 +16,9 @@ class NewsStory
     var description: String?
     var link: NSURL?
     
-    func loadImage(callback: ()->Void)
+    var delegate: NewsStoryDelegate?
+    
+    func loadImage()
     {
         if image == nil && imageURL != nil
         {
@@ -27,7 +29,7 @@ class NewsStory
                     dispatch_async(dispatch_get_main_queue())
                     {
                         self.image = image
-                        callback()
+                        self.delegate?.didLoadImage()
                     }
                 }
                     
@@ -36,10 +38,15 @@ class NewsStory
                     dispatch_async(dispatch_get_main_queue())
                     {
                         self.image = nil
-                        callback()
+                        self.delegate?.didLoadImage()
                     }
                 }
             }
         }
     }
+}
+
+protocol NewsStoryDelegate
+{
+    func didLoadImage()
 }

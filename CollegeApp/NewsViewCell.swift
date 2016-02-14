@@ -8,26 +8,51 @@
 
 import UIKit
 
-class NewsViewCell: UITableViewCell
+class NewsViewCell: UITableViewCell, NewsStoryDelegate
 {
     @IBOutlet var thumbnailView: UIImageView?
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     
-    func showNewsStory(story: NewsStory)
+    private var internalNewsStory: NewsStory?
+    var newsStory: NewsStory?
     {
-        titleLabel.text = story.title
-        descriptionLabel.text = story.description
+        get
+        {
+            return internalNewsStory
+        }
         
-        if story.image == nil
+        set(newNewsStory)
+        {
+            internalNewsStory = newNewsStory
+            
+            if newNewsStory != nil
+            {
+                titleLabel.text = newNewsStory!.title
+                descriptionLabel.text = newNewsStory!.description
+                showThumbnail(newNewsStory!.image)
+                
+                newNewsStory?.delegate = self
+            }
+        }
+    }
+    
+    private func showThumbnail(image: UIImage?)
+    {
+        if image == nil
         {
             thumbnailView?.backgroundColor = UIColor(white: 0.5, alpha: 1.0)
         }
-        
+            
         else
         {
-            thumbnailView?.image = story.image
+            thumbnailView?.image = image
             thumbnailView?.backgroundColor = UIColor.clearColor()
         }
+    }
+    
+    func didLoadImage()
+    {
+        showThumbnail(newsStory?.image)
     }
 }

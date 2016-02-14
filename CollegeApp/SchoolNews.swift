@@ -13,7 +13,6 @@ extension School
     static let newsURL = NSURL(string: "https://news.stanford.edu/rss/index.xml")!
     
     static var newsStories = [NewsStory]()
-    static var newsDelegate: SchoolNewsDelegate?
     
     private static var xmlRoot: XMLElement!
     private static var rssRoot: XMLElement!
@@ -54,17 +53,6 @@ extension School
         }
     
         //Asynchronously get thumbnails
-        for (i, story) in newsStories.enumerate()
-        {
-            story.loadImage
-            {
-                newsDelegate?.schoolNewsDidLoadImage(i)
-            }
-        }
+        newsStories.forEach({$0.loadImage()})
     }
-}
-
-protocol SchoolNewsDelegate
-{
-    func schoolNewsDidLoadImage(index: Int)
 }

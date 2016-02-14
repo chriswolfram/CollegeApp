@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class NewsViewController: UITableViewController, SchoolNewsDelegate
+class NewsViewController: UITableViewController
 {
     override func viewDidLoad()
     {
@@ -19,8 +19,6 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 134.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        
-        School.newsDelegate = self
     }
     
     override func viewDidAppear(animated: Bool)
@@ -83,10 +81,8 @@ class NewsViewController: UITableViewController, SchoolNewsDelegate
         
         let cellIdentifier = cellTypeAtIndex(indexPath)
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! NewsViewCell
-        cell.showNewsStory(story)
-        
-        cell.updateConstraints()
-        
+        cell.newsStory = story
+                
         return cell
     }
 
