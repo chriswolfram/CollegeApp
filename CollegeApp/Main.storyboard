@@ -212,17 +212,67 @@
                                     <segue destination="zkL-f4-96P" kind="show" id="f2T-bA-QIJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFu-vd-i26">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="ecM-fl-sND"/>
+                                    <constraint firstAttribute="height" constant="30" id="gJA-NW-dsU"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="shareOnFacebookWhiteIcon.png"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ecM-fl-sND"/>
+                                        <exclude reference="gJA-NW-dsU"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ecM-fl-sND"/>
+                                        <include reference="gJA-NW-dsU"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="facebookButton:" destination="ZER-ry-FrU" eventType="touchUpInside" id="5RK-zi-PcB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yI4-6P-Rqp">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="QHA-Sp-5uc"/>
+                                    <constraint firstAttribute="height" constant="24.5" id="dO0-Jq-esd"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="shareOnTwitterWhiteIcon.png"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="QHA-Sp-5uc"/>
+                                        <exclude reference="dO0-Jq-esd"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="QHA-Sp-5uc"/>
+                                        <include reference="dO0-Jq-esd"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="twitterButton:" destination="ZER-ry-FrU" eventType="touchUpInside" id="5Ah-dg-mZi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qsU-NV-GdH" firstAttribute="centerX" secondItem="MVQ-Ef-Q0P" secondAttribute="centerX" id="3TO-Wk-ljV"/>
+                            <constraint firstItem="yI4-6P-Rqp" firstAttribute="centerY" secondItem="LFu-vd-i26" secondAttribute="centerY" id="6dk-O2-mjW"/>
                             <constraint firstItem="MVQ-Ef-Q0P" firstAttribute="centerY" secondItem="ETp-NJ-F15" secondAttribute="centerY" id="6w6-xa-g9u"/>
                             <constraint firstItem="MVQ-Ef-Q0P" firstAttribute="centerX" secondItem="sFz-vb-B0u" secondAttribute="centerX" id="87O-71-0C5"/>
                             <constraint firstItem="qsU-NV-GdH" firstAttribute="leading" secondItem="UHv-8f-O20" secondAttribute="trailing" constant="45" id="E0L-nd-GTc"/>
                             <constraint firstItem="sFz-vb-B0u" firstAttribute="centerX" secondItem="ETp-NJ-F15" secondAttribute="centerX" constant="70" id="J5b-BO-NJo"/>
+                            <constraint firstItem="LFu-vd-i26" firstAttribute="trailing" secondItem="ETp-NJ-F15" secondAttribute="trailingMargin" id="N60-B4-aOu"/>
                             <constraint firstItem="MVQ-Ef-Q0P" firstAttribute="top" secondItem="sFz-vb-B0u" secondAttribute="bottom" constant="28" id="Nag-C5-Nsx"/>
+                            <constraint firstItem="FOn-21-RnQ" firstAttribute="top" secondItem="LFu-vd-i26" secondAttribute="bottom" constant="20" id="NhM-j5-tUe"/>
                             <constraint firstItem="UHv-8f-O20" firstAttribute="top" secondItem="txd-tT-DFq" secondAttribute="bottom" constant="28" id="aAY-xS-sep"/>
                             <constraint firstItem="txd-tT-DFq" firstAttribute="centerY" secondItem="ETp-NJ-F15" secondAttribute="centerY" id="bdL-2V-Wrz"/>
+                            <constraint firstItem="LFu-vd-i26" firstAttribute="leading" secondItem="yI4-6P-Rqp" secondAttribute="trailing" constant="8" id="co4-7a-5ay"/>
                             <constraint firstItem="sFz-vb-B0u" firstAttribute="leading" secondItem="ftp-gh-bz2" secondAttribute="trailing" constant="45" id="dD8-aM-xGf"/>
                             <constraint firstItem="txd-tT-DFq" firstAttribute="top" secondItem="ftp-gh-bz2" secondAttribute="bottom" constant="28" id="j97-zD-HIc"/>
                             <constraint firstItem="qsU-NV-GdH" firstAttribute="top" secondItem="MVQ-Ef-Q0P" secondAttribute="bottom" constant="28" id="meA-o2-nO8"/>
@@ -236,8 +286,14 @@
                                 <exclude reference="ftp-gh-bz2"/>
                                 <exclude reference="txd-tT-DFq"/>
                                 <exclude reference="MVQ-Ef-Q0P"/>
+                                <exclude reference="LFu-vd-i26"/>
+                                <exclude reference="yI4-6P-Rqp"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="J5b-BO-NJo"/>
+                                <exclude reference="dD8-aM-xGf"/>
+                                <exclude reference="bdL-2V-Wrz"/>
+                                <exclude reference="j97-zD-HIc"/>
                                 <exclude reference="6w6-xa-g9u"/>
                                 <exclude reference="87O-71-0C5"/>
                                 <exclude reference="Nag-C5-Nsx"/>
@@ -246,10 +302,10 @@
                                 <exclude reference="3TO-Wk-ljV"/>
                                 <exclude reference="E0L-nd-GTc"/>
                                 <exclude reference="meA-o2-nO8"/>
-                                <exclude reference="J5b-BO-NJo"/>
-                                <exclude reference="dD8-aM-xGf"/>
-                                <exclude reference="bdL-2V-Wrz"/>
-                                <exclude reference="j97-zD-HIc"/>
+                                <exclude reference="NhM-j5-tUe"/>
+                                <exclude reference="6dk-O2-mjW"/>
+                                <exclude reference="N60-B4-aOu"/>
+                                <exclude reference="co4-7a-5ay"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -260,8 +316,14 @@
                                 <include reference="ftp-gh-bz2"/>
                                 <include reference="txd-tT-DFq"/>
                                 <include reference="MVQ-Ef-Q0P"/>
+                                <include reference="LFu-vd-i26"/>
+                                <include reference="yI4-6P-Rqp"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="J5b-BO-NJo"/>
+                                <include reference="dD8-aM-xGf"/>
+                                <include reference="bdL-2V-Wrz"/>
+                                <include reference="j97-zD-HIc"/>
                                 <include reference="6w6-xa-g9u"/>
                                 <include reference="87O-71-0C5"/>
                                 <include reference="Nag-C5-Nsx"/>
@@ -270,10 +332,10 @@
                                 <include reference="3TO-Wk-ljV"/>
                                 <include reference="E0L-nd-GTc"/>
                                 <include reference="meA-o2-nO8"/>
-                                <include reference="J5b-BO-NJo"/>
-                                <include reference="dD8-aM-xGf"/>
-                                <include reference="bdL-2V-Wrz"/>
-                                <include reference="j97-zD-HIc"/>
+                                <include reference="NhM-j5-tUe"/>
+                                <include reference="6dk-O2-mjW"/>
+                                <include reference="N60-B4-aOu"/>
+                                <include reference="co4-7a-5ay"/>
                             </mask>
                         </variation>
                     </view>
@@ -1543,4 +1605,8 @@
             <point key="canvasLocation" x="1698" y="3303"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="shareOnFacebookWhiteIcon.png" width="100" height="100"/>
+        <image name="shareOnTwitterWhiteIcon.png" width="123" height="100"/>
+    </resources>
 </document>

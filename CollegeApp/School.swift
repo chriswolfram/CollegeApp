@@ -18,4 +18,7 @@ class School
     static let schoolRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.4300, longitude: -122.1700), span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.01))
     
     static let messagesGroupsListURL = NSURL(string: "https://www.wolframcloud.com/objects/85c52512-8738-4d70-925d-89d816f6d77e")!
+    
+    static let facebookShareDefaultMessage = "Try out the Stanford app!"
+    static let twitterShareDefaultMessage = "Try out the Stanford app!"
 }
