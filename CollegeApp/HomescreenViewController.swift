@@ -60,6 +60,7 @@ class HomescreenViewController: UIViewController
         
         School.newsStories = []
         School.events = []
+        School.directoryEntries = []
     }
     
     override func viewDidDisappear(animated: Bool)

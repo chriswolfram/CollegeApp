@@ -20,6 +20,7 @@ class DirectoryEntry
     init(name: String, title: String? = nil, department: String? = nil, phoneNumber: String? = nil, formattedPhoneNumber: String? = nil, emailAddress: String? = nil)
     {
         self.name = name
+        self.title = title
         self.department = department
         self.phoneNumber = phoneNumber
         self.formattedPhoneNumber = formattedPhoneNumber

@@ -14,6 +14,8 @@
 		98F7A405CCDC41143B98E205 /* Pods_CollegeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E34464A92FB08020492BBE /* Pods_CollegeApp.framework */; };
 		9D00A5A51C44F42100C0DF6D /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D00A5A41C44F42000C0DF6D /* School.swift */; };
 		9D209DAA1C653F5200AA8C50 /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */; };
+		9D3938961C75097F0043BE7F /* DirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3938951C75097F0043BE7F /* DirectoryViewController.swift */; };
+		9D3938981C750CE20043BE7F /* DirectoryEntries.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D3938971C750CE20043BE7F /* DirectoryEntries.xml */; };
 		9D45EA771C5FE31600FA54F2 /* SchoolEmergencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D45EA761C5FE31600FA54F2 /* SchoolEmergencies.swift */; };
 		9D4794D11C55450A00F2261B /* SchoolLandmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */; };
 		9D4794D31C55462400F2261B /* SchoolEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D21C55462400F2261B /* SchoolEvents.swift */; };
@@ -52,6 +54,8 @@
 		9DBD98371C7199FE00E21627 /* shareOnFacebookWhiteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DBD98361C7199FE00E21627 /* shareOnFacebookWhiteIcon.png */; };
 		9DBD98391C73CA0500E21627 /* DirectoryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98381C73CA0500E21627 /* DirectoryEntry.swift */; };
 		9DBD983B1C73CE2400E21627 /* SchoolDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD983A1C73CE2400E21627 /* SchoolDirectory.swift */; };
+		9DBD98401C73DAC900E21627 /* DirectoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD983F1C73DAC900E21627 /* DirectoryViewCell.swift */; };
+		9DBD98421C73E5FB00E21627 /* DirectoryViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98411C73E5FB00E21627 /* DirectoryViewDetailController.swift */; };
 		9DCB663C1C251B2A0083586E /* CollegeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB663B1C251B2A0083586E /* CollegeAppTests.swift */; };
 		9DCB66471C251B2A0083586E /* CollegeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66461C251B2A0083586E /* CollegeAppUITests.swift */; };
 		9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB66541C251B510083586E /* AppDelegate.swift */; };
@@ -100,6 +104,8 @@
 		93E0BF9D0F272E19E8246168 /* Pods-CollegeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollegeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollegeApp/Pods-CollegeApp.release.xcconfig"; sourceTree = "<group>"; };
 		9D00A5A41C44F42000C0DF6D /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
+		9D3938951C75097F0043BE7F /* DirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewController.swift; sourceTree = "<group>"; };
+		9D3938971C750CE20043BE7F /* DirectoryEntries.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DirectoryEntries.xml; sourceTree = "<group>"; };
 		9D45EA761C5FE31600FA54F2 /* SchoolEmergencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolEmergencies.swift; sourceTree = "<group>"; };
 		9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolLandmarks.swift; sourceTree = "<group>"; };
 		9D4794D21C55462400F2261B /* SchoolEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolEvents.swift; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 		9DBD98361C7199FE00E21627 /* shareOnFacebookWhiteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareOnFacebookWhiteIcon.png; sourceTree = "<group>"; };
 		9DBD98381C73CA0500E21627 /* DirectoryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryEntry.swift; sourceTree = "<group>"; };
 		9DBD983A1C73CE2400E21627 /* SchoolDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolDirectory.swift; sourceTree = "<group>"; };
+		9DBD983F1C73DAC900E21627 /* DirectoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewCell.swift; sourceTree = "<group>"; };
+		9DBD98411C73E5FB00E21627 /* DirectoryViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewDetailController.swift; sourceTree = "<group>"; };
 		9DCB66231C251B2A0083586E /* CollegeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB66371C251B2A0083586E /* CollegeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollegeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB663B1C251B2A0083586E /* CollegeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeAppTests.swift; sourceTree = "<group>"; };
@@ -249,6 +257,7 @@
 				9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */,
 				9D4794D61C558B1700F2261B /* SchoolTours.swift */,
 				9DBD983A1C73CE2400E21627 /* SchoolDirectory.swift */,
+				9D3938971C750CE20043BE7F /* DirectoryEntries.xml */,
 				9DBD982B1C702BAA00E21627 /* emblem.jpg */,
 				9DA434311C67F6630007256B /* homescreenBackground.mp4 */,
 				9D209DAD1C668ADE00AA8C50 /* TourImages */,
@@ -268,6 +277,16 @@
 				9DBD98381C73CA0500E21627 /* DirectoryEntry.swift */,
 			);
 			name = Types;
+			sourceTree = "<group>";
+		};
+		9DBD983E1C73DA6500E21627 /* DirectoryView */ = {
+			isa = PBXGroup;
+			children = (
+				9D3938951C75097F0043BE7F /* DirectoryViewController.swift */,
+				9DBD983F1C73DAC900E21627 /* DirectoryViewCell.swift */,
+				9DBD98411C73E5FB00E21627 /* DirectoryViewDetailController.swift */,
+			);
+			name = DirectoryView;
 			sourceTree = "<group>";
 		};
 		9DCB661A1C251B2A0083586E = {
@@ -307,6 +326,7 @@
 				9DCB666A1C2548280083586E /* NewsView */,
 				284551B31C33CDA8003AF5E3 /* EventsView */,
 				9DB25D731C2B625E00874227 /* EmergencyView */,
+				9DBD983E1C73DA6500E21627 /* DirectoryView */,
 				9DD6A1E91C4D7FD40025FE44 /* TourView */,
 				9DE70D451C6CF6830056850D /* MessagesView */,
 				9DB25D761C2BB60400874227 /* SchoolAssets */,
@@ -520,6 +540,7 @@
 				9D55B58D1C68EB0A00B34017 /* Tresidder.jpg in Resources */,
 				9DBD98351C7199F400E21627 /* shareOnTwitterWhiteIcon.png in Resources */,
 				9D55B5891C68EB0A00B34017 /* Mausoleum.jpg in Resources */,
+				9D3938981C750CE20043BE7F /* DirectoryEntries.xml in Resources */,
 				9DCB66651C251B600083586E /* LaunchScreen.storyboard in Resources */,
 				9DBD98371C7199FE00E21627 /* shareOnFacebookWhiteIcon.png in Resources */,
 				9D55B5861C68EB0A00B34017 /* Cactus.jpg in Resources */,
@@ -709,6 +730,9 @@
 				9DE70D471C6CFE990056850D /* MessageSelectorCell.swift in Sources */,
 				9D00A5A51C44F42100C0DF6D /* School.swift in Sources */,
 				9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */,
+				9D3938961C75097F0043BE7F /* DirectoryViewController.swift in Sources */,
+				9DBD98401C73DAC900E21627 /* DirectoryViewCell.swift in Sources */,
+				9DBD98421C73E5FB00E21627 /* DirectoryViewDetailController.swift in Sources */,
 				9DD6A1E81C4D7FCB0025FE44 /* TourViewController.swift in Sources */,
 				9D45EA771C5FE31600FA54F2 /* SchoolEmergencies.swift in Sources */,
 				9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */,
