@@ -16,6 +16,7 @@
 		9D209DAA1C653F5200AA8C50 /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */; };
 		9D3938961C75097F0043BE7F /* DirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3938951C75097F0043BE7F /* DirectoryViewController.swift */; };
 		9D3938981C750CE20043BE7F /* DirectoryEntries.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D3938971C750CE20043BE7F /* DirectoryEntries.xml */; };
+		9D39389A1C76F5E60043BE7F /* DirectoryViewDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3938991C76F5E60043BE7F /* DirectoryViewDetailCell.swift */; };
 		9D45EA771C5FE31600FA54F2 /* SchoolEmergencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D45EA761C5FE31600FA54F2 /* SchoolEmergencies.swift */; };
 		9D4794D11C55450A00F2261B /* SchoolLandmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */; };
 		9D4794D31C55462400F2261B /* SchoolEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D21C55462400F2261B /* SchoolEvents.swift */; };
@@ -106,6 +107,7 @@
 		9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
 		9D3938951C75097F0043BE7F /* DirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewController.swift; sourceTree = "<group>"; };
 		9D3938971C750CE20043BE7F /* DirectoryEntries.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DirectoryEntries.xml; sourceTree = "<group>"; };
+		9D3938991C76F5E60043BE7F /* DirectoryViewDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewDetailCell.swift; sourceTree = "<group>"; };
 		9D45EA761C5FE31600FA54F2 /* SchoolEmergencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolEmergencies.swift; sourceTree = "<group>"; };
 		9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolLandmarks.swift; sourceTree = "<group>"; };
 		9D4794D21C55462400F2261B /* SchoolEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolEvents.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				9D3938951C75097F0043BE7F /* DirectoryViewController.swift */,
 				9DBD983F1C73DAC900E21627 /* DirectoryViewCell.swift */,
 				9DBD98411C73E5FB00E21627 /* DirectoryViewDetailController.swift */,
+				9D3938991C76F5E60043BE7F /* DirectoryViewDetailCell.swift */,
 			);
 			name = DirectoryView;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				9D4794D11C55450A00F2261B /* SchoolLandmarks.swift in Sources */,
 				9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */,
 				9D4794D71C558B1700F2261B /* SchoolTours.swift in Sources */,
+				9D39389A1C76F5E60043BE7F /* DirectoryViewDetailCell.swift in Sources */,
 				9DBD98291C7016D300E21627 /* EventsViewController.swift in Sources */,
 				9DCB665F1C251B510083586E /* QRViewController.swift in Sources */,
 				9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */,
