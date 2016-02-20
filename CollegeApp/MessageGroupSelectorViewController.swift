@@ -38,7 +38,10 @@ class MessageGroupSelectorViewController: UITableViewController
     {
         let messageGroup = messageGroups[indexPath.row]
         
-        let messageViewController = MessageViewController(messageGroup: messageGroup)
+        //let messageViewController = MessageViewController(messageGroup: messageGroup)
+        let messageViewController = storyboard?.instantiateViewControllerWithIdentifier("MessageViewController") as! MessageViewController
+        messageViewController.showMessageGroup(messageGroup)
+        
         navigationController?.pushViewController(messageViewController, animated: true)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

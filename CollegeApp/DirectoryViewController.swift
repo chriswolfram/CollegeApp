@@ -57,11 +57,11 @@ class DirectoryViewController: UITableViewController, UISearchBarDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let popover = storyboard?.instantiateViewControllerWithIdentifier("DirectoryViewDetailController") as! DirectoryViewDetailController
+        let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("DirectoryViewDetailController") as! DirectoryViewDetailController
     
-        popover.showDirectoryEntry(entries[indexPath.row])
+        detailViewController.showDirectoryEntry(entries[indexPath.row])
     
-        navigationController?.pushViewController(popover, animated: true)
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar)

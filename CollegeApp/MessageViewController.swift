@@ -6,53 +6,41 @@
 //  Copyright © 2016 Zalto Technologies. All rights reserved.
 //
 
-import Foundation
-import JSQMessagesViewController
+import UIKit
 
-class MessageViewController: JSQMessagesViewController
+class MessageViewController: UITableViewController
 {
+    @IBOutlet weak var messageInputField: UITextField!
+    
     var messageGroup: MessageGroup!
+    var messages = [Message]()
     
-    var messages = [JSQMessage]()
-    let incomingBubbleFactory = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
-    let outgoingBubbleFactory = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
-    
-    convenience init(messageGroup: MessageGroup)
-    {
-        self.init()
-        
-        self.messageGroup = messageGroup
-    }
+    let senderId = UIDevice.currentDevice().identifierForVendor!.UUIDString
+    let senderDisplayName = UIDevice.currentDevice().name
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        //Remove accessory button
-        self.inputToolbar?.contentView?.leftBarButtonItem = nil
-        
         //Set appearence
-        self.automaticallyScrollsToMostRecentMessage = true
         navigationItem.title = messageGroup.name
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "reloadButtonPressed")
         
-        //Set identity
-        self.senderId = UIDevice.currentDevice().identifierForVendor!.UUIDString
-        self.senderDisplayName = UIDevice.currentDevice().name
+        //Setup table view
+        self.tableView.estimatedRowHeight = 83
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         
         //Load older messages and show them
         reloadMessages()
-        self.collectionView?.reloadData()
+        self.tableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
-        
-        self.collectionView!.collectionViewLayout.springinessEnabled = true;
     }
     
-    override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!)
+    /*override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!)
     {
         //Setup and make request to add message to the server
         let urlComponents = NSURLComponents(URL: messageGroup.sendMessageURL, resolvingAgainstBaseURL: false)
@@ -68,47 +56,46 @@ class MessageViewController: JSQMessagesViewController
         task.resume()
         
         //Add message to local list
-        messages.append(JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, text: text))
+        messages.append(Message(from: self.senderId, fromDisplay: self.senderDisplayName, body: text))
         
         self.finishSendingMessage()
+    }*/
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return messages.count
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        return self.messages.count
-    }
-    
-    override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData!
-    {
-        return self.messages[indexPath.row]
-    }
-    
-    override func collectionView(collectionView: JSQMessagesCollectionView!, didDeleteMessageAtIndexPath indexPath: NSIndexPath!)
-    {
-        self.messages.removeAtIndex(indexPath.row)
-    }
-    
-    override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource!
-    {
-        let message = messages[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("MessageViewCell", forIndexPath: indexPath) as! MessageViewCell
         
-        if message.senderId == self.senderId
-        {
-            return outgoingBubbleFactory
-        }
+        cell.showMessage(messages[indexPath.row])
         
-        else
-        {
-            return incomingBubbleFactory
-        }
+        return cell
     }
     
-    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource!
+    @IBAction func sendButtonPressed(sender: UIButton)
     {
-        let incoming = false
-        let diameter = incoming ? UInt(collectionView.collectionViewLayout.incomingAvatarViewSize.width) : UInt(collectionView.collectionViewLayout.outgoingAvatarViewSize.width)
+        //Setup and make request to add message to the server
+        let urlComponents = NSURLComponents(URL: messageGroup.sendMessageURL, resolvingAgainstBaseURL: false)
         
-        return JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("CW", backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blackColor(), font: UIFont.systemFontOfSize(CGFloat(13)), diameter: diameter)
+        urlComponents?.queryItems =
+        [
+                NSURLQueryItem(name: "from", value: senderId),
+                NSURLQueryItem(name: "fromDisplay", value: senderDisplayName),
+                NSURLQueryItem(name: "body", value: messageInputField.text)
+        ]
+        
+        let task = NSURLSession.sharedSession().dataTaskWithURL(urlComponents!.URL!)
+        task.resume()
+        
+        //Add message to local list
+        messages.append(Message(from: self.senderId, fromDisplay: self.senderDisplayName, body: messageInputField.text!))
+        tableView.reloadData()
+        
+        //Reset input field
+        messageInputField.text = ""
     }
     
     func reloadMessages()
@@ -117,20 +104,39 @@ class MessageViewController: JSQMessagesViewController
         xmlRoot.parse()
         
         let newMessages = xmlRoot["message", .All]?.map
-        {
-            message in
-            return JSQMessage(senderId: message["from"]?.contents, displayName: message["fromDisplay"]?.contents, text: message["body"]?.contents)
+            {
+                message in
+                return Message(from: message["from"]!.contents!, fromDisplay: message["fromDisplay"]!.contents!, body: message["body"]!.contents!)
         }
         
         if newMessages != nil
         {
-            self.messages = newMessages!.flatMap({$0}).map({$0!})
+            self.messages = newMessages!.flatMap({$0}).map({$0})
         }
     }
     
     func reloadButtonPressed()
     {
         reloadMessages()
-        self.collectionView?.reloadData()
+        self.tableView.reloadData()
+    }
+    
+    func showMessageGroup(messageGroup: MessageGroup)
+    {
+        self.messageGroup = messageGroup
+    }
+}
+
+class Message
+{
+    let from: String
+    let fromDisplay: String
+    let body: String
+    
+    init(from: String, fromDisplay: String, body: String)
+    {
+        self.from = from
+        self.fromDisplay = fromDisplay
+        self.body = body
     }
 }
