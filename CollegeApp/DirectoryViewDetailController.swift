@@ -70,6 +70,17 @@ class DirectoryViewDetailController: UITableViewController, MFMessageComposeView
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
+        switch(cellTypes[indexPath.row])
+        {
+        case "DirectoryViewDetailPrimary":
+            return false
+        default:
+            return true
+        }
+    }
+    
     func getCellTypes(directoryEntry: DirectoryEntry) -> [String]
     {
         let cells =

@@ -8,12 +8,15 @@
 
 import UIKit
 
-class MessageViewController: UITableViewController
+class MessageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageInputField: UITextField!
+    @IBOutlet weak var viewBottomContraint: NSLayoutConstraint!
     
     var messageGroup: MessageGroup!
     var messages = [Message]()
+    var messagesHash: Int?
     
     let senderId = UIDevice.currentDevice().identifierForVendor!.UUIDString
     let senderDisplayName = UIDevice.currentDevice().name
@@ -27,52 +30,54 @@ class MessageViewController: UITableViewController
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "reloadButtonPressed")
         
         //Setup table view
-        self.tableView.estimatedRowHeight = 83
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 83
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        //Setup text field
+        messageInputField.autocapitalizationType = .Sentences
+        
+        //Setup notifications for keyboard
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillBeShown:"), name: /*UIKeyboardWillShowNotification*/UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillBeHidden:"), name: UIKeyboardWillHideNotification, object: nil)
+        
+        tableView.keyboardDismissMode = .Interactive
         
         //Load older messages and show them
-        reloadMessages()
-        self.tableView.reloadData()
+        if reloadMessages()
+        {
+            tableView.reloadData()
+        }
+        
+        scrollToBottom()
+        
+        //Setup timer to load messages every second
+        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "reloadTimer", userInfo: nil, repeats: true)
     }
     
-    override func viewDidAppear(animated: Bool)
+    func showMessageGroup(messageGroup: MessageGroup)
     {
-        super.viewDidAppear(animated)
+        self.messageGroup = messageGroup
     }
     
-    /*override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!)
-    {
-        //Setup and make request to add message to the server
-        let urlComponents = NSURLComponents(URL: messageGroup.sendMessageURL, resolvingAgainstBaseURL: false)
-        
-        urlComponents?.queryItems =
-            [
-                NSURLQueryItem(name: "from", value: senderId),
-                NSURLQueryItem(name: "fromDisplay", value: senderDisplayName),
-                NSURLQueryItem(name: "body", value: text)
-            ]
-        
-        let task = NSURLSession.sharedSession().dataTaskWithURL(urlComponents!.URL!)
-        task.resume()
-        
-        //Add message to local list
-        messages.append(Message(from: self.senderId, fromDisplay: self.senderDisplayName, body: text))
-        
-        self.finishSendingMessage()
-    }*/
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return messages.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageViewCell", forIndexPath: indexPath) as! MessageViewCell
         
         cell.showMessage(messages[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     @IBAction func sendButtonPressed(sender: UIButton)
@@ -98,32 +103,91 @@ class MessageViewController: UITableViewController
         messageInputField.text = ""
     }
     
-    func reloadMessages()
+    override func viewDidLayoutSubviews()
+    {
+        super.viewDidLayoutSubviews()
+        
+        scrollToBottom()
+    }
+    
+    func reloadMessages() -> Bool
     {
         let xmlRoot = XMLElement(parser: NSXMLParser(contentsOfURL: messageGroup.messageListURL)!)
         xmlRoot.parse()
         
-        let newMessages = xmlRoot["message", .All]?.map
+        let newHash = xmlRoot.contents?.hashValue
+        
+        if newHash == messagesHash
+        {
+            return false
+        }
+        
+        else
+        {
+            let newMessages = xmlRoot["message", .All]?.map
             {
                 message in
                 return Message(from: message["from"]!.contents!, fromDisplay: message["fromDisplay"]!.contents!, body: message["body"]!.contents!)
+            }
+            
+            if newMessages != nil
+            {
+                self.messages = newMessages!.flatMap({$0}).map({$0})
+                messagesHash = newHash
+                
+                return true
+            }
+            
+            else
+            {
+                return false
+            }
         }
-        
-        if newMessages != nil
+    }
+    
+    func reloadTimer()
+    {
+        if reloadMessages()
         {
-            self.messages = newMessages!.flatMap({$0}).map({$0})
+            tableView.reloadData()
         }
     }
     
     func reloadButtonPressed()
     {
-        reloadMessages()
-        self.tableView.reloadData()
+        if reloadMessages()
+        {
+            tableView.reloadData()
+        }
+        
+        scrollToBottom()
     }
     
-    func showMessageGroup(messageGroup: MessageGroup)
+    func scrollToBottom()
     {
-        self.messageGroup = messageGroup
+        if messages.count > 0
+        {
+            tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: messages.count-1, inSection: 0), atScrollPosition: .Bottom, animated: true)
+        }
+    }
+    
+    func keyboardWillBeShown(notification: NSNotification)
+    {
+        let userInfo = notification.userInfo!
+        
+        let keyboardHeight = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size.height
+        let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue!
+        viewBottomContraint.constant = keyboardHeight
+        UIView.animateWithDuration(animationDuration, animations: {self.view.layoutIfNeeded()}, completion: {i in self.scrollToBottom()})
+    }
+    
+    func keyboardWillBeHidden(notification: NSNotification)
+    {
+        let userInfo = notification.userInfo!
+        
+        let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue!
+        viewBottomContraint.constant = 0
+        UIView.animateWithDuration(animationDuration, animations: {self.view.layoutIfNeeded()}, completion: {i in self.scrollToBottom()})
     }
 }
 
