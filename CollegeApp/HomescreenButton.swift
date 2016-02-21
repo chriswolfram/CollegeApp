@@ -15,11 +15,16 @@ class HomescreenButton: UIButton
         super.init(coder: aDecoder)
         
         self.clipsToBounds = true
-        self.layer.cornerRadius = 50
+        //self.layer.cornerRadius = self.frame.height/2
         self.exclusiveTouch = true
         
         self.layer.borderWidth = 1.5
         self.layer.borderColor = self.backgroundColor?.CGColor
         self.backgroundColor = self.backgroundColor?.colorWithAlphaComponent(0.8)
+    }
+    
+    override func drawRect(rect: CGRect)
+    {
+        self.layer.cornerRadius = self.frame.height/3
     }
 }

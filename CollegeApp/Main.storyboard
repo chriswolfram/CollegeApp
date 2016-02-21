@@ -62,156 +62,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFz-vb-B0u" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.33249253034591675" green="0.38002842664718628" blue="0.99133133888244629" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="VlP-iA-Ila"/>
-                                    <constraint firstAttribute="width" constant="100" id="ko3-tp-dsZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Maps"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="VlP-iA-Ila"/>
-                                        <exclude reference="ko3-tp-dsZ"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="VlP-iA-Ila"/>
-                                        <include reference="ko3-tp-dsZ"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="MKi-uU-wAq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHv-8f-O20" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.19887769222259521" green="1" blue="0.28276386857032776" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="YJz-aU-SWL"/>
-                                    <constraint firstAttribute="width" constant="100" id="wnU-en-ceo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="News"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="YJz-aU-SWL"/>
-                                        <exclude reference="wnU-en-ceo"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="YJz-aU-SWL"/>
-                                        <include reference="wnU-en-ceo"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="uar-Yy-w7t" kind="show" id="83s-vJ-Cf9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsU-NV-GdH" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.9899519681930542" green="0.47217312455177307" blue="0.23679378628730774" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="1Oh-x3-FrP"/>
-                                    <constraint firstAttribute="height" constant="100" id="uJj-GG-RVa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Events"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="1Oh-x3-FrP"/>
-                                        <exclude reference="uJj-GG-RVa"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="1Oh-x3-FrP"/>
-                                        <include reference="uJj-GG-RVa"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="pbs-NQ-FIb" kind="show" id="IiB-li-mZG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftp-gh-bz2" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.70875418186187744" green="0.29914173483848572" blue="0.94770944118499756" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="3iy-6y-EIW"/>
-                                    <constraint firstAttribute="height" constant="100" id="grt-WH-aXI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Tours"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="3iy-6y-EIW"/>
-                                        <exclude reference="grt-WH-aXI"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="3iy-6y-EIW"/>
-                                        <include reference="grt-WH-aXI"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="70N-rS-Ghe" kind="show" id="my5-hz-O1q"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txd-tT-DFq" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.98795485496520996" green="0.31318625807762146" blue="0.30755195021629333" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="WpA-8F-SwX"/>
-                                    <constraint firstAttribute="height" constant="100" id="aHn-JA-RHx"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="Emergency"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="WpA-8F-SwX"/>
-                                        <exclude reference="aHn-JA-RHx"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="WpA-8F-SwX"/>
-                                        <include reference="aHn-JA-RHx"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="gSG-4e-L6m" kind="show" id="ScX-dL-vWd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVQ-Ef-Q0P" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.97111934423446655" green="0.14903900027275085" blue="0.91556525230407715" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="VO5-Cr-Jf3"/>
-                                    <constraint firstAttribute="width" constant="100" id="mJU-XM-iIw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="Groups"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="VO5-Cr-Jf3"/>
-                                        <exclude reference="mJU-XM-iIw"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="VO5-Cr-Jf3"/>
-                                        <include reference="mJU-XM-iIw"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="zkL-f4-96P" kind="show" id="f2T-bA-QIJ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFu-vd-i26" userLabel="Facebook">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -225,7 +75,8 @@
                                         <exclude reference="gJA-NW-dsU"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="350" y="72" width="30" height="30"/>
                                     <mask key="constraints">
                                         <include reference="ecM-fl-sND"/>
                                         <include reference="gJA-NW-dsU"/>
@@ -248,7 +99,8 @@
                                         <exclude reference="dO0-Jq-esd"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="312" y="75.5" width="30" height="24.5"/>
                                     <mask key="constraints">
                                         <include reference="QHA-Sp-5uc"/>
                                         <include reference="dO0-Jq-esd"/>
@@ -258,123 +110,416 @@
                                     <action selector="twitterButton:" destination="ZER-ry-FrU" eventType="touchUpInside" id="5Ah-dg-mZi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LI-z5-gQ1" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.20170344412326813" green="0.9880986213684082" blue="0.99905252456665039" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KgC-tr-Zda">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gd-OR-YcB">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijd-1u-oRN" userLabel="Content View">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftp-gh-bz2" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
+                                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                        <color key="backgroundColor" red="0.70875418186187744" green="0.29914173483848572" blue="0.94770944118499756" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="K6G-rk-zhx"/>
+                                                            <constraint firstAttribute="height" constant="80" id="foX-JD-JkM"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                        <state key="normal" title="Tours"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="K6G-rk-zhx"/>
+                                                                <exclude reference="foX-JD-JkM"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="widthClass=compact">
+                                                            <mask key="constraints">
+                                                                <include reference="K6G-rk-zhx"/>
+                                                                <include reference="foX-JD-JkM"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <segue destination="70N-rS-Ghe" kind="show" id="my5-hz-O1q"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFz-vb-B0u" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
+                                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                        <color key="backgroundColor" red="0.33249253034591675" green="0.38002842664718628" blue="0.99133133888244629" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="MUJ-iR-s9c"/>
+                                                            <constraint firstAttribute="width" constant="80" id="t2o-FB-mXK"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                        <state key="normal" title="Maps"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="MUJ-iR-s9c"/>
+                                                                <exclude reference="t2o-FB-mXK"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="227" y="115" width="80" height="80"/>
+                                                            <mask key="constraints">
+                                                                <include reference="MUJ-iR-s9c"/>
+                                                                <include reference="t2o-FB-mXK"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <segue destination="BYZ-38-t0r" kind="show" id="MKi-uU-wAq"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVQ-Ef-Q0P" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
+                                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                        <color key="backgroundColor" red="0.97111934423446655" green="0.14903900027275085" blue="0.91556525230407715" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="82O-Vp-hJG"/>
+                                                            <constraint firstAttribute="width" constant="80" id="kUM-LB-pRU"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <state key="normal" title="Groups"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="82O-Vp-hJG"/>
+                                                                <exclude reference="kUM-LB-pRU"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="332" y="10" width="80" height="80"/>
+                                                            <mask key="constraints">
+                                                                <include reference="82O-Vp-hJG"/>
+                                                                <include reference="kUM-LB-pRU"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <segue destination="zkL-f4-96P" kind="show" id="f2T-bA-QIJ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHv-8f-O20" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
+                                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                        <color key="backgroundColor" red="0.19887769222259521" green="1" blue="0.28276386857032776" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="jxy-Te-Akq"/>
+                                                            <constraint firstAttribute="width" constant="80" id="pj5-18-wQc"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                        <state key="normal" title="News"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="jxy-Te-Akq"/>
+                                                                <exclude reference="pj5-18-wQc"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="widthClass=compact">
+                                                            <mask key="constraints">
+                                                                <include reference="jxy-Te-Akq"/>
+                                                                <include reference="pj5-18-wQc"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <segue destination="uar-Yy-w7t" kind="show" id="83s-vJ-Cf9"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsU-NV-GdH" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
+                                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                        <color key="backgroundColor" red="0.9899519681930542" green="0.47217312455177307" blue="0.23679378628730774" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="9rl-Fp-EQY"/>
+                                                            <constraint firstAttribute="height" constant="80" id="rIS-dO-DZr"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                        <state key="normal" title="Events"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="9rl-Fp-EQY"/>
+                                                                <exclude reference="rIS-dO-DZr"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="227" y="9" width="80" height="80"/>
+                                                            <mask key="constraints">
+                                                                <include reference="9rl-Fp-EQY"/>
+                                                                <include reference="rIS-dO-DZr"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <segue destination="pbs-NQ-FIb" kind="show" id="IiB-li-mZG"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txd-tT-DFq" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
+                                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                        <color key="backgroundColor" red="0.98795485496520996" green="0.31318625807762146" blue="0.30755195021629333" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="Kuk-e9-uam"/>
+                                                            <constraint firstAttribute="width" constant="80" id="W2n-7i-gpf"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <state key="normal" title="Emergency"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="Kuk-e9-uam"/>
+                                                                <exclude reference="W2n-7i-gpf"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="118" y="9" width="80" height="80"/>
+                                                            <mask key="constraints">
+                                                                <include reference="Kuk-e9-uam"/>
+                                                                <include reference="W2n-7i-gpf"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <segue destination="gSG-4e-L6m" kind="show" id="ScX-dL-vWd"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LI-z5-gQ1" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
+                                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                        <color key="backgroundColor" red="0.20170344412326813" green="0.9880986213684082" blue="0.99905252456665039" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="bTL-qy-YBu"/>
+                                                            <constraint firstAttribute="height" constant="80" id="jsh-L7-rP5"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                        <state key="normal" title="Directory"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="bTL-qy-YBu"/>
+                                                                <exclude reference="jsh-L7-rP5"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="widthClass=compact">
+                                                            <mask key="constraints">
+                                                                <include reference="bTL-qy-YBu"/>
+                                                                <include reference="jsh-L7-rP5"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <segue destination="cJd-Tb-MiW" kind="show" id="DNJ-Yx-fx2"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pl-vh-fPF" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
+                                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                        <color key="backgroundColor" red="0.99133133890000003" green="0.96234670205246198" blue="0.10558923075415758" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="IOB-1Y-0Jh"/>
+                                                            <constraint firstAttribute="height" constant="80" id="wQv-0x-AqZ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                        <state key="normal" title="Scan"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="IOB-1Y-0Jh"/>
+                                                                <exclude reference="wQv-0x-AqZ"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="332" y="115" width="80" height="80"/>
+                                                            <mask key="constraints">
+                                                                <include reference="IOB-1Y-0Jh"/>
+                                                                <include reference="wQv-0x-AqZ"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="sFz-vb-B0u" firstAttribute="leading" secondItem="4LI-z5-gQ1" secondAttribute="trailing" constant="30" id="0dW-CB-e30"/>
+                                                    <constraint firstItem="UHv-8f-O20" firstAttribute="leading" secondItem="ijd-1u-oRN" secondAttribute="leadingMargin" id="7uS-zS-tuh"/>
+                                                    <constraint firstItem="sFz-vb-B0u" firstAttribute="bottom" secondItem="ijd-1u-oRN" secondAttribute="bottomMargin" id="8YB-qn-2FR"/>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="MVQ-Ef-Q0P" secondAttribute="trailing" id="A6o-mo-f7f"/>
+                                                    <constraint firstItem="1Pl-vh-fPF" firstAttribute="leading" secondItem="sFz-vb-B0u" secondAttribute="trailing" constant="30" id="Abd-Nt-W4W"/>
+                                                    <constraint firstItem="4LI-z5-gQ1" firstAttribute="bottom" secondItem="ijd-1u-oRN" secondAttribute="bottomMargin" id="Aiw-vN-bo4"/>
+                                                    <constraint firstItem="MVQ-Ef-Q0P" firstAttribute="top" secondItem="ijd-1u-oRN" secondAttribute="topMargin" id="H1f-Lf-ajq"/>
+                                                    <constraint firstItem="4LI-z5-gQ1" firstAttribute="leading" secondItem="UHv-8f-O20" secondAttribute="trailing" constant="30" id="Nic-Zk-a04"/>
+                                                    <constraint firstItem="ftp-gh-bz2" firstAttribute="top" secondItem="ijd-1u-oRN" secondAttribute="topMargin" id="RLO-bd-gqt"/>
+                                                    <constraint firstItem="ftp-gh-bz2" firstAttribute="leading" secondItem="ijd-1u-oRN" secondAttribute="leadingMargin" id="RUV-JI-9bV"/>
+                                                    <constraint firstItem="4LI-z5-gQ1" firstAttribute="top" secondItem="txd-tT-DFq" secondAttribute="bottom" constant="27" id="ScE-SP-oHj"/>
+                                                    <constraint firstItem="UHv-8f-O20" firstAttribute="top" secondItem="ftp-gh-bz2" secondAttribute="bottom" constant="27" id="XIM-Cl-zaY"/>
+                                                    <constraint firstItem="MVQ-Ef-Q0P" firstAttribute="leading" secondItem="qsU-NV-GdH" secondAttribute="trailing" constant="30" id="YG4-LB-e1e"/>
+                                                    <constraint firstItem="1Pl-vh-fPF" firstAttribute="top" secondItem="MVQ-Ef-Q0P" secondAttribute="bottom" constant="27" id="aOc-c0-425"/>
+                                                    <constraint firstItem="qsU-NV-GdH" firstAttribute="leading" secondItem="txd-tT-DFq" secondAttribute="trailing" constant="30" id="bYi-bH-cZg"/>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="1Pl-vh-fPF" secondAttribute="trailing" id="dBr-9G-5cZ"/>
+                                                    <constraint firstItem="1Pl-vh-fPF" firstAttribute="bottom" secondItem="ijd-1u-oRN" secondAttribute="bottomMargin" id="dEo-sV-xjT"/>
+                                                    <constraint firstItem="UHv-8f-O20" firstAttribute="bottom" secondItem="ijd-1u-oRN" secondAttribute="bottomMargin" id="dNo-IJ-aJc"/>
+                                                    <constraint firstItem="txd-tT-DFq" firstAttribute="leading" secondItem="ftp-gh-bz2" secondAttribute="trailing" constant="30" id="iwW-9n-bCa"/>
+                                                    <constraint firstItem="qsU-NV-GdH" firstAttribute="top" secondItem="ijd-1u-oRN" secondAttribute="topMargin" id="xM6-Fj-Hl4"/>
+                                                    <constraint firstItem="sFz-vb-B0u" firstAttribute="top" secondItem="qsU-NV-GdH" secondAttribute="bottom" constant="27" id="yNH-hv-APY"/>
+                                                </constraints>
+                                                <variation key="default">
+                                                    <mask key="subviews">
+                                                        <exclude reference="ftp-gh-bz2"/>
+                                                        <exclude reference="sFz-vb-B0u"/>
+                                                        <exclude reference="MVQ-Ef-Q0P"/>
+                                                        <exclude reference="UHv-8f-O20"/>
+                                                        <exclude reference="qsU-NV-GdH"/>
+                                                        <exclude reference="txd-tT-DFq"/>
+                                                        <exclude reference="4LI-z5-gQ1"/>
+                                                        <exclude reference="1Pl-vh-fPF"/>
+                                                    </mask>
+                                                    <mask key="constraints">
+                                                        <exclude reference="RLO-bd-gqt"/>
+                                                        <exclude reference="RUV-JI-9bV"/>
+                                                        <exclude reference="7uS-zS-tuh"/>
+                                                        <exclude reference="XIM-Cl-zaY"/>
+                                                        <exclude reference="dNo-IJ-aJc"/>
+                                                        <exclude reference="iwW-9n-bCa"/>
+                                                        <exclude reference="Aiw-vN-bo4"/>
+                                                        <exclude reference="Nic-Zk-a04"/>
+                                                        <exclude reference="ScE-SP-oHj"/>
+                                                        <exclude reference="bYi-bH-cZg"/>
+                                                        <exclude reference="xM6-Fj-Hl4"/>
+                                                        <exclude reference="0dW-CB-e30"/>
+                                                        <exclude reference="8YB-qn-2FR"/>
+                                                        <exclude reference="yNH-hv-APY"/>
+                                                        <exclude reference="A6o-mo-f7f"/>
+                                                        <exclude reference="H1f-Lf-ajq"/>
+                                                        <exclude reference="YG4-LB-e1e"/>
+                                                        <exclude reference="Abd-Nt-W4W"/>
+                                                        <exclude reference="aOc-c0-425"/>
+                                                        <exclude reference="dBr-9G-5cZ"/>
+                                                        <exclude reference="dEo-sV-xjT"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="widthClass=compact">
+                                                    <mask key="subviews">
+                                                        <include reference="ftp-gh-bz2"/>
+                                                        <include reference="sFz-vb-B0u"/>
+                                                        <include reference="MVQ-Ef-Q0P"/>
+                                                        <include reference="UHv-8f-O20"/>
+                                                        <include reference="qsU-NV-GdH"/>
+                                                        <include reference="txd-tT-DFq"/>
+                                                        <include reference="4LI-z5-gQ1"/>
+                                                        <include reference="1Pl-vh-fPF"/>
+                                                    </mask>
+                                                    <mask key="constraints">
+                                                        <include reference="RLO-bd-gqt"/>
+                                                        <include reference="RUV-JI-9bV"/>
+                                                        <include reference="7uS-zS-tuh"/>
+                                                        <include reference="XIM-Cl-zaY"/>
+                                                        <include reference="dNo-IJ-aJc"/>
+                                                        <include reference="iwW-9n-bCa"/>
+                                                        <include reference="Aiw-vN-bo4"/>
+                                                        <include reference="Nic-Zk-a04"/>
+                                                        <include reference="ScE-SP-oHj"/>
+                                                        <include reference="bYi-bH-cZg"/>
+                                                        <include reference="xM6-Fj-Hl4"/>
+                                                        <include reference="0dW-CB-e30"/>
+                                                        <include reference="8YB-qn-2FR"/>
+                                                        <include reference="yNH-hv-APY"/>
+                                                        <include reference="A6o-mo-f7f"/>
+                                                        <include reference="H1f-Lf-ajq"/>
+                                                        <include reference="YG4-LB-e1e"/>
+                                                        <include reference="Abd-Nt-W4W"/>
+                                                        <include reference="aOc-c0-425"/>
+                                                        <include reference="dBr-9G-5cZ"/>
+                                                        <include reference="dEo-sV-xjT"/>
+                                                    </mask>
+                                                </variation>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="ijd-1u-oRN" secondAttribute="trailing" id="KsF-9m-nHP"/>
+                                            <constraint firstItem="ijd-1u-oRN" firstAttribute="leading" secondItem="7Gd-OR-YcB" secondAttribute="leading" id="NzI-ka-HuY"/>
+                                            <constraint firstItem="ijd-1u-oRN" firstAttribute="top" secondItem="7Gd-OR-YcB" secondAttribute="top" id="hzK-XV-3zB"/>
+                                            <constraint firstAttribute="bottom" secondItem="ijd-1u-oRN" secondAttribute="bottom" id="uGj-ut-TyX"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="ijd-1u-oRN"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <exclude reference="KsF-9m-nHP"/>
+                                                <exclude reference="NzI-ka-HuY"/>
+                                                <exclude reference="hzK-XV-3zB"/>
+                                                <exclude reference="uGj-ut-TyX"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="ijd-1u-oRN"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <include reference="KsF-9m-nHP"/>
+                                                <include reference="NzI-ka-HuY"/>
+                                                <include reference="hzK-XV-3zB"/>
+                                                <include reference="uGj-ut-TyX"/>
+                                            </mask>
+                                        </variation>
+                                    </scrollView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="2hc-G1-KLB"/>
-                                    <constraint firstAttribute="width" constant="100" id="9Iy-ag-CdH"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="QjS-IQ-RUf"/>
-                                    <constraint firstAttribute="height" constant="100" id="iPk-be-hbU"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Gd-OR-YcB" secondAttribute="trailing" id="Ojm-Ho-iLV"/>
+                                    <constraint firstAttribute="height" constant="203" id="T2p-rb-Gaa">
+                                        <variation key="widthClass=compact" constant="223"/>
+                                    </constraint>
+                                    <constraint firstAttribute="bottom" secondItem="7Gd-OR-YcB" secondAttribute="bottom" id="ZKj-o5-yS0"/>
+                                    <constraint firstItem="7Gd-OR-YcB" firstAttribute="leading" secondItem="KgC-tr-Zda" secondAttribute="leading" id="klh-Rb-3Jj"/>
+                                    <constraint firstItem="7Gd-OR-YcB" firstAttribute="top" secondItem="KgC-tr-Zda" secondAttribute="top" id="lO5-ns-bhE">
+                                        <variation key="widthClass=compact" constant="20"/>
+                                    </constraint>
+                                    <constraint firstItem="ijd-1u-oRN" firstAttribute="height" secondItem="KgC-tr-Zda" secondAttribute="height" id="oJL-41-iKU">
+                                        <variation key="widthClass=compact" constant="-20"/>
+                                    </constraint>
+                                    <constraint firstItem="ijd-1u-oRN" firstAttribute="width" secondItem="KgC-tr-Zda" secondAttribute="width" id="sSW-gW-tHo"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Directory"/>
                                 <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="7Gd-OR-YcB"/>
+                                    </mask>
                                     <mask key="constraints">
-                                        <exclude reference="2hc-G1-KLB"/>
-                                        <exclude reference="9Iy-ag-CdH"/>
-                                        <exclude reference="QjS-IQ-RUf"/>
-                                        <exclude reference="iPk-be-hbU"/>
+                                        <exclude reference="T2p-rb-Gaa"/>
+                                        <exclude reference="Ojm-Ho-iLV"/>
+                                        <exclude reference="ZKj-o5-yS0"/>
+                                        <exclude reference="klh-Rb-3Jj"/>
+                                        <exclude reference="lO5-ns-bhE"/>
+                                        <exclude reference="oJL-41-iKU"/>
+                                        <exclude reference="sSW-gW-tHo"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="7Gd-OR-YcB"/>
+                                    </mask>
                                     <mask key="constraints">
-                                        <include reference="2hc-G1-KLB"/>
-                                        <include reference="9Iy-ag-CdH"/>
-                                        <include reference="QjS-IQ-RUf"/>
-                                        <include reference="iPk-be-hbU"/>
+                                        <include reference="T2p-rb-Gaa"/>
+                                        <include reference="Ojm-Ho-iLV"/>
+                                        <include reference="ZKj-o5-yS0"/>
+                                        <include reference="klh-Rb-3Jj"/>
+                                        <include reference="lO5-ns-bhE"/>
+                                        <include reference="oJL-41-iKU"/>
+                                        <include reference="sSW-gW-tHo"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <segue destination="cJd-Tb-MiW" kind="show" id="DNJ-Yx-fx2"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.020532956710000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="qsU-NV-GdH" firstAttribute="centerX" secondItem="MVQ-Ef-Q0P" secondAttribute="centerX" id="3TO-Wk-ljV"/>
-                            <constraint firstItem="yI4-6P-Rqp" firstAttribute="centerY" secondItem="LFu-vd-i26" secondAttribute="centerY" id="6dk-O2-mjW"/>
-                            <constraint firstItem="MVQ-Ef-Q0P" firstAttribute="centerY" secondItem="ETp-NJ-F15" secondAttribute="centerY" id="6w6-xa-g9u"/>
-                            <constraint firstItem="MVQ-Ef-Q0P" firstAttribute="centerX" secondItem="sFz-vb-B0u" secondAttribute="centerX" id="87O-71-0C5"/>
-                            <constraint firstItem="qsU-NV-GdH" firstAttribute="leading" secondItem="UHv-8f-O20" secondAttribute="trailing" constant="45" id="E0L-nd-GTc"/>
-                            <constraint firstItem="4LI-z5-gQ1" firstAttribute="centerX" secondItem="ETp-NJ-F15" secondAttribute="centerX" id="F3x-eT-i2i"/>
-                            <constraint firstItem="sFz-vb-B0u" firstAttribute="centerX" secondItem="ETp-NJ-F15" secondAttribute="centerX" constant="70" id="J5b-BO-NJo"/>
-                            <constraint firstItem="LFu-vd-i26" firstAttribute="trailing" secondItem="ETp-NJ-F15" secondAttribute="trailingMargin" id="N60-B4-aOu"/>
-                            <constraint firstItem="MVQ-Ef-Q0P" firstAttribute="top" secondItem="sFz-vb-B0u" secondAttribute="bottom" constant="28" id="Nag-C5-Nsx"/>
-                            <constraint firstItem="FOn-21-RnQ" firstAttribute="top" secondItem="LFu-vd-i26" secondAttribute="bottom" constant="20" id="NhM-j5-tUe"/>
-                            <constraint firstItem="4LI-z5-gQ1" firstAttribute="top" secondItem="qsU-NV-GdH" secondAttribute="bottom" constant="8" id="W2a-Qo-oRm"/>
-                            <constraint firstItem="UHv-8f-O20" firstAttribute="top" secondItem="txd-tT-DFq" secondAttribute="bottom" constant="28" id="aAY-xS-sep"/>
-                            <constraint firstItem="txd-tT-DFq" firstAttribute="centerY" secondItem="ETp-NJ-F15" secondAttribute="centerY" id="bdL-2V-Wrz"/>
-                            <constraint firstItem="LFu-vd-i26" firstAttribute="leading" secondItem="yI4-6P-Rqp" secondAttribute="trailing" constant="8" id="co4-7a-5ay"/>
-                            <constraint firstItem="sFz-vb-B0u" firstAttribute="leading" secondItem="ftp-gh-bz2" secondAttribute="trailing" constant="45" id="dD8-aM-xGf"/>
-                            <constraint firstItem="txd-tT-DFq" firstAttribute="top" secondItem="ftp-gh-bz2" secondAttribute="bottom" constant="28" id="j97-zD-HIc"/>
-                            <constraint firstItem="qsU-NV-GdH" firstAttribute="top" secondItem="MVQ-Ef-Q0P" secondAttribute="bottom" constant="28" id="meA-o2-nO8"/>
-                            <constraint firstItem="MVQ-Ef-Q0P" firstAttribute="leading" secondItem="txd-tT-DFq" secondAttribute="trailing" constant="45" id="n1b-uO-9ih"/>
+                            <constraint firstAttribute="trailing" secondItem="KgC-tr-Zda" secondAttribute="trailing" id="8CB-xH-B9j"/>
+                            <constraint firstItem="FOn-21-RnQ" firstAttribute="top" secondItem="KgC-tr-Zda" secondAttribute="bottom" id="OI8-0J-u3F"/>
+                            <constraint firstItem="KgC-tr-Zda" firstAttribute="leading" secondItem="ETp-NJ-F15" secondAttribute="leading" id="gtw-uD-Bgb"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="sFz-vb-B0u"/>
-                                <exclude reference="UHv-8f-O20"/>
-                                <exclude reference="qsU-NV-GdH"/>
-                                <exclude reference="ftp-gh-bz2"/>
-                                <exclude reference="txd-tT-DFq"/>
-                                <exclude reference="MVQ-Ef-Q0P"/>
                                 <exclude reference="LFu-vd-i26"/>
                                 <exclude reference="yI4-6P-Rqp"/>
-                                <exclude reference="4LI-z5-gQ1"/>
+                                <exclude reference="KgC-tr-Zda"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="NhM-j5-tUe"/>
-                                <exclude reference="F3x-eT-i2i"/>
-                                <exclude reference="W2a-Qo-oRm"/>
-                                <exclude reference="N60-B4-aOu"/>
-                                <exclude reference="co4-7a-5ay"/>
-                                <exclude reference="6w6-xa-g9u"/>
-                                <exclude reference="87O-71-0C5"/>
-                                <exclude reference="Nag-C5-Nsx"/>
-                                <exclude reference="n1b-uO-9ih"/>
-                                <exclude reference="aAY-xS-sep"/>
-                                <exclude reference="3TO-Wk-ljV"/>
-                                <exclude reference="E0L-nd-GTc"/>
-                                <exclude reference="meA-o2-nO8"/>
-                                <exclude reference="J5b-BO-NJo"/>
-                                <exclude reference="dD8-aM-xGf"/>
-                                <exclude reference="bdL-2V-Wrz"/>
-                                <exclude reference="j97-zD-HIc"/>
-                                <exclude reference="6dk-O2-mjW"/>
+                                <exclude reference="8CB-xH-B9j"/>
+                                <exclude reference="gtw-uD-Bgb"/>
+                                <exclude reference="OI8-0J-u3F"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="sFz-vb-B0u"/>
-                                <include reference="UHv-8f-O20"/>
-                                <include reference="qsU-NV-GdH"/>
-                                <include reference="ftp-gh-bz2"/>
-                                <include reference="txd-tT-DFq"/>
-                                <include reference="MVQ-Ef-Q0P"/>
                                 <include reference="LFu-vd-i26"/>
                                 <include reference="yI4-6P-Rqp"/>
-                                <include reference="4LI-z5-gQ1"/>
+                                <include reference="KgC-tr-Zda"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="NhM-j5-tUe"/>
-                                <include reference="F3x-eT-i2i"/>
-                                <include reference="W2a-Qo-oRm"/>
-                                <include reference="N60-B4-aOu"/>
-                                <include reference="co4-7a-5ay"/>
-                                <include reference="6w6-xa-g9u"/>
-                                <include reference="87O-71-0C5"/>
-                                <include reference="Nag-C5-Nsx"/>
-                                <include reference="n1b-uO-9ih"/>
-                                <include reference="aAY-xS-sep"/>
-                                <include reference="3TO-Wk-ljV"/>
-                                <include reference="E0L-nd-GTc"/>
-                                <include reference="meA-o2-nO8"/>
-                                <include reference="J5b-BO-NJo"/>
-                                <include reference="dD8-aM-xGf"/>
-                                <include reference="bdL-2V-Wrz"/>
-                                <include reference="j97-zD-HIc"/>
-                                <include reference="6dk-O2-mjW"/>
+                                <include reference="8CB-xH-B9j"/>
+                                <include reference="gtw-uD-Bgb"/>
+                                <include reference="OI8-0J-u3F"/>
                             </mask>
                         </variation>
                     </view>

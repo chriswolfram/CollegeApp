@@ -27,11 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         //Setup the location manager
         locManager.delegate = self
-        locManager.requestAlwaysAuthorization()
+        locManager.requestWhenInUseAuthorization()
+        //locManager.requestAlwaysAuthorization()
         
         //Configure iBeacons
-        beaconRegion = CLBeaconRegion(proximityUUID: School.beaconUUID, identifier: School.beaconUUID.UUIDString)
-        beaconRegion.notifyEntryStateOnDisplay = true
+        //beaconRegion = CLBeaconRegion(proximityUUID: School.beaconUUID, identifier: School.beaconUUID.UUIDString)
+        //beaconRegion.notifyEntryStateOnDisplay = true
         //Uncomment to enable beacons on launch
         //beginBeaconSearching()
                 
