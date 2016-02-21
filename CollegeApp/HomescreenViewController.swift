@@ -14,12 +14,19 @@ import Social
 class HomescreenViewController: UIViewController
 {    
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var scrollBackgroundView: UIView!
     
     let avplayer = AVPlayer(URL:  NSBundle.mainBundle().URLForResource("homescreenBackground", withExtension: "mp4")!)
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        /*effectView.addConstraints([
+            NSLayoutConstraint(item: effectView, attribute: .Left, relatedBy: .Equal, toItem: scrollBackgroundView, attribute: .Left, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: effectView, attribute: .Right, relatedBy: .Equal, toItem: scrollBackgroundView, attribute: .Right, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: effectView, attribute: .Top, relatedBy: .Equal, toItem: scrollBackgroundView, attribute: .Top, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: effectView, attribute: .Bottom, relatedBy: .Equal, toItem: scrollBackgroundView, attribute: .Bottom, multiplier: 1, constant: 0)])*/
         
         //Set the background view to move with parallax
         /*let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
@@ -56,11 +63,19 @@ class HomescreenViewController: UIViewController
     
     override func viewDidAppear(animated: Bool)
     {
+        super.viewDidAppear(animated)
+        
         avplayer.play()
         
         School.newsStories = []
         School.events = []
         School.directoryEntries = []
+        
+        //Add blur background
+        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        effectView.frame = self.scrollBackgroundView.frame
+        
+        self.view.insertSubview(effectView, atIndex: 1)
     }
     
     override func viewDidDisappear(animated: Bool)
