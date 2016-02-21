@@ -10,6 +10,8 @@ import UIKit
 
 class TourViewDetailController: UIViewController
 {
+    static private let storyboardIdentifier = "Main"
+    
     var landmark: TourLandmark!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -27,17 +29,19 @@ class TourViewDetailController: UIViewController
         }
     }
     
-    static func controllerForLandmark(landmark: TourLandmark, storyboard: UIStoryboard?) -> TourViewDetailController
+    static func controllerForLandmark(landmark: TourLandmark) -> TourViewDetailController
     {
+        let storyboard = UIStoryboard(name: TourViewDetailController.storyboardIdentifier, bundle: nil)
+        
         var detailView: TourViewDetailController!
         if landmark.thumbnailPath != nil
         {
-            detailView = storyboard!.instantiateViewControllerWithIdentifier("TourViewDetailController") as! TourViewDetailController
+            detailView = storyboard.instantiateViewControllerWithIdentifier("TourViewDetailController") as! TourViewDetailController
         }
             
         else
         {
-            detailView = storyboard!.instantiateViewControllerWithIdentifier("TourViewDetailNoImageController") as! TourViewDetailController
+            detailView = storyboard.instantiateViewControllerWithIdentifier("TourViewDetailNoImageController") as! TourViewDetailController
         }
         
         //Request the view (a computed property) to force the controller to instantiate its labels

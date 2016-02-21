@@ -19,13 +19,43 @@
                     <view key="view" contentMode="scaleToFill" id="JxN-2s-8II">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place a QR code in frame to scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2U-J2-0CC">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="D2U-J2-0CC" firstAttribute="centerX" secondItem="JxN-2s-8II" secondAttribute="centerX" id="gw7-Xb-Vp8"/>
+                            <constraint firstItem="Axg-Nl-OTD" firstAttribute="top" secondItem="D2U-J2-0CC" secondAttribute="bottom" constant="75" id="nI4-mp-X5u"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="D2U-J2-0CC"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="gw7-Xb-Vp8"/>
+                                <exclude reference="nI4-mp-X5u"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="D2U-J2-0CC"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="gw7-Xb-Vp8"/>
+                                <include reference="nI4-mp-X5u"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="iHc-FW-V1l"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbg-UX-qLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="364.5" y="453"/>
+            <point key="canvasLocation" x="-334.5" y="475"/>
         </scene>
         <!--Homescreen-->
         <scene sceneID="TyZ-Sm-WGK">
@@ -233,6 +263,9 @@
                                         <include reference="kta-TY-UzU"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="tPV-CL-6VA" kind="show" id="pA0-HT-lkZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFu-vd-i26" userLabel="Facebook">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -342,26 +375,26 @@
                                 <exclude reference="ftp-gh-bz2"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="4yb-8L-cA9"/>
-                                <exclude reference="BXP-DU-Jn1"/>
-                                <exclude reference="8YC-LN-ixR"/>
-                                <exclude reference="Lr9-Nf-Eog"/>
-                                <exclude reference="Kfp-wX-1Dt"/>
-                                <exclude reference="QI1-zL-GF5"/>
-                                <exclude reference="F9Q-FZ-7CE"/>
-                                <exclude reference="agq-lr-BL9"/>
+                                <exclude reference="PzB-MO-bm0"/>
+                                <exclude reference="YAC-xt-eW7"/>
                                 <exclude reference="Yjb-8Z-P1o"/>
                                 <exclude reference="oId-8Y-3fg"/>
+                                <exclude reference="4yb-8L-cA9"/>
+                                <exclude reference="BXP-DU-Jn1"/>
+                                <exclude reference="0yX-o1-xa6"/>
+                                <exclude reference="4bR-TT-hKL"/>
+                                <exclude reference="Kfp-wX-1Dt"/>
+                                <exclude reference="QI1-zL-GF5"/>
                                 <exclude reference="Kfg-ws-Hv6"/>
                                 <exclude reference="qFi-kT-uEB"/>
                                 <exclude reference="T7c-kc-xLn"/>
                                 <exclude reference="Thf-w2-Qj4"/>
+                                <exclude reference="F9Q-FZ-7CE"/>
+                                <exclude reference="agq-lr-BL9"/>
                                 <exclude reference="2B8-ld-TNg"/>
                                 <exclude reference="30J-wq-nz0"/>
-                                <exclude reference="PzB-MO-bm0"/>
-                                <exclude reference="YAC-xt-eW7"/>
-                                <exclude reference="0yX-o1-xa6"/>
-                                <exclude reference="4bR-TT-hKL"/>
+                                <exclude reference="8YC-LN-ixR"/>
+                                <exclude reference="Lr9-Nf-Eog"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -378,26 +411,26 @@
                                 <include reference="ftp-gh-bz2"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="4yb-8L-cA9"/>
-                                <include reference="BXP-DU-Jn1"/>
-                                <include reference="8YC-LN-ixR"/>
-                                <include reference="Lr9-Nf-Eog"/>
-                                <include reference="Kfp-wX-1Dt"/>
-                                <include reference="QI1-zL-GF5"/>
-                                <include reference="F9Q-FZ-7CE"/>
-                                <include reference="agq-lr-BL9"/>
+                                <include reference="PzB-MO-bm0"/>
+                                <include reference="YAC-xt-eW7"/>
                                 <include reference="Yjb-8Z-P1o"/>
                                 <include reference="oId-8Y-3fg"/>
+                                <include reference="4yb-8L-cA9"/>
+                                <include reference="BXP-DU-Jn1"/>
+                                <include reference="0yX-o1-xa6"/>
+                                <include reference="4bR-TT-hKL"/>
+                                <include reference="Kfp-wX-1Dt"/>
+                                <include reference="QI1-zL-GF5"/>
                                 <include reference="Kfg-ws-Hv6"/>
                                 <include reference="qFi-kT-uEB"/>
                                 <include reference="T7c-kc-xLn"/>
                                 <include reference="Thf-w2-Qj4"/>
+                                <include reference="F9Q-FZ-7CE"/>
+                                <include reference="agq-lr-BL9"/>
                                 <include reference="2B8-ld-TNg"/>
                                 <include reference="30J-wq-nz0"/>
-                                <include reference="PzB-MO-bm0"/>
-                                <include reference="YAC-xt-eW7"/>
-                                <include reference="0yX-o1-xa6"/>
-                                <include reference="4bR-TT-hKL"/>
+                                <include reference="8YC-LN-ixR"/>
+                                <include reference="Lr9-Nf-Eog"/>
                             </mask>
                         </variation>
                     </view>
@@ -1932,7 +1965,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPu-NE-FL9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1111.5" y="453"/>
+            <point key="canvasLocation" x="412.5" y="475"/>
         </scene>
         <!--Map-->
         <scene sceneID="tne-QT-ifu">

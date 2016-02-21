@@ -37,7 +37,7 @@ class TourViewPageController: UIPageViewController, UIPageViewControllerDataSour
     
     func detailViewController(landmark: TourLandmark) -> TourViewDetailController
     {
-        return TourViewDetailController.controllerForLandmark(landmark, storyboard: storyboard)
+        return TourViewDetailController.controllerForLandmark(landmark)
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?

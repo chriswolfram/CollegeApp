@@ -15,10 +15,10 @@ class QRDetailController: UIViewController
     var parentController: QRViewController!
     var qrCodeString: String?
     
-    static let storyboardIdentifier = "Main"
-    static let viewControllerIdentifier = "QRDetailController"
+    static private let storyboardIdentifier = "Main"
+    static private let viewControllerIdentifier = "QRDetailController"
     
-    class func qrDetailControllerFromString(qrCodeString: String, parent: QRViewController) -> QRDetailController
+    static func qrDetailControllerFromString(qrCodeString: String, parent: QRViewController) -> QRDetailController
     {
         let storyboard = UIStoryboard(name: QRDetailController.storyboardIdentifier, bundle: nil)
         let viewController = storyboard.instantiateViewControllerWithIdentifier(viewControllerIdentifier) as! QRDetailController
@@ -40,6 +40,6 @@ class QRDetailController: UIViewController
     {
         super.viewWillDisappear(animated)
         
-        parentController.startRunning()
+        parentController.captureSession.startRunning()
     }
 }

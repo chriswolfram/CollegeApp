@@ -57,9 +57,7 @@ class DirectoryViewController: UITableViewController, UISearchBarDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("DirectoryViewDetailController") as! DirectoryViewDetailController
-    
-        detailViewController.showDirectoryEntry(entries[indexPath.row])
+        let detailViewController = DirectoryViewDetailController.controllerForDirectoryEntry(entries[indexPath.row])
     
         navigationController?.pushViewController(detailViewController, animated: true)
     }

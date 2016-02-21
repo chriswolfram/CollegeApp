@@ -12,6 +12,9 @@ import ContactsUI
 
 class DirectoryViewDetailController: UITableViewController, MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate, CNContactViewControllerDelegate
 {
+    static private let storyboardIdentifier = "Main"
+    static private let viewControllerIdentifier = "DirectoryViewDetailController"
+    
     var directoryEntry: DirectoryEntry!
     var cellTypes: [String]!
     
@@ -24,10 +27,15 @@ class DirectoryViewDetailController: UITableViewController, MFMessageComposeView
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    func showDirectoryEntry(entry: DirectoryEntry)
+    static func controllerForDirectoryEntry(entry: DirectoryEntry) -> DirectoryViewDetailController
     {
-        self.directoryEntry = entry
-        self.cellTypes = getCellTypes(self.directoryEntry)
+        let storyboard = UIStoryboard(name: DirectoryViewDetailController.storyboardIdentifier, bundle: nil)
+        let detailView = storyboard.instantiateViewControllerWithIdentifier(DirectoryViewDetailController.viewControllerIdentifier) as! DirectoryViewDetailController
+        
+        detailView.directoryEntry = entry
+        detailView.cellTypes = detailView.getCellTypes(entry)
+        
+        return detailView
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
