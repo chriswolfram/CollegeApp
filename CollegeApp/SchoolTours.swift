@@ -32,8 +32,3 @@ extension School
         )
     ]
 }
-
-protocol TourDelegate
-{
-    func tour(tour: Tour, newIndex: Int)
-}

@@ -8,23 +8,22 @@
 
 import MapKit
 
-class TourViewController: UIViewController, MKMapViewDelegate
+class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDelegate
 {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var progressIndicator: UIProgressView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollViewParent: UIView!
+    @IBOutlet weak var scrollViewParentHeightContraint: NSLayoutConstraint!
     
-    static var sharedInstance: TourViewController?
-        
-    var tour: Tour
-    {
-        return Tour.sharedInstance!
-    }
+    var tour = School.tours[0]
+
+    var initialScrollViewParentHeight: CGFloat!
+    var detailViewMaximized = false
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        TourViewController.sharedInstance = self
         
         navigationItem.title = tour.title
         
@@ -32,7 +31,10 @@ class TourViewController: UIViewController, MKMapViewDelegate
         mapView.delegate = self
         mapView.setRegion(School.schoolRegion, animated: false)
         
-        updateTourView(tour)
+        //Setup scroll view
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.delegate = self
         
         //Setup Beacons
         if School.useBeaconsTours
@@ -41,6 +43,83 @@ class TourViewController: UIViewController, MKMapViewDelegate
             
             appDelegate.tourController = self
             appDelegate.beginBeaconSearching()
+        }
+        
+        //Add blur effect to detail view
+        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        effectView.translatesAutoresizingMaskIntoConstraints = false
+        scrollViewParent.insertSubview(effectView, belowSubview: scrollView)
+        effectView.leadingAnchor.constraintEqualToAnchor(scrollViewParent.leadingAnchor).active = true
+        effectView.trailingAnchor.constraintEqualToAnchor(scrollViewParent.trailingAnchor).active = true
+        effectView.topAnchor.constraintEqualToAnchor(scrollViewParent.topAnchor).active = true
+        effectView.bottomAnchor.constraintEqualToAnchor(scrollViewParent.bottomAnchor).active = true
+        
+        //Add tap gesture recognizer
+        scrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "detailViewTapped"))
+        
+        refreshTourView()
+    }
+    
+    var pagesAdded = false
+    //override func viewDidLayoutSubviews()
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        //Save the initial detail view height
+        if initialScrollViewParentHeight == nil
+        {
+            initialScrollViewParentHeight = scrollViewParentHeightContraint.constant
+        }
+        
+        //Only add the pages as subviews to the scroll view if they have not already been added
+        if !pagesAdded
+        {
+            scrollView.pagingEnabled = true
+            scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(tour.landmarks.count), height: scrollView.frame.height)
+            
+            for i in 0...tour.landmarks.count-1
+            {
+                loadLandmarkToPage(i)
+            }
+            
+            pagesAdded = true
+        }
+    }
+    
+    func loadLandmarkToPage(index: Int)
+    {
+        let viewController = TourViewDetailController.controllerForLandmark(tour.landmarks[index])
+        self.addChildViewController(viewController)
+        viewController.view.frame = CGRect(x: CGFloat(index) * scrollView.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
+        scrollView.addSubview(viewController.view)
+    }
+    
+    func detailViewTapped()
+    {
+        if self.detailViewMaximized
+        {
+            self.scrollViewParentHeightContraint.constant = self.initialScrollViewParentHeight
+        }
+            
+        else
+        {
+            self.scrollViewParentHeightContraint.constant = 0
+        }
+        
+        UIView.animateWithDuration(0.3, animations: {self.view.layoutIfNeeded()})
+        
+        detailViewMaximized = !detailViewMaximized
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView)
+    {
+        let currentPage = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
+        
+        if currentPage != tour.currentIndex
+        {
+            tour.currentIndex = currentPage
+            refreshTourView()
         }
     }
     
@@ -53,7 +132,7 @@ class TourViewController: UIViewController, MKMapViewDelegate
             renderer.lineWidth = 2.0
             return renderer
         }
-            
+        
         else if overlay is MKCircle
         {
             let renderer = MKCircleRenderer(overlay: overlay)
@@ -67,7 +146,7 @@ class TourViewController: UIViewController, MKMapViewDelegate
         }
     }
     
-    func updateTourView(tour: Tour)
+    func refreshTourView()
     {
         //Update progress indicator
         progressIndicator.setProgress(Float(tour.currentIndex) / Float(tour.landmarks.count-1), animated: true)
@@ -82,10 +161,7 @@ class TourViewController: UIViewController, MKMapViewDelegate
     
     func goToLandmarkAtIndex(index: Int)
     {
-        tour.currentIndex = index
-        
-        updateTourView(tour)
-        TourViewPageController.sharedInstance?.updateDetailView(tour)
+        scrollView.setContentOffset(CGPoint(x: scrollView.frame.width * CGFloat(index), y: 0), animated: true)
     }
     
     func didEnterRegion(beaconRegion: CLBeaconRegion)

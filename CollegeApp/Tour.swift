@@ -10,37 +10,22 @@ import Foundation
 
 class Tour
 {
-    static var sharedInstance: Tour?
-    
     let title: String?
     let landmarks: [TourLandmark]
-    var delegates = [TourDelegate]()
-    private var internalCurrentIndex = 0
-    var currentIndex: Int
-        {
-        get
-        {
-            return internalCurrentIndex
-        }
-        
-        set(newIndex)
-        {
-            internalCurrentIndex = newIndex
-            delegates.forEach({$0.tour(self, newIndex: newIndex)})
-        }
-    }
+    var currentIndex = 0
     
     var currentLandmark: TourLandmark
-        {
+    {
         get
         {
             return landmarks[currentIndex]
         }
     }
     
-    init(landmarks: [TourLandmark], title: String? = nil)
+    init(landmarks: [TourLandmark], startIndex: Int = 0, title: String? = nil)
     {
         self.landmarks = landmarks
+        self.currentIndex = startIndex
         self.title = title
     }
 }

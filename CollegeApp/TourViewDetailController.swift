@@ -13,59 +13,37 @@ class TourViewDetailController: UIViewController
     static private let storyboardIdentifier = "Main"
     
     var landmark: TourLandmark!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel?
+    @IBOutlet weak var descriptionLabel: UILabel?
     @IBOutlet weak var thumbnailView: UIImageView?
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        showLandmark(landmark)
+    }
     
     func showLandmark(newLandmark: TourLandmark)
     {
         landmark = newLandmark
-        nameLabel.text = newLandmark.title
-        descriptionLabel.text = newLandmark.descriptionString
         
-        if newLandmark.thumbnailPath != nil, let bundlePath = NSBundle.mainBundle().pathForResource(newLandmark.thumbnailPath, ofType: "jpg"), let image = UIImage(contentsOfFile: bundlePath)
+        nameLabel?.text = landmark.title
+        descriptionLabel?.text = landmark.descriptionString
+        
+        if landmark.thumbnailPath != nil, let bundlePath = NSBundle.mainBundle().pathForResource(landmark.thumbnailPath, ofType: "jpg"), let image = UIImage(contentsOfFile: bundlePath)
         {
             thumbnailView?.image = image
+            thumbnailView?.addConstraint(NSLayoutConstraint(item: thumbnailView!, attribute: .Width, relatedBy: .Equal, toItem: thumbnailView!, attribute: .Height, multiplier: image.size.width / image.size.height, constant: 0))
         }
     }
     
     static func controllerForLandmark(landmark: TourLandmark) -> TourViewDetailController
     {
         let storyboard = UIStoryboard(name: TourViewDetailController.storyboardIdentifier, bundle: nil)
-        
-        var detailView: TourViewDetailController!
-        if landmark.thumbnailPath != nil
-        {
-            detailView = storyboard.instantiateViewControllerWithIdentifier("TourViewDetailController") as! TourViewDetailController
-        }
-            
-        else
-        {
-            detailView = storyboard.instantiateViewControllerWithIdentifier("TourViewDetailNoImageController") as! TourViewDetailController
-        }
-        
-        //Request the view (a computed property) to force the controller to instantiate its labels
-        let _ = detailView.view
-        
+        let detailView = storyboard.instantiateViewControllerWithIdentifier("TourViewDetailController") as! TourViewDetailController
         detailView.showLandmark(landmark)
         
         return detailView
-    }
-    
-    @IBAction func tapRecognizer(sender: UITapGestureRecognizer)
-    {
-        let popover = storyboard?.instantiateViewControllerWithIdentifier("TourViewDetailControllerPopover") as! TourViewDetailControllerPopover
-        
-        let _ = popover.view
-        
-        popover.titleLabel.text = landmark.title
-        popover.descriptionLabel.text = landmark.descriptionString
-        
-        if landmark.thumbnailPath != nil, let bundlePath = NSBundle.mainBundle().pathForResource(landmark.thumbnailPath, ofType: "jpg"), let image = UIImage(contentsOfFile: bundlePath)
-        {
-            popover.imageView.image = image
-        }
-        
-        navigationController?.pushViewController(popover, animated: true)
     }
 }
