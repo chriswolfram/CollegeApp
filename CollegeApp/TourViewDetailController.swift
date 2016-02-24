@@ -21,7 +21,10 @@ class TourViewDetailController: UIViewController
     {
         super.viewDidLoad()
         
-        showLandmark(landmark)
+        if landmark != nil
+        {
+            showLandmark(landmark)
+        }
     }
     
     func showLandmark(newLandmark: TourLandmark)
@@ -36,6 +39,14 @@ class TourViewDetailController: UIViewController
             thumbnailView?.image = image
             thumbnailView?.addConstraint(NSLayoutConstraint(item: thumbnailView!, attribute: .Width, relatedBy: .Equal, toItem: thumbnailView!, attribute: .Height, multiplier: image.size.width / image.size.height, constant: 0))
         }
+    }
+    
+    static func controller() -> TourViewDetailController
+    {
+        let storyboard = UIStoryboard(name: TourViewDetailController.storyboardIdentifier, bundle: nil)
+        let detailView = storyboard.instantiateViewControllerWithIdentifier("TourViewDetailController") as! TourViewDetailController
+        
+        return detailView
     }
     
     static func controllerForLandmark(landmark: TourLandmark) -> TourViewDetailController

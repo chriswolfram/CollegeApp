@@ -20,6 +20,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
 
     var initialScrollViewParentHeight: CGFloat!
     var detailViewMaximized = false
+    var pagesAdded = false
     
     override func viewDidLoad()
     {
@@ -60,7 +61,6 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         refreshTourView()
     }
     
-    var pagesAdded = false
     //override func viewDidLayoutSubviews()
     override func viewDidAppear(animated: Bool)
     {
@@ -72,6 +72,8 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
             initialScrollViewParentHeight = scrollViewParentHeightContraint.constant
         }
         
+        scrollView.pagingEnabled = true
+        scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(tour.landmarks.count), height: scrollView.frame.height)
         //Only add the pages as subviews to the scroll view if they have not already been added
         if !pagesAdded
         {
@@ -128,15 +130,15 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         if overlay is MKPolyline
         {
             let renderer = MKPolylineRenderer(overlay: overlay)
-            renderer.strokeColor = UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 0.5)
-            renderer.lineWidth = 2.0
+            renderer.strokeColor = UIColor(red: 0.2, green: 0.2, blue: 1.0, alpha: 0.7)
+            renderer.lineWidth = 4.0
             return renderer
         }
         
         else if overlay is MKCircle
         {
             let renderer = MKCircleRenderer(overlay: overlay)
-            renderer.strokeColor = UIColor.redColor()
+            renderer.strokeColor = UIColor(red: 0.1612726024261845, green: 0.9598687724116884, blue: 0.47757686732280463, alpha: 0.7)
             return renderer
         }
         
