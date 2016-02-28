@@ -94,8 +94,8 @@ class DirectoryViewController: UITableViewController, UISearchBarDelegate
             entry in
             
             entry.name.containsString(query) ||
-            (entry.title != nil && entry.title!.containsString(query)) ||
-            (entry.department != nil && entry.department!.containsString(query))
+            (entry.title != nil && entry.title!.lowercaseString.containsString(query.lowercaseString)) ||
+            (entry.department != nil && entry.department!.lowercaseString.containsString(query.lowercaseString))
         }
     }
 }

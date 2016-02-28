@@ -47,6 +47,9 @@
 		9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */; };
 		9DA434321C67F6980007256B /* homescreenBackground.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9DA434311C67F6630007256B /* homescreenBackground.mp4 */; };
 		9DA434341C6821250007256B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA434331C6821250007256B /* WebView.swift */; };
+		9DADBAC01C7FF4CF00A4B7F2 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DADBABF1C7FF4CF00A4B7F2 /* GalleryViewController.swift */; };
+		9DADBAC31C7FF50F00A4B7F2 /* GalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DADBAC21C7FF50F00A4B7F2 /* GalleryViewCell.swift */; };
+		9DADBAC51C80F6BD00A4B7F2 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DADBAC41C80F6BD00A4B7F2 /* TestViewController.swift */; };
 		9DB25D721C2B625100874227 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D711C2B625100874227 /* EmergencyViewController.swift */; };
 		9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB25D741C2B680100874227 /* EmergencyViewCell.swift */; };
 		9DBD981C1C6FC58E00E21627 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD981B1C6FC58E00E21627 /* Event.swift */; };
@@ -141,6 +144,9 @@
 		9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenButton.swift; sourceTree = "<group>"; };
 		9DA434311C67F6630007256B /* homescreenBackground.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = homescreenBackground.mp4; sourceTree = "<group>"; };
 		9DA434331C6821250007256B /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		9DADBABF1C7FF4CF00A4B7F2 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		9DADBAC21C7FF50F00A4B7F2 /* GalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewCell.swift; sourceTree = "<group>"; };
+		9DADBAC41C80F6BD00A4B7F2 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		9DB25D711C2B625100874227 /* EmergencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
 		9DB25D741C2B680100874227 /* EmergencyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewCell.swift; sourceTree = "<group>"; };
 		9DBD981B1C6FC58E00E21627 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -253,6 +259,16 @@
 			name = HomescreenIcons;
 			sourceTree = "<group>";
 		};
+		9DADBAC11C7FF4DC00A4B7F2 /* GalleryView */ = {
+			isa = PBXGroup;
+			children = (
+				9DADBABF1C7FF4CF00A4B7F2 /* GalleryViewController.swift */,
+				9DADBAC21C7FF50F00A4B7F2 /* GalleryViewCell.swift */,
+				9DADBAC41C80F6BD00A4B7F2 /* TestViewController.swift */,
+			);
+			name = GalleryView;
+			sourceTree = "<group>";
+		};
 		9DB25D731C2B625E00874227 /* EmergencyView */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +359,7 @@
 				9DBD983E1C73DA6500E21627 /* DirectoryView */,
 				9DD6A1E91C4D7FD40025FE44 /* TourView */,
 				9DE70D451C6CF6830056850D /* MessagesView */,
+				9DADBAC11C7FF4DC00A4B7F2 /* GalleryView */,
 				9DB25D761C2BB60400874227 /* SchoolAssets */,
 				9DCB66601C251B600083586E /* Main.storyboard */,
 				9DCB66621C251B600083586E /* LaunchScreen.storyboard */,
@@ -590,15 +607,18 @@
 				9DBD981E1C6FC5D900E21627 /* NewsStory.swift in Sources */,
 				9D4794D51C55743400F2261B /* SchoolNews.swift in Sources */,
 				9D01FA661C78538F00D2A68F /* MessageViewCell.swift in Sources */,
+				9DADBAC51C80F6BD00A4B7F2 /* TestViewController.swift in Sources */,
 				9DCB665C1C251B510083586E /* MapController.swift in Sources */,
 				9DBD981C1C6FC58E00E21627 /* Event.swift in Sources */,
 				9D4794D11C55450A00F2261B /* SchoolLandmarks.swift in Sources */,
 				9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */,
+				9DADBAC31C7FF50F00A4B7F2 /* GalleryViewCell.swift in Sources */,
 				9D4794D71C558B1700F2261B /* SchoolTours.swift in Sources */,
 				9D39389A1C76F5E60043BE7F /* DirectoryViewDetailCell.swift in Sources */,
 				9DBD98291C7016D300E21627 /* EventsViewController.swift in Sources */,
 				9DCB665F1C251B510083586E /* QRViewController.swift in Sources */,
 				9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */,
+				9DADBAC01C7FF4CF00A4B7F2 /* GalleryViewController.swift in Sources */,
 				9DA434341C6821250007256B /* WebView.swift in Sources */,
 				9DBD98251C6FD1E700E21627 /* Tour.swift in Sources */,
 				9DCB665E1C251B510083586E /* QRDetailController.swift in Sources */,
