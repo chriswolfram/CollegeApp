@@ -56,7 +56,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         effectView.bottomAnchor.constraintEqualToAnchor(scrollViewParent.bottomAnchor).active = true
         
         //Add tap gesture recognizer
-        scrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "detailViewTapped"))
+        scrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TourViewController.detailViewTapped)))
         
         refreshTourView()
     }

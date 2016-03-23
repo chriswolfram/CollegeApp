@@ -33,7 +33,7 @@ class DirectoryViewController: UITableViewController, UISearchBarDelegate
         //Setup tap to escape
         tableView.addGestureRecognizer(gestureRecognizer)
         gestureRecognizer.enabled = false
-        gestureRecognizer.addTarget(self, action: "tableTapped")
+        gestureRecognizer.addTarget(self, action: #selector(DirectoryViewController.tableTapped))
     }
     
     func tableTapped()

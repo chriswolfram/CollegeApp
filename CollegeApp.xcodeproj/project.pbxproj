@@ -40,7 +40,6 @@
 		9D55B5881C68EB0A00B34017 /* Hoover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57D1C68EB0A00B34017 /* Hoover.jpg */; };
 		9D55B5891C68EB0A00B34017 /* Mausoleum.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57E1C68EB0A00B34017 /* Mausoleum.jpg */; };
 		9D55B58A1C68EB0A00B34017 /* Memorial.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B57F1C68EB0A00B34017 /* Memorial.jpg */; };
-		9D55B58B1C68EB0A00B34017 /* Quad.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5801C68EB0A00B34017 /* Quad.JPG */; };
 		9D55B58C1C68EB0A00B34017 /* Stadium.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5811C68EB0A00B34017 /* Stadium.jpg */; };
 		9D55B58D1C68EB0A00B34017 /* Tresidder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5821C68EB0A00B34017 /* Tresidder.jpg */; };
 		9D98EB381C6DA88D00E4673A /* CalendarElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D98EB371C6DA88D00E4673A /* CalendarElement.swift */; };
@@ -141,7 +140,6 @@
 		9D55B57D1C68EB0A00B34017 /* Hoover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Hoover.jpg; sourceTree = "<group>"; };
 		9D55B57E1C68EB0A00B34017 /* Mausoleum.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mausoleum.jpg; sourceTree = "<group>"; };
 		9D55B57F1C68EB0A00B34017 /* Memorial.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Memorial.jpg; sourceTree = "<group>"; };
-		9D55B5801C68EB0A00B34017 /* Quad.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Quad.JPG; sourceTree = "<group>"; };
 		9D55B5811C68EB0A00B34017 /* Stadium.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Stadium.jpg; sourceTree = "<group>"; };
 		9D55B5821C68EB0A00B34017 /* Tresidder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tresidder.jpg; sourceTree = "<group>"; };
 		9D98EB371C6DA88D00E4673A /* CalendarElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarElement.swift; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 				9D55B57D1C68EB0A00B34017 /* Hoover.jpg */,
 				9D55B57E1C68EB0A00B34017 /* Mausoleum.jpg */,
 				9D55B57F1C68EB0A00B34017 /* Memorial.jpg */,
-				9D55B5801C68EB0A00B34017 /* Quad.JPG */,
 				9D55B5811C68EB0A00B34017 /* Stadium.jpg */,
 				9D55B5821C68EB0A00B34017 /* Tresidder.jpg */,
 			);
@@ -558,7 +555,6 @@
 			files = (
 				9DBD982C1C702BAA00E21627 /* emblem.jpg in Resources */,
 				9D55B58C1C68EB0A00B34017 /* Stadium.jpg in Resources */,
-				9D55B58B1C68EB0A00B34017 /* Quad.JPG in Resources */,
 				9D3439691C7EAF1A008A4D73 /* Tourist-96.png in Resources */,
 				9D3439661C7EAF1A008A4D73 /* Map-96.png in Resources */,
 				9D55B58D1C68EB0A00B34017 /* Tresidder.jpg in Resources */,

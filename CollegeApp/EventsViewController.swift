@@ -17,7 +17,7 @@ class EventsViewController: UITableViewController
         //Show the add events button if it should
         if School.addEventsButton
         {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("addEventsButtonPressed"))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(EventsViewController.addEventsButtonPressed))
         }
         
         //Configure table view

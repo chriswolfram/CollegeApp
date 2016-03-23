@@ -40,11 +40,11 @@ class HomescreenViewController: UIViewController
         avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         
         avplayer.actionAtItemEnd = .None
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "finishedVideo", name: AVPlayerItemDidPlayToEndTimeNotification, object: avplayer.currentItem)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomescreenViewController.finishedVideo), name: AVPlayerItemDidPlayToEndTimeNotification, object: avplayer.currentItem)
         
         view.layer.addSublayer(avplayerLayer)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "viewDidBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomescreenViewController.viewDidBecomeActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
         
         avplayer.play()
     }

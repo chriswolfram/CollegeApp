@@ -27,7 +27,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //Set appearence
         navigationItem.title = messageGroup.name
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "reloadButtonPressed")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(MessageViewController.reloadButtonPressed))
         
         //Setup table view
         tableView.delegate = self
@@ -39,8 +39,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         messageInputField.autocapitalizationType = .Sentences
         
         //Setup notifications for keyboard
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillBeShown:"), name: /*UIKeyboardWillShowNotification*/UIKeyboardWillChangeFrameNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillBeHidden:"), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessageViewController.keyboardWillBeShown), name: /*UIKeyboardWillShowNotification*/UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessageViewController.keyboardWillBeHidden), name: UIKeyboardWillHideNotification, object: nil)
         
         tableView.keyboardDismissMode = .Interactive
         
@@ -53,7 +53,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         scrollToBottom()
         
         //Setup timer to load messages every second
-        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "reloadTimer", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(MessageViewController.reloadTimer), userInfo: nil, repeats: true)
     }
     
     func showMessageGroup(messageGroup: MessageGroup)

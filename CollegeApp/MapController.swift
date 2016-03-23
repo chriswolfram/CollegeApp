@@ -46,7 +46,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         
         //Configure gesture recognizer to pick up taps to escape the search bar
         mapView.addGestureRecognizer(gestureRecognizer)
-        gestureRecognizer.addTarget(self, action: Selector("mapTapped"))
+        gestureRecognizer.addTarget(self, action: #selector(MapController.mapTapped))
         
         //Initialize resultsView
         resultsView.configure()
@@ -54,7 +54,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         resultsView.hidden = true
         
         //Setup notifications for keyboard
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillBeShown:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MapController.keyboardWillBeShown(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
         //Configure map
         mapView.setRegion(School.schoolRegion, animated: false)
@@ -73,7 +73,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         segmentedControl = UISegmentedControl(items: ["Map", "Satellite"])
         segmentedControl.tintColor = UIColor.whiteColor()
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.addTarget(self, action: "mapModeChanged", forControlEvents: .ValueChanged)
+        segmentedControl.addTarget(self, action: #selector(MapController.mapModeChanged), forControlEvents: .ValueChanged)
         let segmentedControlItem = UIBarButtonItem(customView: segmentedControl)
         
         //Add all to the toolbar

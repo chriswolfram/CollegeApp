@@ -10,10 +10,10 @@ import UIKit
 
 class BubbleView: UIButton
 {
-    let title = "test"
     var initialRadius: Float!
     var radius: Float!
     var initialPosition: CGPoint!
+    var offset = CGPoint(x: 0, y: 0)
     
     var image: UIImage?
     
@@ -26,7 +26,7 @@ class BubbleView: UIButton
         self.clipsToBounds = true
         self.exclusiveTouch = true
         
-        self.addTarget(self, action: "pressed", forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(BubbleView.pressed), forControlEvents: .TouchUpInside)
     }
     
     override init(frame: CGRect)
@@ -36,7 +36,7 @@ class BubbleView: UIButton
         self.clipsToBounds = true
         self.exclusiveTouch = true
         
-        self.addTarget(self, action: "pressed", forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(BubbleView.pressed), forControlEvents: .TouchUpInside)
     }
     
     convenience init(position: CGPoint, radius: Float)
@@ -74,20 +74,33 @@ class BubbleView: UIButton
         
         self.frame.size.width = CGFloat(radius*2)
         self.frame.size.height = CGFloat(radius*2)
-        self.frame.origin.x = initialPosition.x - CGFloat(radius/2)
-        self.frame.origin.y = initialPosition.y - CGFloat(radius/2)
+        self.frame.origin.x = initialPosition.x - CGFloat(radius) + offset.x
+        self.frame.origin.y = initialPosition.y - CGFloat(radius) + offset.y
         
         self.layer.cornerRadius = CGFloat(radius)
     }
     
     func refreshSizeInView(superview: UIView)
     {
-        let convertedOrigin = superview.convertPoint(self.frame.origin, fromView: self)
-        let center = CGPoint(x: convertedOrigin.x - initialPosition.x + CGFloat(radius/2) + self.frame.width/2, y: convertedOrigin.y + CGFloat(radius/2) - initialPosition.y + self.frame.height/2)
+        var center = superview.convertPoint(CGPoint(x: 0, y: 0), fromView: self)
+        center.x += CGFloat(radius)
+        center.y += CGFloat(radius)
         
-        let edgeDistance = min(center.x, center.y, superview.frame.width - center.x, superview.frame.height - center.y) - CGFloat(initialRadius)
+        let xDist = center.x - superview.frame.width/2
+        let yDist = center.y - superview.frame.height/2
+        let distance = Float(sqrt(xDist*xDist + yDist*yDist))
         
-        radius = initialRadius + Float(edgeDistance)
+        let triggerDistance = initialRadius*3
+        if distance > triggerDistance
+        {
+            //radius = 25 * initialRadius/(distance - triggerDistance)
+            radius = 3 * initialRadius/sqrt(distance - triggerDistance)
+        }
+        
+        else
+        {
+            radius = initialRadius
+        }
         
         if radius < 3
         {
@@ -97,6 +110,8 @@ class BubbleView: UIButton
         else if radius > initialRadius
         {
             radius = initialRadius
+            offset.x = 0
+            offset.y = 0
         }
         
         self.setNeedsDisplay()

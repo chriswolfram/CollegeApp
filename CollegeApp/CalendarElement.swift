@@ -43,7 +43,7 @@ class CalendarElement
         self.childList = []
         self.children = [String: [CalendarElement]]()
         
-        for var i = 0; i < statements.count; i++
+        for var i = 0; i < statements.count; i += 1
         {
             let (tag, contents) = statements[i]
             var child: CalendarElement!

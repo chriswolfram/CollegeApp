@@ -49,7 +49,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!)
     {
-        if let metadataObj = metadataObjects.first where metadataObj.type == AVMetadataObjectTypeQRCode, let qrCodeText = metadataObj.stringValue
+        if let metadataObj = metadataObjects.first where metadataObj.type == AVMetadataObjectTypeQRCode, let qrCodeText = (metadataObj as! AVMetadataMachineReadableCodeObject).stringValue
         {
             //This is run if a readable QR code is found
             //let detailView = QRDetailController.qrDetailControllerFromString(qrCodeText, parent: self)

@@ -34,13 +34,6 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
         
         scrollView.delegate = self
         
-        let bundlePath = NSBundle.mainBundle().pathForResource("Barn", ofType: "jpg")
-        let image = UIImage(contentsOfFile: bundlePath!)
-        
-        //let bubbleView = BubbleView(position: CGPoint(x: 1000, y: 1000), radius: 50, image: image!)
-        //let bubbleView = BubbleView(position: CGPoint(x: 1000, y: 1000), radius: 50)
-        //bubbleView.backgroundColor = UIColor.redColor()
-        
         let bubbleViewCount = 50
         var cubeCoords = [(0,0,0)]
         let radius = Int(ceil(radiusFromCount(bubbleViewCount)))
@@ -72,8 +65,12 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
         cubePositions.forEach
         {
             x,y in
-            let xOffset = scrollView.contentOffset.x
-            let yOffset = scrollView.contentOffset.y
+            let xOffset = scrollView.contentOffset.x - CGFloat(bubbleRadius/2)
+            let yOffset = scrollView.contentOffset.y - CGFloat(bubbleRadius/2)
+            
+            let paths = ["Angel","Barn","Burghers","Cactus","Cantor","Hoover","Mausoleum","Memorial","Quad","Stadium","Tresidder"]
+            let bundlePath = NSBundle.mainBundle().pathForResource(paths[Int(arc4random_uniform(UInt32(paths.count)))], ofType: "jpg")
+            let image = UIImage(contentsOfFile: bundlePath!)
             
             let bubbleView = BubbleView(position: CGPoint(x: xOffset + CGFloat(x), y: yOffset + CGFloat(y)), radius: bubbleRadius, image: image!)
             
