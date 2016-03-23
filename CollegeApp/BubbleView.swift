@@ -59,7 +59,7 @@ class BubbleView: UIButton
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.bounds = CGRect(x: -self.bounds.origin.x, y: -self.bounds.origin.y, width: self.frame.size.width, height: self.frame.size.height)
-        imageView.contentMode = .ScaleToFill
+        imageView.contentMode = .ScaleAspectFill
         self.addSubview(imageView)
         
         imageView.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
