@@ -233,6 +233,17 @@
 			name = EventsView;
 			sourceTree = "<group>";
 		};
+		9D03255A1CA9FAFE00E78F27 /* Fyuses (currently unused) */ = {
+			isa = PBXGroup;
+			children = (
+				9DADBABF1C7FF4CF00A4B7F2 /* GalleryViewController.swift */,
+				9DADBAC21C7FF50F00A4B7F2 /* GalleryViewCell.swift */,
+				9DADBAC41C80F6BD00A4B7F2 /* FyuseViewController.swift */,
+				9DADBAC81C83E00100A4B7F2 /* TestViewController.swift */,
+			);
+			name = "Fyuses (currently unused)";
+			sourceTree = "<group>";
+		};
 		9D209DAD1C668ADE00AA8C50 /* TourImages */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,10 +284,7 @@
 		9DADBAC11C7FF4DC00A4B7F2 /* GalleryView */ = {
 			isa = PBXGroup;
 			children = (
-				9DADBABF1C7FF4CF00A4B7F2 /* GalleryViewController.swift */,
-				9DADBAC21C7FF50F00A4B7F2 /* GalleryViewCell.swift */,
-				9DADBAC41C80F6BD00A4B7F2 /* FyuseViewController.swift */,
-				9DADBAC81C83E00100A4B7F2 /* TestViewController.swift */,
+				9D03255A1CA9FAFE00E78F27 /* Fyuses (currently unused) */,
 				9DFC1E121C8E6C9900375E23 /* BubbleViewController.swift */,
 				9DE92DDD1C938B4600CB403D /* BubbleViewDetailController.swift */,
 				9DFC1E141C8FB75900375E23 /* BubbleView.swift */,
