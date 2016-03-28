@@ -102,9 +102,9 @@ class BubbleView: UIButton
             radius = initialRadius
         }
         
-        if radius < 3
+        if radius < initialRadius*2/3
         {
-            radius = 3
+            radius = initialRadius*2/3
         }
         
         else if radius > initialRadius
