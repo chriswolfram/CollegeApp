@@ -10,7 +10,8 @@ import UIKit
 
 class TourViewScrollView: UIScrollView
 {
-    var ignoredArea: CGFloat = 300
+    //Area from the top to be pressed through
+    var ignoredArea: CGFloat = 0
     
     override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool
     {

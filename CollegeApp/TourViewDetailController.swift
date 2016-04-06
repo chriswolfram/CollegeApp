@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TourViewDetailController: UIViewController
+class TourViewDetailController: UIViewController, UIScrollViewDelegate
 {
     static private let storyboardIdentifier = "Main"
     
@@ -16,6 +16,10 @@ class TourViewDetailController: UIViewController
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var descriptionLabel: UILabel?
     @IBOutlet weak var thumbnailView: UIImageView?
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
+    var scrollCallback: ((UIScrollView) -> Void)?
     
     var height: CGFloat
     {
@@ -25,6 +29,8 @@ class TourViewDetailController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        scrollView.delegate = self
         
         if landmark != nil
         {
@@ -61,5 +67,10 @@ class TourViewDetailController: UIViewController
         detailView.showLandmark(landmark)
         
         return detailView
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView)
+    {
+        scrollCallback?(scrollView)
     }
 }
