@@ -89,6 +89,7 @@
 		9DF316701C5286E900D51CB3 /* TourViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */; };
 		9DFC1E131C8E6C9900375E23 /* BubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC1E121C8E6C9900375E23 /* BubbleViewController.swift */; };
 		9DFC1E151C8FB75900375E23 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC1E141C8FB75900375E23 /* BubbleView.swift */; };
+		9DFCA3B61CB0B178007C75D7 /* TourViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCA3B51CB0B178007C75D7 /* TourViewScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +198,7 @@
 		9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewDetailController.swift; sourceTree = "<group>"; };
 		9DFC1E121C8E6C9900375E23 /* BubbleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleViewController.swift; sourceTree = "<group>"; };
 		9DFC1E141C8FB75900375E23 /* BubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
+		9DFCA3B51CB0B178007C75D7 /* TourViewScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +449,7 @@
 			children = (
 				9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */,
 				9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */,
+				9DFCA3B51CB0B178007C75D7 /* TourViewScrollView.swift */,
 			);
 			name = TourView;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 				9DBD98211C6FD1AE00E21627 /* Landmark.swift in Sources */,
 				9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */,
 				9DE70D471C6CFE990056850D /* MessageSelectorCell.swift in Sources */,
+				9DFCA3B61CB0B178007C75D7 /* TourViewScrollView.swift in Sources */,
 				9D00A5A51C44F42100C0DF6D /* School.swift in Sources */,
 				9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */,
 				9D3938961C75097F0043BE7F /* DirectoryViewController.swift in Sources */,

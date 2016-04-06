@@ -17,6 +17,11 @@ class TourViewDetailController: UIViewController
     @IBOutlet weak var descriptionLabel: UILabel?
     @IBOutlet weak var thumbnailView: UIImageView?
     
+    var height: CGFloat
+    {
+        return view.frame.height
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
