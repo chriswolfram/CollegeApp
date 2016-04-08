@@ -397,7 +397,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZL-Uw-2jv" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="55" height="55"/>
-                                                <color key="backgroundColor" red="0.96883696317672729" green="1" blue="0.32820075750350952" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.6497686505317688" green="0.42476731538772583" blue="0.95788240432739258" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
