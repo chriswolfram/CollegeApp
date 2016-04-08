@@ -90,6 +90,7 @@
 		9DFC1E131C8E6C9900375E23 /* BubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC1E121C8E6C9900375E23 /* BubbleViewController.swift */; };
 		9DFC1E151C8FB75900375E23 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC1E141C8FB75900375E23 /* BubbleView.swift */; };
 		9DFCA3B61CB0B178007C75D7 /* TourViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCA3B51CB0B178007C75D7 /* TourViewScrollView.swift */; };
+		9DFCA3BA1CB77796007C75D7 /* Shuttle-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCA3B91CB77796007C75D7 /* Shuttle-96.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +200,7 @@
 		9DFC1E121C8E6C9900375E23 /* BubbleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleViewController.swift; sourceTree = "<group>"; };
 		9DFC1E141C8FB75900375E23 /* BubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		9DFCA3B51CB0B178007C75D7 /* TourViewScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewScrollView.swift; sourceTree = "<group>"; };
+		9DFCA3B91CB77796007C75D7 /* Shuttle-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shuttle-96.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +281,7 @@
 				9D34395E1C7EAF1A008A4D73 /* Tourist-96.png */,
 				9D34395F1C7EAF1A008A4D73 /* University-96.png */,
 				9D3439601C7EAF1A008A4D73 /* Walking-96.png */,
+				9DFCA3B91CB77796007C75D7 /* Shuttle-96.png */,
 			);
 			name = HomescreenIcons;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				9DCB66641C251B600083586E /* Assets.xcassets in Resources */,
 				9D55B5831C68EB0A00B34017 /* Angel.jpg in Resources */,
 				9D55B5851C68EB0A00B34017 /* Burghers.jpg in Resources */,
+				9DFCA3BA1CB77796007C75D7 /* Shuttle-96.png in Resources */,
 				9D3439681C7EAF1A008A4D73 /* QR Code-96.png in Resources */,
 				9DCB66631C251B600083586E /* Main.storyboard in Resources */,
 				9D55B5881C68EB0A00B34017 /* Hoover.jpg in Resources */,
