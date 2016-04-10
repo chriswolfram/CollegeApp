@@ -546,7 +546,7 @@
                                 <rect key="frame" x="0.0" y="480" width="205" height="55"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="clI-hO-fgZ" userLabel="Groups">
-                                        <rect key="frame" x="150" y="0.0" width="55" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7B-3H-rgY" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="55" height="55"/>
@@ -620,7 +620,7 @@
                                         </variation>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ig-wF-FPs" userLabel="Tours">
-                                        <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                                        <rect key="frame" x="75" y="0.0" width="55" height="55"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftp-gh-bz2" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="55" height="55"/>
@@ -694,7 +694,7 @@
                                         </variation>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XfF-Ba-Bjt" userLabel="Scan">
-                                        <rect key="frame" x="75" y="0.0" width="55" height="55"/>
+                                        <rect key="frame" x="150" y="0.0" width="55" height="55"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbL-Ll-s0p" customClass="HomescreenButton" customModule="CollegeApp" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="55" height="55"/>
@@ -856,6 +856,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="VCU-Nz-XxV" kind="show" id="ud2-e6-DIw"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Shuttle-96.png" translatesAutoresizingMaskIntoConstraints="NO" id="K6K-Os-MVJ">
                                                 <rect key="frame" x="28.5" y="27.5" width="39" height="39"/>
@@ -998,27 +1001,18 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="89" y="554" width="42" height="19.5"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2D-Hy-p02">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="181" y="554" width="38" height="19.5"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svd-3v-fns">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="262.5" y="554" width="55.5" height="19.5"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhT-LI-hsC">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -1201,7 +1195,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Stanford" id="Uhq-Qb-FiU"/>
+                    <navigationItem key="navigationItem" title="Kincola" id="Uhq-Qb-FiU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Py6-mV-hXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2151,6 +2145,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXj-cS-hsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-334.5" y="4757"/>
+        </scene>
+        <!--Shuttles-->
+        <scene sceneID="vvz-3B-3hm">
+            <objects>
+                <viewController id="VCU-Nz-XxV" customClass="ShuttlesViewController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cbk-K4-C5n"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dfo-jX-Nia"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZjD-SL-Rbe">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QzX-F0-oYc">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QzX-F0-oYc" firstAttribute="leading" secondItem="ZjD-SL-Rbe" secondAttribute="leading" id="H6Y-s3-2d2"/>
+                            <constraint firstItem="QzX-F0-oYc" firstAttribute="top" secondItem="ZjD-SL-Rbe" secondAttribute="top" id="RMe-TZ-kT5"/>
+                            <constraint firstItem="Dfo-jX-Nia" firstAttribute="top" secondItem="QzX-F0-oYc" secondAttribute="bottom" id="UKS-9a-cQe"/>
+                            <constraint firstAttribute="trailing" secondItem="QzX-F0-oYc" secondAttribute="trailing" id="f3S-B9-thR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="QzX-F0-oYc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="H6Y-s3-2d2"/>
+                                <exclude reference="RMe-TZ-kT5"/>
+                                <exclude reference="f3S-B9-thR"/>
+                                <exclude reference="UKS-9a-cQe"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="QzX-F0-oYc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="H6Y-s3-2d2"/>
+                                <include reference="RMe-TZ-kT5"/>
+                                <include reference="f3S-B9-thR"/>
+                                <include reference="UKS-9a-cQe"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Shuttles" id="2q0-Kf-PHO">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="3iw-I2-urF">
+                            <connections>
+                                <action selector="refreshButtonPressed:" destination="VCU-Nz-XxV" id="HBE-CM-924"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="QzX-F0-oYc" id="X9B-dH-5h7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Xs-jZ-Ex3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-334.5" y="5465"/>
         </scene>
         <!--Directory View Detail Controller-->
         <scene sceneID="oIi-wg-mUO">

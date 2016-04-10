@@ -52,6 +52,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
     {
         super.viewDidAppear(animated)
         
+        scrollView.ignoredArea = TourViewController.detailViewTopSpace
         scrollView.pagingEnabled = true
         scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(tour.landmarks.count), height: scrollView.frame.height)
         

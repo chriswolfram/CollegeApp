@@ -91,6 +91,8 @@
 		9DFC1E151C8FB75900375E23 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC1E141C8FB75900375E23 /* BubbleView.swift */; };
 		9DFCA3B61CB0B178007C75D7 /* TourViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCA3B51CB0B178007C75D7 /* TourViewScrollView.swift */; };
 		9DFCA3BA1CB77796007C75D7 /* Shuttle-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCA3B91CB77796007C75D7 /* Shuttle-96.png */; };
+		9DFCA3BC1CB78754007C75D7 /* ShuttlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCA3BB1CB78754007C75D7 /* ShuttlesViewController.swift */; };
+		9DFCA3BF1CB88ADC007C75D7 /* SchoolShuttles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCA3BE1CB88ADC007C75D7 /* SchoolShuttles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +203,8 @@
 		9DFC1E141C8FB75900375E23 /* BubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		9DFCA3B51CB0B178007C75D7 /* TourViewScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewScrollView.swift; sourceTree = "<group>"; };
 		9DFCA3B91CB77796007C75D7 /* Shuttle-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shuttle-96.png"; sourceTree = "<group>"; };
+		9DFCA3BB1CB78754007C75D7 /* ShuttlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShuttlesViewController.swift; sourceTree = "<group>"; };
+		9DFCA3BE1CB88ADC007C75D7 /* SchoolShuttles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolShuttles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +315,7 @@
 			children = (
 				9D00A5A41C44F42000C0DF6D /* School.swift */,
 				9D45EA761C5FE31600FA54F2 /* SchoolEmergencies.swift */,
+				9DFCA3BE1CB88ADC007C75D7 /* SchoolShuttles.swift */,
 				9D4794D21C55462400F2261B /* SchoolEvents.swift */,
 				9D4794D41C55743400F2261B /* SchoolNews.swift */,
 				9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */,
@@ -388,6 +393,7 @@
 				9DD6A1E91C4D7FD40025FE44 /* TourView */,
 				9DE70D451C6CF6830056850D /* MessagesView */,
 				9DADBAC11C7FF4DC00A4B7F2 /* GalleryView */,
+				9DFCA3BD1CB7875F007C75D7 /* ShuttlesView */,
 				9DB25D761C2BB60400874227 /* SchoolAssets */,
 				9DCB66601C251B600083586E /* Main.storyboard */,
 				9DCB66621C251B600083586E /* LaunchScreen.storyboard */,
@@ -466,6 +472,14 @@
 				9D01FA651C78538F00D2A68F /* MessageViewCell.swift */,
 			);
 			name = MessagesView;
+			sourceTree = "<group>";
+		};
+		9DFCA3BD1CB7875F007C75D7 /* ShuttlesView */ = {
+			isa = PBXGroup;
+			children = (
+				9DFCA3BB1CB78754007C75D7 /* ShuttlesViewController.swift */,
+			);
+			name = ShuttlesView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -648,7 +662,9 @@
 				9DADBAC31C7FF50F00A4B7F2 /* GalleryViewCell.swift in Sources */,
 				9D4794D71C558B1700F2261B /* SchoolTours.swift in Sources */,
 				9D39389A1C76F5E60043BE7F /* DirectoryViewDetailCell.swift in Sources */,
+				9DFCA3BC1CB78754007C75D7 /* ShuttlesViewController.swift in Sources */,
 				9DBD98291C7016D300E21627 /* EventsViewController.swift in Sources */,
+				9DFCA3BF1CB88ADC007C75D7 /* SchoolShuttles.swift in Sources */,
 				9DCB665F1C251B510083586E /* QRViewController.swift in Sources */,
 				9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */,
 				9DADBAC01C7FF4CF00A4B7F2 /* GalleryViewController.swift in Sources */,
@@ -807,6 +823,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CollegeApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kincola.collegeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -828,6 +845,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CollegeApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kincola.collegeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
