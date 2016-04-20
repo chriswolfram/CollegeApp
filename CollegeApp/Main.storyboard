@@ -203,36 +203,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yI4-6P-Rqp" userLabel="Twitter">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="QHA-Sp-5uc"/>
-                                    <constraint firstAttribute="height" constant="24.5" id="dO0-Jq-esd"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="shareOnTwitterWhiteIcon.png"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="QHA-Sp-5uc"/>
-                                        <exclude reference="dO0-Jq-esd"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="QHA-Sp-5uc"/>
-                                        <include reference="dO0-Jq-esd"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="twitterButton:" destination="ZER-ry-FrU" eventType="touchUpInside" id="5Ah-dg-mZi"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFu-vd-i26" userLabel="Facebook">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="ecM-fl-sND"/>
                                     <constraint firstAttribute="height" constant="30" id="gJA-NW-dsU"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="shareOnFacebookWhiteIcon.png"/>
+                                <state key="normal" backgroundImage="shareOnFacebookIcon.png"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="ecM-fl-sND"/>
@@ -1056,6 +1033,29 @@
                                 <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yI4-6P-Rqp" userLabel="Twitter">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="QHA-Sp-5uc"/>
+                                    <constraint firstAttribute="height" constant="24.5" id="dO0-Jq-esd"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="shareOnTwitterIcon.png"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="QHA-Sp-5uc"/>
+                                        <exclude reference="dO0-Jq-esd"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="QHA-Sp-5uc"/>
+                                        <include reference="dO0-Jq-esd"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="twitterButton:" destination="ZER-ry-FrU" eventType="touchUpInside" id="5Ah-dg-mZi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1074,7 +1074,9 @@
                             </constraint>
                             <constraint firstItem="LFu-vd-i26" firstAttribute="leading" secondItem="yI4-6P-Rqp" secondAttribute="trailing" constant="8" id="FQM-q7-IRd"/>
                             <constraint firstItem="Svd-3v-fns" firstAttribute="centerX" secondItem="clI-hO-fgZ" secondAttribute="centerX" id="FX2-6g-fJv"/>
-                            <constraint firstItem="yI4-6P-Rqp" firstAttribute="top" secondItem="TTZ-Fv-hSr" secondAttribute="bottom" constant="8" id="GWI-R9-S3P"/>
+                            <constraint firstItem="yI4-6P-Rqp" firstAttribute="top" secondItem="TTZ-Fv-hSr" secondAttribute="bottom" constant="8" id="GWI-R9-S3P">
+                                <variation key="widthClass=compact" constant="13"/>
+                            </constraint>
                             <constraint firstItem="QYH-9M-czy" firstAttribute="top" secondItem="M0F-ms-zgj" secondAttribute="bottom" constant="4" id="InW-46-GK5"/>
                             <constraint firstItem="9Mf-cZ-yLS" firstAttribute="centerX" secondItem="OB4-9x-4bw" secondAttribute="centerX" id="MXz-Wj-VMJ"/>
                             <constraint firstItem="Tcz-fB-rvA" firstAttribute="top" secondItem="upJ-hF-qI1" secondAttribute="bottom" constant="4" id="N01-IS-lXn"/>
@@ -1100,7 +1102,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="yI4-6P-Rqp"/>
                                 <exclude reference="LFu-vd-i26"/>
                                 <exclude reference="Tcz-fB-rvA"/>
                                 <exclude reference="O2D-Hy-p02"/>
@@ -1112,6 +1113,7 @@
                                 <exclude reference="9Mf-cZ-yLS"/>
                                 <exclude reference="OrW-wH-6PI"/>
                                 <exclude reference="aQY-ck-2L5"/>
+                                <exclude reference="yI4-6P-Rqp"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="FQM-q7-IRd"/>
@@ -1148,7 +1150,6 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="yI4-6P-Rqp"/>
                                 <include reference="LFu-vd-i26"/>
                                 <include reference="Tcz-fB-rvA"/>
                                 <include reference="O2D-Hy-p02"/>
@@ -1160,6 +1161,7 @@
                                 <include reference="9Mf-cZ-yLS"/>
                                 <include reference="OrW-wH-6PI"/>
                                 <include reference="aQY-ck-2L5"/>
+                                <include reference="yI4-6P-Rqp"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="FQM-q7-IRd"/>
@@ -2155,6 +2157,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Dfo-jX-Nia"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZjD-SL-Rbe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QzX-F0-oYc">
@@ -2173,10 +2176,10 @@
                                 <exclude reference="QzX-F0-oYc"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="UKS-9a-cQe"/>
                                 <exclude reference="H6Y-s3-2d2"/>
                                 <exclude reference="RMe-TZ-kT5"/>
                                 <exclude reference="f3S-B9-thR"/>
-                                <exclude reference="UKS-9a-cQe"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -2184,10 +2187,10 @@
                                 <include reference="QzX-F0-oYc"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="UKS-9a-cQe"/>
                                 <include reference="H6Y-s3-2d2"/>
                                 <include reference="RMe-TZ-kT5"/>
                                 <include reference="f3S-B9-thR"/>
-                                <include reference="UKS-9a-cQe"/>
                             </mask>
                         </variation>
                     </view>
@@ -2844,7 +2847,7 @@
         <image name="QR Code-96.png" width="96" height="96"/>
         <image name="Shuttle-96.png" width="96" height="96"/>
         <image name="Tourist-96.png" width="96" height="96"/>
-        <image name="shareOnFacebookWhiteIcon.png" width="100" height="100"/>
-        <image name="shareOnTwitterWhiteIcon.png" width="123" height="100"/>
+        <image name="shareOnFacebookIcon.png" width="100" height="100"/>
+        <image name="shareOnTwitterIcon.png" width="123" height="100"/>
     </resources>
 </document>

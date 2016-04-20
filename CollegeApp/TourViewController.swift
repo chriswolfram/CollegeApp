@@ -109,7 +109,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         else if overlay is MKCircle
         {
             let renderer = MKCircleRenderer(overlay: overlay)
-            renderer.strokeColor = UIColor(red: 0.1612726024261845, green: 0.9598687724116884, blue: 0.47757686732280463, alpha: 0.7)
+            renderer.fillColor = UIColor(red: 0.1612726024261845, green: 0.9598687724116884, blue: 0.47757686732280463, alpha: 0.7)
             return renderer
         }
         
@@ -129,7 +129,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         
         var coords = tour.landmarks.map({$0.coordinate})
         mapView.addOverlay(MKPolyline(coordinates: &coords, count: tour.landmarks.count))
-        mapView.addOverlay(MKCircle(centerCoordinate: tour.currentLandmark.coordinate, radius: 10))
+        mapView.addOverlay(MKCircle(centerCoordinate: tour.currentLandmark.coordinate, radius: 50))
     }
     
     func goToLandmarkAtIndex(index: Int)

@@ -93,6 +93,7 @@
 		9DFCA3BA1CB77796007C75D7 /* Shuttle-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCA3B91CB77796007C75D7 /* Shuttle-96.png */; };
 		9DFCA3BC1CB78754007C75D7 /* ShuttlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCA3BB1CB78754007C75D7 /* ShuttlesViewController.swift */; };
 		9DFCA3BF1CB88ADC007C75D7 /* SchoolShuttles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCA3BE1CB88ADC007C75D7 /* SchoolShuttles.swift */; };
+		9DFE79121CC73522007EA932 /* ShuttleViewClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE79111CC73522007EA932 /* ShuttleViewClasses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +206,7 @@
 		9DFCA3B91CB77796007C75D7 /* Shuttle-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shuttle-96.png"; sourceTree = "<group>"; };
 		9DFCA3BB1CB78754007C75D7 /* ShuttlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShuttlesViewController.swift; sourceTree = "<group>"; };
 		9DFCA3BE1CB88ADC007C75D7 /* SchoolShuttles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolShuttles.swift; sourceTree = "<group>"; };
+		9DFE79111CC73522007EA932 /* ShuttleViewClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShuttleViewClasses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				9DFCA3BB1CB78754007C75D7 /* ShuttlesViewController.swift */,
+				9DFE79111CC73522007EA932 /* ShuttleViewClasses.swift */,
 			);
 			name = ShuttlesView;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				9DBD98211C6FD1AE00E21627 /* Landmark.swift in Sources */,
 				9D4E8BD91C27335F00960097 /* NewsViewCell.swift in Sources */,
 				9DE70D471C6CFE990056850D /* MessageSelectorCell.swift in Sources */,
+				9DFE79121CC73522007EA932 /* ShuttleViewClasses.swift in Sources */,
 				9DFCA3B61CB0B178007C75D7 /* TourViewScrollView.swift in Sources */,
 				9D00A5A51C44F42100C0DF6D /* School.swift in Sources */,
 				9DCB665A1C251B510083586E /* AppDelegate.swift in Sources */,
