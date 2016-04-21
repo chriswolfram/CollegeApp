@@ -306,6 +306,9 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
             renderer.strokeColor = routeSegmentOverlay.route.color
             renderer.lineWidth = 3.0
             
+            //let renderer = TestRenderer()
+            //renderer.polyline = routeSegmentOverlay
+            
             return renderer
         }
         
@@ -319,7 +322,7 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
     {
         if vehicle.location != nil
         {
-            let overlay = ShuttleVehicleOverlay(centerCoordinate: vehicle.location!.coordinate, radius: 50)
+            let overlay = ShuttleVehicleOverlay(centerCoordinate: vehicle.location!.coordinate, radius: 40)
             overlay.vehicle = vehicle
             
             mapView.addOverlay(overlay)
@@ -330,7 +333,7 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
     {
         if stop.location != nil
         {
-            let overlay = ShuttleStopOverlay(centerCoordinate: stop.location!.coordinate, radius: 50)
+            let overlay = ShuttleStopOverlay(centerCoordinate: stop.location!.coordinate, radius: 40)
             overlay.stop = stop
             
             mapView.addOverlay(overlay)
@@ -450,5 +453,23 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
         }
         
         return UIColor(red: CGFloat(r!)/255, green: CGFloat(g!)/255, blue: CGFloat(b!)/255, alpha: 1.0)
+    }
+}
+
+class TestRenderer: MKOverlayRenderer
+{
+    var polyline: MKPolyline!
+    
+    override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext)
+    {
+        let firstRenderer = MKPolylineRenderer(polyline: self.polyline)
+        firstRenderer.strokeColor = UIColor.blueColor()
+        firstRenderer.lineWidth = 10
+        firstRenderer.drawMapRect(mapRect, zoomScale: zoomScale, inContext: context)
+        
+        let secondRenderer = MKPolylineRenderer(polyline: self.polyline)
+        secondRenderer.strokeColor = UIColor.redColor()
+        secondRenderer.lineWidth = 5
+        secondRenderer.drawMapRect(mapRect, zoomScale: zoomScale, inContext: context)
     }
 }

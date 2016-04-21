@@ -20,7 +20,7 @@ class ShuttleVehicle
     var speed: Float?
     var route: String?
     var id: String?
-    var color: UIColor = UIColor.redColor()
+    var color: UIColor = UIColor.blueColor()
 }
 
 class ShuttleStopOverlay: MKCircle

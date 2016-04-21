@@ -27,90 +27,99 @@ extension School
     static func updateEvents()
     {
         //Configure RSS feed reader
-        let parser = NSXMLParser(contentsOfURL: School.eventsURL)
-        xmlRoot = XMLElement(parser: parser!)
-        xmlRoot.parse()
-        
-        //TODO: add error checking
-        rssRoot = xmlRoot["channel"]!
-        
-        //Turn parsed RSS data into dictionaries
-        events = rssRoot["item", .All]!.map
+        if let parser = NSXMLParser(contentsOfURL: School.eventsURL)
         {
-            item in
-            let event = Event()
-            event.title = item["title"]?.contents
-                
-            if let urlString = item["link"]?.contents
+            xmlRoot = XMLElement(parser: parser)
+            xmlRoot.parse()
+            
+            events = []
+            
+            if let rssRoot = xmlRoot["channel"]
             {
-                event.link = NSURL(string: urlString)
-            }
-                
-            if let urlString = item["enclosure"]?.attributes["url"]
-            {
-                event.imageURL = NSURL(string: urlString)
-            }
-                
-            if var descString = item["description"]?.contents
-            {
-                descString = "<list>"+descString+"</list>"
-                if let data = descString.dataUsingEncoding(NSUTF8StringEncoding)
+                //Turn parsed RSS data into dictionaries
+                if let items = rssRoot["item", .All]
                 {
-                    let descParser = NSXMLParser(data: data)
-                    let descRoot = XMLElement(parser: descParser)
-                    descRoot.parse()
-                        
-                    let divs = descRoot["div", .All]
-                        
-                    func checkClass(div: XMLElement, targetClass: String) -> Bool
+                    events = items.map
                     {
-                        return div.attributes["class"] != nil && div.attributes["class"]! == targetClass
-                    }
+                        item in
+                        let event = Event()
+                        event.title = item["title"]?.contents
                         
-                    event.dateString = divs?.filter({checkClass($0, targetClass: "stanford-events-date")}).first?.contents
-                    event.location = divs?.filter({checkClass($0, targetClass: "stanford-events-location")}).first?.contents
-                    event.description = divs?.filter({checkClass($0, targetClass: "stanford-events-description")}).first?.contents
-                    
-                    let datePrefix = "Date: "
-                    if event.dateString != nil && event.dateString!.hasPrefix(datePrefix)
-                    {
-                        event.dateString?.removeRange(event.dateString!.startIndex...event.dateString!.startIndex.advancedBy(datePrefix.characters.count-1))
-                    }
+                        if let urlString = item["link"]?.contents
+                        {
+                            event.link = NSURL(string: urlString)
+                        }
                         
-                    let locationPrefix = "Location: "
-                    if event.location != nil && event.location!.hasPrefix(locationPrefix)
-                    {
-                        event.location?.removeRange(event.location!.startIndex...event.location!.startIndex.advancedBy(locationPrefix.characters.count-1))
+                        if let urlString = item["enclosure"]?.attributes["url"]
+                        {
+                            event.imageURL = NSURL(string: urlString)
+                        }
+                        
+                        if var descString = item["description"]?.contents
+                        {
+                            descString = "<list>"+descString+"</list>"
+                            if let data = descString.dataUsingEncoding(NSUTF8StringEncoding)
+                            {
+                                let descParser = NSXMLParser(data: data)
+                                let descRoot = XMLElement(parser: descParser)
+                                descRoot.parse()
+                                
+                                let divs = descRoot["div", .All]
+                                
+                                func checkClass(div: XMLElement, targetClass: String) -> Bool
+                                {
+                                    return div.attributes["class"] != nil && div.attributes["class"]! == targetClass
+                                }
+                                
+                                event.dateString = divs?.filter({checkClass($0, targetClass: "stanford-events-date")}).first?.contents
+                                event.location = divs?.filter({checkClass($0, targetClass: "stanford-events-location")}).first?.contents
+                                event.description = divs?.filter({checkClass($0, targetClass: "stanford-events-description")}).first?.contents
+                                
+                                let datePrefix = "Date: "
+                                if event.dateString != nil && event.dateString!.hasPrefix(datePrefix)
+                                {
+                                    event.dateString?.removeRange(event.dateString!.startIndex...event.dateString!.startIndex.advancedBy(datePrefix.characters.count-1))
+                                }
+                                
+                                let locationPrefix = "Location: "
+                                if event.location != nil && event.location!.hasPrefix(locationPrefix)
+                                {
+                                    event.location?.removeRange(event.location!.startIndex...event.location!.startIndex.advancedBy(locationPrefix.characters.count-1))
+                                }
+                            }
+                        }
+                        
+                        return event
                     }
                 }
             }
-                
-            return event
         }
         
         //Get start dates
-        let calendarElement = CalendarElement(url: School.eventsCalendarURL)!
-        
-        //TODO: add error checking
-        calendarElement[0]!["VEVENT", .All]!.forEach
+        if
+            let calendarElement = CalendarElement(url: School.eventsCalendarURL),
+            let vevents = calendarElement[0]?["VEVENT", .All]
         {
+            vevents.forEach
+            {
             calendarEvent in
-            
+                    
             if let
                 dateString = calendarEvent["DTSTART"]?.contents,
                 date = dateFromCalendar(dateString),
                 urlString = calendarEvent["URL"]?.contents
             {
                 self.events.forEach
-                {
-                    event in
-                    
-                    if let
-                        eventURLString = event.link?.absoluteString
-                    where
-                        eventURLString == urlString
                     {
-                        event.startDate = date
+                        event in
+                                
+                        if let
+                            eventURLString = event.link?.absoluteString
+                            where
+                            eventURLString == urlString
+                        {
+                            event.startDate = date
+                        }
                     }
                 }
             }
