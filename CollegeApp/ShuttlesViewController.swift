@@ -37,8 +37,8 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
         let urlComponents = NSURLComponents(URL: NSURL(string: "https://transloc-api-1-2.p.mashape.com/vehicles.json")!, resolvingAgainstBaseURL: false)
         
         urlComponents?.queryItems =
-        [
-            NSURLQueryItem(name: "agencies", value: agencyID)
+            [
+                NSURLQueryItem(name: "agencies", value: agencyID)
         ]
         
         let request = NSMutableURLRequest(URL: urlComponents!.URL!)
@@ -55,27 +55,27 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
                     if let jsonVehicles = json["data"]?[self.agencyID] as? [AnyObject]
                     {
                         self.vehicles = jsonVehicles.map
-                        {
-                            (jsonVehicle: AnyObject) in
-                            
-                            let vehicle = ShuttleVehicle()
-                            vehicle.speed = jsonVehicle["speed"] as? Float
-                            vehicle.route = jsonVehicle["route_id"] as? String
-                            vehicle.id = jsonVehicle["vehicle_id"] as? String
-                            
-                            if let location = jsonVehicle["location"] as? [String:Double], let lat = location["lat"], let long = location["lng"]
                             {
-                                vehicle.location = CLLocation(latitude: lat, longitude: long)
-                            }
+                                (jsonVehicle: AnyObject) in
                                 
-                            return vehicle
+                                let vehicle = ShuttleVehicle()
+                                vehicle.speed = jsonVehicle["speed"] as? Float
+                                vehicle.route = jsonVehicle["route_id"] as? String
+                                vehicle.id = jsonVehicle["vehicle_id"] as? String
+                                
+                                if let location = jsonVehicle["location"] as? [String:Double], let lat = location["lat"], let long = location["lng"]
+                                {
+                                    vehicle.location = CLLocation(latitude: lat, longitude: long)
+                                }
+                                
+                                return vehicle
                         }
                     }
                 }
             }
             
             callback()
-        }.resume()
+            }.resume()
     }
     
     func refreshStaticInformation(callback: Void->Void)
@@ -91,8 +91,8 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
         let routeUrlComponents = NSURLComponents(URL: NSURL(string: "https://transloc-api-1-2.p.mashape.com/routes.json")!, resolvingAgainstBaseURL: false)
         
         routeUrlComponents?.queryItems =
-        [
-            NSURLQueryItem(name: "agencies", value: agencyID)
+            [
+                NSURLQueryItem(name: "agencies", value: agencyID)
         ]
         
         let routeRequest = NSMutableURLRequest(URL: routeUrlComponents!.URL!)
@@ -109,35 +109,35 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
                     if let jsonRoutes = json["data"]?[self.agencyID] as? [AnyObject]
                     {
                         self.routes = jsonRoutes.map
-                        {
-                            (jsonRoute: AnyObject) in
-                            
-                            let route = ShuttleRoute()
-                            route.id = jsonRoute["route_id"] as? String
-                            route.segmentIDs = (jsonRoute["segments"] as? [[String]])?.map({$0[0]})
-                            
-                            if let colorString = jsonRoute["color"] as? String, let color = self.colorFromString(colorString)
                             {
-                                route.color = color
-                            }
-                            
-                            return route
+                                (jsonRoute: AnyObject) in
+                                
+                                let route = ShuttleRoute()
+                                route.id = jsonRoute["route_id"] as? String
+                                route.segmentIDs = (jsonRoute["segments"] as? [[String]])?.map({$0[0]})
+                                
+                                if let colorString = jsonRoute["color"] as? String, let color = self.colorFromString(colorString)
+                                {
+                                    route.color = color
+                                }
+                                
+                                return route
                         }
                     }
                 }
             }
             
             operationQueue.addOperation(routeOperation)
-        }.resume()
-                
+            }.resume()
+        
         //Get segment information
         var segments = [String:MKPolyline]()
         
         let segmentUrlComponents = NSURLComponents(URL: NSURL(string: "https://transloc-api-1-2.p.mashape.com/segments.json")!, resolvingAgainstBaseURL: false)
         
         segmentUrlComponents?.queryItems =
-        [
-            NSURLQueryItem(name: "agencies", value: agencyID)
+            [
+                NSURLQueryItem(name: "agencies", value: agencyID)
         ]
         
         let segmentRequest = NSMutableURLRequest(URL: segmentUrlComponents!.URL!)
@@ -154,10 +154,10 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
                     if let jsonSegments = json["data"] as? [String:String]
                     {
                         let segmentsTuples = jsonSegments.map
-                        {
-                            (segmentID: String, encodedString: String) in
-                            
-                            return (segmentID, self.polyLineWithEncodedString(encodedString))
+                            {
+                                (segmentID: String, encodedString: String) in
+                                
+                                return (segmentID, self.polyLineWithEncodedString(encodedString))
                         }
                         
                         //Next line may be uneeded
@@ -168,7 +168,7 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
             }
             
             operationQueue.addOperation(segmentOperation)
-        }.resume()
+            }.resume()
         
         //Get stop information
         var stopsDict = [String:ShuttleStop]()
@@ -176,8 +176,8 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
         let stopsUrlComponents = NSURLComponents(URL: NSURL(string: "https://transloc-api-1-2.p.mashape.com/stops.json")!, resolvingAgainstBaseURL: false)
         
         stopsUrlComponents?.queryItems =
-        [
-            NSURLQueryItem(name: "agencies", value: agencyID)
+            [
+                NSURLQueryItem(name: "agencies", value: agencyID)
         ]
         
         let stopsRequest = NSMutableURLRequest(URL: stopsUrlComponents!.URL!)
@@ -194,29 +194,29 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
                     if let jsonStops = json["data"] as? [AnyObject]
                     {
                         jsonStops.forEach
-                        {
-                            jsonStop in
-                            
-                            let stop = ShuttleStop()
-                            
-                            stop.id = jsonStop["stop_id"] as? String
-                            stop.name = jsonStop["name"] as? String
-                            
-                            if let location = jsonStop["location"] as? [String:Double], let lat = location["lat"], let long = location["lng"]
                             {
-                                stop.location = CLLocation(latitude: lat, longitude: long)
-                            }
-                            
-                            /*if let routeIDs = jsonStop["routes"] as? [String]
-                            {
-                                //TODO: USE DICTIONARY FOR ROUTES
-                                stop.routes = self.routes.filter({if $0.id != nil {return routeIDs.contains($0.id!)} else {return false}})
-                            }*/
-                            
-                            if stop.id != nil
-                            {
-                                stopsDict[stop.id!] = stop
-                            }
+                                jsonStop in
+                                
+                                let stop = ShuttleStop()
+                                
+                                stop.id = jsonStop["stop_id"] as? String
+                                stop.name = jsonStop["name"] as? String
+                                
+                                if let location = jsonStop["location"] as? [String:Double], let lat = location["lat"], let long = location["lng"]
+                                {
+                                    stop.location = CLLocation(latitude: lat, longitude: long)
+                                }
+                                
+                                /*if let routeIDs = jsonStop["routes"] as? [String]
+                                 {
+                                 //TODO: USE DICTIONARY FOR ROUTES
+                                 stop.routes = self.routes.filter({if $0.id != nil {return routeIDs.contains($0.id!)} else {return false}})
+                                 }*/
+                                
+                                if stop.id != nil
+                                {
+                                    stopsDict[stop.id!] = stop
+                                }
                         }
                         
                         self.stops = Array(stopsDict.values)
@@ -225,21 +225,21 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
             }
             
             operationQueue.addOperation(stopsOperation)
-        }.resume()
+            }.resume()
         
         let combineOperation = NSBlockOperation
-        {
-            self.routes.forEach
             {
-                route in
+                self.routes.forEach
+                    {
+                        route in
+                        
+                        route.path = route.segmentIDs?.flatMap({segments[$0]})
+                        route.stops = route.stopIDs?.flatMap({stopsDict[$0]})
+                        
+                        route.stops?.forEach({$0.routes.append(route)})
+                }
                 
-                route.path = route.segmentIDs?.flatMap({segments[$0]})
-                route.stops = route.stopIDs?.flatMap({stopsDict[$0]})
-                
-                route.stops?.forEach({$0.routes.append(route)})
-            }
-            
-            callback()
+                callback()
         }
         
         combineOperation.addDependency(routeOperation)
@@ -257,10 +257,10 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
         
         refreshStaticInformation({operationQueue.addOperation(routeOperation)})
         refreshVehicles({operationQueue.addOperation(vehicleOperation)})
-
+        
         let displayOperation = NSBlockOperation
-        {
-            self.refreshShuttleMapView()
+            {
+                self.refreshShuttleMapView()
         }
         
         displayOperation.addDependency(routeOperation)
@@ -276,7 +276,8 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
         {
             self.mapView.removeOverlays(self.mapView.overlays)
             
-            self.routes.forEach({route in self.addShuttleOverlays(self.mapView, route: route)})
+            //self.routes.forEach({route in self.addShuttleOverlays(self.mapView, route: route)})
+            self.mapView.addOverlay(ShuttleRoutesOverlay(routes: self.routes))
             self.stops.forEach({stop in self.addShuttleOverlays(self.mapView, stop: stop)})
             self.vehicles.forEach({vehicle in self.addShuttleOverlays(self.mapView, vehicle: vehicle)})
         }
@@ -291,7 +292,7 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
             
             return renderer
         }
-        
+            
         else if let stopOverlay = overlay as? ShuttleStopOverlay
         {
             let renderer = MKCircleRenderer(overlay: stopOverlay)
@@ -300,7 +301,7 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
             return renderer
         }
         
-        else if let routeSegmentOverlay = overlay as? ShuttleRouteSegmentOverlay
+        /*else if let routeSegmentOverlay = overlay as? ShuttleRouteSegmentOverlay
         {
             let renderer = MKPolylineRenderer(polyline: routeSegmentOverlay)
             renderer.strokeColor = routeSegmentOverlay.route.color
@@ -308,10 +309,15 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
             
             //let renderer = TestRenderer()
             //renderer.polyline = routeSegmentOverlay
-            
+             
             return renderer
+        }*/
+            
+        else if let routesOverlay = overlay as? ShuttleRoutesOverlay
+        {
+            return ShuttleRoutesRenderer(shuttleRoutesOverlay: routesOverlay)
         }
-        
+            
         else
         {
             return MKOverlayRenderer(overlay: overlay)
@@ -340,23 +346,25 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
         }
     }
     
-    func addShuttleOverlays(mapView: MKMapView, route: ShuttleRoute)
-    {
-        let overlays = route.path?.map
-        {
-            (polyline: MKPolyline) -> ShuttleRouteSegmentOverlay in
-            
-            let overlay = ShuttleRouteSegmentOverlay.withPolyline(polyline)
-            overlay.route = route
-            
-            return overlay
-        }
-        
-        if overlays != nil
-        {
-            mapView.addOverlays(overlays!)
-        }
-    }
+    /*func addShuttleOverlays(mapView: MKMapView, route: ShuttleRoute)
+     {
+     /*let overlays = route.path?.map
+     {
+     (polyline: MKPolyline) -> ShuttleRouteSegmentOverlay in
+     
+     let overlay = ShuttleRouteSegmentOverlay.withPolyline(polyline)
+     overlay.route = route
+     
+     return overlay
+     }
+     
+     if overlays != nil
+     {
+     mapView.addOverlays(overlays!)
+     }*/
+     
+     mapView.addOverlay(ShuttleRoutesOverlay(routes: <#T##[ShuttleRoute]#>)
+     }*/
     
     @IBAction func refreshButtonPressed(sender: UIBarButtonItem)
     {
