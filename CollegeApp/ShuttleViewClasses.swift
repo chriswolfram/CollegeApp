@@ -47,14 +47,20 @@ class ShuttleStop
     }
 }*/
 
-class ShuttleRoutesOverlay: NSObject, MKOverlay
+class ShuttleRouteOverlay: NSObject, MKOverlay
 {
-    var routes: [ShuttleRoute]!
+    var route: ShuttleRoute!
     
-    init(routes: [ShuttleRoute])
+    init?(route: ShuttleRoute)
     {
         super.init()
-        self.routes = routes
+        
+        if route.path == nil || route.path!.count == 0
+        {
+            return nil
+        }
+        
+        self.route = route
     }
     
     @objc var coordinate: CLLocationCoordinate2D = School.shuttleRegion.center
@@ -64,8 +70,31 @@ class ShuttleRoutesOverlay: NSObject, MKOverlay
     {
         if privateBoundingMapRect == nil
         {
-            privateBoundingMapRect = routes.flatMap({$0.path?.map({$0.boundingMapRect})}).flatten().reduce(MKMapRect(), combine: {MKMapRectUnion($0, $1)})
+            if route.path != nil && route.path!.count > 0
+            {
+                route.path?.forEach
+                {
+                    path in
+                    
+                    if privateBoundingMapRect == nil
+                    {
+                        privateBoundingMapRect = path.boundingMapRect
+                    }
+                        
+                    else
+                    {
+                        privateBoundingMapRect = MKMapRectUnion(privateBoundingMapRect!, path.boundingMapRect)
+                    }
+                }
+            }
+            
+            else
+            {
+                privateBoundingMapRect = MKMapRectNull
+            }
         }
+        
+        print(privateBoundingMapRect)
         
         return privateBoundingMapRect!
     }
@@ -73,44 +102,32 @@ class ShuttleRoutesOverlay: NSObject, MKOverlay
 
 class ShuttleRoutesRenderer: MKOverlayRenderer
 {
-    var shuttleRoutesOverlay: ShuttleRoutesOverlay!
-    init(shuttleRoutesOverlay: ShuttleRoutesOverlay)
+    var shuttleRouteOverlay: ShuttleRouteOverlay!
+    
+    init(shuttleRouteOverlay: ShuttleRouteOverlay)
     {
-        super.init(overlay: shuttleRoutesOverlay)
+        super.init(overlay: shuttleRouteOverlay)
         
-        self.shuttleRoutesOverlay = shuttleRoutesOverlay
+        self.shuttleRouteOverlay = shuttleRouteOverlay
     }
     
     override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext)
     {
-        //let renderer = MKPolylineRenderer(polyline: shuttleRoutesOverlay.routes[1].path![0])
-        //renderer.strokeColor = UIColor.redColor()//route.color
-        //renderer.lineWidth = 1000
-        //renderer.drawMapRect(mapRect, zoomScale: zoomScale, inContext: context)
-        
-        let location = CLLocationCoordinate2D(latitude: 40.342810032686693, longitude: -74.653565)
-        let circle = MKCircle(centerCoordinate: location, radius: 100)
-        let renderer = MKCircleRenderer(circle: circle)
-        renderer.fillColor = UIColor.greenColor()
-        renderer.drawMapRect(mapRect, zoomScale: zoomScale, inContext: context)
-        
-        shuttleRoutesOverlay.routes.forEach
+        CGContextSaveGState(context)
+        shuttleRouteOverlay.route.path?.forEach
         {
-            route in
-            route.path?.forEach
-            {
-                polyline in
-                
-                let circle = MKCircle(centerCoordinate: polyline.coordinate, radius: 100)
-                let renderer = MKCircleRenderer(circle: circle)
-                renderer.fillColor = UIColor.greenColor()
-                renderer.drawMapRect(mapRect, zoomScale: zoomScale, inContext: context)
-                
-                //let renderer = MKPolylineRenderer(polyline: polyline)
-                //renderer.strokeColor = UIColor.redColor()//route.color
-                //renderer.lineWidth = 1000
-                //renderer.drawMapRect(mapRect, zoomScale: zoomScale, inContext: context)
-            }
+            polyline in
+            
+            let point = pointForMapPoint(polyline.boundingMapRect.origin)
+            CGContextTranslateCTM(context, point.x, point.y)
+            
+            let renderer = MKPolylineRenderer(polyline: polyline)
+            renderer.strokeColor = shuttleRouteOverlay.route.color
+            renderer.lineWidth = 5
+            renderer.drawMapRect(mapRect, zoomScale: zoomScale, inContext: context)
+            
+            CGContextRestoreGState(context)
+            CGContextSaveGState(context)
         }
     }
 }

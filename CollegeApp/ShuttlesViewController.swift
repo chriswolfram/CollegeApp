@@ -277,7 +277,8 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
             self.mapView.removeOverlays(self.mapView.overlays)
             
             //self.routes.forEach({route in self.addShuttleOverlays(self.mapView, route: route)})
-            self.mapView.addOverlay(ShuttleRoutesOverlay(routes: self.routes))
+            //self.mapView.addOverlay(ShuttleRoutesOverlay(routes: self.routes))
+            self.mapView.addOverlays(self.routes.flatMap({ShuttleRouteOverlay(route: $0)}))
             self.stops.forEach({stop in self.addShuttleOverlays(self.mapView, stop: stop)})
             self.vehicles.forEach({vehicle in self.addShuttleOverlays(self.mapView, vehicle: vehicle)})
         }
@@ -313,9 +314,9 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
             return renderer
         }*/
             
-        else if let routesOverlay = overlay as? ShuttleRoutesOverlay
+        else if let routeOverlay = overlay as? ShuttleRouteOverlay
         {
-            return ShuttleRoutesRenderer(shuttleRoutesOverlay: routesOverlay)
+            return ShuttleRouteRenderer(shuttleRouteOverlay: routeOverlay)
         }
             
         else
