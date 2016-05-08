@@ -2165,6 +2165,7 @@
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="QzX-F0-oYc" firstAttribute="leading" secondItem="ZjD-SL-Rbe" secondAttribute="leading" id="H6Y-s3-2d2"/>
                             <constraint firstItem="QzX-F0-oYc" firstAttribute="top" secondItem="ZjD-SL-Rbe" secondAttribute="top" id="RMe-TZ-kT5"/>
@@ -2193,6 +2194,9 @@
                                 <include reference="f3S-B9-thR"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="i76-HW-9R6" appends="YES" id="GLK-sI-Yqf"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Shuttles" id="2q0-Kf-PHO">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="3iw-I2-urF">
@@ -2206,6 +2210,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Xs-jZ-Ex3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="i76-HW-9R6">
+                    <connections>
+                        <action selector="mapPressed:" destination="VCU-Nz-XxV" id="jby-Ug-c8x"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-334.5" y="5465"/>
         </scene>
