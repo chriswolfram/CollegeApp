@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ShuttlesViewController: UIViewController, MKMapViewDelegate
+class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource
 {
     let apiKey = "NUZSb8yWMJmshdEsjpIQfm2ioTyKp1Oz3e5jsn5x2IT8Hv8MTZ"
     let agencyID = "84"
@@ -19,7 +19,48 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
     var stops = [ShuttleStop]()
     var segments = [ShuttleRouteSegment]()
     
+    var highlightedOverlays = [ShuttleOverlay]()
+    
+    var internalSelectedOverlay: ShuttleOverlay?
+    var selectedOverlay: ShuttleOverlay?
+    {
+        get
+        {
+            return internalSelectedOverlay
+        }
+        
+        set(newValue)
+        {
+            internalSelectedOverlay = newValue
+            
+            if newValue == nil
+            {
+                tableViewHeight.constant = 0
+            }
+            
+            else
+            {
+                tableViewHeight.constant = 300
+                tableView.reloadData()
+            }
+            
+            UIView.animateWithDuration(0.3, animations: {self.tableView.layoutIfNeeded()})
+        }
+    }
+    
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        //tableView.backgroundColor = UIColor.clearColor()
+        tableViewHeight.constant = 0
+    }
     
     override func viewDidAppear(animated: Bool)
     {
@@ -31,6 +72,24 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
         
         //Get data about vehicles
         refreshAll()
+    }
+    
+    func highlightOverlay(overlay: ShuttleOverlay)
+    {
+        overlay.highlighted = true
+        highlightedOverlays.append(overlay)
+    }
+    
+    func highlightOverlay(overlays: [ShuttleOverlay])
+    {
+        overlays.forEach({$0.highlighted = true})
+        highlightedOverlays += overlays
+    }
+    
+    func unhighlightOverlays()
+    {
+        highlightedOverlays.forEach({$0.highlighted = false})
+        highlightedOverlays = []
     }
     
     func refreshVehicles(callback: Void->Void)
@@ -346,12 +405,12 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
         refreshVehicles({self.refreshShuttleMapView()})
     }
     
-    var selectedOverlay: ShuttleOverlay?
-    
     @IBAction func mapPressed(sender: UITapGestureRecognizer)
     {
         let tapCoords = mapView.convertPoint(sender.locationInView(mapView), toCoordinateFromView: mapView)
         let tapLocation = CLLocation(latitude: tapCoords.latitude, longitude: tapCoords.longitude)
+        
+        unhighlightOverlays()
         
         mapView.overlays.forEach
         {
@@ -367,7 +426,7 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
                     if selectedOverlay != nil
                     {
                         mapView.removeOverlay(selectedOverlay!)
-                        selectedOverlay!.selected = false
+                        selectedOverlay!.highlighted = false
                         mapView.addOverlay(selectedOverlay!)
                     }
                     
@@ -375,7 +434,7 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
                     if stopOverlay != selectedOverlay as? ShuttleStopOverlay
                     {
                         mapView.removeOverlay(stopOverlay)
-                        stopOverlay.selected = true
+                        stopOverlay.highlighted = true
                         mapView.addOverlay(stopOverlay)
                     
                         selectedOverlay = stopOverlay
@@ -390,6 +449,21 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate
                 }
             }
         }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return stops.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let stop = stops[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("ShuttleViewStopCell", forIndexPath: indexPath) as! ShuttleViewStopCell
+        
+        cell.stop = stop
+        
+        return cell
     }
     
     private func polyLineWithEncodedString(encodedString: String) -> MKPolyline {

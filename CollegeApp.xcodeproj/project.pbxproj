@@ -12,6 +12,8 @@
 		9D00A5A51C44F42100C0DF6D /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D00A5A41C44F42000C0DF6D /* School.swift */; };
 		9D01FA661C78538F00D2A68F /* MessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01FA651C78538F00D2A68F /* MessageViewCell.swift */; };
 		9D209DAA1C653F5200AA8C50 /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */; };
+		9D25E83F1CE4DD3000DC7315 /* ShuttleViewStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25E83E1CE4DD3000DC7315 /* ShuttleViewStopCell.swift */; };
+		9D25E8411CE4EBFD00DC7315 /* StripedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25E8401CE4EBFD00DC7315 /* StripedView.swift */; };
 		9D3439611C7EAF1A008A4D73 /* Calendar-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3439561C7EAF1A008A4D73 /* Calendar-96.png */; };
 		9D3439621C7EAF1A008A4D73 /* Chat-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3439571C7EAF1A008A4D73 /* Chat-96.png */; };
 		9D3439631C7EAF1A008A4D73 /* Contacts-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3439581C7EAF1A008A4D73 /* Contacts-96.png */; };
@@ -119,6 +121,8 @@
 		9D00A5A41C44F42000C0DF6D /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		9D01FA651C78538F00D2A68F /* MessageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewCell.swift; sourceTree = "<group>"; };
 		9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
+		9D25E83E1CE4DD3000DC7315 /* ShuttleViewStopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShuttleViewStopCell.swift; sourceTree = "<group>"; };
+		9D25E8401CE4EBFD00DC7315 /* StripedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripedView.swift; sourceTree = "<group>"; };
 		9D3439561C7EAF1A008A4D73 /* Calendar-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-96.png"; sourceTree = "<group>"; };
 		9D3439571C7EAF1A008A4D73 /* Chat-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chat-96.png"; sourceTree = "<group>"; };
 		9D3439581C7EAF1A008A4D73 /* Contacts-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contacts-96.png"; sourceTree = "<group>"; };
@@ -481,6 +485,8 @@
 			children = (
 				9DFCA3BB1CB78754007C75D7 /* ShuttlesViewController.swift */,
 				9DFE79111CC73522007EA932 /* ShuttleViewClasses.swift */,
+				9D25E83E1CE4DD3000DC7315 /* ShuttleViewStopCell.swift */,
+				9D25E8401CE4EBFD00DC7315 /* StripedView.swift */,
 			);
 			name = ShuttlesView;
 			sourceTree = "<group>";
@@ -674,11 +680,13 @@
 				9DA434341C6821250007256B /* WebView.swift in Sources */,
 				9DBD98251C6FD1E700E21627 /* Tour.swift in Sources */,
 				9DCB665E1C251B510083586E /* QRDetailController.swift in Sources */,
+				9D25E83F1CE4DD3000DC7315 /* ShuttleViewStopCell.swift in Sources */,
 				9DFC1E151C8FB75900375E23 /* BubbleView.swift in Sources */,
 				9DE92DDE1C938B4600CB403D /* BubbleViewDetailController.swift in Sources */,
 				9DF316701C5286E900D51CB3 /* TourViewDetailController.swift in Sources */,
 				9DCB66671C2547AC0083586E /* NewsViewController.swift in Sources */,
 				9DD255881C6BA93E00CBBD60 /* MessageViewController.swift in Sources */,
+				9D25E8411CE4EBFD00DC7315 /* StripedView.swift in Sources */,
 				284551B91C39F3EC003AF5E3 /* XMLElement.swift in Sources */,
 				9DBD98271C6FD20200E21627 /* EmergencyContact.swift in Sources */,
 				9DBD98211C6FD1AE00E21627 /* Landmark.swift in Sources */,

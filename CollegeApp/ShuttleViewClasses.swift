@@ -11,7 +11,7 @@ import MapKit
 
 protocol ShuttleOverlay: MKOverlay
 {
-    var selected: Bool {get set}
+    var highlighted: Bool {get set}
 }
 
 class ShuttleVehicle
@@ -26,7 +26,7 @@ class ShuttleVehicle
 class ShuttleVehicleOverlay: MKCircle, ShuttleOverlay
 {
     var vehicle: ShuttleVehicle!
-    var selected = false
+    var highlighted = false
     
     class func overlayFromVehicle(vehicle: ShuttleVehicle) -> ShuttleVehicleOverlay
     {
@@ -76,7 +76,7 @@ class ShuttleStop
 class ShuttleStopOverlay: MKCircle, ShuttleOverlay
 {
     var stop: ShuttleStop!
-    var selected = false
+    var highlighted = false
     
     class func overlayFromStop(stop: ShuttleStop) -> ShuttleStopOverlay
     {
@@ -121,7 +121,7 @@ class ShuttleStopRenderer: MKOverlayRenderer
             }
         }
         
-        if stopOverlay.selected
+        if stopOverlay.highlighted
         {
             maxRadius = 40
         }
@@ -171,7 +171,7 @@ class ShuttleStopRenderer: MKOverlayRenderer
 class ShuttleRouteSegmentsOverlay: NSObject, MKOverlay, ShuttleOverlay
 {
     var segments: [ShuttleRouteSegment]!
-    var selected = false
+    var highlighted = false
     
     init(segments: [ShuttleRouteSegment])
     {
