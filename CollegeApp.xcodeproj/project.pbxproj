@@ -335,7 +335,7 @@
 			name = SchoolAssets;
 			sourceTree = "<group>";
 		};
-		9DBD981F1C6FD19300E21627 /* Types */ = {
+		9DBD981F1C6FD19300E21627 /* Data Classes */ = {
 			isa = PBXGroup;
 			children = (
 				9DBD981B1C6FC58E00E21627 /* Event.swift */,
@@ -346,7 +346,7 @@
 				9DBD98261C6FD20200E21627 /* EmergencyContact.swift */,
 				9DBD98381C73CA0500E21627 /* DirectoryEntry.swift */,
 			);
-			name = Types;
+			name = "Data Classes";
 			sourceTree = "<group>";
 		};
 		9DBD983E1C73DA6500E21627 /* DirectoryView */ = {
@@ -389,7 +389,7 @@
 				9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */,
 				9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */,
 				9DA434331C6821250007256B /* WebView.swift */,
-				9DBD981F1C6FD19300E21627 /* Types */,
+				9DBD981F1C6FD19300E21627 /* Data Classes */,
 				9DCB66681C2548170083586E /* MapView */,
 				9DCB66691C25481F0083586E /* QRCodeView */,
 				9DCB666A1C2548280083586E /* NewsView */,

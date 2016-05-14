@@ -19,7 +19,7 @@ class StripedView: UIView
         {
             (i, color) in
             
-            let rect = CGRect(x: self.frame.minX + CGFloat(i)*stripeWidth, y: self.frame.minY, width: stripeWidth, height: self.frame.height)
+            let rect = CGRect(x: self.bounds.minX + CGFloat(i)*stripeWidth, y: self.bounds.minY, width: stripeWidth, height: self.bounds.height)
             
             color.set()
             UIRectFill(rect)

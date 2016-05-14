@@ -27,8 +27,8 @@ class ShuttleViewStopCell: UITableViewCell
             
             if newStop != nil
             {
-                //nameLabel.text = newStop?.name
-                if newStop?.name != nil
+                nameLabel.text = newStop?.name
+                /*if newStop?.name != nil
                 {
                     let textAttributes =
                         [
@@ -38,7 +38,7 @@ class ShuttleViewStopCell: UITableViewCell
                         ]
                     
                     nameLabel.attributedText = NSAttributedString(string: newStop!.name!, attributes: textAttributes)
-                }
+                }*/
                 
                 if let colors = stop?.routes.map({$0.color})
                 {

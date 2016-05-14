@@ -26,6 +26,8 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         
         navigationItem.title = tour.title
         
+        //Get landmark data
+        
         //Setup map view
         mapView.delegate = self
         mapView.setRegion(School.schoolRegion, animated: false)
@@ -36,13 +38,14 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         scrollView.delegate = self
                 
         //Setup Beacons
-        if School.useBeaconsTours
+        /*if School.useBeaconsTours
         {
             let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate!)
             
             appDelegate.tourController = self
             appDelegate.beginBeaconSearching()
-        }
+        }*/
+
         
         refreshTourView()
     }

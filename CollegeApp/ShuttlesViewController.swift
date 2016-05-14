@@ -58,8 +58,9 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
         
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.backgroundColor = UIColor.clearColor()
         tableViewHeight.constant = 0
+        tableView.estimatedRowHeight = 47
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewDidAppear(animated: Bool)
