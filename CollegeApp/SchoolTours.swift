@@ -12,9 +12,9 @@ extension School
 {
     static let useBeaconsTours = false
     
-    static let tours =
+    static var tours: [Tour] =
     [
-        Tour(
+        /*Tour(
             landmarks: [
                 TourLandmark(coordinate: CLLocationCoordinate2D(latitude: 37.427926, longitude: -122.166893), title: "Hoover Tower", descriptionString: "Standing 285 feet tall, Hoover Tower was an finished in 1941: the year of Stanford's 50th anniversary. On clear days it is possible to see all the way to the distant skyline of San Francisco.", thumbnailPath: "Hoover"),
                 TourLandmark(coordinate: CLLocationCoordinate2D(latitude: 37.433619, longitude: -122.162194), title: "Stanford Stadium", descriptionString: "A new $100 million stadium was unveiled in 2006. Originally built in 1921, Stanford Stadium played host to many historic events including Herbert Hoover's 1928 presidential nomination acceptance speech, US-USSR track & field meet in 1962, several Olympic soccer matches in 1984, Super Bowl XIX, FIFA World Cup soccer matches in 1994, FIFA Women's World Cup soccer matches in 1999, and of course, numerous college football games.", thumbnailPath: "Stadium"),
@@ -29,6 +29,8 @@ extension School
                 TourLandmark(coordinate: CLLocationCoordinate2D(latitude: 37.428000, longitude: -122.169972), title: "Burghers of Calais", descriptionString: "One of the most famous sculptures by Auguste Rodin, completed in 1889. It serves as a monument to an occurrence in 1347 during the Hundred Years' War", thumbnailPath: "Burghers")
             ],
             title: "First Tour"
-        )
+        )*/
     ]
+    
+    static var tourLandmarks = [TourLandmark]()
 }

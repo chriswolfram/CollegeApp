@@ -42,13 +42,13 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
     {
         landmark = newLandmark
         
-        nameLabel?.text = landmark.title
-        descriptionLabel?.text = landmark.descriptionString
+        nameLabel?.text = landmark.titleString
+        descriptionLabel?.text = landmark.textString
         
-        if landmark.thumbnailPath != nil, let bundlePath = NSBundle.mainBundle().pathForResource(landmark.thumbnailPath, ofType: "jpg"), let image = UIImage(contentsOfFile: bundlePath)
+        if landmark.image != nil
         {
-            thumbnailView?.image = image
-            thumbnailView?.addConstraint(NSLayoutConstraint(item: thumbnailView!, attribute: .Width, relatedBy: .Equal, toItem: thumbnailView!, attribute: .Height, multiplier: image.size.width / image.size.height, constant: 0))
+            thumbnailView?.image = landmark.image
+            thumbnailView?.addConstraint(NSLayoutConstraint(item: thumbnailView!, attribute: .Width, relatedBy: .Equal, toItem: thumbnailView!, attribute: .Height, multiplier: landmark.image!.size.width / landmark.image!.size.height, constant: 0))
         }
     }
     

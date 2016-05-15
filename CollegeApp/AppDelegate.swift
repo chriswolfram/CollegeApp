@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         //beaconRegion.notifyEntryStateOnDisplay = true
         //Uncomment to enable beacons on launch
         //beginBeaconSearching()
-                
+        
         return true
     }
     
@@ -57,7 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
-    func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion)
+    //For iBeacons
+    /*func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion)
     {
         if region == beaconRegion && state == .Inside
         {
@@ -74,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         {
             //Exiting beacon range
         }
-    }
+    }*/
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
     {

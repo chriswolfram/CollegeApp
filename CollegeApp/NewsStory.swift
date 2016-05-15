@@ -32,7 +32,7 @@ class NewsStory
                         self.delegate?.didLoadImage()
                     }
                 }
-                    
+                
                 else
                 {
                     dispatch_async(dispatch_get_main_queue())

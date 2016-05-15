@@ -7,15 +7,47 @@
 //
 
 import CoreLocation
+import UIKit
 
 class TourLandmark
 {
     var coordinate: CLLocationCoordinate2D!
     var titleString: String?
-    var descriptionString: String?
-    var imageURL: String?
-    var audioURL: String?
-    var videoURL: String?
+    var textString: String?
+    var imageURL: NSURL?
+    var image: UIImage?
+    var audioURL: NSURL?
+    var videoURL: NSURL?
+    
+    init?(xmlElement: XMLElement)
+    {
+        if
+            let latString = xmlElement["latitude"]?.contents,
+            let lat = Double(latString),
+            let longString = xmlElement["longitude"]?.contents,
+            let long = Double(longString)
+        {
+            coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            
+            titleString = xmlElement["title"]?.contents
+            textString = xmlElement["text"]?.contents
+            
+            if let urlString = xmlElement["imageURL"]?.contents
+            {
+                imageURL = NSURL(string: urlString)
+            }
+            
+            if let urlString = xmlElement["audioURL"]?.contents
+            {
+                audioURL = NSURL(string: urlString)
+            }
+            
+            if let urlString = xmlElement["videoURL"]?.contents
+            {
+                videoURL = NSURL(string: urlString)
+            }
+        }
+    }
     
     //var major: NSNumber?
     //var minor: NSNumber?

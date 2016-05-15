@@ -14,6 +14,8 @@
 		9D209DAA1C653F5200AA8C50 /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */; };
 		9D25E83F1CE4DD3000DC7315 /* ShuttleViewStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25E83E1CE4DD3000DC7315 /* ShuttleViewStopCell.swift */; };
 		9D25E8411CE4EBFD00DC7315 /* StripedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25E8401CE4EBFD00DC7315 /* StripedView.swift */; };
+		9D25E8451CE83B1C00DC7315 /* TourSelectViewPresetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25E8441CE83B1C00DC7315 /* TourSelectViewPresetCell.swift */; };
+		9D25E8471CE83B7E00DC7315 /* TourSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25E8461CE83B7E00DC7315 /* TourSelectViewController.swift */; };
 		9D3439611C7EAF1A008A4D73 /* Calendar-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3439561C7EAF1A008A4D73 /* Calendar-96.png */; };
 		9D3439621C7EAF1A008A4D73 /* Chat-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3439571C7EAF1A008A4D73 /* Chat-96.png */; };
 		9D3439631C7EAF1A008A4D73 /* Contacts-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3439581C7EAF1A008A4D73 /* Contacts-96.png */; };
@@ -123,6 +125,8 @@
 		9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
 		9D25E83E1CE4DD3000DC7315 /* ShuttleViewStopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShuttleViewStopCell.swift; sourceTree = "<group>"; };
 		9D25E8401CE4EBFD00DC7315 /* StripedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripedView.swift; sourceTree = "<group>"; };
+		9D25E8441CE83B1C00DC7315 /* TourSelectViewPresetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourSelectViewPresetCell.swift; sourceTree = "<group>"; };
+		9D25E8461CE83B7E00DC7315 /* TourSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourSelectViewController.swift; sourceTree = "<group>"; };
 		9D3439561C7EAF1A008A4D73 /* Calendar-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-96.png"; sourceTree = "<group>"; };
 		9D3439571C7EAF1A008A4D73 /* Chat-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chat-96.png"; sourceTree = "<group>"; };
 		9D3439581C7EAF1A008A4D73 /* Contacts-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contacts-96.png"; sourceTree = "<group>"; };
@@ -462,6 +466,8 @@
 		9DD6A1E91C4D7FD40025FE44 /* TourView */ = {
 			isa = PBXGroup;
 			children = (
+				9D25E8461CE83B7E00DC7315 /* TourSelectViewController.swift */,
+				9D25E8441CE83B1C00DC7315 /* TourSelectViewPresetCell.swift */,
 				9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */,
 				9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */,
 				9DFCA3B51CB0B178007C75D7 /* TourViewScrollView.swift */,
@@ -673,12 +679,14 @@
 				9D39389A1C76F5E60043BE7F /* DirectoryViewDetailCell.swift in Sources */,
 				9DFCA3BC1CB78754007C75D7 /* ShuttlesViewController.swift in Sources */,
 				9DBD98291C7016D300E21627 /* EventsViewController.swift in Sources */,
+				9D25E8451CE83B1C00DC7315 /* TourSelectViewPresetCell.swift in Sources */,
 				9DFCA3BF1CB88ADC007C75D7 /* SchoolShuttles.swift in Sources */,
 				9DCB665F1C251B510083586E /* QRViewController.swift in Sources */,
 				9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */,
 				9DADBAC01C7FF4CF00A4B7F2 /* GalleryViewController.swift in Sources */,
 				9DA434341C6821250007256B /* WebView.swift in Sources */,
 				9DBD98251C6FD1E700E21627 /* Tour.swift in Sources */,
+				9D25E8471CE83B7E00DC7315 /* TourSelectViewController.swift in Sources */,
 				9DCB665E1C251B510083586E /* QRDetailController.swift in Sources */,
 				9D25E83F1CE4DD3000DC7315 /* ShuttleViewStopCell.swift in Sources */,
 				9DFC1E151C8FB75900375E23 /* BubbleView.swift in Sources */,
@@ -834,13 +842,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_OPTIMIZATION_LEVEL = 3;
 				INFOPLIST_FILE = CollegeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kincola.collegeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -856,12 +865,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_OPTIMIZATION_LEVEL = 3;
 				INFOPLIST_FILE = CollegeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kincola.collegeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

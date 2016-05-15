@@ -14,20 +14,41 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
     @IBOutlet weak var progressIndicator: UIProgressView!
     @IBOutlet weak var scrollView: TourViewScrollView!
     
-    var tour = School.tours[0]
-    
     static let detailViewTopSpace: CGFloat = 300
-
+    
     var pagesAdded = false
+    
+    private var internalTour: Tour!
+    var tour: Tour!
+    {
+        get
+        {
+            return internalTour
+        }
+        
+        set(newTour)
+        {
+            internalTour = newTour
+            
+            refreshTourView()
+        }
+    }
+    
+    static func tourViewControllerFromTour(tour: Tour) -> TourViewController
+    {
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TourViewController") as! TourViewController
+        
+        viewController.loadViewIfNeeded()
+        
+        viewController.tour = tour
+        
+        return viewController
+    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        navigationItem.title = tour.title
-        
-        //Get landmark data
-        
+
         //Setup map view
         mapView.delegate = self
         mapView.setRegion(School.schoolRegion, animated: false)
@@ -45,9 +66,8 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
             appDelegate.tourController = self
             appDelegate.beginBeaconSearching()
         }*/
-
         
-        refreshTourView()
+        //refreshTourView()
     }
     
     //override func viewDidLayoutSubviews()
@@ -130,7 +150,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         //Update map
         mapView.removeOverlays(mapView.overlays)
         
-        var coords = tour.landmarks.map({$0.coordinate})
+        var coords = tour.landmarks.map({$0.coordinate!})
         mapView.addOverlay(MKPolyline(coordinates: &coords, count: tour.landmarks.count))
         mapView.addOverlay(MKCircle(centerCoordinate: tour.currentLandmark.coordinate, radius: 50))
     }
@@ -140,7 +160,8 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         scrollView.setContentOffset(CGPoint(x: scrollView.frame.width * CGFloat(index), y: 0), animated: true)
     }
     
-    func didEnterRegion(beaconRegion: CLBeaconRegion)
+    //For iBeacons
+    /*func didEnterRegion(beaconRegion: CLBeaconRegion)
     {
         for (i, landmark) in tour.landmarks.enumerate()
         {
@@ -151,7 +172,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
                 break
             }
         }
-    }
+    }*/
     
     @IBAction func mapModeChanged(segmentedControl: UISegmentedControl)
     {

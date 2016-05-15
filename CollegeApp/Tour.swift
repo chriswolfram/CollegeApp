@@ -22,10 +22,10 @@ class Tour
         }
     }
     
-    init(landmarks: [TourLandmark], startIndex: Int = 0, title: String? = nil)
+    init(landmarks: [TourLandmark], title: String? = nil, startIndex: Int = 0)
     {
         self.landmarks = landmarks
-        self.currentIndex = startIndex
         self.title = title
+        self.currentIndex = startIndex
     }
 }
