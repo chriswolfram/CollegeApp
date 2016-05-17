@@ -30,6 +30,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         {
             internalTour = newTour
             
+            loadViewIfNeeded()
             refreshTourView()
         }
     }
@@ -37,8 +38,6 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
     static func tourViewControllerFromTour(tour: Tour) -> TourViewController
     {
         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TourViewController") as! TourViewController
-        
-        viewController.loadViewIfNeeded()
         
         viewController.tour = tour
         

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import WebKit
+//import MediaPlayer
 
 class TourViewDetailController: UIViewController, UIScrollViewDelegate
 {
@@ -15,9 +17,9 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
     var landmark: TourLandmark!
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var descriptionLabel: UILabel?
-    @IBOutlet weak var thumbnailView: UIImageView?
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var mediaView: UIView!
     
     var scrollCallback: ((UIScrollView) -> Void)?
     
@@ -45,11 +47,69 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
         nameLabel?.text = landmark.titleString
         descriptionLabel?.text = landmark.textString
         
-        if landmark.image != nil
+        //Temporary
+        loadViewIfNeeded()
+        
+        var lastBottomAnchor = mediaView.topAnchor
+        
+        //Load video
+        if let url = landmark.videoURL
         {
-            thumbnailView?.image = landmark.image
-            thumbnailView?.addConstraint(NSLayoutConstraint(item: thumbnailView!, attribute: .Width, relatedBy: .Equal, toItem: thumbnailView!, attribute: .Height, multiplier: landmark.image!.size.width / landmark.image!.size.height, constant: 0))
+            let videoView = WKWebView(frame: mediaView.frame)
+            videoView.translatesAutoresizingMaskIntoConstraints = false
+            videoView.scrollView.scrollEnabled = false
+            videoView.loadRequest(NSURLRequest(URL: url))
+            mediaView.addSubview(videoView)
+            mediaView.bringSubviewToFront(videoView)
+            
+            videoView.addConstraint(NSLayoutConstraint(item: videoView, attribute: .Width, relatedBy: .Equal, toItem: videoView, attribute: .Height, multiplier: 16/9, constant: 0))
+            
+            videoView.topAnchor.constraintEqualToAnchor(lastBottomAnchor).active = true
+            videoView.leftAnchor.constraintEqualToAnchor(mediaView.leftAnchor).active = true
+            videoView.rightAnchor.constraintEqualToAnchor(mediaView.rightAnchor).active = true
+            
+            lastBottomAnchor = videoView.bottomAnchor
         }
+        
+        //Load audio
+        if let url = landmark.audioURL
+        {
+            let audioView = WKWebView(frame: mediaView.frame)
+            audioView.translatesAutoresizingMaskIntoConstraints = false
+            audioView.scrollView.scrollEnabled = false
+            audioView.loadRequest(NSURLRequest(URL: url))
+            mediaView.addSubview(audioView)
+            mediaView.bringSubviewToFront(audioView)
+            
+            audioView.addConstraint(NSLayoutConstraint(item: audioView, attribute: .Width, relatedBy: .Equal, toItem: audioView, attribute: .Height, multiplier: 16/9, constant: 0))
+            
+            audioView.topAnchor.constraintEqualToAnchor(lastBottomAnchor).active = true
+            audioView.leftAnchor.constraintEqualToAnchor(mediaView.leftAnchor).active = true
+            audioView.rightAnchor.constraintEqualToAnchor(mediaView.rightAnchor).active = true
+            
+            lastBottomAnchor = audioView.bottomAnchor
+        }
+        
+        //Load image
+        if let url = landmark.imageURL
+        {
+            let imageView = WKWebView(frame: mediaView.frame)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.scrollView.scrollEnabled = false
+            imageView.loadRequest(NSURLRequest(URL: url))
+            mediaView.addSubview(imageView)
+            mediaView.bringSubviewToFront(imageView)
+            
+            imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Height, multiplier: 16/9, constant: 0))
+            
+            imageView.topAnchor.constraintEqualToAnchor(lastBottomAnchor).active = true
+            imageView.leftAnchor.constraintEqualToAnchor(mediaView.leftAnchor).active = true
+            imageView.rightAnchor.constraintEqualToAnchor(mediaView.rightAnchor).active = true
+            
+            lastBottomAnchor = imageView.bottomAnchor
+        }
+        
+        lastBottomAnchor.constraintEqualToAnchor(mediaView.bottomAnchor).active = true
     }
     
     static func controller() -> TourViewDetailController

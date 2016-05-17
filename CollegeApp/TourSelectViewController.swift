@@ -80,7 +80,6 @@ class TourSelectViewController: UICollectionViewController
     {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TourSelectViewPresetCell", forIndexPath: indexPath) as! TourSelectViewPresetCell
         
-        print(indexPath)
         let tour = School.tours[indexPath.row]
         cell.tour = tour
         
