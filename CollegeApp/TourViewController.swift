@@ -18,6 +18,8 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
     
     var pagesAdded = false
     
+    var detailViewControllers = [Int:TourViewDetailController]()
+    
     private var internalTour: Tour!
     var tour: Tour!
     {
@@ -100,6 +102,8 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         viewController.view.frame = CGRect(x: CGFloat(index) * scrollView.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
         scrollView.addSubview(viewController.view)
         
+        detailViewControllers[index] = viewController
+        
         viewController.scrollCallback =
         {
             innerScrollView in
@@ -152,6 +156,11 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         var coords = tour.landmarks.map({$0.coordinate!})
         mapView.addOverlay(MKPolyline(coordinates: &coords, count: tour.landmarks.count))
         mapView.addOverlay(MKCircle(centerCoordinate: tour.currentLandmark.coordinate, radius: 50))
+        
+        if let detailViewController = detailViewControllers[tour.currentIndex]
+        {
+            detailViewController.scrollCallback?(detailViewController.scrollView)
+        }
     }
     
     func goToLandmarkAtIndex(index: Int)

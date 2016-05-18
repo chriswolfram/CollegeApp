@@ -1705,13 +1705,54 @@
                         <outlet property="contentView" destination="O5n-Ym-O5p" id="Lz8-qt-LwC"/>
                         <outlet property="descriptionLabel" destination="zu8-8U-L88" id="JqS-de-kC9"/>
                         <outlet property="mediaView" destination="fDt-uE-w1v" id="mKE-uv-F8m"/>
-                        <outlet property="nameLabel" destination="DcH-kq-sPj" id="lzE-0t-EYQ"/>
+                        <outlet property="nameLabel" destination="DcH-kq-sPj" id="cJc-pa-d8t"/>
                         <outlet property="scrollView" destination="4ve-1C-zc2" id="SW9-Fw-e0p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIt-fQ-ce8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1087.5" y="3303"/>
+        </scene>
+        <!--Audio View Contoller-->
+        <scene sceneID="Zge-YH-RMD">
+            <objects>
+                <viewController storyboardIdentifier="AudioViewContoller" id="heJ-km-NsK" customClass="AudioViewContoller" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AIi-lG-WV0"/>
+                        <viewControllerLayoutGuide type="bottom" id="BQo-0X-oTJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ckv-9t-kGL">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mke-CM-T8N">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="185" y="35" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="playPressed:" destination="heJ-km-NsK" eventType="touchUpInside" id="XCy-NE-dH4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="mke-CM-T8N"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="mke-CM-T8N"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="100"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qdv-Fy-tql" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1729.5" y="3303"/>
         </scene>
         <!--Events-->
         <scene sceneID="Xwx-8m-LnF">
@@ -2264,7 +2305,8 @@
                                                             <exclude reference="1Yr-IV-WHM"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="42" width="240" height="5"/>
                                                         <mask key="constraints">
                                                             <include reference="1Yr-IV-WHM"/>
                                                         </mask>
@@ -2276,6 +2318,9 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="-2"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="8" width="224" height="26"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>

@@ -8,6 +8,7 @@
 
 import CoreLocation
 import UIKit
+import AVFoundation
 
 class TourLandmark
 {
@@ -18,6 +19,17 @@ class TourLandmark
     var image: UIImage?
     var audioURL: NSURL?
     var videoURL: NSURL?
+    
+    private var internalAudioPlayer: AVPlayer?
+    var audioPlayer: AVPlayer?
+    {
+        if internalAudioPlayer == nil && audioURL != nil
+        {
+            internalAudioPlayer = AVPlayer(URL: audioURL!)
+        }
+        
+        return internalAudioPlayer
+    }
     
     init?(xmlElement: XMLElement)
     {
@@ -49,10 +61,10 @@ class TourLandmark
         }
     }
     
-    private var loaded = false
-    func loadImage(callback: (UIImage?->Void)? = nil)
+    private var imageLoaded = false
+    func getImage(callback: (UIImage?->Void)? = nil)
     {
-        if !loaded
+        if !imageLoaded
         {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
             {
@@ -60,8 +72,8 @@ class TourLandmark
                 {
                     dispatch_async(dispatch_get_main_queue())
                     {
-                        self.loaded = true
                         self.image = image
+                        self.imageLoaded = true
                         callback?(self.image)
                     }
                 }

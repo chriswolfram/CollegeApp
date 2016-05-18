@@ -8,7 +8,6 @@
 
 import UIKit
 import WebKit
-//import MediaPlayer
 
 class TourViewDetailController: UIViewController, UIScrollViewDelegate
 {
@@ -22,6 +21,8 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
     @IBOutlet weak var mediaView: UIView!
     
     var scrollCallback: ((UIScrollView) -> Void)?
+    
+    var audioViewController: AudioViewContoller!
     
     var height: CGFloat
     {
@@ -47,9 +48,6 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
         nameLabel?.text = landmark.titleString
         descriptionLabel?.text = landmark.textString
         
-        //Temporary
-        loadViewIfNeeded()
-        
         var lastBottomAnchor = mediaView.topAnchor
         
         //Add video
@@ -74,12 +72,28 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
         //Add audio
         if let url = landmark.audioURL
         {
-            let audioView = WKWebView(frame: mediaView.frame)
+            /*let audioView = WKWebView(frame: mediaView.frame)
             audioView.translatesAutoresizingMaskIntoConstraints = false
             audioView.scrollView.scrollEnabled = false
             audioView.loadRequest(NSURLRequest(URL: url))
             mediaView.addSubview(audioView)
             mediaView.bringSubviewToFront(audioView)
+            
+            audioView.addConstraint(NSLayoutConstraint(item: audioView, attribute: .Width, relatedBy: .Equal, toItem: audioView, attribute: .Height, multiplier: 16/9, constant: 0))
+            
+            audioView.topAnchor.constraintEqualToAnchor(lastBottomAnchor).active = true
+            audioView.leftAnchor.constraintEqualToAnchor(mediaView.leftAnchor).active = true
+            audioView.rightAnchor.constraintEqualToAnchor(mediaView.rightAnchor).active = true
+            
+            lastBottomAnchor = audioView.bottomAnchor*/
+            
+            //Testing
+            //landmark.audioPlayer?.play()
+            
+            audioViewController = AudioViewContoller.audioViewControllerFromPlayer(landmark.audioPlayer!)
+            let audioView = audioViewController.view
+            audioView.translatesAutoresizingMaskIntoConstraints = false
+            mediaView.addSubview(audioView)
             
             audioView.addConstraint(NSLayoutConstraint(item: audioView, attribute: .Width, relatedBy: .Equal, toItem: audioView, attribute: .Height, multiplier: 16/9, constant: 0))
             
@@ -97,7 +111,7 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .ScaleAspectFit
             
-            landmark.loadImage
+            landmark.getImage
             {
                 image in
                 
@@ -134,7 +148,7 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
     {
         let storyboard = UIStoryboard(name: TourViewDetailController.storyboardIdentifier, bundle: nil)
         let detailView = storyboard.instantiateViewControllerWithIdentifier("TourViewDetailController") as! TourViewDetailController
-        detailView.showLandmark(landmark)
+        detailView.landmark = landmark
         
         return detailView
     }
