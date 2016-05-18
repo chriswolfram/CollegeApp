@@ -49,6 +49,31 @@ class TourLandmark
         }
     }
     
+    private var loaded = false
+    func loadImage(callback: (UIImage?->Void)? = nil)
+    {
+        if !loaded
+        {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+            {
+                if let imageData = NSData(contentsOfURL: self.imageURL!), let image = UIImage(data: imageData)
+                {
+                    dispatch_async(dispatch_get_main_queue())
+                    {
+                        self.loaded = true
+                        self.image = image
+                        callback?(self.image)
+                    }
+                }
+            }
+        }
+        
+        else
+        {
+            callback?(self.image)
+        }
+    }
+    
     //var major: NSNumber?
     //var minor: NSNumber?
     

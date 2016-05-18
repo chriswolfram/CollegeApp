@@ -52,7 +52,7 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
         
         var lastBottomAnchor = mediaView.topAnchor
         
-        //Load video
+        //Add video
         if let url = landmark.videoURL
         {
             let videoView = WKWebView(frame: mediaView.frame)
@@ -71,7 +71,7 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
             lastBottomAnchor = videoView.bottomAnchor
         }
         
-        //Load audio
+        //Add audio
         if let url = landmark.audioURL
         {
             let audioView = WKWebView(frame: mediaView.frame)
@@ -90,17 +90,27 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
             lastBottomAnchor = audioView.bottomAnchor
         }
         
-        //Load image
-        if let url = landmark.imageURL
+        //Add image
+        if landmark.imageURL != nil
         {
-            let imageView = WKWebView(frame: mediaView.frame)
+            let imageView = UIImageView(frame: mediaView.frame)
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.scrollView.scrollEnabled = false
-            imageView.loadRequest(NSURLRequest(URL: url))
+            imageView.contentMode = .ScaleAspectFit
+            
+            landmark.loadImage
+            {
+                image in
+                
+                imageView.image = image
+                
+                if image != nil
+                {
+                    imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Height, multiplier: image!.size.width/image!.size.height, constant: 0))
+                }
+            }
+            
             mediaView.addSubview(imageView)
             mediaView.bringSubviewToFront(imageView)
-            
-            imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Height, multiplier: 16/9, constant: 0))
             
             imageView.topAnchor.constraintEqualToAnchor(lastBottomAnchor).active = true
             imageView.leftAnchor.constraintEqualToAnchor(mediaView.leftAnchor).active = true
