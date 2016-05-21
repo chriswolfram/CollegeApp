@@ -98,6 +98,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
     func loadLandmarkToPage(index: Int)
     {
         let viewController = TourViewDetailController.controllerForLandmark(tour.landmarks[index])
+        viewController.parentTourViewController = self
         self.addChildViewController(viewController)
         viewController.view.frame = CGRect(x: CGFloat(index) * scrollView.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
         scrollView.addSubview(viewController.view)

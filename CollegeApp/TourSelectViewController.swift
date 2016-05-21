@@ -17,7 +17,7 @@ class TourSelectViewController: UICollectionViewController
         //Update tour data
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
         {
-            if let parser = NSXMLParser(contentsOfURL: NSURL(string: "https://www.wolframcloud.com/objects/93641124-f840-4511-8df8-8a4c0c3fc572")!)
+            if let parser = NSXMLParser(contentsOfURL: NSURL(string: "https://www.wolframcloud.com/objects/6116ba94-7cbf-4406-aa49-3fc89c653310")!)
             {
                 let xmlElement = XMLElement(parser: parser)
                 xmlElement.parse()
@@ -31,32 +31,7 @@ class TourSelectViewController: UICollectionViewController
                     }
                     
                     //Get tours
-                    let tours = xmlElement["tours"]?["tour", .All]?.flatMap
-                        {
-                            (tourXML: XMLElement) -> Tour? in
-                            
-                            let tourLandmarks = tourXML["landmarkIndices"]?["index", .All]?.flatMap
-                                {
-                                    (indexXML: XMLElement) -> TourLandmark? in
-                                    
-                                    if
-                                        let indexString = indexXML.contents,
-                                        let index = Int(indexString)
-                                        where 0 <= index && index < landmarks.count
-                                    {
-                                        return landmarks[index]
-                                    }
-                                    
-                                    return nil
-                            }
-                            
-                            if tourLandmarks != nil
-                            {
-                                return Tour(landmarks: tourLandmarks!, title: tourXML["title"]?.contents)
-                            }
-                            
-                            return nil
-                    }
+                    let tours = xmlElement["tours"]?["tour", .All]?.flatMap({Tour(xmlElement: $0, landmarks: landmarks)})
                     
                     if tours != nil
                     {
