@@ -8,11 +8,13 @@
 
 import MapKit
 
-class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDelegate
+class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDelegate, CLLocationManagerDelegate
 {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var progressIndicator: UIProgressView!
     @IBOutlet weak var scrollView: TourViewScrollView!
+    
+    var locManager: CLLocationManager!
     
     static let detailViewTopSpace: CGFloat = 300
     
@@ -50,6 +52,14 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
     {
         super.viewDidLoad()
 
+        //Setup location manager
+        locManager = LocationManager.sharedInstance
+        locManager.delegate = self
+        
+        //Update to reflect authorization settings
+        locManager.requestWhenInUseAuthorization()
+        self.locationManager(locManager, didChangeAuthorizationStatus: CLLocationManager.authorizationStatus())
+        
         //Setup map view
         mapView.delegate = self
         mapView.setRegion(School.schoolRegion, animated: false)
@@ -158,20 +168,6 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         scrollView.setContentOffset(CGPoint(x: scrollView.frame.width * CGFloat(index), y: 0), animated: true)
     }
     
-    //For iBeacons
-    /*func didEnterRegion(beaconRegion: CLBeaconRegion)
-    {
-        for (i, landmark) in tour.landmarks.enumerate()
-        {
-            if landmark.major == beaconRegion.major && landmark.minor == beaconRegion.minor
-            {
-                //If any beacon is detected, set that to the current index (probably not permanent)
-                goToLandmarkAtIndex(i)
-                break
-            }
-        }
-    }*/
-    
     @IBAction func mapModeChanged(segmentedControl: UISegmentedControl)
     {
         switch(segmentedControl.selectedSegmentIndex)
@@ -182,6 +178,21 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
             mapView.mapType = .SatelliteFlyover
         default:
             break
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    {
+        if status == .AuthorizedAlways || status == .AuthorizedWhenInUse
+        {
+            manager.startUpdatingLocation()
+            mapView.showsUserLocation = true
+        }
+            
+        else
+        {
+            manager.stopUpdatingLocation()
+            mapView.showsUserLocation = false
         }
     }
 }

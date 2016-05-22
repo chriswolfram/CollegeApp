@@ -27,11 +27,11 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
     {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.mapController = self
-        locManager = appDelegate.locManager
+        locManager = LocationManager.sharedInstance
+        locManager.delegate = self
         
         //Update to reflect authorization settings
+        locManager.requestWhenInUseAuthorization()
         self.locationManager(locManager, didChangeAuthorizationStatus: CLLocationManager.authorizationStatus())
         
         //Add and configure search bar

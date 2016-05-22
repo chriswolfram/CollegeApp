@@ -14,23 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 {
     var window: UIWindow?
     
-    var locManager = CLLocationManager()
-    var mapController: MapController?
-    var tourController: TourViewController?
-    
-    var beaconRegion: CLBeaconRegion!
-        
+    //var locManager = CLLocationManager()
+    //var mapController: MapController?
+    //var tourController: TourViewController?
+            
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         //Setup the location manager
-        locManager.delegate = self
-        locManager.requestWhenInUseAuthorization()
+        //locManager.delegate = self
+        //locManager.requestWhenInUseAuthorization()
         
         return true
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    /*func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
     {
         mapController?.locationManager(manager, didChangeAuthorizationStatus: status)
-    }
+    }*/
 }

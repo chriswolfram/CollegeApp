@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 import CoreLocation
 
-class EmergencyViewController: UITableViewController, MFMessageComposeViewControllerDelegate
+class EmergencyViewController: UITableViewController, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate
 {
     let emergencyContacts = School.emergencyContacts
     
@@ -95,13 +95,7 @@ class EmergencyViewController: UITableViewController, MFMessageComposeViewContro
     
     func sendLocation(number: String, formattedNumber: String)
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let locManager = appDelegate.locManager
-        
-        if CLLocationManager.locationServicesEnabled()
-        {
-            //locManager.requestLocation()
-        }
+        let locManager = LocationManager.sharedInstance
         
         guard MFMessageComposeViewController.canSendText() && CLLocationManager.locationServicesEnabled() && locManager.location != nil else
         {
