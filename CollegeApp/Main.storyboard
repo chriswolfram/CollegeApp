@@ -1810,7 +1810,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="playPressed:" destination="heJ-km-NsK" eventType="touchUpInside" id="XCy-NE-dH4"/>
+                                    <action selector="playPressed:" destination="heJ-km-NsK" eventType="touchUpInside" id="ssu-3U-mU9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhZ-F2-Ehw">
@@ -1903,7 +1903,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="100"/>
                     <connections>
-                        <outlet property="playButton" destination="mke-CM-T8N" id="RWt-3o-bcL"/>
+                        <outlet property="playButton" destination="mke-CM-T8N" id="reM-o1-xfA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qdv-Fy-tql" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,99 +9,124 @@
 import UIKit
 import AVFoundation
 
-class AudioViewContoller: UIViewController
+class AudioViewContoller: UIViewController, AVAudioPlayerDelegate
 {
-    var player: AVPlayer!
-    @IBOutlet weak var playButton: UIButton!
+    private var internalPlayer: AVAudioPlayer?
+    var player: AVAudioPlayer?
+    {
+        get
+        {
+            return internalPlayer
+        }
+        
+        set(newPlayer)
+        {
+            internalPlayer = newPlayer
+            newPlayer?.delegate = self
+            
+            updateButtons()
+        }
+    }
     
-    var playing = false
+    @IBOutlet weak var playButton: UIButton?
     
     let playImage = UIImage(named: "PlayFilled-100.png")
     let pauseImage = UIImage(named: "PauseFilled-100.png")
     
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-        
-        player.actionAtItemEnd = .Pause
-    }
-    
-    @IBAction func playPressed(sender: UIButton)
-    {
-        playing = !playing
-        
-        if playing
-        {
-            player.play()
-            playButton.setBackgroundImage(pauseImage, forState: .Normal)
-            
-            print(player.currentTime())
-            print(player.currentItem)
-            
-            if CMTimeCompare(player.currentTime(), player.currentItem!.duration) == 0
-            {
-                player.seekToTime(kCMTimeZero)
-            }
-        }
-            
-        else
-        {
-            player.pause()
-            playButton.setBackgroundImage(playImage, forState: .Normal)
-        }
-    }
-    
-    @IBAction func fastForwardPressed(sender: UIButton)
-    {
-        let currentTime = player.currentTime()
-        
-        let seconds = CMTimeGetSeconds(currentTime) + 5
-        var newTime = CMTimeMakeWithSeconds(seconds, currentTime.timescale)
-        
-        if CMTimeCompare(newTime, player.currentItem!.duration) == -1
-        {
-            player.pause()
-            player.currentItem!.seekToTime(newTime)
-        }
-        
-        else
-        {
-            player.pause()
-            player.currentItem!.seekToTime(player.currentItem!.duration)
-        }
-        
-        if playing
-        {
-            player.play()
-        }
-    }
-    
-    @IBAction func rewindPressed(sender: UIButton)
-    {
-        let currentTime = player.currentTime()
-        
-        var newTime = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime) - 5, currentTime.timescale)
-        
-        if newTime.value <= 0
-        {
-            newTime = kCMTimeZero
-        }
-        
-        player.pause()
-        player.seekToTime(newTime)
-        
-        if playing
-        {
-            player.play()
-        }
-    }
-    
-    static func audioViewControllerFromPlayer(player: AVPlayer) -> AudioViewContoller
+    static func audioViewControllerFromPlayer(player: AVAudioPlayer?) -> AudioViewContoller
     {
         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("AudioViewContoller") as! AudioViewContoller
         
         viewController.player = player
         
         return viewController
+    }
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        updateButtons()
+    }
+    
+    func updateButtons()
+    {
+        if player != nil
+        {
+            playButton?.hidden = false
+            
+            if player!.playing
+            {
+                playButton?.setBackgroundImage(pauseImage, forState: .Normal)
+            }
+            
+            else
+            {
+                playButton?.setBackgroundImage(playImage, forState: .Normal)
+            }
+        }
+        
+        else
+        {
+            playButton?.hidden = true
+        }
+    }
+    
+    @IBAction func playPressed(sender: UIButton)
+    {
+        if player != nil
+        {
+            if player!.playing
+            {
+                player!.pause()
+            }
+                
+            else
+            {
+                player!.play()
+            }
+            
+            updateButtons()
+        }
+    }
+    
+    @IBAction func fastForwardPressed(sender: UIButton)
+    {
+        if player != nil
+        {
+            var newTime = player!.currentTime + 5
+            
+            if newTime > player!.duration
+            {
+                newTime = player!.duration - 1
+            }
+            
+            player!.currentTime = newTime
+        }
+    }
+    
+    @IBAction func rewindPressed(sender: UIButton)
+    {
+        if player != nil
+        {
+            var newTime = player!.currentTime - 5
+            
+            if newTime < 0
+            {
+                newTime = 0
+            }
+            
+            player!.currentTime = newTime
+        }
+    }
+    
+    func audioPlayerBeginInterruption(player: AVAudioPlayer)
+    {
+        updateButtons()
+    }
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool)
+    {
+        updateButtons()
     }
 }

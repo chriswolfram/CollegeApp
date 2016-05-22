@@ -18,18 +18,8 @@ class TourLandmark
     var imageURL: NSURL?
     var image: UIImage?
     var audioURL: NSURL?
+    var audioPlayer: AVAudioPlayer?
     var videoURL: NSURL?
-    
-    private var internalAudioPlayer: AVPlayer?
-    var audioPlayer: AVPlayer?
-    {
-        if internalAudioPlayer == nil && audioURL != nil
-        {
-            internalAudioPlayer = AVPlayer(URL: audioURL!)
-        }
-        
-        return internalAudioPlayer
-    }
     
     init?(xmlElement: XMLElement)
     {
@@ -68,15 +58,16 @@ class TourLandmark
         {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
             {
-                if let imageData = NSData(contentsOfURL: self.imageURL!), let image = UIImage(data: imageData)
+                if let imageData = NSData(contentsOfURL: self.imageURL!), let image = UIImage(data: imageData) where self.imageURL != nil
                 {
                     dispatch_async(dispatch_get_main_queue())
                     {
                         self.image = image
-                        self.imageLoaded = true
                         callback?(self.image)
                     }
                 }
+                
+                self.imageLoaded = true
             }
         }
         
@@ -86,20 +77,29 @@ class TourLandmark
         }
     }
     
-    //var major: NSNumber?
-    //var minor: NSNumber?
-    
-    /*init(coordinate: CLLocationCoordinate2D, title: String?, descriptionString: String?, thumbnailPath: String? = nil, beaconMajor: NSNumber? = nil, beaconMinor: NSNumber? = nil)
+    private var audioPlayerLoaded = false
+    func getAudioPlayer(callback: (AVAudioPlayer?->Void)? = nil)
     {
-        super.init(coordinate: coordinate, title: title)
-        self.descriptionString = descriptionString
-        self.thumbnailPath = thumbnailPath
-        //self.major = beaconMajor
-        //self.minor = beaconMinor
-    }*/
-    
-    /*convenience init(_ landmark: Landmark, descriptionString: String? = nil, thumbnailPath: String? = nil)
-    {
-        self.init(coordinate: landmark.coordinate, title: landmark.title, descriptionString: descriptionString, thumbnailPath: thumbnailPath)
-    }*/
+        if !audioPlayerLoaded
+        {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+            {
+                if let audioData = NSData(contentsOfURL: self.audioURL!), let audioPlayer = try? AVAudioPlayer(data: audioData) where self.audioURL != nil
+                {
+                    dispatch_async(dispatch_get_main_queue())
+                    {
+                        self.audioPlayer = audioPlayer
+                        callback?(self.audioPlayer)
+                    }
+                }
+                
+                self.audioPlayerLoaded = true
+            }
+        }
+            
+        else
+        {
+            callback?(self.audioPlayer)
+        }
+    }
 }

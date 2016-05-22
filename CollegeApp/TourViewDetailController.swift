@@ -59,15 +59,15 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
             imageView.contentMode = .ScaleAspectFit
             
             landmark.getImage
+            {
+                image in
+                
+                imageView.image = image
+                
+                if image != nil
                 {
-                    image in
-                    
-                    imageView.image = image
-                    
-                    if image != nil
-                    {
-                        imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Height, multiplier: image!.size.width/image!.size.height, constant: 0))
-                    }
+                    imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Height, multiplier: image!.size.width/image!.size.height, constant: 0))
+                }
             }
             
             mediaView.addSubview(imageView)
@@ -100,32 +100,11 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
         }
         
         //Add audio
-        if let url = landmark.audioURL
+        if landmark.audioURL != nil
         {
-            /*let audioView = WKWebView(frame: mediaView.frame)
-             audioView.translatesAutoresizingMaskIntoConstraints = false
-             audioView.scrollView.scrollEnabled = false
-             audioView.loadRequest(NSURLRequest(URL: url))
-             mediaView.addSubview(audioView)
-             mediaView.bringSubviewToFront(audioView)
-             
-             audioView.addConstraint(NSLayoutConstraint(item: audioView, attribute: .Width, relatedBy: .Equal, toItem: audioView, attribute: .Height, multiplier: 16/9, constant: 0))
-             
-             audioView.topAnchor.constraintEqualToAnchor(lastBottomAnchor).active = true
-             audioView.leftAnchor.constraintEqualToAnchor(mediaView.leftAnchor).active = true
-             audioView.rightAnchor.constraintEqualToAnchor(mediaView.rightAnchor).active = true
-             
-             lastBottomAnchor = audioView.bottomAnchor*/
+            audioViewController = AudioViewContoller.audioViewControllerFromPlayer(nil)
+            landmark.getAudioPlayer({self.audioViewController.player = $0})
             
-            //Testing
-            //landmark.audioPlayer?.play()
-            
-            //let button = UIBarButtonItem(barButtonSystemItem: .Play, target: self, action: #selector(testing))
-            //parentTourViewController.toolbarItems = [button]
-            //parentTourViewController.navigationController?.toolbarHidden = false
-            //print(parentTourViewController)
-            
-            audioViewController = AudioViewContoller.audioViewControllerFromPlayer(landmark.audioPlayer!)
             let audioView = audioViewController.view
             audioView.translatesAutoresizingMaskIntoConstraints = false
             mediaView.addSubview(audioView)
@@ -140,14 +119,6 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
         }
         
         lastBottomAnchor.constraintEqualToAnchor(mediaView.bottomAnchor).active = true
-    }
-    
-    func testing()
-    {
-        //let button = UIBarButtonItem(barButtonSystemItem: .Pause, target: self, action: #selector(testing))
-        //parentTourViewController.toolbarItems = [button]
-        
-        print("testing!")
     }
     
     static func controller() -> TourViewDetailController

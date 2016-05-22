@@ -58,17 +58,6 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.delegate = self
-                
-        //Setup Beacons
-        /*if School.useBeaconsTours
-        {
-            let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate!)
-            
-            appDelegate.tourController = self
-            appDelegate.beginBeaconSearching()
-        }*/
-        
-        //refreshTourView()
     }
     
     //override func viewDidLayoutSubviews()
