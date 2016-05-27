@@ -93,6 +93,8 @@
 		9DE39A011CED19660060E05E /* RewindFilled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE399FF1CED19660060E05E /* RewindFilled-100.png */; };
 		9DE39A041CED1A5B0060E05E /* PauseFilled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE39A031CED1A5B0060E05E /* PauseFilled-100.png */; };
 		9DE39A081CF16E9D0060E05E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE39A071CF16E9D0060E05E /* LocationManager.swift */; };
+		9DE39A0A1CF218610060E05E /* TourSelectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE39A091CF218610060E05E /* TourSelectionHeaderView.swift */; };
+		9DE39A0C1CF228800060E05E /* TourSelectViewLandmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE39A0B1CF228800060E05E /* TourSelectViewLandmarkCell.swift */; };
 		9DE70D441C6CF61A0056850D /* MessageGroupSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE70D431C6CF61A0056850D /* MessageGroupSelectorViewController.swift */; };
 		9DE70D471C6CFE990056850D /* MessageSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE70D461C6CFE990056850D /* MessageSelectorCell.swift */; };
 		9DE92DDE1C938B4600CB403D /* BubbleViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE92DDD1C938B4600CB403D /* BubbleViewDetailController.swift */; };
@@ -216,6 +218,8 @@
 		9DE399FF1CED19660060E05E /* RewindFilled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RewindFilled-100.png"; sourceTree = "<group>"; };
 		9DE39A031CED1A5B0060E05E /* PauseFilled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PauseFilled-100.png"; sourceTree = "<group>"; };
 		9DE39A071CF16E9D0060E05E /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9DE39A091CF218610060E05E /* TourSelectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourSelectionHeaderView.swift; sourceTree = "<group>"; };
+		9DE39A0B1CF228800060E05E /* TourSelectViewLandmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourSelectViewLandmarkCell.swift; sourceTree = "<group>"; };
 		9DE70D431C6CF61A0056850D /* MessageGroupSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageGroupSelectorViewController.swift; sourceTree = "<group>"; };
 		9DE70D461C6CFE990056850D /* MessageSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSelectorCell.swift; sourceTree = "<group>"; };
 		9DE92DDD1C938B4600CB403D /* BubbleViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleViewDetailController.swift; sourceTree = "<group>"; };
@@ -483,6 +487,8 @@
 			children = (
 				9D25E8461CE83B7E00DC7315 /* TourSelectViewController.swift */,
 				9D25E8441CE83B1C00DC7315 /* TourSelectViewPresetCell.swift */,
+				9DE39A0B1CF228800060E05E /* TourSelectViewLandmarkCell.swift */,
+				9DE39A091CF218610060E05E /* TourSelectionHeaderView.swift */,
 				9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */,
 				9DF3166F1C5286E900D51CB3 /* TourViewDetailController.swift */,
 				9DFCA3B51CB0B178007C75D7 /* TourViewScrollView.swift */,
@@ -696,6 +702,7 @@
 				9D209DAA1C653F5200AA8C50 /* HomescreenViewController.swift in Sources */,
 				9DE70D441C6CF61A0056850D /* MessageGroupSelectorViewController.swift in Sources */,
 				9DBD981E1C6FC5D900E21627 /* NewsStory.swift in Sources */,
+				9DE39A0A1CF218610060E05E /* TourSelectionHeaderView.swift in Sources */,
 				9D4794D51C55743400F2261B /* SchoolNews.swift in Sources */,
 				9D01FA661C78538F00D2A68F /* MessageViewCell.swift in Sources */,
 				9DADBAC51C80F6BD00A4B7F2 /* FyuseViewController.swift in Sources */,
@@ -707,6 +714,7 @@
 				9DADBAC31C7FF50F00A4B7F2 /* GalleryViewCell.swift in Sources */,
 				9D4794D71C558B1700F2261B /* SchoolTours.swift in Sources */,
 				9D39389A1C76F5E60043BE7F /* DirectoryViewDetailCell.swift in Sources */,
+				9DE39A0C1CF228800060E05E /* TourSelectViewLandmarkCell.swift in Sources */,
 				9DE39A081CF16E9D0060E05E /* LocationManager.swift in Sources */,
 				9DFCA3BC1CB78754007C75D7 /* ShuttlesViewController.swift in Sources */,
 				9DE399F71CECC48A0060E05E /* AudioViewContoller.swift in Sources */,

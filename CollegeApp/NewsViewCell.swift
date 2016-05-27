@@ -14,25 +14,17 @@ class NewsViewCell: UITableViewCell, NewsStoryDelegate
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     
-    private var internalNewsStory: NewsStory?
     var newsStory: NewsStory?
     {
-        get
+        didSet
         {
-            return internalNewsStory
-        }
-        
-        set(newNewsStory)
-        {
-            internalNewsStory = newNewsStory
-            
-            if newNewsStory != nil
+            if newsStory != nil
             {
-                titleLabel.text = newNewsStory!.title
-                descriptionLabel.text = newNewsStory!.description
-                showThumbnail(newNewsStory!.image)
+                titleLabel.text = newsStory!.title
+                descriptionLabel.text = newsStory!.description
+                showThumbnail(newsStory!.image)
                 
-                newNewsStory?.delegate = self
+                newsStory?.delegate = self
             }
         }
     }

@@ -12,6 +12,7 @@ class TourViewScrollView: UIScrollView
 {
     //Area from the top to be pressed through
     var ignoredArea: CGFloat = 0
+    //var currentSubview: UIView?
     
     override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool
     {
@@ -21,5 +22,12 @@ class TourViewScrollView: UIScrollView
         }
         
         return true
+        
+        /*if currentSubview != nil
+        {
+            return currentSubview!.pointInside(point, withEvent: event)
+        }
+        
+        return false*/
     }
 }

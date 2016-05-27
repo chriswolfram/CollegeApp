@@ -22,18 +22,10 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
     
     var detailViewControllers = [Int:TourViewDetailController]()
     
-    private var internalTour: Tour!
     var tour: Tour!
     {
-        get
+        didSet(newTour)
         {
-            return internalTour
-        }
-        
-        set(newTour)
-        {
-            internalTour = newTour
-            
             loadViewIfNeeded()
             refreshTourView()
         }

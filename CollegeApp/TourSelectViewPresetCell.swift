@@ -13,23 +13,12 @@ class TourSelectViewPresetCell: UICollectionViewCell
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailView: UIImageView!
     
-    private var internalTour: Tour?
     var tour: Tour?
     {
-        get
+        didSet
         {
-            return internalTour
-        }
-        
-        set(newTour)
-        {
-            internalTour = newTour
-            
-            if newTour != nil
-            {
-                titleLabel.text = newTour!.title
-                refreshImage()
-            }
+            titleLabel.text = tour?.title
+            refreshImage()
         }
     }
     

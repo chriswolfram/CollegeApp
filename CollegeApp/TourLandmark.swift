@@ -10,7 +10,7 @@ import CoreLocation
 import UIKit
 import AVFoundation
 
-class TourLandmark
+class TourLandmark: Hashable
 {
     var coordinate: CLLocationCoordinate2D!
     var titleString: String?
@@ -56,18 +56,21 @@ class TourLandmark
     {
         if !imageLoaded
         {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+            if let url = self.imageURL
             {
-                if let imageData = NSData(contentsOfURL: self.imageURL!), let image = UIImage(data: imageData) where self.imageURL != nil
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
                 {
-                    dispatch_async(dispatch_get_main_queue())
+                    if let imageData = NSData(contentsOfURL: url), let image = UIImage(data: imageData)
                     {
-                        self.image = image
-                        callback?(self.image)
+                        dispatch_async(dispatch_get_main_queue())
+                        {
+                            self.image = image
+                            callback?(self.image)
+                        }
                     }
-                }
                 
-                self.imageLoaded = true
+                    self.imageLoaded = true
+                }
             }
         }
         
@@ -102,4 +105,14 @@ class TourLandmark
             callback?(self.audioPlayer)
         }
     }
+    
+    var hashValue: Int
+    {
+        return "\(coordinate)\(titleString)\(textString)".hashValue
+    }
+}
+
+func ==(lhs: TourLandmark, rhs: TourLandmark) -> Bool
+{
+    return lhs.hashValue == rhs.hashValue
 }

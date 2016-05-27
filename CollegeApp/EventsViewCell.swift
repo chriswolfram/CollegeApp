@@ -15,26 +15,18 @@ class EventsViewCell: UITableViewCell, EventDelegate
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    private var internalEvent: Event?
     var event: Event?
     {
-        get
+        didSet
         {
-            return internalEvent
-        }
-        
-        set(newEvent)
-        {
-            internalEvent = newEvent
-            
-            if newEvent != nil
+            if event != nil
             {
-                titleLabel.text = newEvent!.title
-                locationLabel.text = newEvent!.location
-                dateLabel.text = newEvent!.dateString
-                thumbnailView.image = newEvent!.image
+                titleLabel.text = event!.title
+                locationLabel.text = event!.location
+                dateLabel.text = event!.dateString
+                thumbnailView.image = event!.image
                 
-                newEvent?.delegate = self
+                event?.delegate = self
             }
         }
     }
