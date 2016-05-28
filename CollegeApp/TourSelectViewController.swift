@@ -120,6 +120,11 @@ class TourSelectViewController: UICollectionViewController
             
             if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? TourSelectViewLandmarkCell
             {
+                cell.layoutIfNeeded()
+                //print(cell.thumbnailView.frame)
+                print(cell.contentView.frame)
+                //print(cell.frame)
+                
                 if !cell.landmarkSelected
                 {
                     selectedLandmarks.insert(School.tourLandmarks[indexPath.row])

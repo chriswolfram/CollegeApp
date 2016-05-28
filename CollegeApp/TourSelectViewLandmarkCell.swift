@@ -13,7 +13,7 @@ class TourSelectViewLandmarkCell: UICollectionViewCell
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailView: UIImageView!
     
-    private static let normalColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
+    private static let normalColor = UIColor.clearColor()//UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
     private static let highlightedColor = UIColor(red: 149/255, green: 171/255, blue: 234/255, alpha: 1)
     
     var landmark: TourLandmark?
@@ -46,13 +46,17 @@ class TourSelectViewLandmarkCell: UICollectionViewCell
     
     func refreshImage()
     {
-        landmark?.getImage({self.thumbnailView.image = $0; print($0)})
+        landmark?.getImage({_ in self.thumbnailView.image = self.landmark?.image})
     }
     
-    //Fixing dequeue issues
+    //The callbacks are coming after it has been reassigned!
+    //Fixing dequeue issues (possibly unecessary)
     override func prepareForReuse()
     {
-        self.setNeedsDisplay()
+        super.prepareForReuse()
+        
+        //self.drawRect(self.frame)
+        //self.setNeedsDisplay()
     }
     
     //This deals with autolayout bug
@@ -61,6 +65,7 @@ class TourSelectViewLandmarkCell: UICollectionViewCell
         didSet
         {
             contentView.frame = bounds
+            //self.frame = bounds
         }
     }
 }
