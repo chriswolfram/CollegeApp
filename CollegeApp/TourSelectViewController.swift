@@ -19,7 +19,7 @@ class TourSelectViewController: UICollectionViewController
         //Update tour data
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
         {
-            if let parser = NSXMLParser(contentsOfURL: NSURL(string: "https://www.wolframcloud.com/objects/a1a32f02-0959-4b46-9168-7a27046f9de6")!)
+            if let parser = NSXMLParser(contentsOfURL: NSURL(string: "https://www.wolframcloud.com/objects/9a34fc7d-4e68-43c9-b5a2-09f30505b869")!)
             {
                 let xmlElement = XMLElement(parser: parser)
                 xmlElement.parse()
@@ -57,14 +57,7 @@ class TourSelectViewController: UICollectionViewController
     {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TourSelectViewLandmarkCell", forIndexPath: indexPath) as! TourSelectViewLandmarkCell
         
-        //Setup the cell (should be done in the cell code except for dequeue issues)
-        cell.thumbnailView.layer.cornerRadius = 148/2
-        cell.thumbnailView.clipsToBounds = true
-        cell.highlightView.layer.cornerRadius = 158/2
-        cell.highlightView.clipsToBounds = true
-        
         cell.landmark = School.tours[indexPath.section].landmarks[indexPath.row]
-        
         cell.landmarkSelected = selectedLandmarks.contains(cell.landmark!)
         
         return cell
@@ -105,21 +98,31 @@ class TourSelectViewController: UICollectionViewController
     
     @IBAction func nextButtonPressed(sender: UIBarButtonItem)
     {
-        let tour = Tour(landmarks: Array(selectedLandmarks))
-        
-        tour.reorder
+        if selectedLandmarks.count == 0
         {
-            if $0
-            {
-                let viewController = TourViewController.tourViewControllerFromTour(tour)
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
+            let alertController = UIAlertController(title: "Could not build the specified tour.", message: "Please select at least one landmark or press the 'select all' button on a group of landmarks.", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
+        else
+        {
+            let tour = Tour(landmarks: Array(selectedLandmarks))
             
-            else
-            {
-                let alertController = UIAlertController(title: "Could not build the specified tour.", message: "Please try again in a few minutes.", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-                self.presentViewController(alertController, animated: true, completion: nil)
+            tour.reorder
+                {
+                    if $0
+                    {
+                        let viewController = TourViewController.tourViewControllerFromTour(tour)
+                        self.navigationController?.pushViewController(viewController, animated: true)
+                    }
+                        
+                    else
+                    {
+                        let alertController = UIAlertController(title: "Could not build the specified tour.", message: "Please try again in a few minutes.", preferredStyle: .Alert)
+                        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
             }
         }
     }

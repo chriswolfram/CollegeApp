@@ -13,6 +13,7 @@ class TourSelectViewLandmarkCell: UICollectionViewCell
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailView: UIImageView!
     @IBOutlet weak var highlightView: UIView!
+    @IBOutlet weak var thumbnailTintView: UIView!
     
     private static let normalColor = UIColor.clearColor()//UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
     private static let highlightedColor = UIColor(red: 19/255, green: 115/255, blue: 229/255, alpha: 1)
@@ -45,16 +46,23 @@ class TourSelectViewLandmarkCell: UICollectionViewCell
         }
     }
     
+    override func drawRect(rect: CGRect)
+    {
+        self.thumbnailView.layer.cornerRadius = self.thumbnailView.frame.width/2
+        self.thumbnailView.clipsToBounds = true
+        self.thumbnailTintView.layer.cornerRadius = self.thumbnailTintView.frame.width/2
+        self.thumbnailTintView.clipsToBounds = true
+        self.highlightView.layer.cornerRadius = self.highlightView.frame.width/2
+        self.highlightView.clipsToBounds = true
+        
+        super.drawRect(rect)
+    }
+    
     override func prepareForReuse()
     {
         super.prepareForReuse()
         
         self.thumbnailView.image = nil
-        //self.thumbnailView.layer.cornerRadius = 158/2//self.thumbnailView.frame.width/2
-        //self.thumbnailView.clipsToBounds = true
-        
-        //self.drawRect(self.frame)
-        //self.setNeedsDisplay()
     }
     
     func refreshImage()

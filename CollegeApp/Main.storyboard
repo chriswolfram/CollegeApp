@@ -1330,7 +1330,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Eya-zE-DuL">
-                            <size key="itemSize" width="158" height="215"/>
+                            <size key="itemSize" width="158" height="158"/>
                             <size key="headerReferenceSize" width="50" height="64"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
@@ -1340,7 +1340,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="158" height="215"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="158" height="158"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9v-aS-0ad">
@@ -1367,78 +1367,114 @@
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-8G-OlY">
-                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpG-fh-jSL">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-8G-OlY">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2811114804964539" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="gSg-8G-OlY" firstAttribute="centerX" relation="greaterThanOrEqual" secondItem="DpG-fh-jSL" secondAttribute="centerX" id="6UO-2z-jJs"/>
+                                                <constraint firstItem="gSg-8G-OlY" firstAttribute="top" secondItem="DpG-fh-jSL" secondAttribute="topMargin" id="7H7-jb-cy5"/>
+                                                <constraint firstItem="gSg-8G-OlY" firstAttribute="bottom" secondItem="DpG-fh-jSL" secondAttribute="bottomMargin" id="H8B-ao-Toa"/>
+                                                <constraint firstItem="gSg-8G-OlY" firstAttribute="centerY" relation="greaterThanOrEqual" secondItem="DpG-fh-jSL" secondAttribute="centerY" id="Wfs-By-5PM"/>
+                                                <constraint firstItem="gSg-8G-OlY" firstAttribute="trailing" secondItem="DpG-fh-jSL" secondAttribute="trailingMargin" id="gik-Os-3n9"/>
+                                                <constraint firstItem="gSg-8G-OlY" firstAttribute="leading" secondItem="DpG-fh-jSL" secondAttribute="leadingMargin" id="vA7-RA-2Bb"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="gSg-8G-OlY"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="6UO-2z-jJs"/>
+                                                    <exclude reference="7H7-jb-cy5"/>
+                                                    <exclude reference="H8B-ao-Toa"/>
+                                                    <exclude reference="Wfs-By-5PM"/>
+                                                    <exclude reference="gik-Os-3n9"/>
+                                                    <exclude reference="vA7-RA-2Bb"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="gSg-8G-OlY"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="6UO-2z-jJs"/>
+                                                    <include reference="7H7-jb-cy5"/>
+                                                    <include reference="H8B-ao-Toa"/>
+                                                    <include reference="Wfs-By-5PM"/>
+                                                    <include reference="gik-Os-3n9"/>
+                                                    <include reference="vA7-RA-2Bb"/>
+                                                </mask>
+                                            </variation>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="gSg-8G-OlY" firstAttribute="leading" secondItem="wFK-DE-toE" secondAttribute="leading" id="3wa-3j-HSI"/>
+                                    <constraint firstAttribute="bottom" secondItem="u9v-aS-0ad" secondAttribute="bottom" id="5np-N4-v1t"/>
                                     <constraint firstItem="u9v-aS-0ad" firstAttribute="top" secondItem="wFK-DE-toE" secondAttribute="top" id="67r-ht-4zU"/>
+                                    <constraint firstItem="DpG-fh-jSL" firstAttribute="trailing" secondItem="2v7-5w-hHm" secondAttribute="trailing" id="7M5-CI-CKv"/>
                                     <constraint firstItem="u9v-aS-0ad" firstAttribute="leading" secondItem="wFK-DE-toE" secondAttribute="leading" id="AhF-dw-vP8"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gSg-8G-OlY" secondAttribute="bottom" id="MgT-g8-do9"/>
-                                    <constraint firstAttribute="trailing" secondItem="gSg-8G-OlY" secondAttribute="trailing" id="R06-nw-P2X"/>
+                                    <constraint firstItem="DpG-fh-jSL" firstAttribute="top" secondItem="2v7-5w-hHm" secondAttribute="top" id="MnG-Ky-Zvh"/>
+                                    <constraint firstAttribute="bottom" secondItem="2v7-5w-hHm" secondAttribute="bottom" constant="5" id="QSP-Lv-G6y"/>
                                     <constraint firstAttribute="trailing" secondItem="u9v-aS-0ad" secondAttribute="trailing" id="UE3-Px-WbG"/>
-                                    <constraint firstItem="2v7-5w-hHm" firstAttribute="leading" secondItem="u9v-aS-0ad" secondAttribute="leading" id="Vpk-Xu-GVA">
-                                        <variation key="widthClass=compact" constant="5"/>
-                                    </constraint>
-                                    <constraint firstItem="2v7-5w-hHm" firstAttribute="trailing" secondItem="u9v-aS-0ad" secondAttribute="trailing" id="gFR-Kh-aV5">
-                                        <variation key="widthClass=compact" constant="-5"/>
-                                    </constraint>
-                                    <constraint firstItem="2v7-5w-hHm" firstAttribute="top" secondItem="u9v-aS-0ad" secondAttribute="top" id="lxT-P5-Ew2">
-                                        <variation key="widthClass=compact" constant="5"/>
-                                    </constraint>
-                                    <constraint firstItem="gSg-8G-OlY" firstAttribute="top" secondItem="u9v-aS-0ad" secondAttribute="bottom" constant="8" id="qmY-iB-CMa"/>
-                                    <constraint firstItem="2v7-5w-hHm" firstAttribute="bottom" secondItem="u9v-aS-0ad" secondAttribute="bottom" id="yp4-7K-z4z">
-                                        <variation key="widthClass=compact" constant="-5"/>
-                                    </constraint>
+                                    <constraint firstItem="DpG-fh-jSL" firstAttribute="bottom" secondItem="2v7-5w-hHm" secondAttribute="bottom" id="VEi-H7-ixZ"/>
+                                    <constraint firstItem="DpG-fh-jSL" firstAttribute="leading" secondItem="2v7-5w-hHm" secondAttribute="leading" id="ZQf-Rr-syC"/>
+                                    <constraint firstAttribute="trailing" secondItem="2v7-5w-hHm" secondAttribute="trailing" constant="5" id="emv-qE-F02"/>
+                                    <constraint firstItem="2v7-5w-hHm" firstAttribute="top" secondItem="wFK-DE-toE" secondAttribute="top" constant="5" id="gmR-bu-bvA"/>
+                                    <constraint firstItem="2v7-5w-hHm" firstAttribute="leading" secondItem="wFK-DE-toE" secondAttribute="leading" constant="5" id="jd8-d4-W1e"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="u9v-aS-0ad"/>
                                         <exclude reference="2v7-5w-hHm"/>
-                                        <exclude reference="gSg-8G-OlY"/>
+                                        <exclude reference="DpG-fh-jSL"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="5np-N4-v1t"/>
                                         <exclude reference="67r-ht-4zU"/>
                                         <exclude reference="AhF-dw-vP8"/>
                                         <exclude reference="UE3-Px-WbG"/>
-                                        <exclude reference="Vpk-Xu-GVA"/>
-                                        <exclude reference="gFR-Kh-aV5"/>
-                                        <exclude reference="lxT-P5-Ew2"/>
-                                        <exclude reference="yp4-7K-z4z"/>
-                                        <exclude reference="3wa-3j-HSI"/>
-                                        <exclude reference="MgT-g8-do9"/>
-                                        <exclude reference="R06-nw-P2X"/>
-                                        <exclude reference="qmY-iB-CMa"/>
+                                        <exclude reference="QSP-Lv-G6y"/>
+                                        <exclude reference="emv-qE-F02"/>
+                                        <exclude reference="gmR-bu-bvA"/>
+                                        <exclude reference="jd8-d4-W1e"/>
+                                        <exclude reference="7M5-CI-CKv"/>
+                                        <exclude reference="MnG-Ky-Zvh"/>
+                                        <exclude reference="VEi-H7-ixZ"/>
+                                        <exclude reference="ZQf-Rr-syC"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="u9v-aS-0ad"/>
                                         <include reference="2v7-5w-hHm"/>
-                                        <include reference="gSg-8G-OlY"/>
+                                        <include reference="DpG-fh-jSL"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="5np-N4-v1t"/>
                                         <include reference="67r-ht-4zU"/>
                                         <include reference="AhF-dw-vP8"/>
                                         <include reference="UE3-Px-WbG"/>
-                                        <include reference="Vpk-Xu-GVA"/>
-                                        <include reference="gFR-Kh-aV5"/>
-                                        <include reference="lxT-P5-Ew2"/>
-                                        <include reference="yp4-7K-z4z"/>
-                                        <include reference="3wa-3j-HSI"/>
-                                        <include reference="MgT-g8-do9"/>
-                                        <include reference="R06-nw-P2X"/>
-                                        <include reference="qmY-iB-CMa"/>
+                                        <include reference="QSP-Lv-G6y"/>
+                                        <include reference="emv-qE-F02"/>
+                                        <include reference="gmR-bu-bvA"/>
+                                        <include reference="jd8-d4-W1e"/>
+                                        <include reference="7M5-CI-CKv"/>
+                                        <include reference="MnG-Ky-Zvh"/>
+                                        <include reference="VEi-H7-ixZ"/>
+                                        <include reference="ZQf-Rr-syC"/>
                                     </mask>
                                 </variation>
                                 <connections>
                                     <outlet property="highlightView" destination="u9v-aS-0ad" id="pfu-6V-2zb"/>
+                                    <outlet property="thumbnailTintView" destination="DpG-fh-jSL" id="jN1-XL-Quj"/>
                                     <outlet property="thumbnailView" destination="2v7-5w-hHm" id="3mN-6p-KDP"/>
                                     <outlet property="titleLabel" destination="gSg-8G-OlY" id="U78-2W-Ikv"/>
                                 </connections>
