@@ -62,6 +62,8 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         //Configure gesture recognizer to pick up taps to escape the search bar
         collectionView?.addGestureRecognizer(gestureRecognizer)
         gestureRecognizer.addTarget(self, action: #selector(collectionViewTapped))
+        
+        gestureRecognizer.enabled = false
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
