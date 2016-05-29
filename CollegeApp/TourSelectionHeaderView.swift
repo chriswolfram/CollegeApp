@@ -11,4 +11,19 @@ import UIKit
 class TourSelectionHeaderView: UICollectionReusableView
 {
     @IBOutlet weak var titleLabel: UILabel!
+    var selectViewController: TourSelectViewController!
+    
+    var tour: Tour!
+    {
+        didSet
+        {
+            titleLabel.text = tour.title
+        }
+    }
+    
+    @IBAction func selectAllButtonPressed(sender: UIButton)
+    {
+        selectViewController.selectedLandmarks.unionInPlace(tour.landmarks)
+        selectViewController.collectionView?.reloadData()
+    }
 }

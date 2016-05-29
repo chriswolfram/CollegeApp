@@ -12,9 +12,10 @@ class TourSelectViewLandmarkCell: UICollectionViewCell
 {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailView: UIImageView!
+    @IBOutlet weak var highlightView: UIView!
     
     private static let normalColor = UIColor.clearColor()//UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
-    private static let highlightedColor = UIColor(red: 149/255, green: 171/255, blue: 234/255, alpha: 1)
+    private static let highlightedColor = UIColor(red: 19/255, green: 115/255, blue: 229/255, alpha: 1)
     
     var landmark: TourLandmark?
     {
@@ -33,30 +34,32 @@ class TourSelectViewLandmarkCell: UICollectionViewCell
             //{
                 if self.landmarkSelected
                 {
-                    self.backgroundColor = TourSelectViewLandmarkCell.highlightedColor
+                    self.highlightView.backgroundColor = TourSelectViewLandmarkCell.highlightedColor
                 }
                 
                 else
                 {
-                    self.backgroundColor = TourSelectViewLandmarkCell.normalColor
+                    self.highlightView.backgroundColor = TourSelectViewLandmarkCell.normalColor
                 }
             //}
         }
     }
     
-    func refreshImage()
-    {
-        landmark?.getImage({_ in self.thumbnailView.image = self.landmark?.image})
-    }
-    
-    //The callbacks are coming after it has been reassigned!
-    //Fixing dequeue issues (possibly unecessary)
     override func prepareForReuse()
     {
         super.prepareForReuse()
         
+        self.thumbnailView.image = nil
+        //self.thumbnailView.layer.cornerRadius = 158/2//self.thumbnailView.frame.width/2
+        //self.thumbnailView.clipsToBounds = true
+        
         //self.drawRect(self.frame)
         //self.setNeedsDisplay()
+    }
+    
+    func refreshImage()
+    {
+        landmark?.getImage({_ in self.thumbnailView.image = self.landmark?.image})
     }
     
     //This deals with autolayout bug

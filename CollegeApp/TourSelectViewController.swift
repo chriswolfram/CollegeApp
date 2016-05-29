@@ -50,117 +50,55 @@ class TourSelectViewController: UICollectionViewController
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        switch section
-        {
-        case 0:
-            //For preset cells
-            return School.tours.count
-        case 1:
-            //For landmark cells
-            return School.tourLandmarks.count
-        default:
-            return 0
-        }
+        return School.tours[section].landmarks.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
-        switch indexPath.section
-        {
-        case 0:
-            //For preset cells
-            
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TourSelectViewPresetCell", forIndexPath: indexPath) as! TourSelectViewPresetCell
-            
-            cell.layer.cornerRadius = 10
-            
-            cell.tour = School.tours[indexPath.row]
-            
-            return cell
-            
-        default: //case 1:
-            //For landmark cells
-            
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TourSelectViewLandmarkCell", forIndexPath: indexPath) as! TourSelectViewLandmarkCell
-            
-            cell.thumbnailView.layer.cornerRadius = 90/2//cell.thumbnailView.frame.width/2
-            cell.thumbnailView.clipsToBounds = true
-            cell.thumbnailView.frame = cell.frame
-            cell.thumbnailView.contentMode = .ScaleAspectFill
-            
-            cell.layer.cornerRadius = 20
-            cell.clipsToBounds = true
-                        
-            cell.landmark = School.tourLandmarks[indexPath.row]
-            
-            cell.landmarkSelected = selectedLandmarks.contains(cell.landmark!)
-            
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TourSelectViewLandmarkCell", forIndexPath: indexPath) as! TourSelectViewLandmarkCell
+        
+        //Setup the cell (should be done in the cell code except for dequeue issues)
+        cell.thumbnailView.layer.cornerRadius = 148/2
+        cell.thumbnailView.clipsToBounds = true
+        cell.highlightView.layer.cornerRadius = 158/2
+        cell.highlightView.clipsToBounds = true
+        
+        cell.landmark = School.tours[indexPath.section].landmarks[indexPath.row]
+        
+        cell.landmarkSelected = selectedLandmarks.contains(cell.landmark!)
+        
+        return cell
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
-        switch indexPath.section
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? TourSelectViewLandmarkCell
         {
-        case 0:
-            //For preset cells
-            
-            if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? TourSelectViewPresetCell
+            if !cell.landmarkSelected
             {
-                if let newLandmarks = cell.tour?.landmarks
-                {
-                    selectedLandmarks.unionInPlace(newLandmarks)
-                    collectionView.reloadData()
-                }
+                selectedLandmarks.insert(School.tourLandmarks[indexPath.row])
+                cell.landmarkSelected = true
             }
-            
-        default: //case 1:
-            //For landmark cells
-            
-            if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? TourSelectViewLandmarkCell
+                
+            else
             {
-                cell.layoutIfNeeded()
-                //print(cell.thumbnailView.frame)
-                print(cell.contentView.frame)
-                //print(cell.frame)
-                
-                if !cell.landmarkSelected
-                {
-                    selectedLandmarks.insert(School.tourLandmarks[indexPath.row])
-                    cell.landmarkSelected = true
-                }
-                
-                else
-                {
-                    selectedLandmarks.remove(School.tourLandmarks[indexPath.row])
-                    cell.landmarkSelected = false
-                }
+                selectedLandmarks.remove(School.tourLandmarks[indexPath.row])
+                cell.landmarkSelected = false
             }
         }
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
     {
-        //The presets and the landmarks
-        return 2
+        return School.tours.count
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
     {
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "TourSelectionHeaderView", forIndexPath: indexPath) as! TourSelectionHeaderView
         
-        switch indexPath.section
-        {
-        case 0:
-            //For preset cells
-            headerView.titleLabel.text = "Prebuilt Tours"
-        case 1:
-            //For landmark cells
-            headerView.titleLabel.text = "Landmarks"
-        default:
-            headerView.titleLabel.text = ""
-        }
+        headerView.selectViewController = self
+        headerView.tour = School.tours[indexPath.section]
         
         return headerView
     }

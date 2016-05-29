@@ -14,7 +14,6 @@
 		9D209DAA1C653F5200AA8C50 /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */; };
 		9D25E83F1CE4DD3000DC7315 /* ShuttleViewStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25E83E1CE4DD3000DC7315 /* ShuttleViewStopCell.swift */; };
 		9D25E8411CE4EBFD00DC7315 /* StripedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25E8401CE4EBFD00DC7315 /* StripedView.swift */; };
-		9D25E8451CE83B1C00DC7315 /* TourSelectViewPresetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25E8441CE83B1C00DC7315 /* TourSelectViewPresetCell.swift */; };
 		9D25E8471CE83B7E00DC7315 /* TourSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25E8461CE83B7E00DC7315 /* TourSelectViewController.swift */; };
 		9D3439611C7EAF1A008A4D73 /* Calendar-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3439561C7EAF1A008A4D73 /* Calendar-96.png */; };
 		9D3439621C7EAF1A008A4D73 /* Chat-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3439571C7EAF1A008A4D73 /* Chat-96.png */; };
@@ -133,7 +132,6 @@
 		9D209DA91C653F5200AA8C50 /* HomescreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
 		9D25E83E1CE4DD3000DC7315 /* ShuttleViewStopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShuttleViewStopCell.swift; sourceTree = "<group>"; };
 		9D25E8401CE4EBFD00DC7315 /* StripedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripedView.swift; sourceTree = "<group>"; };
-		9D25E8441CE83B1C00DC7315 /* TourSelectViewPresetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourSelectViewPresetCell.swift; sourceTree = "<group>"; };
 		9D25E8461CE83B7E00DC7315 /* TourSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourSelectViewController.swift; sourceTree = "<group>"; };
 		9D3439561C7EAF1A008A4D73 /* Calendar-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-96.png"; sourceTree = "<group>"; };
 		9D3439571C7EAF1A008A4D73 /* Chat-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chat-96.png"; sourceTree = "<group>"; };
@@ -486,7 +484,6 @@
 			isa = PBXGroup;
 			children = (
 				9D25E8461CE83B7E00DC7315 /* TourSelectViewController.swift */,
-				9D25E8441CE83B1C00DC7315 /* TourSelectViewPresetCell.swift */,
 				9DE39A0B1CF228800060E05E /* TourSelectViewLandmarkCell.swift */,
 				9DE39A091CF218610060E05E /* TourSelectionHeaderView.swift */,
 				9DD6A1E71C4D7FCB0025FE44 /* TourViewController.swift */,
@@ -719,7 +716,6 @@
 				9DFCA3BC1CB78754007C75D7 /* ShuttlesViewController.swift in Sources */,
 				9DE399F71CECC48A0060E05E /* AudioViewContoller.swift in Sources */,
 				9DBD98291C7016D300E21627 /* EventsViewController.swift in Sources */,
-				9D25E8451CE83B1C00DC7315 /* TourSelectViewPresetCell.swift in Sources */,
 				9DFCA3BF1CB88ADC007C75D7 /* SchoolShuttles.swift in Sources */,
 				9DCB665F1C251B510083586E /* QRViewController.swift in Sources */,
 				9DB25D751C2B680100874227 /* EmergencyViewCell.swift in Sources */,
