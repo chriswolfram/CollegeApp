@@ -65,18 +65,34 @@ class TourSelectViewController: UICollectionViewController
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
-        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? TourSelectViewLandmarkCell
+        if
+            let cell = collectionView.cellForItemAtIndexPath(indexPath) as? TourSelectViewLandmarkCell,
+            let landmark = cell.landmark
         {
-            if !cell.landmarkSelected
+            if !selectedLandmarks.contains(landmark)//!cell.landmarkSelected
             {
-                selectedLandmarks.insert(School.tourLandmarks[indexPath.row])
+                selectedLandmarks.insert(landmark)
                 cell.landmarkSelected = true
             }
                 
             else
             {
-                selectedLandmarks.remove(School.tourLandmarks[indexPath.row])
+                selectedLandmarks.remove(landmark)
                 cell.landmarkSelected = false
+            }
+            
+            //Update other visible cells representing the same landmark to reflect selection changes
+            collectionView.visibleCells().forEach
+            {
+                otherCell in
+                
+                if let c = otherCell as? TourSelectViewLandmarkCell
+                {
+                    if c.landmark == cell.landmark
+                    {
+                        c.landmarkSelected = cell.landmarkSelected
+                    }
+                }
             }
         }
     }
@@ -110,19 +126,19 @@ class TourSelectViewController: UICollectionViewController
             let tour = Tour(landmarks: Array(selectedLandmarks))
             
             tour.reorder
+            {
+                if $0
                 {
-                    if $0
-                    {
-                        let viewController = TourViewController.tourViewControllerFromTour(tour)
-                        self.navigationController?.pushViewController(viewController, animated: true)
-                    }
-                        
-                    else
-                    {
-                        let alertController = UIAlertController(title: "Could not build the specified tour.", message: "Please try again in a few minutes.", preferredStyle: .Alert)
-                        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-                        self.presentViewController(alertController, animated: true, completion: nil)
-                    }
+                    let viewController = TourViewController.tourViewControllerFromTour(tour)
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
+                    
+                else
+                {
+                    let alertController = UIAlertController(title: "Could not build the specified tour.", message: "Please try again in a few minutes.", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
             }
         }
     }
