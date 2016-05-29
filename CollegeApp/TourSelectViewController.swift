@@ -8,9 +8,12 @@
 
 import UIKit
 
-class TourSelectViewController: UICollectionViewController
+class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
 {
     var selectedLandmarks: Set<TourLandmark> = []
+    
+    var searchBar = UISearchBar()
+    var gestureRecognizer = UITapGestureRecognizer()
     
     override func viewDidLoad()
     {
@@ -46,6 +49,19 @@ class TourSelectViewController: UICollectionViewController
                 }
             }
         }
+        
+        //Add and configure search bar
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+        searchBar.setShowsCancelButton(false, animated: false)
+        
+        searchBar.searchBarStyle = UISearchBarStyle.Minimal
+        searchBar.tintColor = UIColor.whiteColor()
+        searchBar.placeholder = "Search for Landmarks"
+        
+        //Configure gesture recognizer to pick up taps to escape the search bar
+        collectionView?.addGestureRecognizer(gestureRecognizer)
+        gestureRecognizer.addTarget(self, action: #selector(collectionViewTapped))
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
@@ -141,5 +157,20 @@ class TourSelectViewController: UICollectionViewController
                 }
             }
         }
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar)
+    {
+        gestureRecognizer.enabled = true
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar)
+    {
+        gestureRecognizer.enabled = false
+    }
+    
+    func collectionViewTapped()
+    {
+        searchBar.resignFirstResponder()
     }
 }
