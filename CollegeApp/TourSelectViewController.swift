@@ -15,6 +15,8 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
     var searchBar = UISearchBar()
     var gestureRecognizer = UITapGestureRecognizer()
     
+    var searchResults = [TourLandmark]()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -66,16 +68,52 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         gestureRecognizer.enabled = false
     }
     
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+    {
+        if searchResults.isEmpty
+        {
+            //If not searching
+            return School.tours.count
+        }
+            
+        else
+        {
+            //If searching
+            return 1
+        }
+    }
+    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return School.tours[section].landmarks.count
+        if searchResults.isEmpty
+        {
+            //If not searching
+            return School.tours[section].landmarks.count
+        }
+        
+        else
+        {
+            //If searching
+            return searchResults.count
+        }
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TourSelectViewLandmarkCell", forIndexPath: indexPath) as! TourSelectViewLandmarkCell
         
-        cell.landmark = School.tours[indexPath.section].landmarks[indexPath.row]
+        if searchResults.isEmpty
+        {
+            //If not searching
+            cell.landmark = School.tours[indexPath.section].landmarks[indexPath.row]
+        }
+        
+        else
+        {
+            //If searching
+            cell.landmark = searchResults[indexPath.row]
+        }
+        
         cell.landmarkSelected = selectedLandmarks.contains(cell.landmark!)
         
         return cell
@@ -115,19 +153,51 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         }
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
-    {
-        return School.tours.count
-    }
-    
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
     {
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "TourSelectionHeaderView", forIndexPath: indexPath) as! TourSelectionHeaderView
         
         headerView.selectViewController = self
-        headerView.tour = School.tours[indexPath.section]
+        
+        if searchResults.isEmpty
+        {
+            //If not searching
+            headerView.tour = School.tours[indexPath.section]
+        }
+        
+        else
+        {
+            //If searching
+            headerView.tour = Tour(landmarks: searchResults, title: "Search Results")
+        }
         
         return headerView
+    }
+    
+    func updateSearchResults()
+    {
+        if let text = searchBar.text
+        {
+            searchResults = School.tourLandmarks.filter
+            {
+                landmark in
+                
+                if landmark.titleString != nil
+                {
+                    return landmark.titleString!.containsString(text)
+                }
+                
+                else
+                {
+                    return false
+                }
+            }
+        }
+        
+        else
+        {
+            searchResults = []
+        }
     }
     
     @IBAction func nextButtonPressed(sender: UIBarButtonItem)
@@ -174,5 +244,11 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
     func collectionViewTapped()
     {
         searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String)
+    {
+        updateSearchResults()
+        collectionView?.reloadData()
     }
 }
