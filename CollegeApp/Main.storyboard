@@ -1329,26 +1329,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Eya-zE-DuL">
-                            <size key="itemSize" width="158" height="158"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Eya-zE-DuL">
+                            <size key="itemSize" width="115" height="115"/>
                             <size key="headerReferenceSize" width="50" height="64"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TourSelectViewLandmarkCell" id="wFK-DE-toE" customClass="TourSelectViewLandmarkCell" customModule="CollegeApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="20" y="148" width="158" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="158" height="158"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9v-aS-0ad">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <color key="backgroundColor" red="0.074509803920000006" green="0.45098039220000002" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="158" id="Ve1-Uk-W9m"/>
-                                                <constraint firstAttribute="height" constant="158" id="dqz-1G-0TN"/>
+                                                <constraint firstAttribute="width" constant="158" id="Ve1-Uk-W9m">
+                                                    <variation key="widthClass=compact" constant="115"/>
+                                                </constraint>
+                                                <constraint firstAttribute="height" constant="158" id="dqz-1G-0TN">
+                                                    <variation key="widthClass=compact" constant="115"/>
+                                                </constraint>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -1370,9 +1374,9 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpG-fh-jSL">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-8G-OlY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-8G-OlY">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1437,10 +1441,6 @@
                                         <exclude reference="DpG-fh-jSL"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="5np-N4-v1t"/>
-                                        <exclude reference="67r-ht-4zU"/>
-                                        <exclude reference="AhF-dw-vP8"/>
-                                        <exclude reference="UE3-Px-WbG"/>
                                         <exclude reference="QSP-Lv-G6y"/>
                                         <exclude reference="emv-qE-F02"/>
                                         <exclude reference="gmR-bu-bvA"/>
@@ -1449,6 +1449,10 @@
                                         <exclude reference="MnG-Ky-Zvh"/>
                                         <exclude reference="VEi-H7-ixZ"/>
                                         <exclude reference="ZQf-Rr-syC"/>
+                                        <exclude reference="5np-N4-v1t"/>
+                                        <exclude reference="67r-ht-4zU"/>
+                                        <exclude reference="AhF-dw-vP8"/>
+                                        <exclude reference="UE3-Px-WbG"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -1458,10 +1462,6 @@
                                         <include reference="DpG-fh-jSL"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="5np-N4-v1t"/>
-                                        <include reference="67r-ht-4zU"/>
-                                        <include reference="AhF-dw-vP8"/>
-                                        <include reference="UE3-Px-WbG"/>
                                         <include reference="QSP-Lv-G6y"/>
                                         <include reference="emv-qE-F02"/>
                                         <include reference="gmR-bu-bvA"/>
@@ -1470,6 +1470,10 @@
                                         <include reference="MnG-Ky-Zvh"/>
                                         <include reference="VEi-H7-ixZ"/>
                                         <include reference="ZQf-Rr-syC"/>
+                                        <include reference="5np-N4-v1t"/>
+                                        <include reference="67r-ht-4zU"/>
+                                        <include reference="AhF-dw-vP8"/>
+                                        <include reference="UE3-Px-WbG"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -1481,7 +1485,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TourSelectionHeaderView" id="bIF-pN-ufX" customClass="TourSelectionHeaderView" customModule="CollegeApp" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="64" width="600" height="37"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="64"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Group Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guF-no-Sim">
@@ -1531,12 +1535,12 @@
                                     <exclude reference="fWq-L3-lKr"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <exclude reference="YY7-Ai-4jP"/>
-                                    <exclude reference="hN6-gu-bf3"/>
-                                    <exclude reference="n1M-oi-rgN"/>
                                     <exclude reference="Ke4-xY-YdO"/>
                                     <exclude reference="gAH-qO-FLN"/>
                                     <exclude reference="hgC-19-wFn"/>
+                                    <exclude reference="YY7-Ai-4jP"/>
+                                    <exclude reference="hN6-gu-bf3"/>
+                                    <exclude reference="n1M-oi-rgN"/>
                                 </mask>
                             </variation>
                             <variation key="widthClass=compact">
@@ -1545,12 +1549,12 @@
                                     <include reference="fWq-L3-lKr"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <include reference="YY7-Ai-4jP"/>
-                                    <include reference="hN6-gu-bf3"/>
-                                    <include reference="n1M-oi-rgN"/>
                                     <include reference="Ke4-xY-YdO"/>
                                     <include reference="gAH-qO-FLN"/>
                                     <include reference="hgC-19-wFn"/>
+                                    <include reference="YY7-Ai-4jP"/>
+                                    <include reference="hN6-gu-bf3"/>
+                                    <include reference="n1M-oi-rgN"/>
                                 </mask>
                             </variation>
                             <connections>
