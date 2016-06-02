@@ -15,36 +15,44 @@ extension School
     static var tours = [Tour]()
     static var tourLandmarks = [TourLandmark]()
     
-    static func refreshTours(callback: (Void->Void)? = nil)
+    static func refreshToursIfNeeded(callback: (Void->Void)? = nil)
     {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+        if tours.isEmpty || tourLandmarks.isEmpty
         {
-            if let parser = NSXMLParser(contentsOfURL: School.tourURL)
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
             {
-                let xmlElement = XMLElement(parser: parser)
-                xmlElement.parse()
-                
-                //Get landmarks
-                if let landmarks = xmlElement["landmarks"]?["landmark", .All]?.flatMap({TourLandmark(xmlElement: $0)})
+                if let parser = NSXMLParser(contentsOfURL: School.tourURL)
                 {
-                    dispatch_async(dispatch_get_main_queue())
-                    {
-                        School.tourLandmarks = landmarks
-                    }
+                    let xmlElement = XMLElement(parser: parser)
+                    xmlElement.parse()
                     
-                    //Get tours
-                    let tours = xmlElement["tours"]?["tour", .All]?.flatMap({Tour(xmlElement: $0, landmarks: landmarks)})
-                    
-                    if tours != nil
+                    //Get landmarks
+                    if let landmarks = xmlElement["landmarks"]?["landmark", .All]?.flatMap({TourLandmark(xmlElement: $0)})
                     {
                         dispatch_async(dispatch_get_main_queue())
                         {
-                            School.tours = tours!
-                            callback?()
+                            School.tourLandmarks = landmarks
+                        }
+                        
+                        //Get tours
+                        let tours = xmlElement["tours"]?["tour", .All]?.flatMap({Tour(xmlElement: $0, landmarks: landmarks)})
+                        
+                        if tours != nil
+                        {
+                            dispatch_async(dispatch_get_main_queue())
+                            {
+                                School.tours = tours!
+                                callback?()
+                            }
                         }
                     }
                 }
             }
+        }
+        
+        else
+        {
+            callback?()
         }
     }
 }

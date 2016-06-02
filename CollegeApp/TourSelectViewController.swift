@@ -22,7 +22,7 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         super.viewDidLoad()
         
         //Update tour data
-        School.refreshTours({self.collectionView?.reloadData()})
+        School.refreshToursIfNeeded({self.collectionView?.reloadData()})
         
         //Add and configure search bar
         searchBar.delegate = self

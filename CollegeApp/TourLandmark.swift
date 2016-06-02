@@ -51,25 +51,22 @@ class TourLandmark: Hashable
         }
     }
     
-    private var imageLoaded = false
     func getImage(callback: (UIImage?->Void)? = nil)
     {
-        if !imageLoaded
+        if image == nil
         {
             if let url = self.imageURL
             {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
                 {
                     if let imageData = NSData(contentsOfURL: url), let image = UIImage(data: imageData)
-                    {
+                    {                        
                         dispatch_async(dispatch_get_main_queue())
                         {
                             self.image = image
                             callback?(self.image)
                         }
                     }
-                
-                    self.imageLoaded = true
                 }
             }
         }

@@ -37,13 +37,7 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
         scrollView.showsHorizontalScrollIndicator = true
         
         //Update landmark data and add bubbles asynchronously
-        School.refreshTours
-        {
-            School.tourLandmarks.forEach
-            {
-                self.addBubble($0)
-            }
-        }
+        School.refreshToursIfNeeded({School.tourLandmarks.forEach({self.addBubble($0)})})
         
         //Add point mass in the center
         bodies.append(PointMass(center: CGPoint(x: scrollView.contentSize.width/2, y: scrollView.contentSize.height/2), mass: 3))
