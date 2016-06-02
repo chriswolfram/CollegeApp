@@ -1337,7 +1337,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TourSelectViewLandmarkCell" id="wFK-DE-toE" customClass="TourSelectViewLandmarkCell" customModule="CollegeApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="148" width="158" height="158"/>
+                                <rect key="frame" x="10" y="138" width="115" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>

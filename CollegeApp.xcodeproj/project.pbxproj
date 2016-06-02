@@ -30,6 +30,7 @@
 		9D3938981C750CE20043BE7F /* DirectoryEntries.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9D3938971C750CE20043BE7F /* DirectoryEntries.xml */; };
 		9D39389A1C76F5E60043BE7F /* DirectoryViewDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3938991C76F5E60043BE7F /* DirectoryViewDetailCell.swift */; };
 		9D45EA771C5FE31600FA54F2 /* SchoolEmergencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D45EA761C5FE31600FA54F2 /* SchoolEmergencies.swift */; };
+		9D472F6D1CFFF2560011AC1E /* GravitationalBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D472F6C1CFFF2560011AC1E /* GravitationalBody.swift */; };
 		9D4794D11C55450A00F2261B /* SchoolLandmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */; };
 		9D4794D31C55462400F2261B /* SchoolEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D21C55462400F2261B /* SchoolEvents.swift */; };
 		9D4794D51C55743400F2261B /* SchoolNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4794D41C55743400F2261B /* SchoolNews.swift */; };
@@ -148,6 +149,7 @@
 		9D3938971C750CE20043BE7F /* DirectoryEntries.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DirectoryEntries.xml; sourceTree = "<group>"; };
 		9D3938991C76F5E60043BE7F /* DirectoryViewDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewDetailCell.swift; sourceTree = "<group>"; };
 		9D45EA761C5FE31600FA54F2 /* SchoolEmergencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolEmergencies.swift; sourceTree = "<group>"; };
+		9D472F6C1CFFF2560011AC1E /* GravitationalBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GravitationalBody.swift; sourceTree = "<group>"; };
 		9D4794D01C55450A00F2261B /* SchoolLandmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolLandmarks.swift; sourceTree = "<group>"; };
 		9D4794D21C55462400F2261B /* SchoolEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolEvents.swift; sourceTree = "<group>"; };
 		9D4794D41C55743400F2261B /* SchoolNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolNews.swift; sourceTree = "<group>"; };
@@ -319,8 +321,9 @@
 			children = (
 				9D03255A1CA9FAFE00E78F27 /* Fyuses (currently unused) */,
 				9DFC1E121C8E6C9900375E23 /* BubbleViewController.swift */,
-				9DE92DDD1C938B4600CB403D /* BubbleViewDetailController.swift */,
+				9D472F6C1CFFF2560011AC1E /* GravitationalBody.swift */,
 				9DFC1E141C8FB75900375E23 /* BubbleView.swift */,
+				9DE92DDD1C938B4600CB403D /* BubbleViewDetailController.swift */,
 			);
 			name = GalleryView;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				9DCB665C1C251B510083586E /* MapController.swift in Sources */,
 				9DBD981C1C6FC58E00E21627 /* Event.swift in Sources */,
 				9D4794D11C55450A00F2261B /* SchoolLandmarks.swift in Sources */,
+				9D472F6D1CFFF2560011AC1E /* GravitationalBody.swift in Sources */,
 				9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */,
 				9DFC1E131C8E6C9900375E23 /* BubbleViewController.swift in Sources */,
 				9DADBAC31C7FF50F00A4B7F2 /* GalleryViewCell.swift in Sources */,

@@ -22,35 +22,7 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         super.viewDidLoad()
         
         //Update tour data
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
-        {
-            if let parser = NSXMLParser(contentsOfURL: NSURL(string: "https://www.wolframcloud.com/objects/9a34fc7d-4e68-43c9-b5a2-09f30505b869")!)
-            {
-                let xmlElement = XMLElement(parser: parser)
-                xmlElement.parse()
-                
-                //Get landmarks
-                if let landmarks = xmlElement["landmarks"]?["landmark", .All]?.flatMap({TourLandmark(xmlElement: $0)})
-                {
-                    dispatch_async(dispatch_get_main_queue())
-                    {
-                        School.tourLandmarks = landmarks
-                    }
-                    
-                    //Get tours
-                    let tours = xmlElement["tours"]?["tour", .All]?.flatMap({Tour(xmlElement: $0, landmarks: landmarks)})
-                    
-                    if tours != nil
-                    {
-                        dispatch_async(dispatch_get_main_queue())
-                        {
-                            School.tours = tours!
-                            self.collectionView?.reloadData()
-                        }
-                    }
-                }
-            }
-        }
+        School.refreshTours({self.collectionView?.reloadData()})
         
         //Add and configure search bar
         searchBar.delegate = self
