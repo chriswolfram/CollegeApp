@@ -30,14 +30,34 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
         
         //Setup scroll view
         scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: 1000, height: 1000)
+        scrollView.contentSize = CGSize(width: 750, height: 750)
         
         //For testing
         scrollView.showsVerticalScrollIndicator = true
         scrollView.showsHorizontalScrollIndicator = true
         
         //Update landmark data and add bubbles asynchronously
-        School.refreshToursIfNeeded({School.tourLandmarks.forEach({self.addBubble($0)})})
+        School.refreshToursIfNeeded
+        {
+            s in
+            
+            dispatch_async(dispatch_get_main_queue())
+            {
+                //If sucessfully got tour data
+                if s
+                {
+                    School.tourLandmarks.forEach({self.addBubble($0)})
+                }
+                    
+                    //If could not get tour data
+                else
+                {
+                    let alertController = UIAlertController(title: "Could not load gallery.", message: "Could not connect to gallery server.  Make sure you are connected to the internet and try again in a few minutes.", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: {_ in self.navigationController?.popToRootViewControllerAnimated(true)}))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+            }
+        }
         
         //Add point mass in the center
         bodies.append(PointMass(center: CGPoint(x: scrollView.contentSize.width/2, y: scrollView.contentSize.height/2), mass: 3))
@@ -86,6 +106,7 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
         {
             (index, b1) in
             
+            //Interbody interactions
             bodies.dropFirst(index+1).forEach
             {
                 b2 in
@@ -140,6 +161,18 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
                     b2.velocity.y -= velocityVector.y
                 }
             }
+            
+            //Wall interactions
+            let leftDistance = b1.center.x - b1.radius - b1.bufferRadius
+            let rightDistance = b1.center.x + b1.radius + b1.bufferRadius - scrollView.contentSize.width
+            let topDistance = b1.center.y - b1.radius - b1.bufferRadius
+            let bottomDistance = b1.center.y + b1.radius + b1.bufferRadius - scrollView.contentSize.height
+            
+            let xForce = -k*(min(0, leftDistance) + max(0, rightDistance))
+            let yForce = -k*(min(0, topDistance) + max(0, bottomDistance))
+            
+            b1.force.x += xForce
+            b1.force.y += yForce
         }
         
         bodies.forEach({$0.applyForce(timeStep)})

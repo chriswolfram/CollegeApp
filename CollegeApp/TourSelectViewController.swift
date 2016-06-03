@@ -22,7 +22,22 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         super.viewDidLoad()
         
         //Update tour data
-        School.refreshToursIfNeeded({self.collectionView?.reloadData()})
+        School.refreshToursIfNeeded
+        {
+            //If sucessfully got tour data
+            if $0
+            {
+                self.collectionView?.reloadData()
+            }
+            
+            //If could not get tour data
+            else
+            {
+                let alertController = UIAlertController(title: "Could not load tour information.", message: "Could not connect to tour server.  Make sure you are connected to the internet and try again in a few minutes.", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: {_ in self.navigationController?.popToRootViewControllerAnimated(true)}))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+        }
         
         //Add and configure search bar
         searchBar.delegate = self

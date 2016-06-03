@@ -15,7 +15,7 @@ extension School
     static var tours = [Tour]()
     static var tourLandmarks = [TourLandmark]()
     
-    static func refreshToursIfNeeded(callback: (Void->Void)? = nil)
+    static func refreshToursIfNeeded(callback: (Bool->Void)? = nil)
     {
         if tours.isEmpty || tourLandmarks.isEmpty
         {
@@ -35,24 +35,37 @@ extension School
                         }
                         
                         //Get tours
-                        let tours = xmlElement["tours"]?["tour", .All]?.flatMap({Tour(xmlElement: $0, landmarks: landmarks)})
-                        
-                        if tours != nil
+                        if let tours = xmlElement["tours"]?["tour", .All]?.flatMap({Tour(xmlElement: $0, landmarks: landmarks)})
                         {
                             dispatch_async(dispatch_get_main_queue())
                             {
-                                School.tours = tours!
-                                callback?()
+                                School.tours = tours
+                                callback?(true)
                             }
                         }
+                        
+                        else
+                        {
+                            callback?(false)
+                        }
                     }
+                    
+                    else
+                    {
+                        callback?(false)
+                    }
+                }
+                
+                else
+                {
+                    callback?(false)
                 }
             }
         }
         
         else
         {
-            callback?()
+            callback?(true)
         }
     }
 }
