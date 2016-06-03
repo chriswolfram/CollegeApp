@@ -119,7 +119,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         if overlay is MKPolyline
         {
             let renderer = MKPolylineRenderer(overlay: overlay)
-            renderer.strokeColor = UIColor(red: 0.2, green: 0.2, blue: 1.0, alpha: 0.7)
+            renderer.strokeColor = UIColor(red: 235/255, green: 0/255, blue: 34/255, alpha: 1)
             renderer.lineWidth = 4.0
             return renderer
         }
@@ -127,7 +127,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         else if overlay is MKCircle
         {
             let renderer = MKCircleRenderer(overlay: overlay)
-            renderer.fillColor = UIColor(red: 0.1612726024261845, green: 0.9598687724116884, blue: 0.47757686732280463, alpha: 0.7)
+            renderer.fillColor = UIColor(red: 235/255, green: 0/255, blue: 34/255, alpha: 1)
             return renderer
         }
         
