@@ -17,6 +17,8 @@ class TourLandmark: Hashable
     var textString: String?
     var imageURL: NSURL?
     var image: UIImage?
+    var thumbnailURL: NSURL?
+    var thumbnail: UIImage?
     var audioURL: NSURL?
     var audioPlayer: AVAudioPlayer?
     var videoURL: NSURL?
@@ -37,6 +39,11 @@ class TourLandmark: Hashable
             if let urlString = xmlElement["imageURL"]?.contents
             {
                 imageURL = NSURL(string: urlString)
+            }
+            
+            if let urlString = xmlElement["thumbnailURL"]?.contents
+            {
+                thumbnailURL = NSURL(string: urlString)
             }
             
             if let urlString = xmlElement["audioURL"]?.contents
@@ -74,6 +81,32 @@ class TourLandmark: Hashable
         else
         {
             callback?(self.image)
+        }
+    }
+    
+    func getThumbnail(callback: (UIImage?->Void)? = nil)
+    {
+        if thumbnail == nil
+        {
+            if let url = self.thumbnailURL
+            {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+                {
+                    if let imageData = NSData(contentsOfURL: url), let image = UIImage(data: imageData)
+                    {
+                        dispatch_async(dispatch_get_main_queue())
+                        {
+                            self.thumbnail = image
+                            callback?(self.thumbnail)
+                        }
+                    }
+                }
+            }
+        }
+            
+        else
+        {
+            callback?(self.thumbnail)
         }
     }
     

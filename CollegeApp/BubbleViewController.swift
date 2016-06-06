@@ -76,7 +76,7 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
     
     func addBubble(landmark: TourLandmark)
     {
-        landmark.getImage
+        landmark.getThumbnail
         {
             image in
             

@@ -67,10 +67,10 @@ class TourSelectViewLandmarkCell: UICollectionViewCell
     
     func refreshImage()
     {
-        landmark?.getImage({_ in self.thumbnailView.image = self.landmark?.image})
+        landmark?.getThumbnail({_ in self.thumbnailView.image = self.landmark?.thumbnail})
     }
     
-    //This deals with autolayout bug
+    //This deals with autolayout bug having to do with UICollectionView
     override var bounds: CGRect
     {
         didSet
