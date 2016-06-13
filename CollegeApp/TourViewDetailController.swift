@@ -17,10 +17,25 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var descriptionLabel: UILabel?
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollViewOffsetConstraint: NSLayoutConstraint?
+    {
+        didSet
+        {
+            scrollViewOffsetConstraint?.constant = scrollViewOffset
+        }
+    }
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var mediaView: UIView!
     
     var scrollCallback: ((UIScrollView) -> Void)?
+    
+    var scrollViewOffset: CGFloat = 300
+    {
+        didSet
+        {
+            scrollViewOffsetConstraint?.constant = scrollViewOffset
+        }
+    }
     
     var audioViewController: AudioViewContoller!
     var parentTourViewController: TourViewController!
@@ -33,6 +48,10 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //Change appearence
+        contentView.layer.cornerRadius = 30
+        contentView.clipsToBounds = true
         
         scrollView.delegate = self
         

@@ -1369,7 +1369,7 @@
                                         </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2v7-5w-hHm">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpG-fh-jSL">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -1715,7 +1715,7 @@
                                                     </variation>
                                                 </view>
                                                 <blurEffect style="light"/>
-                                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                <variation key="widthClass=compact" ambiguous="YES">
                                                     <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
                                                 </variation>
                                             </visualEffectView>
@@ -1732,7 +1732,7 @@
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDt-uE-w1v">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                <variation key="widthClass=compact" ambiguous="YES">
                                                     <rect key="frame" x="0.0" y="59" width="400" height="240.5"/>
                                                 </variation>
                                             </view>
@@ -1742,8 +1742,8 @@
                                             <constraint firstAttribute="trailing" secondItem="tqX-uW-qVj" secondAttribute="trailing" id="5Q0-O7-PSc"/>
                                             <constraint firstItem="zu8-8U-L88" firstAttribute="top" secondItem="DcH-kq-sPj" secondAttribute="bottom" constant="8" id="9am-Jp-WoD"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="Eio-7o-w7h"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fDt-uE-w1v" secondAttribute="bottom" id="GLY-fc-Atr">
-                                                <variation key="widthClass=compact" constant="500"/>
+                                            <constraint firstAttribute="bottom" secondItem="fDt-uE-w1v" secondAttribute="bottom" id="GLY-fc-Atr">
+                                                <variation key="widthClass=compact" constant="0.0"/>
                                             </constraint>
                                             <constraint firstItem="tqX-uW-qVj" firstAttribute="top" secondItem="O5n-Ym-O5p" secondAttribute="top" id="J1w-ke-Xrd"/>
                                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="zu8-8U-L88" secondAttribute="trailing" constant="8" id="Vvw-ZP-xkg"/>
@@ -1782,7 +1782,7 @@
                                                 <exclude reference="lB8-du-Bfv"/>
                                             </mask>
                                         </variation>
-                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="300" width="400" height="300"/>
                                             <mask key="subviews">
                                                 <include reference="tqX-uW-qVj"/>
@@ -1812,12 +1812,10 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="O5n-Ym-O5p" secondAttribute="bottom" id="J2K-q7-uvh">
-                                        <variation key="widthClass=compact" constant="-500"/>
+                                        <variation key="widthClass=compact" constant="0.0"/>
                                     </constraint>
                                     <constraint firstItem="O5n-Ym-O5p" firstAttribute="centerX" secondItem="4ve-1C-zc2" secondAttribute="centerX" id="TmX-Zj-it6"/>
-                                    <constraint firstItem="O5n-Ym-O5p" firstAttribute="top" secondItem="4ve-1C-zc2" secondAttribute="top" constant="350" id="W8Y-oY-eWq">
-                                        <variation key="widthClass=compact" constant="300"/>
-                                    </constraint>
+                                    <constraint firstItem="O5n-Ym-O5p" firstAttribute="top" secondItem="4ve-1C-zc2" secondAttribute="top" constant="300" id="W8Y-oY-eWq"/>
                                     <constraint firstAttribute="trailing" secondItem="O5n-Ym-O5p" secondAttribute="trailing" id="YWA-Y1-Jz5"/>
                                     <constraint firstItem="O5n-Ym-O5p" firstAttribute="leading" secondItem="4ve-1C-zc2" secondAttribute="leading" id="p3G-GE-sdr"/>
                                     <constraint firstItem="O5n-Ym-O5p" firstAttribute="width" secondItem="4ve-1C-zc2" secondAttribute="width" id="yMK-hH-vj8"/>
@@ -1888,6 +1886,7 @@
                         <outlet property="mediaView" destination="fDt-uE-w1v" id="mKE-uv-F8m"/>
                         <outlet property="nameLabel" destination="DcH-kq-sPj" id="cJc-pa-d8t"/>
                         <outlet property="scrollView" destination="4ve-1C-zc2" id="SW9-Fw-e0p"/>
+                        <outlet property="scrollViewOffsetConstraint" destination="W8Y-oY-eWq" id="Eks-1u-7YZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIt-fQ-ce8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2587,7 +2586,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUI-YN-iVh">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="-2"/>
                                                     <variation key="widthClass=compact" misplaced="YES">

@@ -89,8 +89,9 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
                 
                 bubbleView.pressSelector =
                 {
-                    //Add code here to show the detail view
-                    print("pressed")
+                    let viewController = TourViewDetailController.controllerForLandmark(landmark)
+                    viewController.scrollViewOffset = 0
+                    self.navigationController?.pushViewController(viewController, animated: true)
                 }
                 
                 self.scrollView.addSubview(bubbleView)
