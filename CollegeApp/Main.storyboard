@@ -1711,12 +1711,12 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <variation key="widthClass=compact" ambiguous="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="384" height="300"/>
                                                     </variation>
                                                 </view>
                                                 <blurEffect style="light"/>
                                                 <variation key="widthClass=compact" ambiguous="YES">
-                                                    <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="300"/>
                                                 </variation>
                                             </visualEffectView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcH-kq-sPj">
@@ -1733,7 +1733,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDt-uE-w1v">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <variation key="widthClass=compact" ambiguous="YES">
-                                                    <rect key="frame" x="0.0" y="59" width="400" height="240.5"/>
+                                                    <rect key="frame" x="0.0" y="59" width="384" height="240.5"/>
                                                 </variation>
                                             </view>
                                         </subviews>
@@ -1783,7 +1783,7 @@
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact" ambiguous="YES">
-                                            <rect key="frame" x="0.0" y="300" width="400" height="300"/>
+                                            <rect key="frame" x="8" y="300" width="384" height="300"/>
                                             <mask key="subviews">
                                                 <include reference="tqX-uW-qVj"/>
                                                 <include reference="DcH-kq-sPj"/>
@@ -1812,12 +1812,16 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="O5n-Ym-O5p" secondAttribute="bottom" id="J2K-q7-uvh">
-                                        <variation key="widthClass=compact" constant="0.0"/>
+                                        <variation key="widthClass=compact" constant="8"/>
                                     </constraint>
                                     <constraint firstItem="O5n-Ym-O5p" firstAttribute="centerX" secondItem="4ve-1C-zc2" secondAttribute="centerX" id="TmX-Zj-it6"/>
                                     <constraint firstItem="O5n-Ym-O5p" firstAttribute="top" secondItem="4ve-1C-zc2" secondAttribute="top" constant="300" id="W8Y-oY-eWq"/>
-                                    <constraint firstAttribute="trailing" secondItem="O5n-Ym-O5p" secondAttribute="trailing" id="YWA-Y1-Jz5"/>
-                                    <constraint firstItem="O5n-Ym-O5p" firstAttribute="leading" secondItem="4ve-1C-zc2" secondAttribute="leading" id="p3G-GE-sdr"/>
+                                    <constraint firstAttribute="trailing" secondItem="O5n-Ym-O5p" secondAttribute="trailing" id="YWA-Y1-Jz5">
+                                        <variation key="widthClass=compact" constant="8"/>
+                                    </constraint>
+                                    <constraint firstItem="O5n-Ym-O5p" firstAttribute="leading" secondItem="4ve-1C-zc2" secondAttribute="leading" id="p3G-GE-sdr">
+                                        <variation key="widthClass=compact" constant="8"/>
+                                    </constraint>
                                     <constraint firstItem="O5n-Ym-O5p" firstAttribute="width" secondItem="4ve-1C-zc2" secondAttribute="width" id="yMK-hH-vj8"/>
                                 </constraints>
                                 <variation key="default">
@@ -1844,7 +1848,7 @@
                                         <include reference="W8Y-oY-eWq"/>
                                         <include reference="YWA-Y1-Jz5"/>
                                         <include reference="p3G-GE-sdr"/>
-                                        <include reference="yMK-hH-vj8"/>
+                                        <exclude reference="yMK-hH-vj8"/>
                                     </mask>
                                 </variation>
                             </scrollView>
