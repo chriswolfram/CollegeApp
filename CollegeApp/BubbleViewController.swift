@@ -90,7 +90,15 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
                 bubbleView.pressSelector =
                 {
                     let viewController = TourViewDetailController.controllerForLandmark(landmark)
-                    viewController.scrollViewOffset = 0
+                    viewController.scrollViewOffset = 8
+                    
+                    viewController.modalTransitionStyle = .CoverVertical
+                    viewController.modalPresentationStyle = .OverCurrentContext
+                    viewController.modalInPopover = true
+                    
+                    self.navigationController?.providesPresentationContextTransitionStyle = false
+                    self.navigationController?.definesPresentationContext = false
+                    //self.navigationController?.presentViewController(viewController, animated: true, completion: nil)
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
                 

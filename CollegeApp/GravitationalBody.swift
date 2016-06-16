@@ -53,6 +53,6 @@ class PointMass: GravitationalBody
     
     func applyForce(timeStep: NSTimeInterval)
     {
-        
+        //Intentionally does nothing because this object doesn't move.
     }
 }
