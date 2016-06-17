@@ -14,9 +14,6 @@ class Tour
     var landmarks: [TourLandmark]
     var currentIndex = 0
     
-    var imageURL: NSURL?
-    var image: UIImage?
-    
     var currentLandmark: TourLandmark
     {
         get
@@ -54,44 +51,11 @@ class Tour
             self.landmarks = tourLandmarks!
             self.title = xmlElement["title"]?.contents
             self.currentIndex = 0
-            
-            if let urlString = xmlElement["image"]?.contents
-            {
-                self.imageURL = NSURL(string: urlString)
-            }
         }
         
         else
         {
             return nil
-        }
-    }
-    
-    private var imageLoaded = false
-    func getImage(callback: (UIImage?->Void)? = nil)
-    {
-        if !imageLoaded
-        {
-            if let url = self.imageURL
-            {
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
-                {
-                    if let imageData = NSData(contentsOfURL: url), let image = UIImage(data: imageData)
-                    {
-                        dispatch_async(dispatch_get_main_queue())
-                        {
-                            self.image = image
-                            self.imageLoaded = true
-                            callback?(self.image)
-                        }
-                    }
-                }
-            }
-        }
-            
-        else
-        {
-            callback?(self.image)
         }
     }
     

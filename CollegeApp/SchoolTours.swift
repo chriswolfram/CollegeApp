@@ -10,7 +10,7 @@ import MapKit
 
 extension School
 {
-    static let tourURL = NSURL(string: "https://www.wolframcloud.com/objects/a1a32f02-0959-4b46-9168-7a27046f9de6")!
+    static let tourURL = NSURL(string: "https://www.wolframcloud.com/objects/3696b94f-7229-4e8f-81a4-901aac909dd0"/*"https://www.wolframcloud.com/objects/a1a32f02-0959-4b46-9168-7a27046f9de6"*/)!
     
     static var tours = [Tour]()
     static var tourLandmarks = [TourLandmark]()

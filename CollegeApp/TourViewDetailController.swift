@@ -52,6 +52,8 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
         //Change appearence
         contentView.layer.cornerRadius = 30
         contentView.clipsToBounds = true
+        //contentView.layer.borderWidth = 3
+        //contentView.layer.borderColor = UIColor.whiteColor().CGColor
         
         scrollView.delegate = self
         
@@ -137,7 +139,7 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
             lastBottomAnchor = audioView.bottomAnchor
         }
         
-        lastBottomAnchor.constraintEqualToAnchor(mediaView.bottomAnchor).active = true
+        lastBottomAnchor.constraintLessThanOrEqualToAnchor(mediaView.bottomAnchor).active = true
     }
     
     static func controller() -> TourViewDetailController

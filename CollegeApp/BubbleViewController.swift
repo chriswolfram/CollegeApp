@@ -12,6 +12,8 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
 {
     @IBOutlet weak var scrollView: UIScrollView!
     
+    let bubbleRadius: CGFloat = 50
+    
     let timeStep: NSTimeInterval = 1/60
     //Gravitational constant, IRL 0.0000000000667
     let G: CGFloat = 10000
@@ -22,7 +24,7 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
     
     var bodies = [GravitationalBody]()
     
-    let bubbleRadius: CGFloat = 50
+    var timer: NSTimer?
     
     override func viewDidLoad()
     {
@@ -62,9 +64,7 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
         //Add point mass in the center
         bodies.append(PointMass(center: CGPoint(x: scrollView.contentSize.width/2, y: scrollView.contentSize.height/2), mass: 3))
         
-        let timer = NSTimer.scheduledTimerWithTimeInterval(self.timeStep, target: self, selector: #selector(BubbleViewController.simulationStep), userInfo: nil, repeats: true)
-        
-        NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+        timer = NSTimer.scheduledTimerWithTimeInterval(self.timeStep, target: self, selector: #selector(BubbleViewController.simulationStep), userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear(animated: Bool)
@@ -72,6 +72,17 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
         super.viewDidAppear(animated)
         
         scrollView.contentOffset = CGPoint(x: scrollView.contentSize.width/2 - scrollView.frame.width/2, y: scrollView.contentSize.height/2 - scrollView.frame.height/2)
+        
+        if timer != nil
+        {
+            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool)
+    {
+        timer?.invalidate()
+        timer = nil
     }
     
     func addBubble(landmark: TourLandmark)
@@ -89,17 +100,25 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
                 
                 bubbleView.pressSelector =
                 {
-                    let viewController = TourViewDetailController.controllerForLandmark(landmark)
+                    /*let viewController = TourViewDetailController.controllerForLandmark(landmark)
                     viewController.scrollViewOffset = 8
+                    
+                    let closeButton = UIButton()
+                    closeButton.titleLabel?.text = "Close"
+                    
+                    viewController.loadView()
+                    
+                    viewController.view.addSubview(closeButton)
+                    closeButton.bottomAnchor.constraintEqualToAnchor(viewController.contentView.topAnchor, constant: 8).active = true
+                    closeButton.leftAnchor.constraintEqualToAnchor(viewController.contentView.leftAnchor).active = true
+                    closeButton.widthAnchor.constraintEqualToConstant(50).active = true
+                    closeButton.heightAnchor.constraintEqualToConstant(50).active = true
                     
                     viewController.modalTransitionStyle = .CoverVertical
                     viewController.modalPresentationStyle = .OverCurrentContext
                     viewController.modalInPopover = true
                     
-                    self.navigationController?.providesPresentationContextTransitionStyle = false
-                    self.navigationController?.definesPresentationContext = false
-                    //self.navigationController?.presentViewController(viewController, animated: true, completion: nil)
-                    self.navigationController?.pushViewController(viewController, animated: true)
+                    self.navigationController?.presentViewController(viewController, animated: true, completion: nil)*/
                 }
                 
                 self.scrollView.addSubview(bubbleView)
@@ -111,6 +130,7 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
     
     func simulationStep()
     {
+        //print(NSUUID())
         bodies.enumerate().forEach
         {
             (index, b1) in

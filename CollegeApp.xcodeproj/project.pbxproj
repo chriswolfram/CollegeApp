@@ -47,6 +47,7 @@
 		9D55B58C1C68EB0A00B34017 /* Stadium.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5811C68EB0A00B34017 /* Stadium.jpg */; };
 		9D55B58D1C68EB0A00B34017 /* Tresidder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5821C68EB0A00B34017 /* Tresidder.jpg */; };
 		9D98EB381C6DA88D00E4673A /* CalendarElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D98EB371C6DA88D00E4673A /* CalendarElement.swift */; };
+		9DA1ACC41D12939E001226BF /* Cancel Filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DA1ACC31D12939E001226BF /* Cancel Filled-100.png */; };
 		9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */; };
 		9DA434321C67F6980007256B /* homescreenBackground.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9DA434311C67F6630007256B /* homescreenBackground.mp4 */; };
 		9DA434341C6821250007256B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA434331C6821250007256B /* WebView.swift */; };
@@ -166,6 +167,7 @@
 		9D55B5811C68EB0A00B34017 /* Stadium.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Stadium.jpg; sourceTree = "<group>"; };
 		9D55B5821C68EB0A00B34017 /* Tresidder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tresidder.jpg; sourceTree = "<group>"; };
 		9D98EB371C6DA88D00E4673A /* CalendarElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarElement.swift; sourceTree = "<group>"; };
+		9DA1ACC31D12939E001226BF /* Cancel Filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cancel Filled-100.png"; sourceTree = "<group>"; };
 		9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenButton.swift; sourceTree = "<group>"; };
 		9DA434311C67F6630007256B /* homescreenBackground.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = homescreenBackground.mp4; sourceTree = "<group>"; };
 		9DA434331C6821250007256B /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				9DCB66621C251B600083586E /* LaunchScreen.storyboard */,
 				9DE39A021CED196E0060E05E /* AudioPlayerIcons */,
 				9D34396C1C7EAF21008A4D73 /* HomescreenIcons */,
+				9DA1ACC31D12939E001226BF /* Cancel Filled-100.png */,
 				9DCB66611C251B600083586E /* Assets.xcassets */,
 				9DCB66551C251B510083586E /* Info.plist */,
 				9DBD982D1C71965D00E21627 /* shareOnFacebookIcon.png */,
@@ -644,6 +647,7 @@
 				9D3439621C7EAF1A008A4D73 /* Chat-96.png in Resources */,
 				9D55B5891C68EB0A00B34017 /* Mausoleum.jpg in Resources */,
 				9D3938981C750CE20043BE7F /* DirectoryEntries.xml in Resources */,
+				9DA1ACC41D12939E001226BF /* Cancel Filled-100.png in Resources */,
 				9D34396B1C7EAF1A008A4D73 /* Walking-96.png in Resources */,
 				9DCB66651C251B600083586E /* LaunchScreen.storyboard in Resources */,
 				9DBD98371C7199FE00E21627 /* shareOnFacebookWhiteIcon.png in Resources */,

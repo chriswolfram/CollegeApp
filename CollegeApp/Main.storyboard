@@ -1705,7 +1705,7 @@
         <!--Tour View Detail Controller-->
         <scene sceneID="nee-de-tmC">
             <objects>
-                <viewController storyboardIdentifier="TourViewDetailController" id="zte-gr-ovF" customClass="TourViewDetailController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TourViewDetailController" definesPresentationContext="YES" modalPresentationStyle="overCurrentContext" id="zte-gr-ovF" customClass="TourViewDetailController" customModule="CollegeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c3x-Ws-jHf"/>
                         <viewControllerLayoutGuide type="bottom" id="ILU-dr-0dc"/>
