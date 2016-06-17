@@ -48,6 +48,7 @@
 		9D55B58D1C68EB0A00B34017 /* Tresidder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D55B5821C68EB0A00B34017 /* Tresidder.jpg */; };
 		9D98EB381C6DA88D00E4673A /* CalendarElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D98EB371C6DA88D00E4673A /* CalendarElement.swift */; };
 		9DA1ACC41D12939E001226BF /* Cancel Filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DA1ACC31D12939E001226BF /* Cancel Filled-100.png */; };
+		9DA1ACC61D14A61E001226BF /* KincolaLogo-base2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DA1ACC51D14A61E001226BF /* KincolaLogo-base2.png */; };
 		9DA434301C67E3DB0007256B /* HomescreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */; };
 		9DA434321C67F6980007256B /* homescreenBackground.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9DA434311C67F6630007256B /* homescreenBackground.mp4 */; };
 		9DA434341C6821250007256B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA434331C6821250007256B /* WebView.swift */; };
@@ -66,7 +67,6 @@
 		9DBD98251C6FD1E700E21627 /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98241C6FD1E700E21627 /* Tour.swift */; };
 		9DBD98271C6FD20200E21627 /* EmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98261C6FD20200E21627 /* EmergencyContact.swift */; };
 		9DBD98291C7016D300E21627 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD98281C7016D300E21627 /* EventsViewController.swift */; };
-		9DBD982C1C702BAA00E21627 /* emblem.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DBD982B1C702BAA00E21627 /* emblem.jpg */; };
 		9DBD982E1C71965D00E21627 /* shareOnFacebookIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DBD982D1C71965D00E21627 /* shareOnFacebookIcon.png */; };
 		9DBD98331C71987000E21627 /* shareOnTwitterIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DBD98321C71987000E21627 /* shareOnTwitterIcon.png */; };
 		9DBD98351C7199F400E21627 /* shareOnTwitterWhiteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DBD98341C7199F400E21627 /* shareOnTwitterWhiteIcon.png */; };
@@ -168,6 +168,7 @@
 		9D55B5821C68EB0A00B34017 /* Tresidder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tresidder.jpg; sourceTree = "<group>"; };
 		9D98EB371C6DA88D00E4673A /* CalendarElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarElement.swift; sourceTree = "<group>"; };
 		9DA1ACC31D12939E001226BF /* Cancel Filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cancel Filled-100.png"; sourceTree = "<group>"; };
+		9DA1ACC51D14A61E001226BF /* KincolaLogo-base2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KincolaLogo-base2.png"; sourceTree = "<group>"; };
 		9DA4342F1C67E3DB0007256B /* HomescreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenButton.swift; sourceTree = "<group>"; };
 		9DA434311C67F6630007256B /* homescreenBackground.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = homescreenBackground.mp4; sourceTree = "<group>"; };
 		9DA434331C6821250007256B /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -186,7 +187,6 @@
 		9DBD98241C6FD1E700E21627 /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		9DBD98261C6FD20200E21627 /* EmergencyContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyContact.swift; sourceTree = "<group>"; };
 		9DBD98281C7016D300E21627 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
-		9DBD982B1C702BAA00E21627 /* emblem.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = emblem.jpg; sourceTree = "<group>"; };
 		9DBD982D1C71965D00E21627 /* shareOnFacebookIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareOnFacebookIcon.png; sourceTree = "<group>"; };
 		9DBD98321C71987000E21627 /* shareOnTwitterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareOnTwitterIcon.png; sourceTree = "<group>"; };
 		9DBD98341C7199F400E21627 /* shareOnTwitterWhiteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareOnTwitterWhiteIcon.png; sourceTree = "<group>"; };
@@ -351,7 +351,7 @@
 				9D4794D61C558B1700F2261B /* SchoolTours.swift */,
 				9DBD983A1C73CE2400E21627 /* SchoolDirectory.swift */,
 				9D3938971C750CE20043BE7F /* DirectoryEntries.xml */,
-				9DBD982B1C702BAA00E21627 /* emblem.jpg */,
+				9DA1ACC51D14A61E001226BF /* KincolaLogo-base2.png */,
 				9DA434311C67F6630007256B /* homescreenBackground.mp4 */,
 				9D209DAD1C668ADE00AA8C50 /* TourImages */,
 			);
@@ -637,7 +637,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DBD982C1C702BAA00E21627 /* emblem.jpg in Resources */,
 				9D55B58C1C68EB0A00B34017 /* Stadium.jpg in Resources */,
 				9DBA4D8C1CA3189800DD2720 /* Quad.jpg in Resources */,
 				9D3439691C7EAF1A008A4D73 /* Tourist-96.png in Resources */,
@@ -657,6 +656,7 @@
 				9D55B5871C68EB0A00B34017 /* Cantor.jpg in Resources */,
 				9DBD982E1C71965D00E21627 /* shareOnFacebookIcon.png in Resources */,
 				9D34396A1C7EAF1A008A4D73 /* University-96.png in Resources */,
+				9DA1ACC61D14A61E001226BF /* KincolaLogo-base2.png in Resources */,
 				9D3439631C7EAF1A008A4D73 /* Contacts-96.png in Resources */,
 				9D3439611C7EAF1A008A4D73 /* Calendar-96.png in Resources */,
 				9DE39A011CED19660060E05E /* RewindFilled-100.png in Resources */,

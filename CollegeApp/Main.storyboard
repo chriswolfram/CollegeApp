@@ -833,9 +833,6 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <connections>
-                                                    <segue destination="VCU-Nz-XxV" kind="show" id="ud2-e6-DIw"/>
-                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Shuttle-96.png" translatesAutoresizingMaskIntoConstraints="NO" id="K6K-Os-MVJ">
                                                 <rect key="frame" x="28.5" y="27.5" width="39" height="39"/>
