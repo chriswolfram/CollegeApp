@@ -19,6 +19,6 @@ class School
     
     static let messagesGroupsListURL = NSURL(string: "https://www.wolframcloud.com/objects/85c52512-8738-4d70-925d-89d816f6d77e")!
     
-    static let facebookShareDefaultMessage = "Try out the Stanford app!"
-    static let twitterShareDefaultMessage = "Try out the Stanford app!"
+    static let facebookShareDefaultMessage = "Try out the UCSD Tours app!"
+    static let twitterShareDefaultMessage = "Try out the UCSD Tours app!"
 }
