@@ -13,7 +13,7 @@ class DirectoryViewCell: UITableViewCell
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
-    func showDirectoryEntry(entry: DirectoryEntry)
+    func showDirectoryEntry(_ entry: DirectoryEntry)
     {
         self.nameLabel.text = entry.name
         self.titleLabel.text = entry.title

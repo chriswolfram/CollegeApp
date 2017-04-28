@@ -29,7 +29,7 @@ class NewsViewCell: UITableViewCell, NewsStoryDelegate
         }
     }
     
-    private func showThumbnail(image: UIImage?)
+    fileprivate func showThumbnail(_ image: UIImage?)
     {
         if image == nil
         {
@@ -39,7 +39,7 @@ class NewsViewCell: UITableViewCell, NewsStoryDelegate
         else
         {
             thumbnailView?.image = image
-            thumbnailView?.backgroundColor = UIColor.clearColor()
+            thumbnailView?.backgroundColor = UIColor.clear
         }
     }
     

@@ -21,7 +21,7 @@ class NewsViewController: UITableViewController
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    override func viewDidAppear(animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
@@ -29,10 +29,10 @@ class NewsViewController: UITableViewController
         if School.newsStories.count == 0
         {
             self.refreshControl?.beginRefreshing()
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async
             {
                 School.updateNewsStories()
-                dispatch_async(dispatch_get_main_queue())
+                DispatchQueue.main.async
                 {
                     self.tableView.reloadData()
                     self.refreshControl?.endRefreshing()
@@ -41,17 +41,17 @@ class NewsViewController: UITableViewController
         }
     }
     
-    func schoolNewsDidLoadImage(index: Int)
+    func schoolNewsDidLoadImage(_ index: Int)
     {
         self.tableView.reloadData()
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return School.newsStories.count
     }
     
-    func cellTypeAtIndex(indexPath: NSIndexPath) -> String
+    func cellTypeAtIndex(_ indexPath: IndexPath) -> String
     {
         let story = School.newsStories[indexPath.row]
         
@@ -75,18 +75,18 @@ class NewsViewController: UITableViewController
         return cellIdentifier
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let story = School.newsStories[indexPath.row]
         
         let cellIdentifier = cellTypeAtIndex(indexPath)
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! NewsViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NewsViewCell
         cell.newsStory = story
                 
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let story = School.newsStories[indexPath.row]
         
@@ -97,18 +97,18 @@ class NewsViewController: UITableViewController
         
         else
         {
-            let alertController = UIAlertController(title: "Unable to Load Page", message: "The selected page could not be loaded.", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Unable to Load Page", message: "The selected page could not be loaded.", preferredStyle: .alert)
             
-            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     //Run if the refresh controller is triggered (slide down to refresh)
-    @IBAction func refresh(sender: AnyObject)
+    @IBAction func refresh(_ sender: AnyObject)
     {
         School.updateNewsStories()
         tableView.reloadData()

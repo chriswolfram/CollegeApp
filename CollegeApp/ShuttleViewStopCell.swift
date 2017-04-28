@@ -13,7 +13,7 @@ class ShuttleViewStopCell: UITableViewCell
     @IBOutlet weak var stripedView: StripedView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    private var internalStop: ShuttleStop?
+    fileprivate var internalStop: ShuttleStop?
     var stop: ShuttleStop?
     {
         get

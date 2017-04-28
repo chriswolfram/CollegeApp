@@ -19,14 +19,14 @@ class MessageGroupSelectorViewController: UITableViewController
         reloadMessageGroups()
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return messageGroups.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MessageSelectorCell", forIndexPath: indexPath) as! MessageSelectorCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSelectorCell", for: indexPath) as! MessageSelectorCell
         let messageGroup = messageGroups[indexPath.row]
         
         cell.textLabel?.text = messageGroup.name
@@ -34,29 +34,29 @@ class MessageGroupSelectorViewController: UITableViewController
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let messageGroup = messageGroups[indexPath.row]
         
         //let messageViewController = MessageViewController(messageGroup: messageGroup)
-        let messageViewController = storyboard?.instantiateViewControllerWithIdentifier("MessageViewController") as! MessageViewController
+        let messageViewController = storyboard?.instantiateViewController(withIdentifier: "MessageViewController") as! MessageViewController
         messageViewController.showMessageGroup(messageGroup)
         
         navigationController?.pushViewController(messageViewController, animated: true)
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func reloadMessageGroups()
     {
-        let xmlRoot = XMLElement(parser: NSXMLParser(contentsOfURL: School.messagesGroupsListURL)!)
+        let xmlRoot = XMLElement(parser: XMLParser(contentsOf: School.messagesGroupsListURL as URL)!)
         xmlRoot.parse()
         
         //TODO: add error handling
-        messageGroups = xmlRoot["messageGroup", .All]!.map({MessageGroup(name: $0["name"]!.contents!, messageListString: $0["messageList"]!.contents!, sendMessageString: $0["sendMessage"]!.contents!)}).flatMap({$0})
+        messageGroups = xmlRoot["messageGroup", .all]!.map({MessageGroup(name: $0["name"]!.contents!, messageListString: $0["messageList"]!.contents!, sendMessageString: $0["sendMessage"]!.contents!)}).flatMap({$0})
     }
     
-    @IBAction func refresh(sender: UIRefreshControl)
+    @IBAction func refresh(_ sender: UIRefreshControl)
     {
         reloadMessageGroups()
         tableView.reloadData()
@@ -68,10 +68,10 @@ class MessageGroupSelectorViewController: UITableViewController
 class MessageGroup
 {
     let name: String
-    let messageListURL: NSURL
-    let sendMessageURL: NSURL
+    let messageListURL: URL
+    let sendMessageURL: URL
     
-    init(name: String, messageListURL: NSURL, sendMessageURL: NSURL)
+    init(name: String, messageListURL: URL, sendMessageURL: URL)
     {
         self.name = name
         self.messageListURL = messageListURL
@@ -80,7 +80,7 @@ class MessageGroup
     
     convenience init?(name: String, messageListString: String, sendMessageString: String)
     {
-        if let messageListURL = NSURL(string: messageListString), let sendMessageURL = NSURL(string: sendMessageString)
+        if let messageListURL = URL(string: messageListString), let sendMessageURL = URL(string: sendMessageString)
         {
             self.init(name: name, messageListURL: messageListURL, sendMessageURL: sendMessageURL)
         }

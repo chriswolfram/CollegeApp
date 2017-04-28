@@ -16,9 +16,9 @@ class QRDetailController: UIViewController
     var qrCodeString: String?
     
     
-    static func qrDetailControllerFromString(qrCodeString: String, parent: QRViewController) -> QRDetailController
+    static func qrDetailControllerFromString(_ qrCodeString: String, parent: QRViewController) -> QRDetailController
     {
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("QRDetailController") as! QRDetailController
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "QRDetailController") as! QRDetailController
         
         viewController.qrCodeString = qrCodeString
         viewController.parentController = parent
@@ -26,14 +26,14 @@ class QRDetailController: UIViewController
         return viewController
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         
         label.text = qrCodeString
     }
     
-    override func viewWillDisappear(animated: Bool)
+    override func viewWillDisappear(_ animated: Bool)
     {
         super.viewWillDisappear(animated)
         

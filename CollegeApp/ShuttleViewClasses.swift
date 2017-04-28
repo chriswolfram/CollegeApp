@@ -28,7 +28,7 @@ class ShuttleVehicleOverlay: MKCircle, ShuttleOverlay
     var vehicle: ShuttleVehicle!
     var highlighted = false
     
-    class func overlayFromVehicle(vehicle: ShuttleVehicle) -> ShuttleVehicleOverlay
+    class func overlayFromVehicle(_ vehicle: ShuttleVehicle) -> ShuttleVehicleOverlay
     {
         var location = vehicle.location?.coordinate
         
@@ -37,7 +37,7 @@ class ShuttleVehicleOverlay: MKCircle, ShuttleOverlay
             location = kCLLocationCoordinate2DInvalid
         }
         
-        let overlay = ShuttleVehicleOverlay(centerCoordinate: location!, radius: 40)
+        let overlay = ShuttleVehicleOverlay(center: location!, radius: 40)
         overlay.vehicle = vehicle
         
         return overlay
@@ -55,12 +55,12 @@ class ShuttleVehicleRenderer: MKOverlayRenderer
         self.vehicleOverlay = vehicleOverlay
     }
     
-    override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext)
+    override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext)
     {
         let renderer = MKCircleRenderer(circle: vehicleOverlay)
         renderer.fillColor = vehicleOverlay.vehicle.route?.color
         
-        renderer.drawMapRect(mapRect, zoomScale: zoomScale, inContext: context)
+        renderer.draw(mapRect, zoomScale: zoomScale, in: context)
     }
 }
 
@@ -78,7 +78,7 @@ class ShuttleStopOverlay: MKCircle, ShuttleOverlay
     var stop: ShuttleStop!
     var highlighted = false
     
-    class func overlayFromStop(stop: ShuttleStop) -> ShuttleStopOverlay
+    class func overlayFromStop(_ stop: ShuttleStop) -> ShuttleStopOverlay
     {
         var location = stop.location?.coordinate
         
@@ -87,7 +87,7 @@ class ShuttleStopOverlay: MKCircle, ShuttleOverlay
             location = kCLLocationCoordinate2DInvalid
         }
         
-        let overlay = ShuttleStopOverlay(centerCoordinate: location!, radius: 40)
+        let overlay = ShuttleStopOverlay(center: location!, radius: 40)
         overlay.stop = stop
         
         return overlay
@@ -105,7 +105,7 @@ class ShuttleStopRenderer: MKOverlayRenderer
         self.stopOverlay = stopOverlay
     }
     
-    override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext)
+    override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext)
     {
         var maxRadius = stopOverlay.radius
         if zoomScale > 0.1
@@ -126,44 +126,44 @@ class ShuttleStopRenderer: MKOverlayRenderer
             maxRadius = 40
         }
         
-        CGContextSaveGState(context)
+        context.saveGState()
         
         let stopColors = Set(stopOverlay.stop.routes.map({$0.color}))
         let radiusStepSize = maxRadius/Double(stopColors.count+1)//(maxRadius - minRadius)/Double(stopColors.count)
         
         let borderWidth = 0.1*maxRadius/Double(stopColors.count)
         
-        stopColors.enumerate().forEach
+        stopColors.enumerated().forEach
         {
             (i, color) in
             
             let circleRadius = maxRadius - Double(i)*radiusStepSize
             
             //Draw white border
-            let contrastCircle = MKCircle(centerCoordinate: stopOverlay.coordinate, radius: circleRadius)
+            let contrastCircle = MKCircle(center: stopOverlay.coordinate, radius: circleRadius)
             
-            let contrastPoint = pointForMapPoint(contrastCircle.boundingMapRect.origin)
-            CGContextTranslateCTM(context, contrastPoint.x, contrastPoint.y)
+            let contrastPoint = point(for: contrastCircle.boundingMapRect.origin)
+            context.translateBy(x: contrastPoint.x, y: contrastPoint.y)
             
             let contrastRenderer = MKCircleRenderer(circle: contrastCircle)
-            contrastRenderer.fillColor = UIColor.whiteColor()
-            contrastRenderer.drawMapRect(mapRect, zoomScale: zoomScale, inContext: context)
+            contrastRenderer.fillColor = UIColor.white
+            contrastRenderer.draw(mapRect, zoomScale: zoomScale, in: context)
             
-            CGContextRestoreGState(context)
-            CGContextSaveGState(context)
+            context.restoreGState()
+            context.saveGState()
             
             //Draw colored disk
-            let coloredCircle = MKCircle(centerCoordinate: stopOverlay.coordinate, radius: circleRadius-borderWidth)
+            let coloredCircle = MKCircle(center: stopOverlay.coordinate, radius: circleRadius-borderWidth)
             
-            let coloredCirclePoint = pointForMapPoint(coloredCircle.boundingMapRect.origin)
-            CGContextTranslateCTM(context, coloredCirclePoint.x, coloredCirclePoint.y)
+            let coloredCirclePoint = point(for: coloredCircle.boundingMapRect.origin)
+            context.translateBy(x: coloredCirclePoint.x, y: coloredCirclePoint.y)
             
             let coloredCircleRenderer = MKCircleRenderer(circle: coloredCircle)
             coloredCircleRenderer.fillColor = color
-            coloredCircleRenderer.drawMapRect(mapRect, zoomScale: zoomScale, inContext: context)
+            coloredCircleRenderer.draw(mapRect, zoomScale: zoomScale, in: context)
             
-            CGContextRestoreGState(context)
-            CGContextSaveGState(context)
+            context.restoreGState()
+            context.saveGState()
         }
     }
 }
@@ -182,7 +182,7 @@ class ShuttleRouteSegmentsOverlay: NSObject, MKOverlay, ShuttleOverlay
     
     @objc var coordinate: CLLocationCoordinate2D = School.shuttleRegion.center
     
-    private var privateBoundingMapRect: MKMapRect?
+    fileprivate var privateBoundingMapRect: MKMapRect?
     @objc var boundingMapRect: MKMapRect
     {
         if privateBoundingMapRect == nil
@@ -226,20 +226,20 @@ class ShuttleRouteSegmentsRenderer: MKOverlayRenderer
         self.shuttleRouteSegmentOverlay = shuttleRouteSegmentOverlay
     }
     
-    override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext)
+    override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext)
     {
-        CGContextSaveGState(context)
+        context.saveGState()
         shuttleRouteSegmentOverlay.segments.forEach
         {
             segment in
             
-            if let polyline = segment.polyline where segment.routes.count > 0
+            if let polyline = segment.polyline, segment.routes.count > 0
             {
-                let point = pointForMapPoint(polyline.boundingMapRect.origin)
-                CGContextTranslateCTM(context, point.x, point.y)
+                let point = self.point(for: polyline.boundingMapRect.origin)
+                context.translateBy(x: point.x, y: point.y)
                 
                 let routeColors = Set(segment.routes.map({$0.color}))
-                routeColors.enumerate().forEach
+                routeColors.enumerated().forEach
                 {
                     (index, color) in
                     
@@ -247,9 +247,9 @@ class ShuttleRouteSegmentsRenderer: MKOverlayRenderer
                     
                     let renderer = MKPolylineRenderer(polyline: polyline)
                     renderer.strokeColor = color
-                    renderer.lineCap = .Butt
+                    renderer.lineCap = .butt
                     renderer.lineDashPhase = dashLength*CGFloat(index)
-                    renderer.lineDashPattern = [dashLength,dashLength*CGFloat(routeColors.count-1)]
+                    renderer.lineDashPattern = [dashLength as NSNumber, dashLength*CGFloat(routeColors.count-1) as NSNumber]
                     renderer.lineWidth = 10
                     
                     var newZoomScale = zoomScale
@@ -258,11 +258,11 @@ class ShuttleRouteSegmentsRenderer: MKOverlayRenderer
                         newZoomScale = 0.02
                     }
 
-                    renderer.drawMapRect(mapRect, zoomScale: newZoomScale, inContext: context)
+                    renderer.draw(mapRect, zoomScale: newZoomScale, in: context)
                 }
                 
-                CGContextRestoreGState(context)
-                CGContextSaveGState(context)
+                context.restoreGState()
+                context.saveGState()
             }
         }
     }
@@ -288,5 +288,5 @@ class ShuttleRoute
     var segmentIDs: [String]?
     var stopIDs: [String]?
     var stops: [ShuttleStop]?
-    var color: UIColor = UIColor.redColor()
+    var color: UIColor = UIColor.red
 }

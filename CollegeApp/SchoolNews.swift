@@ -10,17 +10,18 @@ import UIKit
 
 extension School
 {
-    static let newsURL = NSURL(string: "http://feeds.feedburner.com/HarvardGazetteOnline")!
+    //static let newsURL = URL(string: "http://feeds.feedburner.com/HarvardGazetteOnline")!
+    static let newsURL = URL(string: "https://news.stanford.edu/feed/")!
     
     static var newsStories = [NewsStory]()
     
-    private static var xmlRoot: XMLElement!
-    private static var rssRoot: XMLElement!
+    fileprivate static var xmlRoot: XMLElement!
+    fileprivate static var rssRoot: XMLElement!
     
     static func updateNewsStories()
     {
         //Configure RSS feed reader
-        if let parser = NSXMLParser(contentsOfURL: School.newsURL)
+        if let parser = XMLParser(contentsOf: School.newsURL)
         {
             xmlRoot = XMLElement(parser: parser)
             xmlRoot.parse()
@@ -30,7 +31,7 @@ extension School
             if let rssRoot = xmlRoot["channel"]
             {
                 //Turn parsed RSS data into dictionaries
-                if let items = rssRoot["item", .All]
+                if let items = rssRoot["item", .all]
                 {
                     newsStories = items.map
                     {
@@ -40,12 +41,12 @@ extension School
                         
                         if let urlString = item["link"]?.contents
                         {
-                            story.link = NSURL(string: urlString)
+                            story.link = URL(string: urlString)
                         }
                         
                         if let urlString = item["enclosure"]?.attributes["url"]
                         {
-                            story.imageURL = NSURL(string: urlString)
+                            story.imageURL = URL(string: urlString)
                         }
                         
                         if let descString = item["description"]?.contents

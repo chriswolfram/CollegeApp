@@ -15,13 +15,13 @@ class TourLandmark: Hashable
     var coordinate: CLLocationCoordinate2D!
     var titleString: String?
     var textString: String?
-    var imageURL: NSURL?
+    var imageURL: URL?
     var image: UIImage?
-    var thumbnailURL: NSURL?
+    var thumbnailURL: URL?
     var thumbnail: UIImage?
-    var audioURL: NSURL?
+    var audioURL: URL?
     var audioPlayer: AVAudioPlayer?
-    var videoURL: NSURL?
+    var videoURL: URL?
     
     init?(xmlElement: XMLElement)
     {
@@ -38,37 +38,37 @@ class TourLandmark: Hashable
             
             if let urlString = xmlElement["imageURL"]?.contents
             {
-                imageURL = NSURL(string: urlString)
+                imageURL = URL(string: urlString)
             }
             
             if let urlString = xmlElement["thumbnailURL"]?.contents
             {
-                thumbnailURL = NSURL(string: urlString)
+                thumbnailURL = URL(string: urlString)
             }
             
             if let urlString = xmlElement["audioURL"]?.contents
             {
-                audioURL = NSURL(string: urlString)
+                audioURL = URL(string: urlString)
             }
             
             if let urlString = xmlElement["videoURL"]?.contents
             {
-                videoURL = NSURL(string: urlString)
+                videoURL = URL(string: urlString)
             }
         }
     }
     
-    func getImage(callback: (UIImage?->Void)? = nil)
+    func getImage(_ callback: ((UIImage?)->Void)? = nil)
     {
         if image == nil
         {
             if let url = self.imageURL
             {
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async
                 {
-                    if let imageData = NSData(contentsOfURL: url), let image = UIImage(data: imageData)
+                    if let imageData = try? Data(contentsOf: url), let image = UIImage(data: imageData)
                     {                        
-                        dispatch_async(dispatch_get_main_queue())
+                        DispatchQueue.main.async
                         {
                             self.image = image
                             callback?(self.image)
@@ -84,17 +84,17 @@ class TourLandmark: Hashable
         }
     }
     
-    func getThumbnail(callback: (UIImage?->Void)? = nil)
+    func getThumbnail(_ callback: ((UIImage?)->Void)? = nil)
     {
         if thumbnail == nil
         {
             if let url = self.thumbnailURL
             {
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async
                 {
-                    if let imageData = NSData(contentsOfURL: url), let image = UIImage(data: imageData)
+                    if let imageData = try? Data(contentsOf: url), let image = UIImage(data: imageData)
                     {
-                        dispatch_async(dispatch_get_main_queue())
+                        DispatchQueue.main.async
                         {
                             self.thumbnail = image
                             callback?(self.thumbnail)
@@ -110,16 +110,16 @@ class TourLandmark: Hashable
         }
     }
     
-    private var audioPlayerLoaded = false
-    func getAudioPlayer(callback: (AVAudioPlayer?->Void)? = nil)
+    fileprivate var audioPlayerLoaded = false
+    func getAudioPlayer(_ callback: ((AVAudioPlayer?)->Void)? = nil)
     {
         if !audioPlayerLoaded
         {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async
             {
-                if let audioData = NSData(contentsOfURL: self.audioURL!), let audioPlayer = try? AVAudioPlayer(data: audioData) where self.audioURL != nil
+                if let audioData = try? Data(contentsOf: self.audioURL!), let audioPlayer = try? AVAudioPlayer(data: audioData), self.audioURL != nil
                 {
-                    dispatch_async(dispatch_get_main_queue())
+                    DispatchQueue.main.async
                     {
                         self.audioPlayer = audioPlayer
                         callback?(self.audioPlayer)

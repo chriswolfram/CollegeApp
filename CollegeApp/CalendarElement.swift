@@ -25,9 +25,9 @@ class CalendarElement
     
     enum CalendarElementParts
     {
-        case All
-        case First
-        case Last
+        case all
+        case first
+        case last
     }
     
     init(tag: String, contents: String)
@@ -43,14 +43,17 @@ class CalendarElement
         self.childList = []
         self.children = [String: [CalendarElement]]()
         
-        for var i = 0; i < statements.count; i += 1
+        //Quick Swift 3 fix
+        //for var i = 0; i < statements.count; i += 1
+        var i = 0
+        while(i < statements.count)
         {
             let (tag, contents) = statements[i]
             var child: CalendarElement!
             
             if tag == "BEGIN"
             {
-                let endIndex = statements.dropFirst(i+1).indexOf({(tag, cont) in tag == "END" && cont == contents})!
+                let endIndex = statements.dropFirst(i+1).index(where: {(tag, cont) in tag == "END" && cont == contents})!
                 child = CalendarElement(tag: contents, statements: Array(statements[i+1...endIndex-1]))
                 
                 i = endIndex
@@ -72,6 +75,9 @@ class CalendarElement
             {
                 self.children![child.tag] = [child]
             }
+            
+            //End quick fix
+            i+=1
         }
     }
     
@@ -80,9 +86,9 @@ class CalendarElement
         self.init(tag: "", statements: CalendarElement.statements(string))
     }
     
-    convenience init?(url: NSURL)
+    convenience init?(url: URL)
     {
-        if let string = try? String(contentsOfURL: url)
+        if let string = try? String(contentsOf: url)
         {
             self.init(string: string)
         }
@@ -107,25 +113,26 @@ class CalendarElement
     {
             switch p
             {
-            case .All: return self.children?[key]
-            case .First: return [self.children![key]![0]]
-            case .Last: return [self.children![key]!.last!]
+            case .all: return self.children?[key]
+            case .first: return [self.children![key]![0]]
+            case .last: return [self.children![key]!.last!]
             }
     }
     
-    private static func statements(string: String) -> [(String, String)]
+    fileprivate static func statements(_ string: String) -> [(String, String)]
     {
-        let lines = string.stringByReplacingOccurrencesOfString("\r\n ", withString: "").componentsSeparatedByString("\r\n").filter
+        let lines = string.replacingOccurrences(of: "\r\n ", with: "").components(separatedBy: "\r\n").filter
         {
-            $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) != ""
+            $0.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != ""
         }
         
         let statements = lines.map
         {
             line -> (String, String) in
             
-            let delimeterIndex = line.characters.indexOf(":")!
-            return (line.substringToIndex(delimeterIndex), line.substringFromIndex(delimeterIndex.advancedBy(1)).stringByReplacingOccurrencesOfString("\\", withString: ""))
+            let delimeterIndex = line.characters.index(of: ":")!
+            
+            return (line.substring(to: delimeterIndex), line.substring(from: line.index(after: delimeterIndex)).replacingOccurrences(of: "\\", with: ""))
         }
         
         return statements

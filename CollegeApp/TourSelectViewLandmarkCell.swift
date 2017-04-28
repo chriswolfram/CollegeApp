@@ -15,8 +15,8 @@ class TourSelectViewLandmarkCell: UICollectionViewCell
     @IBOutlet weak var highlightView: UIView!
     @IBOutlet weak var thumbnailTintView: UIView!
     
-    private static let normalColor = UIColor.clearColor()//UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
-    private static let highlightedColor = UIColor(red: 19/255, green: 115/255, blue: 229/255, alpha: 1)
+    fileprivate static let normalColor = UIColor.clear//UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
+    fileprivate static let highlightedColor = UIColor(red: 19/255, green: 115/255, blue: 229/255, alpha: 1)
     
     var landmark: TourLandmark?
     {
@@ -46,7 +46,7 @@ class TourSelectViewLandmarkCell: UICollectionViewCell
         }
     }
     
-    override func drawRect(rect: CGRect)
+    override func draw(_ rect: CGRect)
     {
         self.thumbnailView.layer.cornerRadius = self.thumbnailView.frame.width/2
         self.thumbnailView.clipsToBounds = true
@@ -55,7 +55,7 @@ class TourSelectViewLandmarkCell: UICollectionViewCell
         self.highlightView.layer.cornerRadius = self.highlightView.frame.width/2
         self.highlightView.clipsToBounds = true
         
-        super.drawRect(rect)
+        super.draw(rect)
     }
     
     override func prepareForReuse()

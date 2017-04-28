@@ -11,7 +11,7 @@ import AVFoundation
 
 class AudioViewContoller: UIViewController, AVAudioPlayerDelegate
 {
-    private var internalPlayer: AVAudioPlayer?
+    fileprivate var internalPlayer: AVAudioPlayer?
     var player: AVAudioPlayer?
     {
         get
@@ -33,9 +33,9 @@ class AudioViewContoller: UIViewController, AVAudioPlayerDelegate
     let playImage = UIImage(named: "PlayFilled-100.png")
     let pauseImage = UIImage(named: "PauseFilled-100.png")
     
-    static func audioViewControllerFromPlayer(player: AVAudioPlayer?) -> AudioViewContoller
+    static func audioViewControllerFromPlayer(_ player: AVAudioPlayer?) -> AudioViewContoller
     {
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("AudioViewContoller") as! AudioViewContoller
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AudioViewContoller") as! AudioViewContoller
         
         viewController.player = player
         
@@ -53,30 +53,30 @@ class AudioViewContoller: UIViewController, AVAudioPlayerDelegate
     {
         if player != nil
         {
-            playButton?.hidden = false
+            playButton?.isHidden = false
             
-            if player!.playing
+            if player!.isPlaying
             {
-                playButton?.setBackgroundImage(pauseImage, forState: .Normal)
+                playButton?.setBackgroundImage(pauseImage, for: UIControlState())
             }
             
             else
             {
-                playButton?.setBackgroundImage(playImage, forState: .Normal)
+                playButton?.setBackgroundImage(playImage, for: UIControlState())
             }
         }
         
         else
         {
-            playButton?.hidden = true
+            playButton?.isHidden = true
         }
     }
     
-    @IBAction func playPressed(sender: UIButton)
+    @IBAction func playPressed(_ sender: UIButton)
     {
         if player != nil
         {
-            if player!.playing
+            if player!.isPlaying
             {
                 player!.pause()
             }
@@ -90,7 +90,7 @@ class AudioViewContoller: UIViewController, AVAudioPlayerDelegate
         }
     }
     
-    @IBAction func fastForwardPressed(sender: UIButton)
+    @IBAction func fastForwardPressed(_ sender: UIButton)
     {
         if player != nil
         {
@@ -105,7 +105,7 @@ class AudioViewContoller: UIViewController, AVAudioPlayerDelegate
         }
     }
     
-    @IBAction func rewindPressed(sender: UIButton)
+    @IBAction func rewindPressed(_ sender: UIButton)
     {
         if player != nil
         {
@@ -120,12 +120,12 @@ class AudioViewContoller: UIViewController, AVAudioPlayerDelegate
         }
     }
     
-    func audioPlayerBeginInterruption(player: AVAudioPlayer)
+    func audioPlayerBeginInterruption(_ player: AVAudioPlayer)
     {
         updateButtons()
     }
     
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool)
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
     {
         updateButtons()
     }

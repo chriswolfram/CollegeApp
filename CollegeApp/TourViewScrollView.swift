@@ -14,7 +14,7 @@ class TourViewScrollView: UIScrollView
     var ignoredArea: CGFloat = 0
     //var currentSubview: UIView?
     
-    override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool
     {
         if point.y < ignoredArea
         {

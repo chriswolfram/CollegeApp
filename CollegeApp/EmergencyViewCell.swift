@@ -14,7 +14,7 @@ class EmergencyViewCell: UITableViewCell
     @IBOutlet var numberLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    func showEmergencyContact(contact: EmergencyContact)
+    func showEmergencyContact(_ contact: EmergencyContact)
     {
         self.titleLabel.text = contact.title
         self.numberLabel.text = contact.formattedNumber

@@ -44,7 +44,7 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
                 tableView.reloadData()
             }
             
-            UIView.animateWithDuration(0.3, animations: {self.tableView.layoutIfNeeded()})
+            UIView.animate(withDuration: 0.3, animations: {self.tableView.layoutIfNeeded()})
         }
     }
     
@@ -63,7 +63,7 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    override func viewDidAppear(animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
@@ -75,13 +75,13 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
         refreshAll()
     }
     
-    func highlightOverlay(overlay: ShuttleOverlay)
+    func highlightOverlay(_ overlay: ShuttleOverlay)
     {
         overlay.highlighted = true
         highlightedOverlays.append(overlay)
     }
     
-    func highlightOverlay(overlays: [ShuttleOverlay])
+    func highlightOverlay(_ overlays: [ShuttleOverlay])
     {
         overlays.forEach({$0.highlighted = true})
         highlightedOverlays += overlays
@@ -93,25 +93,24 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
         highlightedOverlays = []
     }
     
-    func refreshVehicles(callback: Void->Void)
+    func refreshVehicles(_ callback: @escaping (Void)->Void)
     {
-        let urlComponents = NSURLComponents(URL: NSURL(string: "https://transloc-api-1-2.p.mashape.com/vehicles.json")!, resolvingAgainstBaseURL: false)
+        var urlComponents = URLComponents(url: URL(string: "https://transloc-api-1-2.p.mashape.com/vehicles.json")!, resolvingAgainstBaseURL: false)
         
         urlComponents?.queryItems =
         [
-            NSURLQueryItem(name: "agencies", value: agencyID)
+            URLQueryItem(name: "agencies", value: agencyID)
         ]
         
-        let request = NSMutableURLRequest(URL: urlComponents!.URL!)
+        let request = NSMutableURLRequest(url: urlComponents!.url!)
         request.addValue(apiKey, forHTTPHeaderField: "X-Mashape-Key")
         
-        NSURLSession.sharedSession().dataTaskWithRequest(request)
-        {
+        URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {
             (jsonData, _, _) in
             
             if jsonData != nil
             {
-                if let json = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                if let json = try? JSONSerialization.jsonObject(with: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String:AnyObject]
                 {
                     if let jsonVehicles = json["data"]?[self.agencyID] as? [AnyObject]
                     {
@@ -141,38 +140,38 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
             }
             
             callback()
-        }.resume()
+        })        
+.resume()
     }
     
-    func refreshStaticInformation(callback: Void->Void)
+    func refreshStaticInformation(_ callback: @escaping (Void)->Void)
     {
         //Setup queue for scheduling
-        let operationQueue = NSOperationQueue()
+        let operationQueue = OperationQueue()
         
-        let routeOperation = NSBlockOperation(block: {})
-        let segmentOperation = NSBlockOperation(block: {})
-        let stopsOperation = NSBlockOperation(block: {})
+        let routeOperation = BlockOperation(block: {})
+        let segmentOperation = BlockOperation(block: {})
+        let stopsOperation = BlockOperation(block: {})
         
         //Get route information
         var routesDict = [String:ShuttleRoute]()
         
-        let routeUrlComponents = NSURLComponents(URL: NSURL(string: "https://transloc-api-1-2.p.mashape.com/routes.json")!, resolvingAgainstBaseURL: false)
+        var routeUrlComponents = URLComponents(url: URL(string: "https://transloc-api-1-2.p.mashape.com/routes.json")!, resolvingAgainstBaseURL: false)
         
         routeUrlComponents?.queryItems =
         [
-            NSURLQueryItem(name: "agencies", value: agencyID)
+            URLQueryItem(name: "agencies", value: agencyID)
         ]
         
-        let routeRequest = NSMutableURLRequest(URL: routeUrlComponents!.URL!)
+        let routeRequest = NSMutableURLRequest(url: routeUrlComponents!.url!)
         routeRequest.addValue(apiKey, forHTTPHeaderField: "X-Mashape-Key")
         
-        NSURLSession.sharedSession().dataTaskWithRequest(routeRequest)
-        {
+        URLSession.shared.dataTask(with: routeRequest as URLRequest, completionHandler: {
             (jsonData, _, _) in
             
             if jsonData != nil
             {
-                if let json = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                if let json = try? JSONSerialization.jsonObject(with: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String:AnyObject]
                 {
                     if let jsonRoutes = json["data"]?[self.agencyID] as? [AnyObject]
                     {
@@ -201,28 +200,28 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
             }
             
             operationQueue.addOperation(routeOperation)
-        }.resume()
+        })        
+.resume()
         
         //Get segment information
         var segmentsDict = [String:ShuttleRouteSegment]()
         
-        let segmentUrlComponents = NSURLComponents(URL: NSURL(string: "https://transloc-api-1-2.p.mashape.com/segments.json")!, resolvingAgainstBaseURL: false)
+        var segmentUrlComponents = URLComponents(url: URL(string: "https://transloc-api-1-2.p.mashape.com/segments.json")!, resolvingAgainstBaseURL: false)
         
         segmentUrlComponents?.queryItems =
         [
-            NSURLQueryItem(name: "agencies", value: agencyID)
+            URLQueryItem(name: "agencies", value: agencyID)
         ]
         
-        let segmentRequest = NSMutableURLRequest(URL: segmentUrlComponents!.URL!)
+        let segmentRequest = NSMutableURLRequest(url: segmentUrlComponents!.url!)
         segmentRequest.addValue(apiKey, forHTTPHeaderField: "X-Mashape-Key")
         
-        NSURLSession.sharedSession().dataTaskWithRequest(segmentRequest)
-        {
+        URLSession.shared.dataTask(with: segmentRequest as URLRequest, completionHandler: {
             (jsonData, _, _) in
             
             if jsonData != nil
             {
-                if let json = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                if let json = try? JSONSerialization.jsonObject(with: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                 {
                     if let jsonSegments = json["data"] as? [String:String]
                     {
@@ -244,28 +243,28 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
             }
             
             operationQueue.addOperation(segmentOperation)
-        }.resume()
+        })        
+.resume()
         
         //Get stop information
         var stopsDict = [String:ShuttleStop]()
         
-        let stopsUrlComponents = NSURLComponents(URL: NSURL(string: "https://transloc-api-1-2.p.mashape.com/stops.json")!, resolvingAgainstBaseURL: false)
+        var stopsUrlComponents = URLComponents(url: URL(string: "https://transloc-api-1-2.p.mashape.com/stops.json")!, resolvingAgainstBaseURL: false)
         
         stopsUrlComponents?.queryItems =
         [
-            NSURLQueryItem(name: "agencies", value: agencyID)
+            URLQueryItem(name: "agencies", value: agencyID)
         ]
         
-        let stopsRequest = NSMutableURLRequest(URL: stopsUrlComponents!.URL!)
+        let stopsRequest = NSMutableURLRequest(url: stopsUrlComponents!.url!)
         stopsRequest.addValue(apiKey, forHTTPHeaderField: "X-Mashape-Key")
         
-        NSURLSession.sharedSession().dataTaskWithRequest(stopsRequest)
-        {
+        URLSession.shared.dataTask(with: stopsRequest as URLRequest, completionHandler: {
             (jsonData, _, _) in
             
             if jsonData != nil
             {
-                if let json = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                if let json = try? JSONSerialization.jsonObject(with: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                 {
                     if let jsonStops = json["data"] as? [AnyObject]
                     {
@@ -297,9 +296,10 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
             }
             
             operationQueue.addOperation(stopsOperation)
-        }.resume()
+        })        
+.resume()
         
-        let combineOperation = NSBlockOperation
+        let combineOperation = BlockOperation
         {
             self.routes.forEach
             {
@@ -342,15 +342,15 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
     
     func refreshAll()
     {
-        let operationQueue = NSOperationQueue()
+        let operationQueue = OperationQueue()
         
-        let routeOperation = NSBlockOperation(block: {})
-        let vehicleOperation = NSBlockOperation(block: {})
+        let routeOperation = BlockOperation(block: {})
+        let vehicleOperation = BlockOperation(block: {})
         
         refreshStaticInformation({operationQueue.addOperation(routeOperation)})
         refreshVehicles({operationQueue.addOperation(vehicleOperation)})
         
-        let displayOperation = NSBlockOperation
+        let displayOperation = BlockOperation
         {
             self.refreshShuttleMapView()
         }
@@ -364,17 +364,17 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
     func refreshShuttleMapView()
     {
         //dispatch_async may be unneeded
-        dispatch_async(dispatch_get_main_queue())
+        DispatchQueue.main.async
         {
             self.mapView.removeOverlays(self.mapView.overlays)
             
-            self.mapView.addOverlay(ShuttleRouteSegmentsOverlay(segments: self.segments))
+            self.mapView.add(ShuttleRouteSegmentsOverlay(segments: self.segments))
             self.mapView.addOverlays(self.stops.map({ShuttleStopOverlay.overlayFromStop($0)}))
             self.mapView.addOverlays(self.vehicles.map({ShuttleVehicleOverlay.overlayFromVehicle($0)}))
         }
     }
     
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
     {
         if let vehicleOverlay = overlay as? ShuttleVehicleOverlay
         {
@@ -401,14 +401,14 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
         }
     }
     
-    @IBAction func refreshButtonPressed(sender: UIBarButtonItem)
+    @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem)
     {
         refreshVehicles({self.refreshShuttleMapView()})
     }
     
-    @IBAction func mapPressed(sender: UITapGestureRecognizer)
+    @IBAction func mapPressed(_ sender: UITapGestureRecognizer)
     {
-        let tapCoords = mapView.convertPoint(sender.locationInView(mapView), toCoordinateFromView: mapView)
+        let tapCoords = mapView.convert(sender.location(in: mapView), toCoordinateFrom: mapView)
         let tapLocation = CLLocation(latitude: tapCoords.latitude, longitude: tapCoords.longitude)
         
         unhighlightOverlays()
@@ -421,22 +421,22 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
             {
                 let location = CLLocation(latitude: stopOverlay.coordinate.latitude, longitude: stopOverlay.coordinate.longitude)
                 
-                if location.distanceFromLocation(tapLocation) <= stopOverlay.radius
+                if location.distance(from: tapLocation) <= stopOverlay.radius
                 {
                     //If there is a selected region, deselect it
                     if selectedOverlay != nil
                     {
-                        mapView.removeOverlay(selectedOverlay!)
+                        mapView.remove(selectedOverlay!)
                         selectedOverlay!.highlighted = false
-                        mapView.addOverlay(selectedOverlay!)
+                        mapView.add(selectedOverlay!)
                     }
                     
                     //If the new overlay is different from the old one, select it.  Otherwise leave nothing selected.
                     if stopOverlay != selectedOverlay as? ShuttleStopOverlay
                     {
-                        mapView.removeOverlay(stopOverlay)
+                        mapView.remove(stopOverlay)
                         stopOverlay.highlighted = true
-                        mapView.addOverlay(stopOverlay)
+                        mapView.add(stopOverlay)
                     
                         selectedOverlay = stopOverlay
                     }
@@ -446,36 +446,36 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
                         selectedOverlay = nil
                     }
                     
-                    mapView.setCenterCoordinate(stopOverlay.coordinate, animated: true)
+                    mapView.setCenter(stopOverlay.coordinate, animated: true)
                 }
             }
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return stops.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let stop = stops[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("ShuttleViewStopCell", forIndexPath: indexPath) as! ShuttleViewStopCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ShuttleViewStopCell", for: indexPath) as! ShuttleViewStopCell
         
         cell.stop = stop
         
         return cell
     }
     
-    private func polyLineWithEncodedString(encodedString: String) -> MKPolyline {
-        let bytes = (encodedString as NSString).UTF8String
-        let length = encodedString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+    fileprivate func polyLineWithEncodedString(_ encodedString: String) -> MKPolyline {
+        let bytes = (encodedString as NSString).utf8String
+        let length = encodedString.lengthOfBytes(using: String.Encoding.utf8)
         var idx: Int = 0
         
         //var count = length / 4 //(original version)
         var count = length //(modified version)
         
-        var coords = UnsafeMutablePointer<CLLocationCoordinate2D>.alloc(count)
+        var coords = UnsafeMutablePointer<CLLocationCoordinate2D>.allocate(capacity: count)
         var coordIdx: Int = 0
         
         var latitude: Double = 0
@@ -487,7 +487,7 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
             var shift = 0
             
             repeat {
-                byte = bytes[idx] - 0x3F
+                byte = bytes![idx] - Int8(0x3F)
                 idx += 1
                 res |= (byte & 0x1F) << shift
                 shift += 5
@@ -500,7 +500,7 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
             res = 0
             
             repeat {
-                byte = bytes[idx] - 0x3F
+                byte = bytes![idx] - Int8(0x3F)
                 idx += 1
                 res |= (byte & 0x1F) << shift
                 shift += 5
@@ -519,33 +519,33 @@ class ShuttlesViewController: UIViewController, MKMapViewDelegate, UITableViewDe
             if coordIdx == count {
                 let newCount = count + 10
                 let temp = coords
-                coords.dealloc(count)
-                coords = UnsafeMutablePointer<CLLocationCoordinate2D>.alloc(newCount)
+                coords.deallocate(capacity: count)
+                coords = UnsafeMutablePointer<CLLocationCoordinate2D>.allocate(capacity: newCount)
                 for index in 0..<count {
                     coords[index] = temp[index]
                 }
-                temp.destroy()
+                temp.deinitialize()
                 count = newCount
             }
             
         }
         
         let polyLine = MKPolyline(coordinates: coords, count: coordIdx)
-        coords.destroy()
+        coords.deinitialize()
         
         return polyLine
     }
     
-    private func colorFromString(string: String) -> UIColor?
+    fileprivate func colorFromString(_ string: String) -> UIColor?
     {
         if string.characters.count != 6
         {
             return nil
         }
         
-        let rString = string.substringWithRange(string.startIndex...string.startIndex.advancedBy(1))
-        let gString = string.substringWithRange(string.startIndex.advancedBy(2)...string.startIndex.advancedBy(3))
-        let bString = string.substringWithRange(string.startIndex.advancedBy(4)...string.startIndex.advancedBy(5))
+        let rString = string.substring(with: string.startIndex..<string.characters.index(string.startIndex, offsetBy: 1))
+        let gString = string.substring(with: string.characters.index(string.startIndex, offsetBy: 2)..<string.characters.index(string.startIndex, offsetBy: 3))
+        let bString = string.substring(with: string.characters.index(string.startIndex, offsetBy: 4)..<string.characters.index(string.startIndex, offsetBy: 5))
         
         let r = Int(rString, radix: 16)
         let g = Int(gString, radix: 16)

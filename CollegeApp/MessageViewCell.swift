@@ -13,7 +13,7 @@ class MessageViewCell: UITableViewCell
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
     
-    func showMessage(message: Message)
+    func showMessage(_ message: Message)
     {
         self.nameLabel.text = message.fromDisplay
         self.bodyLabel.text = message.body

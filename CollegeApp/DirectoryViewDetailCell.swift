@@ -16,7 +16,7 @@ class DirectoryViewDetailCell: UITableViewCell
     @IBOutlet weak var phoneLabel: UILabel?
     @IBOutlet weak var emailLabel: UILabel?
     
-    func showDirectoryEntry(entry: DirectoryEntry)
+    func showDirectoryEntry(_ entry: DirectoryEntry)
     {
         self.nameLabel?.text = entry.name
         self.titleLabel?.text = entry.title

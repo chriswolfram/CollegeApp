@@ -15,7 +15,7 @@ class HomescreenViewController: UIViewController
 {    
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-    let avplayer = AVPlayer(URL:  NSBundle.mainBundle().URLForResource("homescreenBackground", withExtension: "mp4")!)
+    let avplayer = AVPlayer(url:  Bundle.main.url(forResource: "homescreenBackground", withExtension: "mp4")!)
     
     override func viewDidLoad()
     {
@@ -39,12 +39,12 @@ class HomescreenViewController: UIViewController
         avplayerLayer.frame = view.frame
         avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         
-        avplayer.actionAtItemEnd = .None
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomescreenViewController.finishedVideo), name: AVPlayerItemDidPlayToEndTimeNotification, object: avplayer.currentItem)
+        avplayer.actionAtItemEnd = .none
+        NotificationCenter.default.addObserver(self, selector: #selector(HomescreenViewController.finishedVideo), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: avplayer.currentItem)
         
         view.layer.addSublayer(avplayerLayer)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomescreenViewController.viewDidBecomeActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomescreenViewController.viewDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
         avplayer.play()
     }
@@ -54,7 +54,7 @@ class HomescreenViewController: UIViewController
         self.viewDidAppear(false)
     }
     
-    override func viewDidAppear(animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
@@ -65,7 +65,7 @@ class HomescreenViewController: UIViewController
         School.directoryEntries = []
     }
     
-    override func viewDidDisappear(animated: Bool)
+    override func viewDidDisappear(_ animated: Bool)
     {
         super.viewDidDisappear(animated)
         
@@ -74,45 +74,45 @@ class HomescreenViewController: UIViewController
     
     func finishedVideo()
     {
-        avplayer.seekToTime(CMTime(seconds: 0, preferredTimescale: 1))
+        avplayer.seek(to: CMTime(seconds: 0, preferredTimescale: 1))
         avplayer.play()
     }
     
-    @IBAction func facebookButton(sender: UIButton)
+    @IBAction func facebookButton(_ sender: UIButton)
     {
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook)
         {
             let composeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            composeViewController.setInitialText(School.facebookShareDefaultMessage)
+            composeViewController?.setInitialText(School.facebookShareDefaultMessage)
             
-            self.presentViewController(composeViewController, animated: true, completion: nil)
+            self.present(composeViewController!, animated: true, completion: nil)
         }
         
         else
         {
-            let alert = UIAlertController(title: "Facebook Account", message: "Please login to a Facebook account in Settings to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            let alert = UIAlertController(title: "Facebook Account", message: "Please login to a Facebook account in Settings to share.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
-    @IBAction func twitterButton(sender: UIButton)
+    @IBAction func twitterButton(_ sender: UIButton)
     {
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)
         {
             let composeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            composeViewController.setInitialText(School.twitterShareDefaultMessage)
+            composeViewController?.setInitialText(School.twitterShareDefaultMessage)
             
-            self.presentViewController(composeViewController, animated: true, completion: nil)
+            self.present(composeViewController!, animated: true, completion: nil)
         }
             
         else
         {
-            let alert = UIAlertController(title: "Twitter Account", message: "Please login to a Twitter account in Settings to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            let alert = UIAlertController(title: "Twitter Account", message: "Please login to a Twitter account in Settings to share.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

@@ -14,7 +14,7 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
     
     let bubbleRadius: CGFloat = 50
     
-    let timeStep: NSTimeInterval = 1/60
+    let timeStep: TimeInterval = 1/60
     //Gravitational constant, IRL 0.0000000000667
     let G: CGFloat = 10000
     //Coefficient of Restitution
@@ -24,7 +24,7 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
     
     var bodies = [GravitationalBody]()
     
-    var timer: NSTimer?
+    var timer: Timer?
     
     override func viewDidLoad()
     {
@@ -43,7 +43,7 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
         {
             s in
             
-            dispatch_async(dispatch_get_main_queue())
+            DispatchQueue.main.async
             {
                 //If sucessfully got tour data
                 if s
@@ -54,9 +54,9 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
                     //If could not get tour data
                 else
                 {
-                    let alertController = UIAlertController(title: "Could not load gallery.", message: "Could not connect to gallery server.  Make sure you are connected to the internet and try again in a few minutes.", preferredStyle: .Alert)
-                    alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: {_ in self.navigationController?.popToRootViewControllerAnimated(true)}))
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    let alertController = UIAlertController(title: "Could not load gallery.", message: "Could not connect to gallery server.  Make sure you are connected to the internet and try again in a few minutes.", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in self.navigationController?.popToRootViewController(animated: true)}))
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
@@ -64,10 +64,10 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
         //Add point mass in the center
         bodies.append(PointMass(center: CGPoint(x: scrollView.contentSize.width/2, y: scrollView.contentSize.height/2), mass: 3))
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(self.timeStep, target: self, selector: #selector(BubbleViewController.simulationStep), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: self.timeStep, target: self, selector: #selector(BubbleViewController.simulationStep), userInfo: nil, repeats: true)
     }
     
-    override func viewDidAppear(animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
@@ -75,17 +75,17 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
         
         if timer != nil
         {
-            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+            RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
         }
     }
     
-    override func viewDidDisappear(animated: Bool)
+    override func viewDidDisappear(_ animated: Bool)
     {
         timer?.invalidate()
         timer = nil
     }
     
-    func addBubble(landmark: TourLandmark)
+    func addBubble(_ landmark: TourLandmark)
     {
         landmark.getThumbnail
         {
@@ -131,12 +131,12 @@ class BubbleViewController: UIViewController, UIScrollViewDelegate
     func simulationStep()
     {
         //print(NSUUID())
-        bodies.enumerate().forEach
+        bodies.enumerated().forEach
         {
             (index, b1) in
             
             //Interbody interactions
-            bodies.dropFirst(index+1).forEach
+            Array(bodies.dropFirst(index+1)).forEach
             {
                 b2 in
                 

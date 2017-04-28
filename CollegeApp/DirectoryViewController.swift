@@ -25,14 +25,14 @@ class DirectoryViewController: UITableViewController, UISearchBarDelegate
         
         //Setup search bar
         searchBar.delegate = self
-        searchBar.searchBarStyle = UISearchBarStyle.Minimal
-        searchBar.tintColor = UIColor.whiteColor()
+        searchBar.searchBarStyle = UISearchBarStyle.minimal
+        searchBar.tintColor = UIColor.white
         searchBar.placeholder = "Search"
         self.navigationItem.titleView = searchBar
         
         //Setup tap to escape
         tableView.addGestureRecognizer(gestureRecognizer)
-        gestureRecognizer.enabled = false
+        gestureRecognizer.isEnabled = false
         gestureRecognizer.addTarget(self, action: #selector(DirectoryViewController.tableTapped))
     }
     
@@ -41,38 +41,38 @@ class DirectoryViewController: UITableViewController, UISearchBarDelegate
         searchBar.resignFirstResponder()
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return entries.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DirectoryViewCell", forIndexPath: indexPath) as! DirectoryViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DirectoryViewCell", for: indexPath) as! DirectoryViewCell
     
         cell.showDirectoryEntry(entries[indexPath.row])
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let detailViewController = DirectoryViewDetailController.controllerForDirectoryEntry(entries[indexPath.row])
     
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar)
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
     {
-        gestureRecognizer.enabled = true
+        gestureRecognizer.isEnabled = true
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar)
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar)
     {
-        gestureRecognizer.enabled = false
+        gestureRecognizer.isEnabled = false
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String)
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
         if searchText == ""
         {
@@ -87,15 +87,15 @@ class DirectoryViewController: UITableViewController, UISearchBarDelegate
         self.tableView.reloadData()
     }
     
-    func searchEntries(query: String) -> [DirectoryEntry]
+    func searchEntries(_ query: String) -> [DirectoryEntry]
     {
         return School.directoryEntries.filter
         {
             entry in
             
-            entry.name.containsString(query) ||
-            (entry.title != nil && entry.title!.lowercaseString.containsString(query.lowercaseString)) ||
-            (entry.department != nil && entry.department!.lowercaseString.containsString(query.lowercaseString))
+            entry.name.contains(query) ||
+            (entry.title != nil && entry.title!.lowercased().contains(query.lowercased())) ||
+            (entry.department != nil && entry.department!.lowercased().contains(query.lowercased()))
         }
     }
 }

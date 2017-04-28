@@ -31,9 +31,9 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         }
     }
     
-    static func tourViewControllerFromTour(tour: Tour) -> TourViewController
+    static func tourViewControllerFromTour(_ tour: Tour) -> TourViewController
     {
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TourViewController") as! TourViewController
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TourViewController") as! TourViewController
         
         viewController.tour = tour
         
@@ -50,7 +50,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         
         //Update to reflect authorization settings
         locManager.requestWhenInUseAuthorization()
-        self.locationManager(locManager, didChangeAuthorizationStatus: CLLocationManager.authorizationStatus())
+        self.locationManager(locManager, didChangeAuthorization: CLLocationManager.authorizationStatus())
         
         //Setup map view
         mapView.delegate = self
@@ -63,18 +63,18 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
     }
     
     //override func viewDidLayoutSubviews()
-    override func viewDidAppear(animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
         scrollView.ignoredArea = TourViewController.detailViewTopSpace
-        scrollView.pagingEnabled = true
+        scrollView.isPagingEnabled = true
         scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(tour.landmarks.count), height: scrollView.frame.height)
         
         //Only add the pages as subviews to the scroll view if they have not already been added
         if !pagesAdded
         {
-            scrollView.pagingEnabled = true
+            scrollView.isPagingEnabled = true
             scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(tour.landmarks.count), height: scrollView.frame.height)
             
             for i in 0...tour.landmarks.count-1
@@ -86,7 +86,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         }
     }
     
-    func loadLandmarkToPage(index: Int)
+    func loadLandmarkToPage(_ index: Int)
     {
         let viewController = TourViewDetailController.controllerForLandmark(tour.landmarks[index])
         viewController.parentTourViewController = self
@@ -103,7 +103,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         }
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView)
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         let currentPage = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
         
@@ -114,7 +114,7 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         }
     }
     
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
     {
         if overlay is MKPolyline
         {
@@ -146,8 +146,8 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         mapView.removeOverlays(mapView.overlays)
         
         var coords = tour.landmarks.map({$0.coordinate!})
-        mapView.addOverlay(MKPolyline(coordinates: &coords, count: tour.landmarks.count))
-        mapView.addOverlay(MKCircle(centerCoordinate: tour.currentLandmark.coordinate, radius: 50))
+        mapView.add(MKPolyline(coordinates: &coords, count: tour.landmarks.count))
+        mapView.add(MKCircle(center: tour.currentLandmark.coordinate, radius: 50))
         
         if let detailViewController = detailViewControllers[tour.currentIndex]
         {
@@ -155,27 +155,27 @@ class TourViewController: UIViewController, MKMapViewDelegate, UIScrollViewDeleg
         }
     }
     
-    func goToLandmarkAtIndex(index: Int)
+    func goToLandmarkAtIndex(_ index: Int)
     {
         scrollView.setContentOffset(CGPoint(x: scrollView.frame.width * CGFloat(index), y: 0), animated: true)
     }
     
-    @IBAction func mapModeChanged(segmentedControl: UISegmentedControl)
+    @IBAction func mapModeChanged(_ segmentedControl: UISegmentedControl)
     {
         switch(segmentedControl.selectedSegmentIndex)
         {
         case 0:
-            mapView.mapType = .Standard
+            mapView.mapType = .standard
         case 1:
-            mapView.mapType = .SatelliteFlyover
+            mapView.mapType = .satelliteFlyover
         default:
             break
         }
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
-        if status == .AuthorizedAlways || status == .AuthorizedWhenInUse
+        if status == .authorizedAlways || status == .authorizedWhenInUse
         {
             manager.startUpdatingLocation()
             mapView.showsUserLocation = true

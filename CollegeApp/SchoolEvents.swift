@@ -10,24 +10,24 @@ import UIKit
 
 extension School
 {
-    static let eventsURL = NSURL(string: "http://events.stanford.edu/xml/rss.xml")!
-    static let eventsCalendarURL = NSURL(string: "http://events.stanford.edu/eventlist.ics")!
+    static let eventsURL = URL(string: "http://events.stanford.edu/xml/rss.xml")!
+    static let eventsCalendarURL = URL(string: "http://events.stanford.edu/eventlist.ics")!
     
     static let addEventsButton = true
     static func addEventsButtonPressed()
     {
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://events.stanford.edu/eventadmin/")!)
+        UIApplication.shared.openURL(URL(string: "https://events.stanford.edu/eventadmin/")!)
     }
     
     static var events = [Event]()
     
-    private static var xmlRoot: XMLElement!
-    private static var rssRoot: XMLElement!
+    fileprivate static var xmlRoot: XMLElement!
+    fileprivate static var rssRoot: XMLElement!
     
     static func updateEvents()
     {
         //Configure RSS feed reader
-        if let parser = NSXMLParser(contentsOfURL: School.eventsURL)
+        if let parser = XMLParser(contentsOf: School.eventsURL)
         {
             xmlRoot = XMLElement(parser: parser)
             xmlRoot.parse()
@@ -37,7 +37,7 @@ extension School
             if let rssRoot = xmlRoot["channel"]
             {
                 //Turn parsed RSS data into dictionaries
-                if let items = rssRoot["item", .All]
+                if let items = rssRoot["item", .all]
                 {
                     events = items.map
                     {
@@ -47,26 +47,26 @@ extension School
                         
                         if let urlString = item["link"]?.contents
                         {
-                            event.link = NSURL(string: urlString)
+                            event.link = URL(string: urlString)
                         }
                         
                         if let urlString = item["enclosure"]?.attributes["url"]
                         {
-                            event.imageURL = NSURL(string: urlString)
+                            event.imageURL = URL(string: urlString)
                         }
                         
                         if var descString = item["description"]?.contents
                         {
                             descString = "<list>"+descString+"</list>"
-                            if let data = descString.dataUsingEncoding(NSUTF8StringEncoding)
+                            if let data = descString.data(using: String.Encoding.utf8)
                             {
-                                let descParser = NSXMLParser(data: data)
+                                let descParser = XMLParser(data: data)
                                 let descRoot = XMLElement(parser: descParser)
                                 descRoot.parse()
                                 
-                                let divs = descRoot["div", .All]
+                                let divs = descRoot["div", .all]
                                 
-                                func checkClass(div: XMLElement, targetClass: String) -> Bool
+                                func checkClass(_ div: XMLElement, targetClass: String) -> Bool
                                 {
                                     return div.attributes["class"] != nil && div.attributes["class"]! == targetClass
                                 }
@@ -78,13 +78,13 @@ extension School
                                 let datePrefix = "Date: "
                                 if event.dateString != nil && event.dateString!.hasPrefix(datePrefix)
                                 {
-                                    event.dateString?.removeRange(event.dateString!.startIndex...event.dateString!.startIndex.advancedBy(datePrefix.characters.count-1))
+                                    event.dateString?.removeSubrange(event.dateString!.startIndex...event.dateString!.characters.index(event.dateString!.startIndex, offsetBy: datePrefix.characters.count-1))
                                 }
                                 
                                 let locationPrefix = "Location: "
                                 if event.location != nil && event.location!.hasPrefix(locationPrefix)
                                 {
-                                    event.location?.removeRange(event.location!.startIndex...event.location!.startIndex.advancedBy(locationPrefix.characters.count-1))
+                                    event.location?.removeSubrange(event.location!.startIndex...event.location!.characters.index(event.location!.startIndex, offsetBy: locationPrefix.characters.count-1))
                                 }
                             }
                         }
@@ -98,7 +98,7 @@ extension School
         //Get start dates
         if
             let calendarElement = CalendarElement(url: School.eventsCalendarURL),
-            let vevents = calendarElement[0]?["VEVENT", .All]
+            let vevents = calendarElement[0]?["VEVENT", .all]
         {
             vevents.forEach
             {
@@ -106,16 +106,15 @@ extension School
                     
             if let
                 dateString = calendarEvent["DTSTART"]?.contents,
-                date = dateFromCalendar(dateString),
-                urlString = calendarEvent["URL"]?.contents
+                let date = dateFromCalendar(dateString),
+                let urlString = calendarEvent["URL"]?.contents
             {
                 self.events.forEach
                     {
                         event in
                                 
                         if let
-                            eventURLString = event.link?.absoluteString
-                            where
+                            eventURLString = event.link?.absoluteString,
                             eventURLString == urlString
                         {
                             event.startDate = date
@@ -129,17 +128,17 @@ extension School
         //events.forEach({$0.loadImage()})
     }
     
-    private static func dateFromCalendar(string: String) -> NSDate?
+    fileprivate static func dateFromCalendar(_ string: String) -> Date?
     {
-        let dateComponents = NSDateComponents()
+        var dateComponents = DateComponents()
         
         if let
-            year = Int(string.substringToIndex(string.startIndex.advancedBy(4))),
-            month = Int(string.substringWithRange(string.startIndex.advancedBy(4)...string.startIndex.advancedBy(5))),
-            day = Int(string.substringWithRange(string.startIndex.advancedBy(6)...string.startIndex.advancedBy(7))),
-            hour = Int(string.substringWithRange(string.startIndex.advancedBy(9)...string.startIndex.advancedBy(10))),
-            minute = Int(string.substringWithRange(string.startIndex.advancedBy(11)...string.startIndex.advancedBy(12))),
-            second = Int(string.substringWithRange(string.startIndex.advancedBy(13)...string.startIndex.advancedBy(14)))
+            year = Int(string.substring(to: string.characters.index(string.startIndex, offsetBy: 4))),
+            let month = Int(string.substring(with: string.characters.index(string.startIndex, offsetBy: 4)..<string.characters.index(string.startIndex, offsetBy: 5))),
+            let day = Int(string.substring(with: string.characters.index(string.startIndex, offsetBy: 6)..<string.characters.index(string.startIndex, offsetBy: 7))),
+            let hour = Int(string.substring(with: string.characters.index(string.startIndex, offsetBy: 9)..<string.characters.index(string.startIndex, offsetBy: 10))),
+            let minute = Int(string.substring(with: string.characters.index(string.startIndex, offsetBy: 11)..<string.characters.index(string.startIndex, offsetBy: 12))),
+            let second = Int(string.substring(with: string.characters.index(string.startIndex, offsetBy: 13)..<string.characters.index(string.startIndex, offsetBy: 14)))
         {
             dateComponents.year = year
             dateComponents.month = month
@@ -148,9 +147,9 @@ extension School
             dateComponents.minute = minute
             dateComponents.second = second
             
-            dateComponents.timeZone = NSTimeZone(abbreviation: "UTC")
+            (dateComponents as NSDateComponents).timeZone = TimeZone(abbreviation: "UTC")
             
-            return NSCalendar.currentCalendar().dateFromComponents(dateComponents)
+            return Calendar.current.date(from: dateComponents)
         }
         
         return nil

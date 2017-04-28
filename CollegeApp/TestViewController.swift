@@ -22,10 +22,10 @@ class TestViewController: UIViewController
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.userInteractionEnabled = false
+        contentView.isUserInteractionEnabled = false
     }
     
-    override func viewDidAppear(animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
@@ -59,12 +59,12 @@ class TestViewController: UIViewController
             
             contentView.addSubview(fyuseView.imageView)
             
-            fyuseView.imageView.backgroundColor = UIColor.redColor()
-            fyuseView.imageView.userInteractionEnabled = false
+            fyuseView.imageView.backgroundColor = UIColor.red
+            fyuseView.imageView.isUserInteractionEnabled = false
             
-            fyuseView.imageView.topAnchor.constraintEqualToAnchor(previousAnchor).active = true
-            fyuseView.imageView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor).active = true
-            fyuseView.imageView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor).active = true
+            fyuseView.imageView.topAnchor.constraint(equalTo: previousAnchor).isActive = true
+            fyuseView.imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+            fyuseView.imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
             //fyuseView.imageView.widthAnchor.constraintEqualToAnchor(scrollView.widthAnchor).active = true
             //fyuseView.imageView.centerXAnchor.constraintEqualToAnchor(scrollView.centerXAnchor).active = true
             
@@ -72,9 +72,9 @@ class TestViewController: UIViewController
             
             previousAnchor = fyuseView.imageView.bottomAnchor
             
-            fyuseView.imageView.contentMode = .ScaleAspectFill
+            fyuseView.imageView.contentMode = .scaleAspectFill
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async
             {
                 fyuseView.showFyuse(identifier)
             }

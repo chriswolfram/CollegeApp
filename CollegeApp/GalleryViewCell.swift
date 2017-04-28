@@ -13,7 +13,7 @@ class GalleryViewCell: UITableViewCell
 {
     var fyuseView: FyuseViewController?
     
-    func showFyuse(fyuseView: FyuseViewController)
+    func showFyuse(_ fyuseView: FyuseViewController)
     {
         self.fyuseView = fyuseView
         
@@ -23,16 +23,16 @@ class GalleryViewCell: UITableViewCell
         
         contentView.addSubview(fyuseView.imageView)
         
-        fyuseView.imageView.backgroundColor = UIColor.redColor()
+        fyuseView.imageView.backgroundColor = UIColor.red
         
-        fyuseView.imageView.topAnchor.constraintEqualToAnchor(contentView.topAnchor).active = true
-        fyuseView.imageView.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor).active = true
-        fyuseView.imageView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor).active = true
-        fyuseView.imageView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor).active = true
+        fyuseView.imageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        fyuseView.imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        fyuseView.imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        fyuseView.imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
         //fyuseView.imageView.addConstraint(NSLayoutConstraint(item: fyuseView.imageView, attribute: .Width, relatedBy: .Equal, toItem: fyuseView.imageView, attribute: .Height, multiplier: 1080/1920, constant: 0))
         
-        fyuseView.imageView.contentMode = .ScaleAspectFill
+        fyuseView.imageView.contentMode = .scaleAspectFill
     }
     
     func removeFyuse()

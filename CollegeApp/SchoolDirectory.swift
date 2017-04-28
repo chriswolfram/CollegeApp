@@ -10,18 +10,18 @@ import Foundation
 
 extension School
 {
-    static private var directoryEntriesPrivate: [DirectoryEntry]?
+    static fileprivate var directoryEntriesPrivate: [DirectoryEntry]?
     static var directoryEntries: [DirectoryEntry]
     {
         get
         {
             if directoryEntriesPrivate == nil
             {
-                let url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("DirectoryEntries", ofType: "xml")!)
-                let root = XMLElement(parser: NSXMLParser(contentsOfURL: url)!)
+                let url = URL(fileURLWithPath: Bundle.main.path(forResource: "DirectoryEntries", ofType: "xml")!)
+                let root = XMLElement(parser: XMLParser(contentsOf: url)!)
                 root.parse()
                 
-                directoryEntriesPrivate = root["person", .All]!.map
+                directoryEntriesPrivate = root["person", .all]!.map
                 {
                     xmlPerson in
                         

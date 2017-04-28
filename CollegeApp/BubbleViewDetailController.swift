@@ -10,8 +10,8 @@ import UIKit
 
 class BubbleViewDetailController: UIViewController
 {
-    static private let storyboardIdentifier = "Main"
-    static private let viewControllerIdentifier = "BubbleViewDetailController"
+    static fileprivate let storyboardIdentifier = "Main"
+    static fileprivate let viewControllerIdentifier = "BubbleViewDetailController"
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -27,10 +27,10 @@ class BubbleViewDetailController: UIViewController
         }
     }
     
-    static func bubbleViewDetailControllerFromImage(image: UIImage) -> BubbleViewDetailController
+    static func bubbleViewDetailControllerFromImage(_ image: UIImage) -> BubbleViewDetailController
     {
         let storyboard = UIStoryboard(name: BubbleViewDetailController.storyboardIdentifier, bundle: nil)
-        let viewController = storyboard.instantiateViewControllerWithIdentifier(viewControllerIdentifier) as! BubbleViewDetailController
+        let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerIdentifier) as! BubbleViewDetailController
         
         viewController.image = image
         

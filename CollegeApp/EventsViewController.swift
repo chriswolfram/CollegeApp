@@ -17,7 +17,7 @@ class EventsViewController: UITableViewController
         //Show the add events button if it should
         if School.addEventsButton
         {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(EventsViewController.addEventsButtonPressed))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(EventsViewController.addEventsButtonPressed))
         }
         
         //Configure table view
@@ -26,7 +26,7 @@ class EventsViewController: UITableViewController
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    override func viewDidAppear(animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
@@ -34,10 +34,10 @@ class EventsViewController: UITableViewController
         if School.events.count == 0
         {
             self.refreshControl?.beginRefreshing()
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async
             {
                 School.updateEvents()
-                dispatch_async(dispatch_get_main_queue())
+                DispatchQueue.main.async
                 {
                     self.tableView.reloadData()
                     self.refreshControl?.endRefreshing()
@@ -51,27 +51,30 @@ class EventsViewController: UITableViewController
         School.addEventsButtonPressed()
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return School.events.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let event = School.events[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("EventsViewCell", forIndexPath: indexPath) as! EventsViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventsViewCell", for: indexPath) as! EventsViewCell
         
-        cell.event = event
+        if(School.events.count < indexPath.row)
+        {
+            let event = School.events[indexPath.row]
+            cell.event = event
+        }
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell tableViewCell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, willDisplay tableViewCell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
         (tableViewCell as! EventsViewCell).loadThumbnail()
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let event = School.events[indexPath.row]
         
@@ -82,17 +85,17 @@ class EventsViewController: UITableViewController
             
         else
         {
-            let alertController = UIAlertController(title: "Unable to Load Page", message: "The selected page could not be loaded.", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Unable to Load Page", message: "The selected page could not be loaded.", preferredStyle: .alert)
             
-            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    @IBAction func refresh(sender: UIRefreshControl)
+    @IBAction func refresh(_ sender: UIRefreshControl)
     {
         School.updateEvents()
         self.tableView.reloadData()

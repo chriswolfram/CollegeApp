@@ -33,9 +33,9 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
             //If could not get tour data
             else
             {
-                let alertController = UIAlertController(title: "Could not load tour information.", message: "Could not connect to tour server.  Make sure you are connected to the internet and try again in a few minutes.", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: {_ in self.navigationController?.popToRootViewControllerAnimated(true)}))
-                self.presentViewController(alertController, animated: true, completion: nil)
+                let alertController = UIAlertController(title: "Could not load tour information.", message: "Could not connect to tour server.  Make sure you are connected to the internet and try again in a few minutes.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in self.navigationController?.popToRootViewController(animated: true)}))
+                self.present(alertController, animated: true, completion: nil)
             }
         }
         
@@ -44,18 +44,18 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         navigationItem.titleView = searchBar
         searchBar.setShowsCancelButton(false, animated: false)
         
-        searchBar.searchBarStyle = UISearchBarStyle.Minimal
-        searchBar.tintColor = UIColor.whiteColor()
+        searchBar.searchBarStyle = UISearchBarStyle.minimal
+        searchBar.tintColor = UIColor.white
         searchBar.placeholder = "Search for Landmarks"
         
         //Configure gesture recognizer to pick up taps to escape the search bar
         collectionView?.addGestureRecognizer(gestureRecognizer)
         gestureRecognizer.addTarget(self, action: #selector(collectionViewTapped))
         
-        gestureRecognizer.enabled = false
+        gestureRecognizer.isEnabled = false
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+    override func numberOfSections(in collectionView: UICollectionView) -> Int
     {
         if searchResults.isEmpty
         {
@@ -70,7 +70,7 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         }
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         if searchResults.isEmpty
         {
@@ -85,9 +85,9 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         }
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TourSelectViewLandmarkCell", forIndexPath: indexPath) as! TourSelectViewLandmarkCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TourSelectViewLandmarkCell", for: indexPath) as! TourSelectViewLandmarkCell
         
         if searchResults.isEmpty
         {
@@ -106,10 +106,10 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         if
-            let cell = collectionView.cellForItemAtIndexPath(indexPath) as? TourSelectViewLandmarkCell,
+            let cell = collectionView.cellForItem(at: indexPath) as? TourSelectViewLandmarkCell,
             let landmark = cell.landmark
         {
             if !selectedLandmarks.contains(landmark)//!cell.landmarkSelected
@@ -125,7 +125,7 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
             }
             
             //Update other visible cells representing the same landmark to reflect selection changes
-            collectionView.visibleCells().forEach
+            collectionView.visibleCells.forEach
             {
                 otherCell in
                 
@@ -140,9 +140,9 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         }
     }
     
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
     {
-        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "TourSelectionHeaderView", forIndexPath: indexPath) as! TourSelectionHeaderView
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TourSelectionHeaderView", for: indexPath) as! TourSelectionHeaderView
         
         headerView.selectViewController = self
         
@@ -171,7 +171,7 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
                 
                 if landmark.titleString != nil
                 {
-                    return landmark.titleString!.containsString(text)
+                    return landmark.titleString!.contains(text)
                 }
                 
                 else
@@ -187,13 +187,13 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         }
     }
     
-    @IBAction func nextButtonPressed(sender: UIBarButtonItem)
+    @IBAction func nextButtonPressed(_ sender: UIBarButtonItem)
     {
         if selectedLandmarks.count == 0
         {
-            let alertController = UIAlertController(title: "Could not build the specified tour.", message: "Please select at least one landmark or press the 'select all' button on a group of landmarks.", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
+            let alertController = UIAlertController(title: "Could not build the specified tour.", message: "Please select at least one landmark or press the 'select all' button on a group of landmarks.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
         }
         
         else
@@ -210,22 +210,22 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
                     
                 else
                 {
-                    let alertController = UIAlertController(title: "Could not build the specified tour.", message: "Please try again in a few minutes.", preferredStyle: .Alert)
-                    alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    let alertController = UIAlertController(title: "Could not build the specified tour.", message: "Please try again in a few minutes.", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar)
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
     {
-        gestureRecognizer.enabled = true
+        gestureRecognizer.isEnabled = true
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar)
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar)
     {
-        gestureRecognizer.enabled = false
+        gestureRecognizer.isEnabled = false
     }
     
     func collectionViewTapped()
@@ -233,7 +233,7 @@ class TourSelectViewController: UICollectionViewController, UISearchBarDelegate
         searchBar.resignFirstResponder()
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String)
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
         updateSearchResults()
         collectionView?.reloadData()

@@ -11,11 +11,11 @@ import UIKit
 class Event
 {
     var image: UIImage?
-    var imageURL: NSURL?
+    var imageURL: URL?
     var title: String?
-    var link: NSURL?
+    var link: URL?
     var dateString: String?
-    var startDate: NSDate?
+    var startDate: Date?
     var location: String?
     var description: String?
     
@@ -25,11 +25,11 @@ class Event
     {
         if image == nil && imageURL != nil
         {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async
             {
-                if let imageData = NSData(contentsOfURL: self.imageURL!), let image = UIImage(data: imageData)
+                if let imageData = try? Data(contentsOf: self.imageURL!), let image = UIImage(data: imageData)
                 {
-                    dispatch_async(dispatch_get_main_queue())
+                    DispatchQueue.main.async
                     {
                         self.image = image
                         self.delegate?.didLoadImage()
@@ -38,7 +38,7 @@ class Event
                 
                 else
                 {
-                    dispatch_async(dispatch_get_main_queue())
+                    DispatchQueue.main.async
                     {
                         self.image = nil
                         self.delegate?.didLoadImage()

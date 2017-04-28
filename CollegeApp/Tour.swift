@@ -31,14 +31,13 @@ class Tour
     
     init?(xmlElement: XMLElement, landmarks: [TourLandmark])
     {
-        let tourLandmarks = xmlElement["landmarkIndices"]?["index", .All]?.flatMap
+        let tourLandmarks = xmlElement["landmarkIndices"]?["index", .all]?.flatMap
         {
             (indexXML: XMLElement) -> TourLandmark? in
             
             if
                 let indexString = indexXML.contents,
-                let index = Int(indexString)
-                where 0 <= index && index < landmarks.count
+                let index = Int(indexString), 0 <= index && index < landmarks.count
             {
                 return landmarks[index]
             }
@@ -59,32 +58,31 @@ class Tour
         }
     }
     
-    func reorder(callback: (Bool->Void)?)
+    func reorder(_ callback: ((Bool)->Void)?)
     {
-        let baseURL = NSURL(string: "https://www.wolframcloud.com/objects/c8932431-e51e-4446-a7bf-deee91a80ce5")!
+        let baseURL = URL(string: "https://www.wolframcloud.com/objects/c8932431-e51e-4446-a7bf-deee91a80ce5")!
         
         //Create the JSON to send
         let sendingJson = landmarks.map({["lat": $0.coordinate.latitude, "long": $0.coordinate.longitude]})
         if
-            let sendingJsonData = try? NSJSONSerialization.dataWithJSONObject(sendingJson, options: .PrettyPrinted),
-            let sendingJsonString = NSString(data: sendingJsonData, encoding: NSUTF8StringEncoding) as String?
+            let sendingJsonData = try? JSONSerialization.data(withJSONObject: sendingJson, options: .prettyPrinted),
+            let sendingJsonString = NSString(data: sendingJsonData, encoding: String.Encoding.utf8.rawValue) as String?
         {
             //Send the JSON
-            let request = NSMutableURLRequest(URL: baseURL)
-            request.HTTPMethod = "POST"
-            request.HTTPBody = ("json="+sendingJsonString).dataUsingEncoding(NSUTF8StringEncoding)
+            let request = NSMutableURLRequest(url: baseURL)
+            request.httpMethod = "POST"
+            request.httpBody = ("json="+sendingJsonString).data(using: String.Encoding.utf8)
             
-            NSURLSession.sharedSession().dataTaskWithRequest(request)
-            {
+            URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {
                 jsonData,_,_ in
                 
                 if jsonData != nil
                 {
                     if
-                        let json = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as? [Int],
+                        let json = try? JSONSerialization.jsonObject(with: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [Int],
                         let ordering = json
                     {
-                        dispatch_async(dispatch_get_main_queue())
+                        DispatchQueue.main.async
                         {
                             self.landmarks = ordering.flatMap({self.landmarks[$0]})
 
@@ -94,21 +92,22 @@ class Tour
                     
                     else
                     {
-                        dispatch_async(dispatch_get_main_queue(), {callback?(false)})
+                        DispatchQueue.main.async(execute: {callback?(false)})
                     }
                 }
                 
                 else
                 {
-                    dispatch_async(dispatch_get_main_queue(), {callback?(false)})
+                    DispatchQueue.main.async(execute: {callback?(false)})
                 }
                 
-            }.resume()
+            })            
+.resume()
         }
         
         else
         {
-            dispatch_async(dispatch_get_main_queue(), {callback?(false)})
+            DispatchQueue.main.async(execute: {callback?(false)})
         }
     }
 }

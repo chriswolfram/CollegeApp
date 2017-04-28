@@ -18,8 +18,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     var messages = [Message]()
     var messagesHash: Int?
     
-    let senderId = UIDevice.currentDevice().identifierForVendor!.UUIDString
-    let senderDisplayName = UIDevice.currentDevice().name
+    let senderId = UIDevice.current.identifierForVendor!.uuidString
+    let senderDisplayName = UIDevice.current.name
     
     override func viewDidLoad()
     {
@@ -27,7 +27,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //Set appearence
         navigationItem.title = messageGroup.name
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(MessageViewController.reloadButtonPressed))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(MessageViewController.reloadButtonPressed))
         
         //Setup table view
         tableView.delegate = self
@@ -36,13 +36,13 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.rowHeight = UITableViewAutomaticDimension
         
         //Setup text field
-        messageInputField.autocapitalizationType = .Sentences
+        messageInputField.autocapitalizationType = .sentences
         
         //Setup notifications for keyboard
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessageViewController.keyboardWillBeShown), name: /*UIKeyboardWillShowNotification*/UIKeyboardWillChangeFrameNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessageViewController.keyboardWillBeHidden), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.keyboardWillBeShown), name: /*UIKeyboardWillShowNotification*/NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        tableView.keyboardDismissMode = .Interactive
+        tableView.keyboardDismissMode = .interactive
         
         //Load older messages and show them
         if reloadMessages()
@@ -53,46 +53,46 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         scrollToBottom()
         
         //Setup timer to load messages every second
-        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(MessageViewController.reloadTimer), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(MessageViewController.reloadTimer), userInfo: nil, repeats: true)
     }
     
-    func showMessageGroup(messageGroup: MessageGroup)
+    func showMessageGroup(_ messageGroup: MessageGroup)
     {
         self.messageGroup = messageGroup
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return messages.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MessageViewCell", forIndexPath: indexPath) as! MessageViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageViewCell", for: indexPath) as! MessageViewCell
         
         cell.showMessage(messages[indexPath.row])
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    @IBAction func sendButtonPressed(sender: UIButton)
+    @IBAction func sendButtonPressed(_ sender: UIButton)
     {
         //Setup and make request to add message to the server
-        let urlComponents = NSURLComponents(URL: messageGroup.sendMessageURL, resolvingAgainstBaseURL: false)
+        var urlComponents = URLComponents(url: messageGroup.sendMessageURL as URL, resolvingAgainstBaseURL: false)
         
         urlComponents?.queryItems =
         [
-                NSURLQueryItem(name: "from", value: senderId),
-                NSURLQueryItem(name: "fromDisplay", value: senderDisplayName),
-                NSURLQueryItem(name: "body", value: messageInputField.text)
+                URLQueryItem(name: "from", value: senderId),
+                URLQueryItem(name: "fromDisplay", value: senderDisplayName),
+                URLQueryItem(name: "body", value: messageInputField.text)
         ]
         
-        let task = NSURLSession.sharedSession().dataTaskWithURL(urlComponents!.URL!)
+        let task = URLSession.shared.dataTask(with: urlComponents!.url!)
         task.resume()
         
         //Add message to local list
@@ -112,7 +112,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func reloadMessages() -> Bool
     {
-        let xmlRoot = XMLElement(parser: NSXMLParser(contentsOfURL: messageGroup.messageListURL)!)
+        let xmlRoot = XMLElement(parser: XMLParser(contentsOf: messageGroup.messageListURL as URL)!)
         xmlRoot.parse()
         
         let newHash = xmlRoot.contents?.hashValue
@@ -124,7 +124,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         else
         {
-            let newMessages = xmlRoot["message", .All]?.map
+            let newMessages = xmlRoot["message", .all]?.map
             {
                 message in
                 return Message(from: message["from"]!.contents!, fromDisplay: message["fromDisplay"]!.contents!, body: message["body"]!.contents!)
@@ -167,27 +167,27 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     {
         if messages.count > 0
         {
-            tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: messages.count-1, inSection: 0), atScrollPosition: .Bottom, animated: true)
+            tableView.scrollToRow(at: IndexPath(row: messages.count-1, section: 0), at: .bottom, animated: true)
         }
     }
     
-    func keyboardWillBeShown(notification: NSNotification)
+    func keyboardWillBeShown(_ notification: Notification)
     {
         let userInfo = notification.userInfo!
         
-        let keyboardHeight = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size.height
-        let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue!
+        let keyboardHeight = (userInfo[UIKeyboardFrameBeginUserInfoKey]! as AnyObject).cgRectValue.size.height
+        let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey]! as AnyObject).doubleValue!
         viewBottomContraint.constant = keyboardHeight
-        UIView.animateWithDuration(animationDuration, animations: {self.view.layoutIfNeeded()}, completion: {i in self.scrollToBottom()})
+        UIView.animate(withDuration: animationDuration, animations: {self.view.layoutIfNeeded()}, completion: {i in self.scrollToBottom()})
     }
     
-    func keyboardWillBeHidden(notification: NSNotification)
+    func keyboardWillBeHidden(_ notification: Notification)
     {
         let userInfo = notification.userInfo!
         
-        let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue!
+        let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey]! as AnyObject).doubleValue!
         viewBottomContraint.constant = 0
-        UIView.animateWithDuration(animationDuration, animations: {self.view.layoutIfNeeded()}, completion: {i in self.scrollToBottom()})
+        UIView.animate(withDuration: animationDuration, animations: {self.view.layoutIfNeeded()}, completion: {i in self.scrollToBottom()})
     }
 }
 

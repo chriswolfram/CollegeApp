@@ -22,14 +22,14 @@ class EmergencyViewController: UITableViewController, MFMessageComposeViewContro
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return emergencyContacts.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("EmergencyViewCell", forIndexPath: indexPath) as! EmergencyViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EmergencyViewCell", for: indexPath) as! EmergencyViewCell
         let contact = emergencyContacts[indexPath.row]
         
         cell.showEmergencyContact(contact)
@@ -37,20 +37,20 @@ class EmergencyViewController: UITableViewController, MFMessageComposeViewContro
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let contact = emergencyContacts[indexPath.row]
         
         if contact.smsEnabled
         {
-            let alertController = UIAlertController(title: "Pick an emergency action", message: nil, preferredStyle: .ActionSheet)
+            let alertController = UIAlertController(title: "Pick an emergency action", message: nil, preferredStyle: .actionSheet)
         
-            alertController.addAction(UIAlertAction(title: "Call", style: .Default, handler: {action in self.callNumber(contact.number, formattedNumber: contact.formattedNumber)}))
-            alertController.addAction(UIAlertAction(title: "SMS", style: .Default, handler: {action in self.sendSMS(contact.number, formattedNumber: contact.formattedNumber)}))
-            alertController.addAction(UIAlertAction(title: "SMS Location", style: .Default, handler: {action in self.sendLocation(contact.number, formattedNumber: contact.formattedNumber)}))
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: "Call", style: .default, handler: {action in self.callNumber(contact.number, formattedNumber: contact.formattedNumber)}))
+            alertController.addAction(UIAlertAction(title: "SMS", style: .default, handler: {action in self.sendSMS(contact.number, formattedNumber: contact.formattedNumber)}))
+            alertController.addAction(UIAlertAction(title: "SMS Location", style: .default, handler: {action in self.sendLocation(contact.number, formattedNumber: contact.formattedNumber)}))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         }
         
         else
@@ -58,29 +58,29 @@ class EmergencyViewController: UITableViewController, MFMessageComposeViewContro
             callNumber(contact.number, formattedNumber: contact.formattedNumber)
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func callNumber(number: String, formattedNumber: String)
+    func callNumber(_ number: String, formattedNumber: String)
     {
-        if let url = NSURL(string: "telprompt://"+number)
+        if let url = URL(string: "telprompt://"+number)
         {
-            if !UIApplication.sharedApplication().openURL(url)
+            if !UIApplication.shared.openURL(url)
             {
-                let alertController = UIAlertController(title: "Could not call \(formattedNumber).", message: nil, preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-                presentViewController(alertController, animated: true, completion: nil)
+                let alertController = UIAlertController(title: "Could not call \(formattedNumber).", message: nil, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                present(alertController, animated: true, completion: nil)
             }
         }
     }
     
-    func sendSMS(number: String, formattedNumber: String)
+    func sendSMS(_ number: String, formattedNumber: String)
     {
         if !MFMessageComposeViewController.canSendText()
         {
-            let alertController = UIAlertController(title: "Could not send SMS to \(formattedNumber).", message: nil, preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-            presentViewController(alertController, animated: true, completion: nil)
+            let alertController = UIAlertController(title: "Could not send SMS to \(formattedNumber).", message: nil, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
             
             return
         }
@@ -90,18 +90,18 @@ class EmergencyViewController: UITableViewController, MFMessageComposeViewContro
         
         messageViewController.recipients = [number]
         
-        presentViewController(messageViewController, animated: true, completion: nil)
+        present(messageViewController, animated: true, completion: nil)
     }
     
-    func sendLocation(number: String, formattedNumber: String)
+    func sendLocation(_ number: String, formattedNumber: String)
     {
         let locManager = LocationManager.sharedInstance
         
         guard MFMessageComposeViewController.canSendText() && CLLocationManager.locationServicesEnabled() && locManager.location != nil else
         {
-            let alertController = UIAlertController(title: "Could not send location over SMS to \(formattedNumber).", message: nil, preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-            presentViewController(alertController, animated: true, completion: nil)
+            let alertController = UIAlertController(title: "Could not send location over SMS to \(formattedNumber).", message: nil, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
             
             return
         }
@@ -112,12 +112,12 @@ class EmergencyViewController: UITableViewController, MFMessageComposeViewContro
         messageViewController.recipients = [number]
         messageViewController.body = "Latitude: \(locManager.location!.coordinate.latitude), Longitude: \(locManager.location!.coordinate.longitude), within \(locManager.location!.horizontalAccuracy) meters"
         
-        presentViewController(messageViewController, animated: true, completion: nil)
+        present(messageViewController, animated: true, completion: nil)
     }
     
-    func messageComposeViewController(controller: MFMessageComposeViewController,
-        didFinishWithResult result: MessageComposeResult)
+    func messageComposeViewController(_ controller: MFMessageComposeViewController,
+        didFinishWith result: MessageComposeResult)
     {
-            controller.dismissViewControllerAnimated(true, completion: nil)
+            controller.dismiss(animated: true, completion: nil)
     }
 }

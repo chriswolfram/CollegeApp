@@ -32,7 +32,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         
         //Update to reflect authorization settings
         locManager.requestWhenInUseAuthorization()
-        self.locationManager(locManager, didChangeAuthorizationStatus: CLLocationManager.authorizationStatus())
+        self.locationManager(locManager, didChangeAuthorization: CLLocationManager.authorizationStatus())
         
         //Add and configure search bar
         searchBar.delegate = self
@@ -40,8 +40,8 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         searchBar.setShowsCancelButton(false, animated: false)
         searchBar.showsBookmarkButton = true
         
-        searchBar.searchBarStyle = UISearchBarStyle.Minimal
-        searchBar.tintColor = UIColor.whiteColor()
+        searchBar.searchBarStyle = UISearchBarStyle.minimal
+        searchBar.tintColor = UIColor.white
         searchBar.placeholder = "Search \(School.name)"
         
         //Configure gesture recognizer to pick up taps to escape the search bar
@@ -51,29 +51,29 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         //Initialize resultsView
         resultsView.configure()
         resultsView.searchResultsDelegate = self
-        resultsView.hidden = true
+        resultsView.isHidden = true
         
         //Setup notifications for keyboard
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MapController.keyboardWillBeShown(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MapController.keyboardWillBeShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
         //Configure map
         mapView.setRegion(School.schoolRegion, animated: false)
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         //Show toolbar and add tracking toggle button and map vs satellite segmented controller
         super.viewWillAppear(animated);
         
         //Make tracking button
         let trackingButton = MKUserTrackingBarButtonItem(mapView: mapView)
-        trackingButton.customView?.tintColor = UIColor.whiteColor()
+        trackingButton.customView?.tintColor = UIColor.white
         
         //Make segmented controller
         segmentedControl = UISegmentedControl(items: ["Map", "Satellite"])
-        segmentedControl.tintColor = UIColor.whiteColor()
+        segmentedControl.tintColor = UIColor.white
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.addTarget(self, action: #selector(MapController.mapModeChanged), forControlEvents: .ValueChanged)
+        segmentedControl.addTarget(self, action: #selector(MapController.mapModeChanged), for: .valueChanged)
         let segmentedControlItem = UIBarButtonItem(customView: segmentedControl)
         
         //Add all to the toolbar
@@ -84,7 +84,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         self.navigationController?.setToolbarHidden(false, animated: animated)
     }
     
-    override func viewWillDisappear(animated: Bool)
+    override func viewWillDisappear(_ animated: Bool)
     {
         //Hide toolbar
         super.viewWillDisappear(animated);
@@ -96,17 +96,17 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         switch(segmentedControl.selectedSegmentIndex)
         {
         case 0:
-            mapView.mapType = .Standard
+            mapView.mapType = .standard
         case 1:
-            mapView.mapType = .SatelliteFlyover
+            mapView.mapType = .satelliteFlyover
         default:
             break
         }
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
-        if status == .AuthorizedAlways || status == .AuthorizedWhenInUse
+        if status == .authorizedAlways || status == .authorizedWhenInUse
         {
             manager.startUpdatingLocation()
             mapView.showsUserLocation = true
@@ -119,14 +119,14 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         }
     }
     
-    func showPins(locations: [Landmark])
+    func showPins(_ locations: [Landmark])
     {
         mapView.removeAnnotations(mapView.annotations)
         //mapView.addAnnotations(locations)
         mapView.showAnnotations(locations, animated: true)
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String)
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
         //If the search field is not blank
         if searchText != ""
@@ -135,7 +135,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
             resultsView.search(searchText)
             resultsView.reloadData()
             
-            resultsView.hidden = false
+            resultsView.isHidden = false
             searchBar.setShowsCancelButton(true, animated: true)
         }
         
@@ -143,20 +143,20 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         else
         {
             //Hide the result view
-            resultsView.hidden = true
+            resultsView.isHidden = true
             searchBar.setShowsCancelButton(false, animated: true)
             showPins([])
         }
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
-        resultsView.hidden = true
+        resultsView.isHidden = true
         searchBar.resignFirstResponder()
         showPins(resultsView.results)
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar)
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
     {
         searchBar.resignFirstResponder()
         searchBar.text = ""
@@ -164,9 +164,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         showPins([])
     }
     
-    func mapSearchResultSelected(location: Landmark)
+    func mapSearchResultSelected(_ location: Landmark)
     {
-        resultsView.hidden = true
+        resultsView.isHidden = true
         searchBar.resignFirstResponder()
         mapView.centerCoordinate = location.coordinate
         showPins([location])
@@ -177,10 +177,10 @@ class MapController: UIViewController, CLLocationManagerDelegate, UISearchBarDel
         searchBar.resignFirstResponder()
     }
     
-    func keyboardWillBeShown(notification: NSNotification)
+    func keyboardWillBeShown(_ notification: Notification)
     {
         //Adjust the results view insets when the keyboard is up
-        let keyboardHeight = notification.userInfo![UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size.height
+        let keyboardHeight = (notification.userInfo![UIKeyboardFrameBeginUserInfoKey]! as AnyObject).cgRectValue.size.height
         resultsView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardHeight, right: 0.0)
         resultsView.scrollIndicatorInsets = resultsView.contentInset
     }

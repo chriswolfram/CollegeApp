@@ -23,7 +23,7 @@
 
 import Foundation
 
-class XMLElement: NSObject, NSXMLParserDelegate
+class XMLElement: NSObject, XMLParserDelegate
 {
     var tag: String!
     var attributes: [String: String]!
@@ -42,14 +42,14 @@ class XMLElement: NSObject, NSXMLParserDelegate
     
     enum XMLElementParts
     {
-        case All
-        case First
-        case Last
+        case all
+        case first
+        case last
     }
     
-    private let xmlParser: NSXMLParser!
+    fileprivate let xmlParser: XMLParser!
     
-    init(parser: NSXMLParser)
+    init(parser: XMLParser)
     {
         self.xmlParser = parser
     }
@@ -68,9 +68,9 @@ class XMLElement: NSObject, NSXMLParserDelegate
     {
         switch p
         {
-        case .All: return self.children[key]
-        case .First: return [self.children[key]![0]]
-        case .Last: return [self.children[key]!.last!]
+        case .all: return self.children[key]
+        case .first: return [self.children[key]![0]]
+        case .last: return [self.children[key]!.last!]
         }
     }
     
@@ -80,7 +80,7 @@ class XMLElement: NSObject, NSXMLParserDelegate
         xmlParser.parse()
     }
     
-    func parser(parser: NSXMLParser, foundCharacters string: String)
+    func parser(_ parser: XMLParser, foundCharacters string: String)
     {
         if contents == nil
         {
@@ -91,7 +91,7 @@ class XMLElement: NSObject, NSXMLParserDelegate
         parent?.parser(parser, foundCharacters: string)
     }
     
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String])
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String])
     {
         if self.tag != nil
         {
@@ -121,7 +121,7 @@ class XMLElement: NSObject, NSXMLParserDelegate
         }
     }
     
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
     {
         if self.tag == elementName
         {

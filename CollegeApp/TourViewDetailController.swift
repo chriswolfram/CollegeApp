@@ -11,7 +11,7 @@ import WebKit
 
 class TourViewDetailController: UIViewController, UIScrollViewDelegate
 {
-    static private let storyboardIdentifier = "Main"
+    static fileprivate let storyboardIdentifier = "Main"
     
     var landmark: TourLandmark!
     @IBOutlet weak var nameLabel: UILabel?
@@ -63,7 +63,7 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
         }
     }
     
-    func showLandmark(newLandmark: TourLandmark)
+    func showLandmark(_ newLandmark: TourLandmark)
     {
         landmark = newLandmark
         
@@ -77,7 +77,7 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
         {
             let imageView = UIImageView(frame: mediaView.frame)
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.contentMode = .ScaleAspectFit
+            imageView.contentMode = .scaleAspectFit
             
             landmark.getImage
             {
@@ -87,16 +87,16 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
                 
                 if image != nil
                 {
-                    imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Height, multiplier: image!.size.width/image!.size.height, constant: 0))
+                    imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: imageView, attribute: .height, multiplier: image!.size.width/image!.size.height, constant: 0))
                 }
             }
             
             mediaView.addSubview(imageView)
-            mediaView.bringSubviewToFront(imageView)
+            mediaView.bringSubview(toFront: imageView)
             
-            imageView.topAnchor.constraintEqualToAnchor(lastBottomAnchor).active = true
-            imageView.leftAnchor.constraintEqualToAnchor(mediaView.leftAnchor).active = true
-            imageView.rightAnchor.constraintEqualToAnchor(mediaView.rightAnchor).active = true
+            imageView.topAnchor.constraint(equalTo: lastBottomAnchor).isActive = true
+            imageView.leftAnchor.constraint(equalTo: mediaView.leftAnchor).isActive = true
+            imageView.rightAnchor.constraint(equalTo: mediaView.rightAnchor).isActive = true
             
             lastBottomAnchor = imageView.bottomAnchor
         }
@@ -106,16 +106,16 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
         {
             let videoView = WKWebView(frame: mediaView.frame)
             videoView.translatesAutoresizingMaskIntoConstraints = false
-            videoView.scrollView.scrollEnabled = false
-            videoView.loadRequest(NSURLRequest(URL: url))
+            videoView.scrollView.isScrollEnabled = false
+            videoView.load(URLRequest(url: url as URL))
             mediaView.addSubview(videoView)
-            mediaView.bringSubviewToFront(videoView)
+            mediaView.bringSubview(toFront: videoView)
             
-            videoView.addConstraint(NSLayoutConstraint(item: videoView, attribute: .Width, relatedBy: .Equal, toItem: videoView, attribute: .Height, multiplier: 16/9, constant: 0))
+            videoView.addConstraint(NSLayoutConstraint(item: videoView, attribute: .width, relatedBy: .equal, toItem: videoView, attribute: .height, multiplier: 16/9, constant: 0))
             
-            videoView.topAnchor.constraintEqualToAnchor(lastBottomAnchor).active = true
-            videoView.leftAnchor.constraintEqualToAnchor(mediaView.leftAnchor).active = true
-            videoView.rightAnchor.constraintEqualToAnchor(mediaView.rightAnchor).active = true
+            videoView.topAnchor.constraint(equalTo: lastBottomAnchor).isActive = true
+            videoView.leftAnchor.constraint(equalTo: mediaView.leftAnchor).isActive = true
+            videoView.rightAnchor.constraint(equalTo: mediaView.rightAnchor).isActive = true
             
             lastBottomAnchor = videoView.bottomAnchor
         }
@@ -127,39 +127,39 @@ class TourViewDetailController: UIViewController, UIScrollViewDelegate
             landmark.getAudioPlayer({self.audioViewController.player = $0})
             
             let audioView = audioViewController.view
-            audioView.translatesAutoresizingMaskIntoConstraints = false
-            mediaView.addSubview(audioView)
+            audioView?.translatesAutoresizingMaskIntoConstraints = false
+            mediaView.addSubview(audioView!)
             
-            audioView.heightAnchor.constraintEqualToConstant(75).active = true
+            audioView?.heightAnchor.constraint(equalToConstant: 75).isActive = true
             
-            audioView.topAnchor.constraintEqualToAnchor(lastBottomAnchor).active = true
-            audioView.leftAnchor.constraintEqualToAnchor(mediaView.leftAnchor).active = true
-            audioView.rightAnchor.constraintEqualToAnchor(mediaView.rightAnchor).active = true
+            audioView?.topAnchor.constraint(equalTo: lastBottomAnchor).isActive = true
+            audioView?.leftAnchor.constraint(equalTo: mediaView.leftAnchor).isActive = true
+            audioView?.rightAnchor.constraint(equalTo: mediaView.rightAnchor).isActive = true
             
-            lastBottomAnchor = audioView.bottomAnchor
+            lastBottomAnchor = (audioView?.bottomAnchor)!
         }
         
-        lastBottomAnchor.constraintLessThanOrEqualToAnchor(mediaView.bottomAnchor).active = true
+        lastBottomAnchor.constraint(lessThanOrEqualTo: mediaView.bottomAnchor).isActive = true
     }
     
     static func controller() -> TourViewDetailController
     {
         let storyboard = UIStoryboard(name: TourViewDetailController.storyboardIdentifier, bundle: nil)
-        let detailView = storyboard.instantiateViewControllerWithIdentifier("TourViewDetailController") as! TourViewDetailController
+        let detailView = storyboard.instantiateViewController(withIdentifier: "TourViewDetailController") as! TourViewDetailController
         
         return detailView
     }
     
-    static func controllerForLandmark(landmark: TourLandmark) -> TourViewDetailController
+    static func controllerForLandmark(_ landmark: TourLandmark) -> TourViewDetailController
     {
         let storyboard = UIStoryboard(name: TourViewDetailController.storyboardIdentifier, bundle: nil)
-        let detailView = storyboard.instantiateViewControllerWithIdentifier("TourViewDetailController") as! TourViewDetailController
+        let detailView = storyboard.instantiateViewController(withIdentifier: "TourViewDetailController") as! TourViewDetailController
         detailView.landmark = landmark
         
         return detailView
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView)
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         scrollCallback?(scrollView)
     }

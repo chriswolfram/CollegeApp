@@ -21,14 +21,14 @@ class MapSearchResultsView: UITableView, UITableViewDataSource, UITableViewDeleg
     {
         self.delegate = self
         self.dataSource = self
-        self.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MapSearchResultsViewCell")
+        self.register(UITableViewCell.self, forCellReuseIdentifier: "MapSearchResultsViewCell")
     }
     
-    func search(query: String)
+    func search(_ query: String)
     {
-        func matchCheck(location: Landmark) -> Bool
+        func matchCheck(_ location: Landmark) -> Bool
         {
-            return location.title!.lowercaseString.containsString(query.lowercaseString)
+            return location.title!.lowercased().contains(query.lowercased())
         }
         
         results = locations.filter(matchCheck)
@@ -36,19 +36,19 @@ class MapSearchResultsView: UITableView, UITableViewDataSource, UITableViewDeleg
         self.reloadData()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MapSearchResultsViewCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MapSearchResultsViewCell", for: indexPath)
         cell.textLabel?.text = results[indexPath.row].title
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return results.count
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         searchResultsDelegate?.mapSearchResultSelected(results[indexPath.row])
     }

@@ -21,9 +21,9 @@ class TourSelectionHeaderView: UICollectionReusableView
         }
     }
     
-    @IBAction func selectAllButtonPressed(sender: UIButton)
+    @IBAction func selectAllButtonPressed(_ sender: UIButton)
     {
-        selectViewController.selectedLandmarks.unionInPlace(tour.landmarks)
+        selectViewController.selectedLandmarks.formUnion(tour.landmarks)
         selectViewController.collectionView?.reloadData()
     }
 }

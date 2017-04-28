@@ -11,16 +11,16 @@ import WebKit
 
 class WebView: UIViewController
 {
-    var url: NSURL!
+    var url: URL!
     
-    convenience init(url: NSURL)
+    convenience init(url: URL)
     {
         self.init()
         
         self.url = url
         
         let webView = WKWebView(frame: self.view.frame)
-        webView.loadRequest(NSURLRequest(URL: url))
+        webView.load(URLRequest(url: url))
         self.view.addSubview(webView)
         
         //let shareButton = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "shareButtonPressed")

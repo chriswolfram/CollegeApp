@@ -12,10 +12,10 @@ class StripedView: UIView
 {
     var colors = [UIColor]()
     
-    override func drawRect(rect: CGRect)
+    override func draw(_ rect: CGRect)
     {
         let stripeWidth = self.frame.width / CGFloat(colors.count)
-        colors.enumerate().forEach
+        colors.enumerated().forEach
         {
             (i, color) in
             

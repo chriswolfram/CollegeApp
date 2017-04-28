@@ -27,10 +27,10 @@ class FyuseViewController
             imageView.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        if motionManager.gyroAvailable
+        if motionManager.isGyroAvailable
         {
             motionManager.gyroUpdateInterval = 1/30
-            motionManager.startGyroUpdatesToQueue(NSOperationQueue.mainQueue())
+            motionManager.startGyroUpdates(to: OperationQueue.main)
             {
                 [weak self] (gyroHandler, _) in
                 
@@ -64,25 +64,23 @@ class FyuseViewController
         self.imageView = imageView
     }
     
-    func showFyuse(fyuseIdentifier: String, sizeSetCallback: CGSize -> Void = {$0})
+    func showFyuse(_ fyuseIdentifier: String, sizeSetCallback: @escaping (CGSize) -> Void = {$0})
     {
-        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://fyu.se/embed/"+fyuseIdentifier)!)
-        {
+        /*URLSession.shared.dataTask(with: URL(string: "http://fyu.se/embed/"+fyuseIdentifier)!, completionHandler: {
             (jsonData, _, _) in
             
-            let json = try! NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            let json = try! JSONSerialization.jsonObject(with: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
             
             let basePath = json["path"] as! String
             self.maxFrame = (json["fy"]!["l"] as! NSArray)[1] as! Int
             
-            self.images = [UIImage?](count: self.maxFrame+1, repeatedValue: nil)
+            self.images = [UIImage?](repeating: nil, count: self.maxFrame+1)
             
             (0...self.maxFrame).forEach
             {
                 frame in
                 
-                NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: basePath+"frames_\(frame).jpg")!)
-                {
+                URLSession.shared.dataTask(with: URL(string: basePath+"frames_\(frame).jpg")!, completionHandler: {
                     (imageData, _, _) in
                     
                     print(fyuseIdentifier)
@@ -90,7 +88,7 @@ class FyuseViewController
                     
                     if imageData != nil, let image = UIImage(data: imageData!)
                     {
-                        dispatch_async(dispatch_get_main_queue())
+                        DispatchQueue.main.async
                         {
                             self.images[frame] = image
                             if self.imageView.image == nil
@@ -98,15 +96,17 @@ class FyuseViewController
                                 let image = self.images[frame]
                                 
                                 self.imageView.image = image
-                                self.imageView.addConstraint(NSLayoutConstraint(item: self.imageView, attribute: .Width, relatedBy: .Equal, toItem: self.imageView, attribute: .Height, multiplier: image!.size.width/image!.size.height, constant: 0))
+                                self.imageView.addConstraint(NSLayoutConstraint(item: self.imageView, attribute: .width, relatedBy: .equal, toItem: self.imageView, attribute: .height, multiplier: image!.size.width/image!.size.height, constant: 0))
                                 
                                 sizeSetCallback(image!.size)
                             }
                         }
                     }
-                }.resume()
+                })                
+.resume()
             }
-        }.resume()
+        })        
+.resume()*/
     }
 }
 

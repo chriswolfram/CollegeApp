@@ -21,7 +21,7 @@ class BubbleView: UIButton, GravitationalBody
     let hookeLaw = true
     
     var backgroundImageView: UIImageView = UIImageView()
-    var pressSelector: (Void->Void)?
+    var pressSelector: ((Void)->Void)?
     
     var image: UIImage?
     {
@@ -43,22 +43,22 @@ class BubbleView: UIButton, GravitationalBody
         super.init(frame: frame)
         
         self.clipsToBounds = true
-        self.exclusiveTouch = true
+        self.isExclusiveTouch = true
         
-        self.addTarget(self, action: #selector(BubbleView.pressed), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(BubbleView.pressed), for: .touchUpInside)
         
         //Setup image view
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         
         //Next line may be unnecesarrily complicated
         //backgroundImageView.bounds = CGRect(x: -self.bounds.origin.x, y: -self.bounds.origin.y, width: self.frame.size.width, height: self.frame.size.height)
-        backgroundImageView.contentMode = .ScaleAspectFill
+        backgroundImageView.contentMode = .scaleAspectFill
         self.addSubview(backgroundImageView)
         
-        backgroundImageView.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
-        backgroundImageView.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor).active = true
-        backgroundImageView.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor).active = true
-        backgroundImageView.trailingAnchor.constraintEqualToAnchor(self.trailingAnchor).active = true
+        backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        backgroundImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        backgroundImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }
     
     convenience init(position: CGPoint, radius: CGFloat)
@@ -67,11 +67,11 @@ class BubbleView: UIButton, GravitationalBody
         self.radius = radius
     }
     
-    override func drawRect(rect: CGRect)
+    override func draw(_ rect: CGRect)
     {
         self.layer.cornerRadius = self.frame.width/2
         
-        super.drawRect(rect)
+        super.draw(rect)
     }
     
     func pressed()
@@ -79,7 +79,7 @@ class BubbleView: UIButton, GravitationalBody
         pressSelector?()
     }
     
-    func applyForce(timeStep: NSTimeInterval)
+    func applyForce(_ timeStep: TimeInterval)
     {
         velocity.x += force.x / mass
         velocity.y += force.y / mass

@@ -20,7 +20,7 @@ protocol GravitationalBody: class
     var collisions: Bool {get}
     var hookeLaw: Bool {get}
     
-    func applyForce(timeStep: NSTimeInterval)
+    func applyForce(_ timeStep: TimeInterval)
 }
 
 class PointMass: GravitationalBody
@@ -32,13 +32,13 @@ class PointMass: GravitationalBody
     
     var velocity: CGPoint
         {
-        get {return CGPointZero}
+        get {return CGPoint.zero}
         set {}
     }
     
     var force: CGPoint
         {
-        get {return CGPointZero}
+        get {return CGPoint.zero}
         set {}
     }
     
@@ -51,7 +51,7 @@ class PointMass: GravitationalBody
         self.mass = mass
     }
     
-    func applyForce(timeStep: NSTimeInterval)
+    func applyForce(_ timeStep: TimeInterval)
     {
         //Intentionally does nothing because this object doesn't move.
     }

@@ -33,14 +33,14 @@ class GalleryViewController: UITableViewController
         tableView.reloadData()
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return fyuseViews.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("GalleryViewCell", forIndexPath: indexPath) as! GalleryViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GalleryViewCell", for: indexPath) as! GalleryViewCell
         
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
         cell.showFyuse(fyuseViews[indexPath.row])
